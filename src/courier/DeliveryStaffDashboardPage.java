@@ -35,7 +35,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userwellbl.setFont(new java.awt.Font("Tahoma", 0, 35)); // NOI18N
+        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         logoutbtn.setText("Logout");
