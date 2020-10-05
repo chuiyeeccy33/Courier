@@ -6,6 +6,8 @@ public class Courier {
         // TODO code application logic here
         //trying to do something
         System.out.println("Hello, World!");
+        System.out.println("hi");
+        //test
     }
     
 }
