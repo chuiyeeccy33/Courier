@@ -69,8 +69,10 @@ public class SignUpPage extends javax.swing.JFrame {
 
         jLabel9.setText("Confirm Password");
 
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Sign Up");
 
+        jButton2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton2.setText("Login here");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
