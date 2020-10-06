@@ -39,7 +39,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         totallbl = new javax.swing.JLabel();
         assignedpersonlbl = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        kglbl = new javax.swing.JLabel();
+        weightlbl = new javax.swing.JLabel();
         lengthlbl = new javax.swing.JLabel();
         widthlbl = new javax.swing.JLabel();
         heightlbl = new javax.swing.JLabel();
@@ -67,7 +67,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         orderidtxt = new javax.swing.JTextField();
         useridtxt = new javax.swing.JTextField();
         assignedpersoncbox = new javax.swing.JComboBox<>();
-        orderdetailstxt = new javax.swing.JTextField();
         widthtxt = new javax.swing.JTextField();
         lengthtxt = new javax.swing.JTextField();
         heighttxt = new javax.swing.JTextField();
@@ -76,8 +75,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         totaltxt = new javax.swing.JTextField();
         deliverystatuscbox = new javax.swing.JComboBox<>();
         jTextField12 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
+        updatebtn = new javax.swing.JButton();
+        weighttxt = new javax.swing.JTextField();
+        kglbl = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        orderdetailstxt = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,8 +120,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel8.setText("Date:");
 
-        kglbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        kglbl.setText("kg");
+        weightlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        weightlbl.setText("Weight:");
 
         lengthlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lengthlbl.setText("L:");
@@ -151,21 +154,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         receiveremaillbl.setText("Email Address:");
 
         receiveraddresstxt.setColumns(20);
-        receiveraddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         receiveraddresstxt.setRows(5);
         jScrollPane1.setViewportView(receiveraddresstxt);
-
-        receivernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        receiverphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        receiveremailltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        sendernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderemailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         sendernamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         sendernamelbl.setText("Sender Name:");
@@ -180,41 +170,27 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         senderemaillbl.setText("Email Address:");
 
         senderaddresstxt.setColumns(20);
-        senderaddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         senderaddresstxt.setRows(5);
         jScrollPane2.setViewportView(senderaddresstxt);
-
-        orderidtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        useridtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         assignedpersoncbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersoncbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        orderdetailstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        widthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        lengthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        heighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        shippingfeetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         deliverystatuscbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         deliverystatuscbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Shipping", "Cancelled", "Delivered" }));
 
-        jTextField12.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        backbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backbtn.setText("Back");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Back");
+        updatebtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        updatebtn.setText("Update");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Update");
+        kglbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        kglbl.setText("KG");
+
+        orderdetailstxt.setColumns(20);
+        orderdetailstxt.setRows(5);
+        jScrollPane3.setViewportView(orderdetailstxt);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,6 +199,80 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(shippingfeelbl)
+                                            .addComponent(itempricelbl)
+                                            .addComponent(totallbl)
+                                            .addComponent(assignedpersonlbl))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(shippingfeetxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itempricetxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(totaltxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(assignedpersoncbox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(useridlbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(orderidlbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(useridtxt, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(orderidtxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(74, 74, 74)
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                .addGap(4, 4, 4)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addComponent(receivernamelbl)
+                                                                    .addComponent(receiverphonelbl)
+                                                                    .addComponent(receiveraddresslbl)
+                                                                    .addComponent(receiveremaillbl)))
+                                                            .addComponent(deliverystatuslbl))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(deliverystatuscbox, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(jScrollPane1)
+                                                                .addComponent(receiverphonetxt)
+                                                                .addComponent(receiveremailltxt)
+                                                                .addComponent(receivernametxt))))
+                                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addContainerGap(119, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(0, 0, Short.MAX_VALUE)
+                                                        .addComponent(updatebtn))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(deliveryreceiverlbl)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(backbtn)))
+                                                .addGap(24, 24, 24))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(orderdetailslbl))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(weightlbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(weighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(kglbl)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(widthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,80 +285,16 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lengthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Lcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(heightlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Hcmlbl))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(shippingfeelbl)
-                                    .addComponent(itempricelbl)
-                                    .addComponent(totallbl)
-                                    .addComponent(assignedpersonlbl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(shippingfeetxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itempricetxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(totaltxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(assignedpersoncbox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(useridlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(orderdetailslbl)
-                                    .addComponent(orderidlbl))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(useridtxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(orderdetailstxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(orderidtxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(kglbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Lcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(heightlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(receivernamelbl)
-                                                        .addComponent(receiverphonelbl)
-                                                        .addComponent(receiveraddresslbl)
-                                                        .addComponent(receiveremaillbl))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(5, 5, 5)
-                                                        .addComponent(deliverystatuslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(deliverystatuscbox, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jScrollPane1)
-                                                        .addComponent(receiverphonetxt)
-                                                        .addComponent(receiveremailltxt)
-                                                        .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(132, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(deliveryreceiverlbl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)
-                                        .addGap(24, 24, 24))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
-                                .addContainerGap())))))
+                                .addComponent(heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Hcmlbl))))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -344,13 +330,14 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deliveryreceiverlbl)
                     .addComponent(deliverysenderlbl)
-                    .addComponent(jButton1))
+                    .addComponent(backbtn))
                 .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(receivernamelbl)
-                    .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sendernamelbl))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(receivernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sendernamelbl)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -373,7 +360,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                 .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(senderphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,9 +386,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     .addComponent(useridtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orderdetailslbl)
-                    .addComponent(kglbl)
-                    .addComponent(orderdetailstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(weightlbl)
+                    .addComponent(weighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kglbl))
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(widthlbl)
@@ -414,24 +401,27 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     .addComponent(lengthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(shippingfeelbl)
-                    .addComponent(shippingfeetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(itempricelbl)
-                    .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totallbl)
-                    .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(assignedpersonlbl)
-                        .addComponent(assignedpersoncbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(shippingfeelbl)
+                            .addComponent(shippingfeetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(orderdetailslbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(itempricelbl)
+                            .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(totallbl)
+                            .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assignedpersonlbl)
+                    .addComponent(assignedpersoncbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatebtn))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -478,6 +468,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JLabel Wcmlbl;
     private javax.swing.JComboBox<String> assignedpersoncbox;
     private javax.swing.JLabel assignedpersonlbl;
+    private javax.swing.JButton backbtn;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JLabel deliveryreceiverlbl;
     private javax.swing.JLabel deliverysenderlbl;
@@ -487,17 +478,16 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JTextField heighttxt;
     private javax.swing.JLabel itempricelbl;
     private javax.swing.JTextField itempricetxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JLabel kglbl;
     private javax.swing.JLabel lengthlbl;
     private javax.swing.JTextField lengthtxt;
     private javax.swing.JLabel orderdetailslbl;
-    private javax.swing.JTextField orderdetailstxt;
+    private javax.swing.JTextArea orderdetailstxt;
     private javax.swing.JLabel orderidlbl;
     private javax.swing.JTextField orderidtxt;
     private javax.swing.JLabel receiveraddresslbl;
@@ -520,8 +510,11 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JTextField shippingfeetxt;
     private javax.swing.JLabel totallbl;
     private javax.swing.JTextField totaltxt;
+    private javax.swing.JButton updatebtn;
     private javax.swing.JLabel useridlbl;
     private javax.swing.JTextField useridtxt;
+    private javax.swing.JLabel weightlbl;
+    private javax.swing.JTextField weighttxt;
     private javax.swing.JLabel widthlbl;
     private javax.swing.JTextField widthtxt;
     // End of variables declaration//GEN-END:variables
