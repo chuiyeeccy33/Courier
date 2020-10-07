@@ -28,100 +28,93 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="shippingfeelbl" min="-2" max="-2" attributes="0"/>
-                                          <Component id="itempricelbl" min="-2" max="-2" attributes="0"/>
-                                          <Component id="totallbl" min="-2" max="-2" attributes="0"/>
-                                          <Component id="assignedpersonlbl" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="shippingfeetxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="itempricetxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="totaltxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="assignedpersoncbox" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="shippingfeelbl" min="-2" max="-2" attributes="0"/>
+                                  <Component id="itempricelbl" min="-2" max="-2" attributes="0"/>
+                                  <Component id="totallbl" min="-2" max="-2" attributes="0"/>
+                                  <Component id="assignedpersonlbl" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="shippingfeetxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="itempricetxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="totaltxt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="assignedpersoncbox" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="weightlbl" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="weighttxt" min="-2" pref="145" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="useridlbl" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="orderidlbl" alignment="1" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="useridlbl" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="orderidlbl" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="useridtxt" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="orderidtxt" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                      </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="useridtxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="orderidtxt" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="updatebtn" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="deliveryreceiverlbl" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace pref="134" max="32767" attributes="0"/>
+                                              <Component id="backbtn" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                                  <Component id="receivernamelbl" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="receiverphonelbl" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="receiveraddresslbl" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="receiveremaillbl" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Component id="deliverystatuslbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="deliverystatuscbox" min="-2" pref="217" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="jScrollPane1" max="32767" attributes="0"/>
-                                                              <Component id="receiverphonetxt" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="receiveremailltxt" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="receivernametxt" alignment="0" max="32767" attributes="0"/>
-                                                          </Group>
+                                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="receivernamelbl" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="receiverphonelbl" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="receiveraddresslbl" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="receiveremaillbl" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                                  <Component id="jTextField12" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                                  <Component id="deliverystatuslbl" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace pref="119" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                      <Component id="updatebtn" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="deliveryreceiverlbl" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="backbtn" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                                                  <Component id="receiverphonetxt" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="receiveremailltxt" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="receivernametxt" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="deliverystatuscbox" max="32767" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="jTextField12" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="orderdetailslbl" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                              <Component id="weightlbl" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="weighttxt" min="-2" pref="145" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="kglbl" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -129,15 +122,20 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                      <Component id="widthlbl" min="-2" pref="21" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="widthtxt" min="-2" pref="77" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Wcmlbl" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="lengthlbl" min="-2" pref="16" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lengthtxt" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="widthlbl" min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="widthtxt" min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Wcmlbl" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Component id="lengthlbl" min="-2" pref="16" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lengthtxt" min="-2" pref="77" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="orderdetailslbl" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
@@ -238,7 +236,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jScrollPane2" pref="84" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="senderphonetxt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -271,50 +269,54 @@
                   <Component id="useridlbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="useridtxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="weightlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="weighttxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="kglbl" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="widthlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lengthlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="heightlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Wcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Lcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Hcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="widthtxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lengthtxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="heighttxt" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="shippingfeelbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="shippingfeetxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="orderdetailslbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="weightlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="weighttxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="widthlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lengthlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="heightlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Wcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Lcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Hcmlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="widthtxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lengthtxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="heighttxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="shippingfeelbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="shippingfeetxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="orderdetailslbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="itempricelbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="itempricetxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="totallbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="totaltxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="itempricelbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="itempricetxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="totallbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="totaltxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="assignedpersonlbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="assignedpersoncbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="updatebtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="assignedpersonlbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="assignedpersoncbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="updatebtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="kglbl" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
@@ -633,6 +635,9 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField12">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField12ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backbtn">
       <Properties>
