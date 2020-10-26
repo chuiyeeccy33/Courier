@@ -31,6 +31,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         assigndeliveryorderlbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         DeliveryOrdertbl = new javax.swing.JTable();
+        logoutbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +52,9 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(DeliveryOrdertbl);
 
+        logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        logoutbtn.setText("Logout");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,20 +63,28 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(assigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deliveryOrderlbl)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deliveryOrderlbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutbtn))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(deliveryOrderlbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(assigndeliveryorderlbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(logoutbtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deliveryOrderlbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(assigndeliveryorderlbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         pack();
@@ -118,5 +130,6 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     private javax.swing.JLabel assigndeliveryorderlbl;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logoutbtn;
     // End of variables declaration//GEN-END:variables
 }
