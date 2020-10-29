@@ -158,7 +158,7 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         // TODO add your handling code here:
-        new ManagingStaffDasboard().setVisible(true);
+        new ManagingStaffUserManagement().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backbtnActionPerformed
 
