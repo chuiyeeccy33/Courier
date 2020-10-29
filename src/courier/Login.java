@@ -44,7 +44,6 @@ public class Login extends javax.swing.JFrame {
         passwordlbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         passwordlbl.setText("Password");
 
-        Loginbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Loginbtn.setText("Login");
         Loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +97,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(29, 29, 29)
                 .addComponent(Loginbtn)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
