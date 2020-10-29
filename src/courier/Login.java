@@ -1,5 +1,9 @@
 
 package courier;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -109,6 +113,60 @@ public class Login extends javax.swing.JFrame {
 
     private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
         // TODO add your handling code here:
+        //declaration
+        String user = txtusername.getText();
+        String password = new String(txtpassword.getPassword());
+        
+        //declaration for user type
+        String customer_role = "Customer";
+        String delivery_staff_role = "Delivery Staff";
+        String managing_staff_role = "Managing Staff";
+        
+        //try method
+        try{
+            File file = new File("login.txt");
+            Scanner sc = new Scanner(file);
+            
+            String temp;
+            boolean found = false;
+            
+            //while loop the login file
+            while(sc.hasNext() &&  !found) { //the system will stop running until it found the correct username and password
+                temp = sc.nextLine(); //read line of text from login.txt
+                String[] tempArr;
+                tempArr = temp.split (",");
+                
+                //if username and password exist in the login page then able to proceed
+                //else show the error message username is not exist
+                if (user.equals(tempArr[0]) && password.equals(tempArr[1])) {
+                    JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    System.out.println(user);
+                    System.out.println(password);
+                    user = tempArr[0];
+                    found = true;
+                    this.setVisible(false);
+                    
+                    //if the user is customer then bring user to customer dashboard
+                    if(customer_role.equals(tempArr[2])) {
+                        new CustomerDashboard().setVisible(true);
+                    } // the user is delivery staff then bring user to delivery staff
+                    else if (delivery_staff_role.equals(tempArr[2])) {
+                        new DeliveryStaffDashboardPage().setVisible(true);
+                    } //the user is managing staff then bring user to managing staff dashboard
+                    else {
+                        new ManagingStaffDasboard().setVisible(true);
+                    }
+                }
+            }
+            //display error if not matching username or password
+            if(!found){
+                JOptionPane.showMessageDialog(rootPane, "Not matching username and password.Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+            }
+        
+        } catch(FileNotFoundException ex) {
+            ex.toString();
+        }  
     }//GEN-LAST:event_LoginbtnActionPerformed
 
     public static void main(String args[]) {
