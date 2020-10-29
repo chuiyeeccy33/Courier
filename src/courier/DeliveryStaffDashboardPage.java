@@ -39,6 +39,11 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         logoutbtn.setText("Logout");
+        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutbtnActionPerformed(evt);
+            }
+        });
 
         deliveryorderbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         deliveryorderbtn.setText("Delivery Order");
@@ -100,6 +105,12 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_profilebtnActionPerformed
 
+    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
+        //Logout
+        new Login().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logoutbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,8 +147,6 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton delivery_orderbtn;
-    private javax.swing.JButton delivery_orderbtn1;
     private javax.swing.JButton deliveryorderbtn;
     private javax.swing.JButton logoutbtn;
     private javax.swing.JButton profilebtn;
