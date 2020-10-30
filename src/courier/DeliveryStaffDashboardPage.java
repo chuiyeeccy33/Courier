@@ -17,7 +17,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
      String username = "";
     public DeliveryStaffDashboardPage(String user) {
         initComponents();
-        userwellbl.setText("Good Morning,");
+        userwellbl.setText("Good Morning," + user);
         username=user;
     }
 

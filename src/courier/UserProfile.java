@@ -18,18 +18,13 @@ public class UserProfile extends javax.swing.JFrame {
      * Creates new form UserProfile
      */
      String username = "";
-    public UserProfile(String user) {
-        initComponents();
-       /* typelbl.setVisible(false);
-        typetxt.setVisible(false);
-        passwordlbl.setVisible(false);
-        passwordtxt.setVisible(false);
-        confirmpasslbl.setVisible(false);
-        confirmpasstxt.setVisible(false);*/
-         username = user;
+      public UserProfile(String user) {
+       initComponents();
+        username = user;
         
-         try{
+       
         File file = new File("UserDetails.txt");
+        try{
         Scanner sc = new Scanner(file);
         //read data from the file
        
@@ -39,9 +34,8 @@ public class UserProfile extends javax.swing.JFrame {
        while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
-            tempArr = temp.split (",");
-           if (user.equals(tempArr[0])) { 
-               usernametxt.setText(tempArr[0]);
+           tempArr = temp.split (",");
+           if (username.equals(tempArr[0])) { 
                typetxt.setText(tempArr[1]);
                firstnametxt.setText(tempArr[2]);
                lastnametxt.setText(tempArr[3]);
@@ -49,12 +43,14 @@ public class UserProfile extends javax.swing.JFrame {
                phonetxt.setText(tempArr[5]);
                passwordtxt.setText(tempArr[6]);
                confirmpasstxt.setText(tempArr[7]);
+               
+               usernametxt.setEditable(false);
            }
        }
-    }catch(FileNotFoundException ex) {
+       }catch(FileNotFoundException ex) {
                ex.toString();
                }
-       
+         
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -283,7 +279,7 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_phonetxtKeyTyped
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+       String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = typetxt.getText();
