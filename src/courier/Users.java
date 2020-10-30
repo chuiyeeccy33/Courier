@@ -71,5 +71,5 @@ public class Users {
     public boolean checkEmpty(){
         return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("")||confirmpassword.equals("");
     
-    }       
+    }    
 }

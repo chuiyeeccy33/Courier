@@ -20,6 +20,12 @@ public class UserProfile extends javax.swing.JFrame {
       public UserProfile(String user) {
        initComponents();
         view_user= user;
+        typelbl.setVisible(false);
+        //typetxt.setVisible(false);
+        passwordlbl.setVisible(false);
+        passwordtxt.setVisible(false);
+        confirmpasslbl.setVisible(false);
+        confirmpasstxt.setVisible(false);
         
         try{
        File file = new File("UserDetails.txt");
@@ -89,27 +95,18 @@ public class UserProfile extends javax.swing.JFrame {
         usernamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usernamelbl.setText("Username: ");
 
-        usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         firstnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         firstnamelbl.setText("First Name: ");
-
-        firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         lastnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lastnamelbl.setText("Last Name:");
 
-        lastnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         emaillbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         emaillbl.setText("Email: ");
-
-        emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonelbl.setText("Phone No:");
 
-        phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 phonetxtKeyTyped(evt);
@@ -126,6 +123,11 @@ public class UserProfile extends javax.swing.JFrame {
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         changepasslbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         changepasslbl.setForeground(new java.awt.Color(0, 0, 128));
@@ -148,8 +150,6 @@ public class UserProfile extends javax.swing.JFrame {
 
         typelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         typelbl.setText("Type:");
-
-        typetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,6 +304,18 @@ public class UserProfile extends javax.swing.JFrame {
               }
         }
     }//GEN-LAST:event_savebtnActionPerformed
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+       if (typetxt.getText().equals("Customer")) {
+        new CustomerDashboard().setVisible(true);
+        this.dispose();
+        }else if(typetxt.getText().equals("Managing Staff")){
+              new ManagingStaffDasboard(view_user).setVisible(true);
+              this.dispose();            
+        }else{
+        new DeliveryStaffDashboardPage(view_user).setVisible(true);
+        }
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments

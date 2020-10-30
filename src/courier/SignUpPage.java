@@ -278,7 +278,7 @@ public class SignUpPage extends javax.swing.JFrame {
             tempArr = temp.split (",");
              
            if (Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
-               JOptionPane.showMessageDialog(rootPane, "Username and password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+               JOptionPane.showMessageDialog(rootPane, "Username or password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
 
                found = true;
            }
