@@ -5,8 +5,6 @@
  */
 package courier;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -72,6 +70,11 @@ public class SignUpPage extends javax.swing.JFrame {
         jLabel5.setText("Last Name");
 
         emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        emailtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                emailtxtKeyTyped(evt);
+            }
+        });
 
         phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -232,9 +235,9 @@ public class SignUpPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(validationlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(validationlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -246,7 +249,6 @@ public class SignUpPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(42, 42, 42)))
-                .addGap(18, 18, 18)
                 .addComponent(signupbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addComponent(loginbtn)
@@ -258,12 +260,12 @@ public class SignUpPage extends javax.swing.JFrame {
 
     private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
         ArrayList <Users> UList = new ArrayList<Users>();        
-
+         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = getUserType();
         String Tempfirst = firstnametxt.getText();
         String Templast = lastnametxt.getText();
-        String Tempemail = emailtxt.getText();
+        String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
         String Tempconfirmpass = new String(confirmpasstxt.getPassword());
@@ -296,12 +298,13 @@ public class SignUpPage extends javax.swing.JFrame {
            
          if (Tempselectedradio.equals("Empty")){
                   JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-         }
-          else if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
-            JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-             u.UserSaveFile();
-            clearFields();
-              if(Tempselectedradio.equals("Customer")){
+         } 
+             else if(Tempemail.matches(regex)){
+              if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                u.UserSaveFile();
+                clearFields();
+            if(Tempselectedradio.equals("Customer")){
               this.dispose();
               new Login().setVisible(true);
          }else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
@@ -310,6 +313,10 @@ public class SignUpPage extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
        }
+      }
+          else
+              { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+              }
        } 
           } catch(FileNotFoundException ex)
                       {ex.toString();}  
@@ -328,6 +335,14 @@ public class SignUpPage extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_phonetxtKeyTyped
+
+    private void emailtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailtxtKeyTyped
+  /*      String email = null;
+        if (email.matches("^[A-Za-z0-9_.]+[@][A-Za-z.]+$"))
+        {
+            
+        }*/
+    }//GEN-LAST:event_emailtxtKeyTyped
 
     private void groupButton( ) {
         //group the radio button so, only one radio button can be selected at once
