@@ -2,8 +2,6 @@
 package courier;
 
 import java.io.*;
-import java.util.*;
-import javax.swing.JOptionPane;
 
 public class Users {
     private String username;
@@ -16,6 +14,13 @@ public class Users {
     private String confirmpassword;
     
     public Users(){}
+     public Users(String Username, String Firstname, String Lastname, String Email, String Phone){
+    username=Username;
+    firstname=Firstname;
+    lastname=Lastname;
+    email=Email;
+    phone=Phone;
+    }
     public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password, String Confirmpassword ){
     username=Username;
     selectedusertype=SelectedUserType;
@@ -62,5 +67,9 @@ public class Users {
         } catch (IOException ex) {
            
         }
-   }   
+   } 
+    public boolean checkEmpty(){
+        return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("")||confirmpassword.equals("");
+    
+    }       
 }

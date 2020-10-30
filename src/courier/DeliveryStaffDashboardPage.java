@@ -14,9 +14,11 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryStaffDashboardPage
      */
-    public DeliveryStaffDashboardPage() {
+     String username = "";
+    public DeliveryStaffDashboardPage(String user) {
         initComponents();
         userwellbl.setText("Good Morning,");
+        username=user;
     }
 
     /**
@@ -102,7 +104,8 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     }//GEN-LAST:event_deliveryorderbtnActionPerformed
 
     private void profilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilebtnActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new UserProfile (username).setVisible(true);
     }//GEN-LAST:event_profilebtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
@@ -141,7 +144,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeliveryStaffDashboardPage().setVisible(true);
+                //new DeliveryStaffDashboardPage().setVisible(true);
             }
         });
     }
