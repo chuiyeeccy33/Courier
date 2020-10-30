@@ -14,6 +14,7 @@ public class SignUpPage extends javax.swing.JFrame {
     public SignUpPage() {
         initComponents();
         groupButton();
+      
     }
     
     @SuppressWarnings("unchecked")
@@ -265,8 +266,8 @@ public class SignUpPage extends javax.swing.JFrame {
         String Temppass= new String(passwordtxt.getPassword());
         String Tempconfirmpass = new String(confirmpasstxt.getPassword());
         
-                   
-        if(checkEmpty()){
+       Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
+        if(u.checkEmpty()){
                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
         }
         else{        
@@ -282,14 +283,14 @@ public class SignUpPage extends javax.swing.JFrame {
            String[] tempArr;
             tempArr = temp.split (",");
              
-           if (Tempuser.equals(tempArr[0]) && Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
-               JOptionPane.showMessageDialog(rootPane, "Username or password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+           if (Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
+               JOptionPane.showMessageDialog(rootPane, "Username and password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
 
                found = true;
            }
        }
        if(!found){
-            Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
+           
            
          if (Tempselectedradio.equals("Empty")){
                   JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
@@ -367,10 +368,7 @@ public class SignUpPage extends javax.swing.JFrame {
         usernametxt.requestFocus();
 
  }
-      private boolean checkEmpty(){
-        return usernametxt.getText().equals("") ||  firstnametxt.getText().equals("")||lastnametxt.getText().equals("")||emailtxt.getText().equals("")||phonetxt.getText().equals("")||passwordtxt.getPassword().equals("")||confirmpasstxt.getPassword().equals("");
-    
-    }
+      
 
     /**
      * @param args the command line arguments

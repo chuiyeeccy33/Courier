@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 142, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
@@ -72,15 +72,16 @@ public class Login extends javax.swing.JFrame {
                         .addGap(170, 170, 170)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtpassword)
                                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(147, 147, 147))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +125,7 @@ public class Login extends javax.swing.JFrame {
         
         //try method
         try{
-            File file = new File("login.txt");
+            File file = new File("UserDetails.txt");
             Scanner sc = new Scanner(file);
             
             String temp;
@@ -135,10 +136,9 @@ public class Login extends javax.swing.JFrame {
                 temp = sc.nextLine(); //read line of text from login.txt
                 String[] tempArr;
                 tempArr = temp.split (",");
-                
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
-                if (user.equals(tempArr[0]) && password.equals(tempArr[1])) {
+                if (user.equals(tempArr[0]) && password.equals(tempArr[6])) {
                     JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
                     
                     System.out.println(user);
@@ -148,14 +148,14 @@ public class Login extends javax.swing.JFrame {
                     this.setVisible(false);
                     
                     //if the user is customer then bring user to customer dashboard
-                    if(customer_role.equals(tempArr[2])) {
+                    if(customer_role.equals(tempArr[1])) {
                         new CustomerDashboard().setVisible(true);
                     } // the user is delivery staff then bring user to delivery staff
-                    else if (delivery_staff_role.equals(tempArr[2])) {
-                        new DeliveryStaffDashboardPage().setVisible(true);
+                    else if (delivery_staff_role.equals(tempArr[1])) {
+                        new DeliveryStaffDashboardPage(user).setVisible(true);
                     } //the user is managing staff then bring user to managing staff dashboard
                     else {
-                        new ManagingStaffDasboard().setVisible(true);
+                        new ManagingStaffDasboard(user).setVisible(true);
                     }
                 }
             }
