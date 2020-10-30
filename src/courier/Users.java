@@ -2,6 +2,7 @@
 package courier;
 
 import java.io.*;
+import java.util.*;
 
 public class Users {
     private String username;
@@ -52,18 +53,18 @@ public class Users {
    public String toString(){return username + password;}
    
    public void UserSaveFile(){
-     File Finput = new File("UserDetails.txt");
+         File Finput = new File("UserDetails.txt");
         try {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + confirmpassword;
-            //in the textfile, each data will have one row blank b4 next line
+             String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + confirmpassword;
+              //in the textfile, each data will have one row blank b4 next line
             bw.newLine();
             //use pw to write data you want to write
             pw.write(Line);
             pw.close();
-            System.out.println("Data Written!");
+            System.out.println("Data Written.txt");
         } catch (IOException ex) {
            
         }
@@ -72,4 +73,59 @@ public class Users {
         return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("")||confirmpassword.equals("");
     
     }    
+    public void RemoveUser(){
+         String removeTerm = username; 
+
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("UserDetails.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+            sc.close();
+        }catch(Exception ex){
+            ex.toString();
+        }
+
+        try{
+            try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        }catch(Exception ex){
+            ex.toString();
+        }
+            }
+    
+    public void UpdateUser(){
+         File Finput = new File("UserDetails.txt");
+        try {
+            FileWriter fw = new FileWriter(Finput,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+             String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + confirmpassword;
+              //remove blank line when update
+           if (!Line.isEmpty()) {
+                //use pw to write data you want to write
+                    pw.write(Line);
+                  //escape the blank line
+                    pw.write("\n");
+                }
+            pw.close();
+            System.out.println("Data Written.txt");
+        } catch (IOException ex) {
+           
+        }
+   } 
 }

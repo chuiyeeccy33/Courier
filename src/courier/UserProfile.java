@@ -21,7 +21,7 @@ public class UserProfile extends javax.swing.JFrame {
        initComponents();
         view_user= user;
         typelbl.setVisible(false);
-        //typetxt.setVisible(false);
+        typetxt.setVisible(false);
         passwordlbl.setVisible(false);
         passwordtxt.setVisible(false);
         confirmpasslbl.setVisible(false);
@@ -297,7 +297,8 @@ public class UserProfile extends javax.swing.JFrame {
         else{
             if(Tempemail.matches(regex)){
                 JOptionPane.showMessageDialog(rootPane, "Your changes are made! ", "Update ", JOptionPane.INFORMATION_MESSAGE);
-                u.UserSaveFile();
+                u.RemoveUser();
+                u.UpdateUser();
       }
           else
               { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
