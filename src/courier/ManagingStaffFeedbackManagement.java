@@ -104,9 +104,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        //back to dashboard
-        new ManagingStaffDasboard().setVisible(true);
-        this.setVisible(false);
+
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed

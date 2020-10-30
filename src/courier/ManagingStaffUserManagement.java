@@ -90,9 +90,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        // TODO add your handling code here:
-        new ManagingStaffDasboard().setVisible(true);
-        this.setVisible(false);
+
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
