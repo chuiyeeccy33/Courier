@@ -307,13 +307,14 @@ public class UserProfile extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
        if (typetxt.getText().equals("Customer")) {
-        new CustomerDashboard().setVisible(true);
+        new CustomerDashboard(view_user).setVisible(true);
         this.dispose();
         }else if(typetxt.getText().equals("Managing Staff")){
               new ManagingStaffDasboard(view_user).setVisible(true);
               this.dispose();            
         }else{
-        new DeliveryStaffDashboardPage(view_user).setVisible(true);
+            new DeliveryStaffDashboardPage(view_user).setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_backbtnActionPerformed
 

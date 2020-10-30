@@ -14,7 +14,6 @@ public class SignUpPage extends javax.swing.JFrame {
     public SignUpPage() {
         initComponents();
         groupButton();
-      
     }
     
     @SuppressWarnings("unchecked")
@@ -286,7 +285,6 @@ public class SignUpPage extends javax.swing.JFrame {
        }
        if(!found){
            
-           
          if (Tempselectedradio.equals("Empty")){
                   JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
          } 
@@ -361,10 +359,8 @@ public class SignUpPage extends javax.swing.JFrame {
         confirmpasstxt.setText("");
         //set the cursor back to the ID textfield
         usernametxt.requestFocus();
-
  }
       
-
     /**
      * @param args the command line arguments
      */
