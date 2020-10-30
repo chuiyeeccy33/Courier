@@ -123,9 +123,24 @@ public class Users {
                     pw.write("\n");
                 }
             pw.close();
-            System.out.println("Data Written.txt");
+            System.out.println("Data Written");
         } catch (IOException ex) {
            
         }
    } 
+    
+    public void Back(String user, String type){
+            username=user;
+           selectedusertype=type;
+            if (type.equals("Customer")) {
+        new CustomerDashboard(user).setVisible(true);
+        }else if(type.equals("Managing Staff")){
+              new ManagingStaffDasboard(user).setVisible(true);
+        }else{
+            new DeliveryStaffDashboardPage(user).setVisible(true);           
+    }
+            
+            new UserProfile(user).dispose();
+            new UserProfilePassword(user,type).dispose();
+    }
 }
