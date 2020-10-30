@@ -13,19 +13,17 @@ import javax.swing.*;
  * @author daniellim0510
  */
 public class UserProfile extends javax.swing.JFrame {
-
     /**
      * Creates new form UserProfile
      */
-     String username = "";
+     String view_user = "";
       public UserProfile(String user) {
        initComponents();
-        username = user;
+        view_user= user;
         
-       
-        File file = new File("UserDetails.txt");
         try{
-        Scanner sc = new Scanner(file);
+       File file = new File("UserDetails.txt");
+        Scanner sc = new Scanner(file); 
         //read data from the file
        
        String temp;
@@ -35,7 +33,8 @@ public class UserProfile extends javax.swing.JFrame {
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
            tempArr = temp.split (",");
-           if (username.equals(tempArr[0])) { 
+           if (view_user.equals(tempArr[0])) { 
+               usernametxt.setText(tempArr[0]);
                typetxt.setText(tempArr[1]);
                firstnametxt.setText(tempArr[2]);
                lastnametxt.setText(tempArr[3]);
@@ -268,7 +267,7 @@ public class UserProfile extends javax.swing.JFrame {
 
     private void changepasslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepasslblMouseClicked
          this.dispose();
-         new UserProfilePassword(username).setVisible(true);
+         new UserProfilePassword(view_user).setVisible(true);
     }//GEN-LAST:event_changepasslblMouseClicked
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped

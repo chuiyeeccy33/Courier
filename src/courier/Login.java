@@ -41,6 +41,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 128));
         jLabel3.setText("Don't Have an Account? Sign up Here");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         usernamelbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         usernamelbl.setText("Username");
@@ -76,12 +81,11 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtpassword)
                                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(147, 147, 147))
+                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,7 +159,7 @@ public class Login extends javax.swing.JFrame {
                         new DeliveryStaffDashboardPage(user).setVisible(true);
                     } //the user is managing staff then bring user to managing staff dashboard
                     else {
-                        new ManagingStaffDasboard().setVisible(true);
+                        new ManagingStaffDasboard(user).setVisible(true);
                     }
                 }
             }
@@ -168,6 +172,11 @@ public class Login extends javax.swing.JFrame {
             ex.toString();
         }  
     }//GEN-LAST:event_LoginbtnActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        new SignUpPage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
