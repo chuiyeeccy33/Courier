@@ -10,12 +10,15 @@ package courier;
  * @author daniellim0510
  */
 public class ManagingStaffDasboard extends javax.swing.JFrame {
-
+    
+    String username = "";
     /**
      * Creates new form ManagingStaffDasboard
      */
-    public ManagingStaffDasboard() {
+    public ManagingStaffDasboard(String user) {
         initComponents();
+        //Bring the username value into variable
+        username = user;
     }
 
     /**
@@ -76,6 +79,11 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton9.setText("Profile");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,6 +167,12 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        new UserProfile(username).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,7 +203,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffDasboard().setVisible(true);
+                //new ManagingStaffDasboard(username).setVisible(true);
             }
         });
     }

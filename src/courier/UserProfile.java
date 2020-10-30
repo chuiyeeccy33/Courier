@@ -13,20 +13,13 @@ import javax.swing.*;
  * @author daniellim0510
  */
 public class UserProfile extends javax.swing.JFrame {
-
     /**
      * Creates new form UserProfile
      */
-     String username = "";
-    public UserProfile(String user) {
+     String view_user = "";
+    public UserProfile(String username) {
         initComponents();
-       /* typelbl.setVisible(false);
-        typetxt.setVisible(false);
-        passwordlbl.setVisible(false);
-        passwordtxt.setVisible(false);
-        confirmpasslbl.setVisible(false);
-        confirmpasstxt.setVisible(false);*/
-         username = user;
+         view_user = username;
         
          try{
         File file = new File("UserDetails.txt");
@@ -40,7 +33,7 @@ public class UserProfile extends javax.swing.JFrame {
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
             tempArr = temp.split (",");
-           if (user.equals(tempArr[0])) { 
+           if (view_user.equals(tempArr[0])) { 
                usernametxt.setText(tempArr[0]);
                typetxt.setText(tempArr[1]);
                firstnametxt.setText(tempArr[2]);
@@ -272,7 +265,7 @@ public class UserProfile extends javax.swing.JFrame {
 
     private void changepasslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepasslblMouseClicked
          this.dispose();
-         new UserProfilePassword(username).setVisible(true);
+         new UserProfilePassword(view_user).setVisible(true);
     }//GEN-LAST:event_changepasslblMouseClicked
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped

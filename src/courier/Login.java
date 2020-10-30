@@ -155,7 +155,7 @@ public class Login extends javax.swing.JFrame {
                         new DeliveryStaffDashboardPage(user).setVisible(true);
                     } //the user is managing staff then bring user to managing staff dashboard
                     else {
-                        new ManagingStaffDasboard().setVisible(true);
+                        new ManagingStaffDasboard(user).setVisible(true);
                     }
                 }
             }
