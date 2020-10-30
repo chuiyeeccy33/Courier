@@ -70,11 +70,6 @@ public class SignUpPage extends javax.swing.JFrame {
         jLabel5.setText("Last Name");
 
         emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        emailtxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                emailtxtKeyTyped(evt);
-            }
-        });
 
         phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -335,14 +330,6 @@ public class SignUpPage extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_phonetxtKeyTyped
-
-    private void emailtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailtxtKeyTyped
-  /*      String email = null;
-        if (email.matches("^[A-Za-z0-9_.]+[@][A-Za-z.]+$"))
-        {
-            
-        }*/
-    }//GEN-LAST:event_emailtxtKeyTyped
 
     private void groupButton( ) {
         //group the radio button so, only one radio button can be selected at once
