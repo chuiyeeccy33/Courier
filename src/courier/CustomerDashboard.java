@@ -10,12 +10,13 @@ package courier;
  * @author daniellim0510
  */
 public class CustomerDashboard extends javax.swing.JFrame {
-
+    String username = "";
     /**
      * Creates new form CustomerDashboard
      */
-    public CustomerDashboard() {
+    public CustomerDashboard(String user) {
         initComponents();
+        username = user;
     }
 
     /**
@@ -58,6 +59,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
         });
 
         jButton4.setText("Profile");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,8 +115,14 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Logout
         new Login().setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new UserProfile(username).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,7 +154,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerDashboard().setVisible(true);
+                //new CustomerDashboard().setVisible(true);
             }
         });
     }

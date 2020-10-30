@@ -153,7 +153,7 @@ public class Login extends javax.swing.JFrame {
                     
                     //if the user is customer then bring user to customer dashboard
                     if(customer_role.equals(tempArr[1])) {
-                        new CustomerDashboard().setVisible(true);
+                        new CustomerDashboard(user).setVisible(true);
                     } // the user is delivery staff then bring user to delivery staff
                     else if (delivery_staff_role.equals(tempArr[1])) {
                         new DeliveryStaffDashboardPage(user).setVisible(true);
