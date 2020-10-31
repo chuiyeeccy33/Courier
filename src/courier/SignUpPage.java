@@ -261,7 +261,7 @@ public class SignUpPage extends javax.swing.JFrame {
         String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
         
         //Assign User detail from the text field
-        Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
+        Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
         if(u.checkEmpty()) { //if the text field is empty
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -296,7 +296,7 @@ public class SignUpPage extends javax.swing.JFrame {
                         //if Password and Confirm Passwor is matcth
                         if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
                             //show the Message
-                            JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
                             //save file
                             u.UserSaveFile();
                             //clear all the field
@@ -305,7 +305,6 @@ public class SignUpPage extends javax.swing.JFrame {
                             //role selection
                             //customer sign up
                             if(Tempselectedradio.equals("Customer")){
-                                JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account has been successfully created", "Successful", JOptionPane.INFORMATION_MESSAGE);
                                 this.dispose();
                                 new Login().setVisible(true);
                                 

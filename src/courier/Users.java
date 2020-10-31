@@ -12,7 +12,6 @@ public class Users {
     private String email;
     private String phone;
     private String password;
-    private String confirmpassword;
     
     public Users(){}
     public Users(String Username, String Firstname, String Lastname, String Email, String Phone){
@@ -23,7 +22,7 @@ public class Users {
         phone = Phone;
     }
      
-    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password, String Confirmpassword ){
+    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
         username = Username;
         selectedusertype = SelectedUserType;
         firstname = Firstname;
@@ -31,7 +30,6 @@ public class Users {
         email = Email;
         phone = Phone;
         password = Password;
-        confirmpassword = Confirmpassword;
     }
     
    private String getUsername() {return username;}
@@ -41,7 +39,6 @@ public class Users {
    private String getEmail() {return email;}
    private String getPhone() {return phone;}
    private String getPassword() {return password;}
-   private String getConfirmpassword() {return confirmpassword;}
    
    public void setUsername(String Username) {username=Username;}
    public void setSelectedUserType(String SelectedUserType) {selectedusertype=SelectedUserType;}
@@ -50,7 +47,6 @@ public class Users {
    public void setEmail(String Email) {email=Email;}
    public void setPhone(String Phone) {phone=Phone;}
    public void setPassword(String Password) {password=Password;}
-   public void setConfirmpassword(String Confirmpassword) {confirmpassword=Confirmpassword;}
    
    public String toString() {return username + password;}
    
@@ -73,7 +69,7 @@ public class Users {
    }
    
     public boolean checkEmpty(){
-        return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("")||confirmpassword.equals("");
+        return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("");
     }
     
     public void RemoveUser(){
@@ -114,7 +110,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + confirmpassword;
+            String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
               //remove blank line when update
             if (!Line.isEmpty()) {
                 //use pw to write data you want to write
