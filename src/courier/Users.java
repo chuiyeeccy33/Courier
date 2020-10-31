@@ -32,6 +32,7 @@ public class Users {
     password=Password;
     confirmpassword=Confirmpassword;
     }
+    
    private String getUsername(){return username;}
    private String getSelectedUserType(){return selectedusertype;}
    private String getFirstname(){return firstname;}
@@ -68,14 +69,14 @@ public class Users {
         } catch (IOException ex) {
            
         }
-   } 
+   }
+   
     public boolean checkEmpty(){
         return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("")||confirmpassword.equals("");
+    }
     
-    }    
     public void RemoveUser(){
-         String removeTerm = username; 
-
+        String removeTerm = username; 
         ArrayList <String> tempArray = new ArrayList <>();
 
         try{
@@ -84,18 +85,16 @@ public class Users {
             Scanner sc = new Scanner(file);
             String data;
             
-            
             while((data = sc.nextLine()) != null){
                 String[] tempData = data.split(",");
                 if(!removeTerm.equals(tempData[0])){
                     tempArray.add(data);
                 }
             }
-            sc.close();
-        }catch(Exception ex){
+        sc.close();
+        } catch(Exception ex){
             ex.toString();
         }
-
         try{
             try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
                 for(String newFile : tempArray){
@@ -103,10 +102,10 @@ public class Users {
                 }
                 pr.close();
             }
-        }catch(Exception ex){
+        } catch(Exception ex){
             ex.toString();
-        }
             }
+    }
     
     public void UpdateUser(){
          File Finput = new File("UserDetails.txt");
@@ -116,7 +115,7 @@ public class Users {
             PrintWriter pw = new PrintWriter(bw);
              String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + confirmpassword;
               //remove blank line when update
-           if (!Line.isEmpty()) {
+            if (!Line.isEmpty()) {
                 //use pw to write data you want to write
                     pw.write(Line);
                   //escape the blank line
