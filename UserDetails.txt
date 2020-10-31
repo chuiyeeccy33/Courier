@@ -1,6 +1,6 @@
-daniel,Managing Staff,lim,zheng yu,daniellim0510@gmail.com,0184024139,daniel,daniel
-jasmine,Delivery Staff,chong,chui yee,ccy030300@gmail.com,0122955321,ccy,ccy
-jasminec,Managing Staff,1,2,2@gmail.com,3,ccy,ccy
-daniellim0510,Customer,dasda,asdasd,daniellim0510@gmail.com,131312,Password1,Password1
-s,Managing Staff,s,ss,e@gmail.com,3,3,3
-jasmine1,Delivery Staff,chong,chui yee,ccy@gmail.com,0122955321,33,33
+daniel,Managing Staff,lim,zheng yu,daniellim0510@gmail.com,0184024139,daniel
+jasmine,Delivery Staff,chong,chui yee,ccy030300@gmail.com,0122955321,ccy
+jasminec,Managing Staff,1,2,2@gmail.com,3,ccy
+daniellim0510,Customer,dasda,asdasd,daniellim0510@gmail.com,131312,Password1
+s,Managing Staff,s,ss,e@gmail.com,3,3
+jasmine1,Delivery Staff,chong,chui yee,ccy@gmail.com,0122955321,33
