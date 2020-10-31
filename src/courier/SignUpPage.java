@@ -257,52 +257,71 @@ public class SignUpPage extends javax.swing.JFrame {
         String Templast = lastnametxt.getText();
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
-        String Temppass= new String(passwordtxt.getPassword());
-        String Tempconfirmpass = new String(confirmpasstxt.getPassword());
+        String Temppass= new String(passwordtxt.getPassword()); //Pasword
+        String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
         
+        //Assign User detail from the text field
         Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
-        if(u.checkEmpty()) {
+        if(u.checkEmpty()) { //if the text field is empty
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
         }
-        else{
+        else{ //else the field is not empty
             try{
+                //read the data from the file
                 File file = new File("UserDetails.txt");
                 Scanner sc = new Scanner(file);
-                    //read data from the file
                 String temp;
                 boolean found = false;
-       
-                while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                
+                while(sc.hasNext() && !found) {
                     temp = sc.nextLine(); //read a line of text from file
                     String[] tempArr;
                     tempArr = temp.split (",");
-
-                    if(Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
-                        JOptionPane.showMessageDialog(rootPane, "Username or password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+                    //if the usernama is found, cannnot continue to signup
+                    if(Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[3])) { 
+                        JOptionPane.showMessageDialog(rootPane, "Username or Email is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
                         found = true;
                     }
                 }
+                
+                //if the username not found
+                //continue with the sign up
                 if(!found) {
+                    //if the user didnt select any role
                     if (Tempselectedradio.equals("Empty")){
                         JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                     }
-
+                    //
                     else if(Tempemail.matches(regex)){
+                        //if Password and Confirm Passwor is matcth
                         if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
-                        JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-                        u.UserSaveFile();
-                        clearFields();
-                        
-                        if(Tempselectedradio.equals("Customer")){
-                            this.dispose();
-                            new Login().setVisible(true);
-                        } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
-                            JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
-                        }
+                            //show the Message
+                            JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                            //save file
+                            u.UserSaveFile();
+                            //clear all the field
+                            clearFields();
+                            
+                            //role selection
+                            //customer sign up
+                            if(Tempselectedradio.equals("Customer")){
+                                JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account has been successfully created", "Successful", JOptionPane.INFORMATION_MESSAGE);
+                                this.dispose();
+                                new Login().setVisible(true);
+                                
+                            //Staff sign up
+                            } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
+                                JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
+                                this.dispose();
+                                new Login().setVisible(true);
+                            }
+                            
+                        //Password Validation
                         } else{
                             JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
                         }
-                    }
+                        
+                    } //the email is not in format
                     else { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
