@@ -40,13 +40,13 @@ public class Users {
    private String getPhone() {return phone;}
    private String getPassword() {return password;}
    
-   public void setUsername(String Username) {username=Username;}
-   public void setSelectedUserType(String SelectedUserType) {selectedusertype=SelectedUserType;}
-   public void setFirstname(String Firstname) {firstname=Firstname;}
-   public void setLastname(String Lastname) {lastname=Lastname;}
-   public void setEmail(String Email) {email=Email;}
-   public void setPhone(String Phone) {phone=Phone;}
-   public void setPassword(String Password) {password=Password;}
+   public void setUsername(String Username) {username = Username;}
+   public void setSelectedUserType(String SelectedUserType) {selectedusertype = SelectedUserType;}
+   public void setFirstname(String Firstname) {firstname = Firstname;}
+   public void setLastname(String Lastname) {lastname = Lastname;}
+   public void setEmail(String Email) {email = Email;}
+   public void setPhone(String Phone) {phone = Phone;}
+   public void setPassword(String Password) {password = Password;}
    
    public String toString() {return username + password;}
    
