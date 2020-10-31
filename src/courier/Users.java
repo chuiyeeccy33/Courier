@@ -16,21 +16,22 @@ public class Users {
     
     public Users(){}
      public Users(String Username, String Firstname, String Lastname, String Email, String Phone){
-    username=Username;
-    firstname=Firstname;
-    lastname=Lastname;
-    email=Email;
-    phone=Phone;
+    username = Username;
+    firstname = Firstname;
+    lastname = Lastname;
+    email = Email;
+    phone = Phone;
     }
+     
     public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password, String Confirmpassword ){
-    username=Username;
-    selectedusertype=SelectedUserType;
-    firstname=Firstname;
-    lastname=Lastname;
-    email=Email;
-    phone=Phone;
-    password=Password;
-    confirmpassword=Confirmpassword;
+    username = Username;
+    selectedusertype = SelectedUserType;
+    firstname = Firstname;
+    lastname = Lastname;
+    email = Email;
+    phone = Phone;
+    password = Password;
+    confirmpassword = Confirmpassword;
     }
     
    private String getUsername(){return username;}
