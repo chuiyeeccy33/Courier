@@ -159,11 +159,30 @@ public class FeedbackForm extends javax.swing.JFrame {
     private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
         //rating from the radio button
         String ratingButton = "";
+        
+        if (excellentbtn.isSelected()) {
+            ratingButton = "Excelltent";
+            System.out.println("Excellent is Selected");
+        } else if (goodbtn.isSelected()) {
+            ratingButton = "Good";
+            System.out.println("Good is Selected");
+        } else if (normalbtn.isSelected()) {
+            ratingButton = "Normal";
+            System.out.println("Normal is Selected");
+        } else if (badbtn.isSelected()) {
+            ratingButton = "Bad";
+            System.out.println("Bad is Selected");
+        } else {
+            ratingButton = "Worst";
+            System.out.println("Worst is selected");
+        }
+        
         isFilled = false;
         
         //create an array list for feedback
         ArrayList <Feedback> Feedback = new ArrayList<Feedback>();
-        int FeedbackNo = count.incrementAndGet();
+        //int FeedbackNo = count.incrementAndGet();
+        int FeedbackNo = 1;
         String CustomerRating = ratingButton;
         String CustomerDescription = jTextArea1.getText();
         String CustomerUsername = user;
@@ -180,6 +199,7 @@ public class FeedbackForm extends javax.swing.JFrame {
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
+            f.SaveFeedback();
             
         }
     }//GEN-LAST:event_submitbtnActionPerformed
