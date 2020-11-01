@@ -17,7 +17,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
      String username = "";
     public DeliveryStaffDashboardPage(String user) {
         initComponents();
-        userwellbl.setText("Good Morning," + user);
+        userwellbl.setText("Good Morning,"+ " " + user);
         username=user;
     }
 
@@ -37,7 +37,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
+        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         logoutbtn.setText("Logout");
@@ -74,9 +74,12 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(profilebtn)

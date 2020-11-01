@@ -248,8 +248,9 @@ public class UserProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void changepasslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepasslblMouseClicked
-         this.dispose();
-         new UserProfilePassword(view_user).setVisible(true);
+        String usertype=typetxt.getText();
+        this.dispose();
+         new UserProfilePassword(view_user,usertype).setVisible(true);
     }//GEN-LAST:event_changepasslblMouseClicked
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped
@@ -288,16 +289,10 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_savebtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       if (typetxt.getText().equals("Customer")) {
-        new CustomerDashboard(view_user).setVisible(true);
-        this.dispose();
-        }else if(typetxt.getText().equals("Managing Staff")){
-              new ManagingStaffDasboard(view_user).setVisible(true);
-              this.dispose();            
-        }else{
-            new DeliveryStaffDashboardPage(view_user).setVisible(true);
-            this.dispose();
-        }
+       String usertype=typetxt.getText();
+        Users u = new Users();
+       u.Back(view_user,usertype);
+       this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
