@@ -191,7 +191,8 @@ public class FeedbackForm extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
             f.SaveFeedback();
-            
+            this.setVisible(false);
+            new CustomerDashboard(user).setVisible(true);
         }
     }//GEN-LAST:event_submitbtnActionPerformed
 
