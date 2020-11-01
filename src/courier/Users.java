@@ -62,9 +62,9 @@ public class Users {
             PrintWriter pw = new PrintWriter(bw);
             String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
             //in the textfile, each data will have one row blank b4 next line
-            bw.newLine();
             //use pw to write data you want to write
-            pw.write(Line);      
+            pw.write(Line);
+            bw.newLine();
             pw.close();
             System.out.println("User Added!");
         } catch (IOException ex) {
@@ -133,14 +133,14 @@ public class Users {
    } 
     
     public void Back(String user, String type){
-            username=user;
-           selectedusertype=type;
-            if (type.equals("Customer")) {
-        new CustomerDashboard(user).setVisible(true);
-        }else if(type.equals("Managing Staff")){
-              new ManagingStaffDasboard(user).setVisible(true);
+        username=user;
+        selectedusertype=type;
+        if (type.equals("Customer")) {
+            new CustomerDashboard(user).setVisible(true);
+        } else if(type.equals("Managing Staff")) {
+            new ManagingStaffDasboard(user).setVisible(true);
         }else{
             new DeliveryStaffDashboardPage(user).setVisible(true);           
-    }       
+        }       
     }
 }

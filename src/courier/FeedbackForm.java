@@ -5,15 +5,13 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.ButtonGroup;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class FeedbackForm extends javax.swing.JFrame {
     String user = "";
-    private boolean isFilled;
     
-    //generate auto increment number for feedback id
-    private static final AtomicInteger count = new AtomicInteger(0);
-    
+public class FeedbackForm extends javax.swing.JFrame {
+    String user = "";
+
     //Feedback rating group button
     private void groupButton() {
         ButtonGroup bg1 = new ButtonGroup();
@@ -177,12 +175,7 @@ public class FeedbackForm extends javax.swing.JFrame {
             System.out.println("Worst is selected");
         }
         
-        isFilled = false;
-        
-        //create an array list for feedback
-        ArrayList <Feedback> Feedback = new ArrayList<Feedback>();
-        //int FeedbackNo = count.incrementAndGet();
-        int FeedbackNo = 1;
+        UUID FeedbackNo = UUID.randomUUID();
         String CustomerRating = ratingButton;
         String CustomerDescription = jTextArea1.getText();
         String CustomerUsername = user;
@@ -200,7 +193,8 @@ public class FeedbackForm extends javax.swing.JFrame {
         else {
             JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
             f.SaveFeedback();
-            
+            this.setVisible(false);
+            new CustomerDashboard(user).setVisible(true);
         }
     }//GEN-LAST:event_submitbtnActionPerformed
 

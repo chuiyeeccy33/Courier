@@ -5,14 +5,14 @@ import java.io.*;
 
 public class Feedback {
     //define the data attribute in Feedback
-    private int feedbackID;
+    private UUID feedbackID;
     private String rating;
     private String description;
     private String feedbackUser;
     
     private boolean isFilled;
-
-    public Feedback(int FeedbackID, String Rating, String Description, String FeedbackUser) {
+  
+    public Feedback(UUID FeedbackID, String Rating, String Description, String FeedbackUser) {
         //bring the data attribute into the variable
         feedbackID = FeedbackID;
         rating = Rating;
@@ -20,7 +20,7 @@ public class Feedback {
         feedbackUser = FeedbackUser;
     }
     
-    private int getFeedbackid() {
+    private UUID getFeedbackid() {
         return feedbackID;
     }
     
@@ -36,7 +36,7 @@ public class Feedback {
         return feedbackUser;
     }
     
-    public void setFeedbackid(int Feedbackid) {
+    public void setFeedbackid(UUID Feedbackid) {
         feedbackID = Feedbackid;
     }
     
