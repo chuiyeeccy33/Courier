@@ -24,8 +24,6 @@ public class UserProfile extends javax.swing.JFrame {
         typetxt.setVisible(false);
         passwordlbl.setVisible(false);
         passwordtxt.setVisible(false);
-        confirmpasslbl.setVisible(false);
-        confirmpasstxt.setVisible(false);
         
         try{
        File file = new File("UserDetails.txt");
@@ -47,7 +45,6 @@ public class UserProfile extends javax.swing.JFrame {
                emailtxt.setText(tempArr[4]);
                phonetxt.setText(tempArr[5]);
                passwordtxt.setText(tempArr[6]);
-               confirmpasstxt.setText(tempArr[7]);
                
                usernametxt.setEditable(false);
            }
@@ -81,9 +78,7 @@ public class UserProfile extends javax.swing.JFrame {
         backbtn = new javax.swing.JButton();
         changepasslbl = new javax.swing.JLabel();
         passwordlbl = new javax.swing.JLabel();
-        confirmpasslbl = new javax.swing.JLabel();
         passwordtxt = new javax.swing.JPasswordField();
-        confirmpasstxt = new javax.swing.JPasswordField();
         typelbl = new javax.swing.JLabel();
         typetxt = new javax.swing.JTextField();
 
@@ -141,12 +136,7 @@ public class UserProfile extends javax.swing.JFrame {
         passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         passwordlbl.setText("Password:");
 
-        confirmpasslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        confirmpasslbl.setText("Confirm Password:");
-
         passwordtxt.setFont(new java.awt.Font("DengXian", 0, 12)); // NOI18N
-
-        confirmpasstxt.setFont(new java.awt.Font("DengXian", 0, 12)); // NOI18N
 
         typelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         typelbl.setText("Type:");
@@ -156,7 +146,7 @@ public class UserProfile extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(changepasslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,10 +164,6 @@ public class UserProfile extends javax.swing.JFrame {
                                 .addComponent(typelbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(typetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(confirmpasslbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(passwordlbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -247,17 +233,13 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordlbl)
                     .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmpasslbl)
-                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(43, 43, 43)
                         .addComponent(changepasslbl)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(savebtn)
                         .addGap(19, 19, 19))))
         );
@@ -288,9 +270,8 @@ public class UserProfile extends javax.swing.JFrame {
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
-        String Tempconfirmpass = new String(confirmpasstxt.getPassword());
     
-      Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass,Tempconfirmpass);
+      Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
        
         if(u.checkEmpty()){
                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -351,8 +332,6 @@ public class UserProfile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel changepasslbl;
-    private javax.swing.JLabel confirmpasslbl;
-    private javax.swing.JPasswordField confirmpasstxt;
     private javax.swing.JLabel emaillbl;
     private javax.swing.JTextField emailtxt;
     private javax.swing.JLabel firstnamelbl;

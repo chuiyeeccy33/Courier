@@ -250,66 +250,84 @@ public class SignUpPage extends javax.swing.JFrame {
 
     private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
         ArrayList <Users> UList = new ArrayList<Users>();        
-         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = getUserType();
         String Tempfirst = firstnametxt.getText();
         String Templast = lastnametxt.getText();
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
-        String Temppass= new String(passwordtxt.getPassword());
-        String Tempconfirmpass = new String(confirmpasstxt.getPassword());
+        String Temppass= new String(passwordtxt.getPassword()); //Pasword
+        String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
         
-       Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
-        if(u.checkEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+        //Assign User detail from the text field
+        Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
+        if(u.checkEmpty()) { //if the text field is empty
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
         }
-        else{        
+        else{ //else the field is not empty
             try{
-        File file = new File("UserDetails.txt");
-        Scanner sc = new Scanner(file);
-                    //read data from the file
-       String temp;
-       boolean found = false;
-       
-       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-            tempArr = temp.split (",");
-             
-           if (Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
-               JOptionPane.showMessageDialog(rootPane, "Username or password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
-
-               found = true;
-           }
-       }
-       if(!found){
-           
-         if (Tempselectedradio.equals("Empty")){
-                  JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-         } 
-             else if(Tempemail.matches(regex)){
-              if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
-                JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-                u.UserSaveFile();
-                clearFields();
-            if(Tempselectedradio.equals("Customer")){
-              this.dispose();
-              new Login().setVisible(true);
-         }else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
-              JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
-         }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
-       }
-      }
-          else
-              { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-              }
-       } 
-          } catch(FileNotFoundException ex)
-                      {ex.toString();}  
-        }      
+                //read the data from the file
+                File file = new File("UserDetails.txt");
+                Scanner sc = new Scanner(file);
+                String temp;
+                boolean found = false;
+                
+                while(sc.hasNext() && !found) {
+                    temp = sc.nextLine(); //read a line of text from file
+                    String[] tempArr;
+                    tempArr = temp.split (",");
+                    //if the usernama is found, cannnot continue to signup
+                    if(Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[3])) { 
+                        JOptionPane.showMessageDialog(rootPane, "Username or Email is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+                        found = true;
+                    }
+                }
+                
+                //if the username not found
+                //continue with the sign up
+                if(!found) {
+                    //if the user didnt select any role
+                    if (Tempselectedradio.equals("Empty")){
+                        JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    //
+                    else if(Tempemail.matches(regex)){
+                        //if Password and Confirm Passwor is matcth
+                        if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                            //show the Message
+                            JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                            //save file
+                            u.UserSaveFile();
+                            //clear all the field
+                            clearFields();
+                            
+                            //role selection
+                            //customer sign up
+                            if(Tempselectedradio.equals("Customer")){
+                                this.dispose();
+                                new Login().setVisible(true);
+                                
+                            //Staff sign up
+                            } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
+                                JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
+                                this.dispose();
+                                new Login().setVisible(true);
+                            }
+                            
+                        //Password Validation
+                        } else{
+                            JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        
+                    } //the email is not in format
+                    else { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            } catch(FileNotFoundException ex) {
+                    ex.toString();
+                }  
+        }   
     }//GEN-LAST:event_signupbtnActionPerformed
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped
@@ -327,28 +345,27 @@ public class SignUpPage extends javax.swing.JFrame {
 
     private void groupButton( ) {
         //group the radio button so, only one radio button can be selected at once
-    ButtonGroup group = new ButtonGroup();
-    group.add(customerRbtn);
-    group.add(managingRbtn);
-    group.add(deliveryRbtn);
+        ButtonGroup group = new ButtonGroup();
+        group.add(customerRbtn);
+        group.add(managingRbtn);
+        group.add(deliveryRbtn);
     }
     
-    private String getUserType()
-{
+    private String getUserType() {
     //to return the selected radio button value
-    if(customerRbtn.isSelected()){
-        return "Customer";
-    }  else if(managingRbtn.isSelected()){
-        return "Managing Staff";
-    }  else if(deliveryRbtn.isSelected()){
-        return "Delivery Staff";
-    }else{
-        return "Empty";
-    }
+        if(customerRbtn.isSelected()){
+            return "Customer";
+        }  else if(managingRbtn.isSelected()){
+            return "Managing Staff";
+        }  else if(deliveryRbtn.isSelected()){
+            return "Delivery Staff";
+        } else{
+            return "Empty";
+        }
 }
    
     private void clearFields(){ 
-//clears the textfields
+        //clears the textfields
         usernametxt.setText("");
         customerRbtn.setSelected(true);
         firstnametxt.setText("");
