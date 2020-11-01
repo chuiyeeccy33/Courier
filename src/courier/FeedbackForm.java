@@ -9,6 +9,9 @@ import javax.swing.ButtonGroup;
 public class FeedbackForm extends javax.swing.JFrame {
     String user = "";
     
+public class FeedbackForm extends javax.swing.JFrame {
+    String user = "";
+
     //Feedback rating group button
     private void groupButton() {
         ButtonGroup bg1 = new ButtonGroup();
@@ -156,7 +159,7 @@ public class FeedbackForm extends javax.swing.JFrame {
         String ratingButton = "";
         
         if (excellentbtn.isSelected()) {
-            ratingButton = "Excelltent";
+            ratingButton = "Excellent";
             System.out.println("Excellent is Selected");
         } else if (goodbtn.isSelected()) {
             ratingButton = "Good";
@@ -171,7 +174,6 @@ public class FeedbackForm extends javax.swing.JFrame {
             ratingButton = "Worst";
             System.out.println("Worst is selected");
         }
-        
         
         UUID FeedbackNo = UUID.randomUUID();
         String CustomerRating = ratingButton;

@@ -11,7 +11,7 @@ public class Feedback {
     private String feedbackUser;
     
     private boolean isFilled;
-
+  
     public Feedback(UUID FeedbackID, String Rating, String Description, String FeedbackUser) {
         //bring the data attribute into the variable
         feedbackID = FeedbackID;
