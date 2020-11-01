@@ -5,14 +5,9 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.ButtonGroup;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class FeedbackForm extends javax.swing.JFrame {
     String user = "";
-    private boolean isFilled;
-    
-    //generate auto increment number for feedback id
-    private static final AtomicInteger count = new AtomicInteger(0);
     
     //Feedback rating group button
     private void groupButton() {
@@ -177,12 +172,8 @@ public class FeedbackForm extends javax.swing.JFrame {
             System.out.println("Worst is selected");
         }
         
-        isFilled = false;
         
-        //create an array list for feedback
-        ArrayList <Feedback> Feedback = new ArrayList<Feedback>();
-        //int FeedbackNo = count.incrementAndGet();
-        int FeedbackNo = 1;
+        UUID FeedbackNo = UUID.randomUUID();
         String CustomerRating = ratingButton;
         String CustomerDescription = jTextArea1.getText();
         String CustomerUsername = user;

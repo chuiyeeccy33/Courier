@@ -133,14 +133,14 @@ public class Users {
    } 
     
     public void Back(String user, String type){
-            username=user;
-           selectedusertype=type;
-            if (type.equals("Customer")) {
-        new CustomerDashboard(user).setVisible(true);
-        }else if(type.equals("Managing Staff")){
-              new ManagingStaffDasboard(user).setVisible(true);
+        username=user;
+        selectedusertype=type;
+        if (type.equals("Customer")) {
+            new CustomerDashboard(user).setVisible(true);
+        } else if(type.equals("Managing Staff")) {
+            new ManagingStaffDasboard(user).setVisible(true);
         }else{
             new DeliveryStaffDashboardPage(user).setVisible(true);           
-    }       
+        }       
     }
 }
