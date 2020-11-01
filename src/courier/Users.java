@@ -50,7 +50,8 @@ public class Users {
    
    public String toString() {return username + password;}
    
-   public void UserSaveFile() {
+    //create an account for user
+    public void UserSaveFile() {
         File Finput = new File("UserDetails.txt");
         try {
             FileWriter fw = new FileWriter(Finput,true);
@@ -66,12 +67,14 @@ public class Users {
         } catch (IOException ex) {
            
         }
-   }
+    }
    
-    public boolean checkEmpty(){
+    //check emtpy field
+    public boolean checkEmpty() {
         return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("");
     }
     
+    //remove user detail
     public void RemoveUser(){
         String removeTerm = username; 
         ArrayList <String> tempArray = new ArrayList <>();
@@ -104,7 +107,8 @@ public class Users {
             }
     }
     
-    public void UpdateUser(){
+    //update new user detail
+    public void UpdateUser() {
         File Finput = new File("UserDetails.txt");
         try {
             FileWriter fw = new FileWriter(Finput,true);
