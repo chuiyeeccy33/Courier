@@ -72,9 +72,9 @@ public class Feedback {
             //Store the data into data base
             String Line = feedbackID + "," + rating + "," + description + ","+ feedbackUser;
             //in the textfile, each data will have one row blank b4 next line
-            bw.newLine();
             //use pw to write data you want to write
             pw.write(Line);
+            bw.newLine();
             pw.close();
             System.out.println("Data Written.txt");
         } catch (IOException ex) {
