@@ -7,6 +7,7 @@ package courier;
 
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,9 +37,8 @@ public class UserProfilePassword extends javax.swing.JFrame {
            String[] tempArr;
            tempArr = temp.split (",");
            if (username.equals(tempArr[0])) { 
-               typetxt.setText(tempArr[1]);
                usernametxt.setText(tempArr[0]);
-               passwordtxt.setText(tempArr[6]);
+
                usernametxt.setEditable(false);
            }
        }
@@ -68,7 +68,6 @@ public class UserProfilePassword extends javax.swing.JFrame {
         newpasstxt = new javax.swing.JPasswordField();
         confirmpasstxt = new javax.swing.JPasswordField();
         showpasschk = new javax.swing.JCheckBox();
-        typetxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +82,11 @@ public class UserProfilePassword extends javax.swing.JFrame {
 
         savebtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         savebtn.setText("Save");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
 
         usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
@@ -114,8 +118,6 @@ public class UserProfilePassword extends javax.swing.JFrame {
             }
         });
 
-        typetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,8 +132,7 @@ public class UserProfilePassword extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(passwordtxt)
-                            .addComponent(typetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                            .addComponent(passwordtxt)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(newpasslbl)
@@ -162,9 +163,7 @@ public class UserProfilePassword extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel1)))
-                .addGap(37, 37, 37)
-                .addComponent(typetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernamelbl)
                     .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -206,7 +205,61 @@ public class UserProfilePassword extends javax.swing.JFrame {
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         Users u = new Users();
         u.Back(username,usertype);
+        this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+         try{
+       File file = new File("UserDetails.txt");
+        Scanner sc = new Scanner(file); 
+        //read data from the file
+       
+       String temp;
+       boolean found = false;
+       
+       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+           temp = sc.nextLine(); //read a line of text from file
+           String[] tempArr;
+           tempArr = temp.split (",");
+           if (username.equals(tempArr[0])) { 
+             String Tempuser = usernametxt.getText();
+             String Tempselectedradio = tempArr[1];
+             String Tempfirst =tempArr[2];
+             String Templast = tempArr[3];
+             String Tempemail =tempArr[4];       
+             String Tempphone =tempArr[5];
+             String Tempoldpass=new String (passwordtxt.getPassword());
+             String Temppass= new String(newpasstxt.getPassword());
+             String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
+   
+        Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+        if(u.checkEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+          if(Tempoldpass.equals(tempArr[6])){
+             if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                            //show the Message
+                            JOptionPane.showMessageDialog(rootPane, "You have changed your password. Please login again! ", "Change Password ", JOptionPane.INFORMATION_MESSAGE);
+                            //remove user
+                            u.RemoveUser();
+                            //update user
+                            u.UpdateUser();
+                            new Login().setVisible(true);
+                            this.dispose();
+                        
+                        //Password Validation
+                        } else{
+                            JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }else{ JOptionPane.showMessageDialog(rootPane, "You enter the incorrect current password. Please try again!", " Current Password", JOptionPane.INFORMATION_MESSAGE);}
+                 }
+              }
+            }
+          }catch(FileNotFoundException ex) {
+                   ex.toString();
+          }
+    }//GEN-LAST:event_savebtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,7 +307,6 @@ public class UserProfilePassword extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JButton savebtn;
     private javax.swing.JCheckBox showpasschk;
-    private javax.swing.JTextField typetxt;
     private javax.swing.JLabel usernamelbl;
     private javax.swing.JTextField usernametxt;
     // End of variables declaration//GEN-END:variables

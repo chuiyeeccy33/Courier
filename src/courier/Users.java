@@ -1,8 +1,10 @@
 
 package courier;
 
+import java.awt.Component;
 import java.io.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class Users {
     private String username;
@@ -32,13 +34,13 @@ public class Users {
         password = Password;
     }
     
-   private String getUsername() {return username;}
-   private String getSelectedUserType() {return selectedusertype;}
-   private String getFirstname() {return firstname;}
-   private String getLastname() {return lastname;}
-   private String getEmail() {return email;}
-   private String getPhone() {return phone;}
-   private String getPassword() {return password;}
+   public String getUsername() {return username;}
+   public String getSelectedUserType() {return selectedusertype;}
+   public String getFirstname() {return firstname;}
+   public String getLastname() {return lastname;}
+   public String getEmail() {return email;}
+   public String getPhone() {return phone;}
+   public String getPassword() {return password;}
    
    public void setUsername(String Username) {username = Username;}
    public void setSelectedUserType(String SelectedUserType) {selectedusertype = SelectedUserType;}
@@ -52,6 +54,7 @@ public class Users {
    
    public void UserSaveFile() {
         File Finput = new File("UserDetails.txt");
+      
         try {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -60,9 +63,9 @@ public class Users {
             //in the textfile, each data will have one row blank b4 next line
             bw.newLine();
             //use pw to write data you want to write
-            pw.write(Line);
+            pw.write(Line);      
             pw.close();
-            System.out.println("Data Written.txt");
+            System.out.println("User Added!");
         } catch (IOException ex) {
            
         }
@@ -119,7 +122,7 @@ public class Users {
                 pw.write("\n");
             }
             pw.close();
-            System.out.println("Data Written");
+            System.out.println("User Updated!");
         } catch (IOException ex) {
            
         }
@@ -134,9 +137,6 @@ public class Users {
               new ManagingStaffDasboard(user).setVisible(true);
         }else{
             new DeliveryStaffDashboardPage(user).setVisible(true);           
-    }
-            
-            new UserProfile(user).dispose();
-            new UserProfilePassword(user,type).dispose();
+    }       
     }
 }

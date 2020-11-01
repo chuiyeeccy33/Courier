@@ -292,6 +292,7 @@ public class UserProfile extends javax.swing.JFrame {
        String usertype=typetxt.getText();
         Users u = new Users();
        u.Back(view_user,usertype);
+       this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
