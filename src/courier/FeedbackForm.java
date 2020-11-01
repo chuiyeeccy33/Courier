@@ -9,9 +9,6 @@ import javax.swing.ButtonGroup;
 public class FeedbackForm extends javax.swing.JFrame {
     String user = "";
     
-public class FeedbackForm extends javax.swing.JFrame {
-    String user = "";
-
     //Feedback rating group button
     private void groupButton() {
         ButtonGroup bg1 = new ButtonGroup();
@@ -246,3 +243,4 @@ public class FeedbackForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton worstbtn;
     // End of variables declaration//GEN-END:variables
 }
+
