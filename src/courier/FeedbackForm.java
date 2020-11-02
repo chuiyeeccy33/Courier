@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.ButtonGroup;
 
 public class FeedbackForm extends javax.swing.JFrame {
-    String user = "";
+    String userid = "";
     
     //Feedback rating group button
     private void groupButton() {
@@ -21,10 +21,10 @@ public class FeedbackForm extends javax.swing.JFrame {
     }
     
     //Creates new form FeedbackForm
-    public FeedbackForm(String username) {
+    public FeedbackForm(String UserID) {
         initComponents();
-        user = username;
-        System.out.println(user);
+        userid = UserID;
+        System.out.println(userid);
         groupButton();
     }
     
@@ -147,7 +147,7 @@ public class FeedbackForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        new CustomerDashboard(user).setVisible(true);
+        new CustomerDashboard(userid).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
@@ -173,11 +173,12 @@ public class FeedbackForm extends javax.swing.JFrame {
         }
         
         UUID FeedbackNo = UUID.randomUUID();
+        String FeedbackID = FeedbackNo.toString();
         String CustomerRating = ratingButton;
         String CustomerDescription = jTextArea1.getText();
-        String CustomerUsername = user;
+        String CustomerUsername = userid;
         
-        Feedback f = new Feedback(FeedbackNo,CustomerRating,CustomerDescription,CustomerUsername);
+        Feedback f = new Feedback(FeedbackID,CustomerRating,CustomerDescription,CustomerUsername);
         
         //Store data
         //check empty Feedback
@@ -191,7 +192,7 @@ public class FeedbackForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
             f.SaveFeedback();
             this.setVisible(false);
-            new CustomerDashboard(user).setVisible(true);
+            new CustomerDashboard(userid).setVisible(true);
         }
     }//GEN-LAST:event_submitbtnActionPerformed
 
