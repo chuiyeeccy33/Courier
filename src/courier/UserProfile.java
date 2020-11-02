@@ -292,8 +292,8 @@ public class UserProfile extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         String usertype = typetxt.getText();
-        //Users u = new Users();
-        //u.Back(view_user,usertype);
+        Users u = new Users();
+        u.Back(view_user,usertype);
         this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 

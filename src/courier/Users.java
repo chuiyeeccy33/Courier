@@ -17,6 +17,7 @@ public class Users {
     private String password;
      
     //constructor
+    public Users(){}
     public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
         userid = Userid;
         username = Username;
@@ -27,6 +28,17 @@ public class Users {
         phone = Phone;
         password = Password;
     }
+    
+    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+        username = Username;
+        selectedusertype = SelectedUserType;
+        firstname = Firstname;
+        lastname = Lastname;
+        email = Email;
+        phone = Phone;
+        password = Password;
+    }
+    
     
     //get
     public String getUserid() {
