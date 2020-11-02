@@ -7,6 +7,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Users {
+    private UUID userid;
     private String username;
     private String selectedusertype;
     private String firstname;
@@ -14,17 +15,10 @@ public class Users {
     private String email;
     private String phone;
     private String password;
-    
-    public Users(){}
-    public Users(String Username, String Firstname, String Lastname, String Email, String Phone){
-        username = Username;
-        firstname = Firstname;
-        lastname = Lastname;
-        email = Email;
-        phone = Phone;
-    }
      
-    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+    //constructor
+    public Users(UUID Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+        userid = Userid;
         username = Username;
         selectedusertype = SelectedUserType;
         firstname = Firstname;
@@ -34,23 +28,75 @@ public class Users {
         password = Password;
     }
     
-   public String getUsername() {return username;}
-   public String getSelectedUserType() {return selectedusertype;}
-   public String getFirstname() {return firstname;}
-   public String getLastname() {return lastname;}
-   public String getEmail() {return email;}
-   public String getPhone() {return phone;}
-   public String getPassword() {return password;}
-   
-   public void setUsername(String Username) {username = Username;}
-   public void setSelectedUserType(String SelectedUserType) {selectedusertype = SelectedUserType;}
-   public void setFirstname(String Firstname) {firstname = Firstname;}
-   public void setLastname(String Lastname) {lastname = Lastname;}
-   public void setEmail(String Email) {email = Email;}
-   public void setPhone(String Phone) {phone = Phone;}
-   public void setPassword(String Password) {password = Password;}
-   
-   public String toString() {return username + password;}
+    //get
+    public UUID getUserid() {
+        return userid;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+    
+    public String getSelectedUserType() {
+        return selectedusertype;
+    }
+    
+    public String getFirstname() {
+        return firstname;
+    }
+    
+    public String getLastname() {
+        return lastname;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public String getPhone() {
+        return phone;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setUserid(UUID Userid) {
+        userid = Userid;
+    }
+
+    //set
+    public void setUsername(String Username) {
+        username = Username;
+    }
+    
+    public void setSelectedUserType(String SelectedUserType) {
+        selectedusertype = SelectedUserType;
+    }
+    
+    public void setFirstname(String Firstname) {
+        firstname = Firstname;
+    }
+    
+    public void setLastname(String Lastname) {
+        lastname = Lastname;
+    }
+    
+    public void setEmail(String Email) {
+        email = Email;
+    }
+    
+    public void setPhone(String Phone) {
+        phone = Phone;
+    }
+    
+    public void setPassword(String Password) {
+        password = Password;
+    }
+
+    public String toString() {
+       return username + password;
+    }
    
     //create an account for user
     public void UserSaveFile() {
@@ -60,7 +106,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -117,7 +163,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
               //remove blank line when update
             if (!Line.isEmpty()) {
                 //use pw to write data you want to write
