@@ -3,6 +3,7 @@ package courier;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -119,6 +120,7 @@ public class Login extends javax.swing.JFrame {
     private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
         // TODO add your handling code here:
         //declaration
+        String userid;
         String user = txtusername.getText();
         String password = new String(txtpassword.getPassword());
         
@@ -142,24 +144,26 @@ public class Login extends javax.swing.JFrame {
                 tempArr = temp.split (",");
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
-                if (user.equals(tempArr[0]) && password.equals(tempArr[6])) {
+                if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
                     JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
                     
+                    System.out.println(tempArr[0]);
                     System.out.println(user);
                     System.out.println(password);
-                    user = tempArr[0];
+                    userid = tempArr[0];
+                    user = tempArr[1];
                     found = true;
                     this.setVisible(false);
                     
                     //if the user is customer then bring user to customer dashboard
-                    if(customer_role.equals(tempArr[1])) {
-                        new CustomerDashboard(user).setVisible(true);
+                    if(customer_role.equals(tempArr[2])) {
+                        new CustomerDashboard(userid).setVisible(true);
                     } // the user is delivery staff then bring user to delivery staff
-                    else if (delivery_staff_role.equals(tempArr[1])) {
-                        new DeliveryStaffDashboardPage(user).setVisible(true);
+                    else if (delivery_staff_role.equals(tempArr[2])) {
+                        new DeliveryStaffDashboardPage(userid).setVisible(true);
                     } //the user is managing staff then bring user to managing staff dashboard
                     else {
-                        new ManagingStaffDasboard(user).setVisible(true);
+                        new ManagingStaffDasboard(userid).setVisible(true);
                     }
                 }
             }

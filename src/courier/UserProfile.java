@@ -16,10 +16,11 @@ public class UserProfile extends javax.swing.JFrame {
     /**
      * Creates new form UserProfile
      */
-     String view_user = "";
-      public UserProfile(String user) {
+    String view_user = "";
+    
+    public UserProfile(String user_id) {
        initComponents();
-        view_user= user;
+        view_user= user_id;
         typelbl.setVisible(false);
         typetxt.setVisible(false);
         passwordlbl.setVisible(false);
@@ -38,13 +39,13 @@ public class UserProfile extends javax.swing.JFrame {
            String[] tempArr;
            tempArr = temp.split (",");
            if (view_user.equals(tempArr[0])) { 
-               usernametxt.setText(tempArr[0]);
-               typetxt.setText(tempArr[1]);
-               firstnametxt.setText(tempArr[2]);
-               lastnametxt.setText(tempArr[3]);
-               emailtxt.setText(tempArr[4]);
-               phonetxt.setText(tempArr[5]);
-               passwordtxt.setText(tempArr[6]);
+               usernametxt.setText(tempArr[1]);
+               typetxt.setText(tempArr[2]);
+               firstnametxt.setText(tempArr[3]);
+               lastnametxt.setText(tempArr[4]);
+               emailtxt.setText(tempArr[5]);
+               phonetxt.setText(tempArr[6]);
+               passwordtxt.setText(tempArr[7]);
                
                usernametxt.setEditable(false);
            }
@@ -263,6 +264,7 @@ public class UserProfile extends javax.swing.JFrame {
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
+        String TempID = view_user;
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = typetxt.getText();
         String Tempfirst = firstnametxt.getText();
@@ -271,7 +273,7 @@ public class UserProfile extends javax.swing.JFrame {
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
     
-      Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
        
         if(u.checkEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -289,10 +291,10 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_savebtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       String usertype=typetxt.getText();
+        String usertype = typetxt.getText();
         Users u = new Users();
-       u.Back(view_user,usertype);
-       this.dispose();
+        u.Back(view_user,usertype);
+        this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**

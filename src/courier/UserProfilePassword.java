@@ -18,11 +18,11 @@ public class UserProfilePassword extends javax.swing.JFrame {
     /**
      * Creates new form UserProfilePassword
      */
-    String username="";
+    String userid="";
     String usertype="";
     public UserProfilePassword(String user,String type) {
         initComponents();
-        username=user;
+        userid=user;
         usertype=type;
          try{
        File file = new File("UserDetails.txt");
@@ -36,8 +36,8 @@ public class UserProfilePassword extends javax.swing.JFrame {
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
            tempArr = temp.split (",");
-           if (username.equals(tempArr[0])) { 
-               usernametxt.setText(tempArr[0]);
+           if (userid.equals(tempArr[0])) { 
+               usernametxt.setText(tempArr[1]);
 
                usernametxt.setEditable(false);
            }
@@ -204,61 +204,64 @@ public class UserProfilePassword extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         Users u = new Users();
-        u.Back(username,usertype);
+        u.Back(userid,usertype);
         this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-         try{
-       File file = new File("UserDetails.txt");
-        Scanner sc = new Scanner(file); 
-        //read data from the file
-       
-       String temp;
-       boolean found = false;
-       
-       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-           tempArr = temp.split (",");
-           if (username.equals(tempArr[0])) { 
-             String Tempuser = usernametxt.getText();
-             String Tempselectedradio = tempArr[1];
-             String Tempfirst =tempArr[2];
-             String Templast = tempArr[3];
-             String Tempemail =tempArr[4];       
-             String Tempphone =tempArr[5];
-             String Tempoldpass=new String (passwordtxt.getPassword());
-             String Temppass= new String(newpasstxt.getPassword());
-             String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
-   
-        Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
-        if(u.checkEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-          if(Tempoldpass.equals(tempArr[6])){
-             if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
-                            //show the Message
-                            JOptionPane.showMessageDialog(rootPane, "You have changed your password. Please login again! ", "Change Password ", JOptionPane.INFORMATION_MESSAGE);
-                            //remove user
-                            u.RemoveUser();
-                            //update user
-                            u.UpdateUser();
-                            new Login().setVisible(true);
-                            this.dispose();
-                        
-                        //Password Validation
-                        } else{
-                            JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+        try{
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file); 
+            //read data from the file
+
+            String temp;
+            boolean found = false;
+
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+                if (userid.equals(tempArr[0])) {
+                    String UserID = userid;
+                    String Tempuser = usernametxt.getText();
+                    String Tempselectedradio = tempArr[2];
+                    String Tempfirst =tempArr[3];
+                    String Templast = tempArr[4];
+                    String Tempemail =tempArr[5];       
+                    String Tempphone =tempArr[6];
+                    String Tempoldpass=new String (passwordtxt.getPassword());
+                    String Temppass= new String(newpasstxt.getPassword());
+                    String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
+
+                    Users u = new Users(UserID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+                    if(u.checkEmpty()){
+                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        if(Tempoldpass.equals(tempArr[6])){
+                            if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                                //show the Message
+                                JOptionPane.showMessageDialog(rootPane, "You have changed your password. Please login again! ", "Change Password ", JOptionPane.INFORMATION_MESSAGE);
+                                //remove user
+                                u.RemoveUser();
+                                //update user
+                                u.UpdateUser();
+                                new Login().setVisible(true);
+                                this.dispose();
+
+                                //Password Validation
+                            }else {
+                                JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }else {
+                            JOptionPane.showMessageDialog(rootPane, "You enter the incorrect current password. Please try again!", " Current Password", JOptionPane.INFORMATION_MESSAGE);
                         }
-                    }else{ JOptionPane.showMessageDialog(rootPane, "You enter the incorrect current password. Please try again!", " Current Password", JOptionPane.INFORMATION_MESSAGE);}
-                 }
-              }
+                    }
+                }
             }
-          }catch(FileNotFoundException ex) {
+        } catch(FileNotFoundException ex) {
                    ex.toString();
-          }
+        }
     }//GEN-LAST:event_savebtnActionPerformed
 
     /**
