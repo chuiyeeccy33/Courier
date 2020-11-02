@@ -7,7 +7,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class Users {
-    private UUID userid;
+    private String userid;
     private String username;
     private String selectedusertype;
     private String firstname;
@@ -17,7 +17,7 @@ public class Users {
     private String password;
      
     //constructor
-    public Users(UUID Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+    public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
         userid = Userid;
         username = Username;
         selectedusertype = SelectedUserType;
@@ -29,7 +29,7 @@ public class Users {
     }
     
     //get
-    public UUID getUserid() {
+    public String getUserid() {
         return userid;
     }
     
@@ -61,7 +61,7 @@ public class Users {
         return password;
     }
     
-    public void setUserid(UUID Userid) {
+    public void setUserid(String Userid) {
         userid = Userid;
     }
 
@@ -95,7 +95,7 @@ public class Users {
     }
 
     public String toString() {
-       return username + password;
+        return username + password;
     }
    
     //create an account for user
@@ -179,14 +179,14 @@ public class Users {
    } 
     
     public void Back(String user, String type){
-        username=user;
-        selectedusertype=type;
+        userid = user;
+        selectedusertype = type;
         if (type.equals("Customer")) {
-            new CustomerDashboard(user).setVisible(true);
+            new CustomerDashboard(userid).setVisible(true);
         } else if(type.equals("Managing Staff")) {
-            new ManagingStaffDasboard(user).setVisible(true);
+            new ManagingStaffDasboard(userid).setVisible(true);
         }else{
-            new DeliveryStaffDashboardPage(user).setVisible(true);           
+            new DeliveryStaffDashboardPage(userid).setVisible(true);           
         }       
     }
 }

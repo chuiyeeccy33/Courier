@@ -11,14 +11,14 @@ package courier;
  */
 public class ManagingStaffDasboard extends javax.swing.JFrame {
     
-    String username = "";
+    String user_id = "";
     /**
      * Creates new form ManagingStaffDasboard
      */
-    public ManagingStaffDasboard(String user) {
+    public ManagingStaffDasboard(String userid) {
         initComponents();
         //Bring the username value into variable
-        username = user;
+        user_id = userid;
     }
 
     /**
@@ -169,7 +169,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        new UserProfile(username).setVisible(true);
+        new UserProfile(user_id).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 

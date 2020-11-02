@@ -5,6 +5,8 @@
  */
 package courier;
 
+import java.util.UUID;
+
 /**
  *
  * @author jasmi
@@ -14,11 +16,11 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryStaffDashboardPage
      */
-     String username = "";
-    public DeliveryStaffDashboardPage(String user) {
+     String user_id = "";
+    public DeliveryStaffDashboardPage(String userid) {
         initComponents();
-        userwellbl.setText("Good Morning,"+ " " + user);
-        username=user;
+        userwellbl.setText("Good Morning,"+ " " + userid);
+        user_id = userid;
     }
 
     /**
@@ -108,7 +110,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
     private void profilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilebtnActionPerformed
         this.dispose();
-        new UserProfile (username).setVisible(true);
+        new UserProfile (user_id).setVisible(true);
     }//GEN-LAST:event_profilebtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed

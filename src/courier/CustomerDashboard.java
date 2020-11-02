@@ -2,13 +2,13 @@
 package courier;
 
 public class CustomerDashboard extends javax.swing.JFrame {
-    String username = "";
+    String user_id = "";
     /**
      * Creates new form CustomerDashboard
      */
-    public CustomerDashboard(String user) {
+    public CustomerDashboard(String userid) {
         initComponents();
-        username = user;
+        user_id = userid;
     }
 
     /**
@@ -101,7 +101,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new FeedbackForm(username).setVisible(true);
+        new FeedbackForm(user_id).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -113,7 +113,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        new UserProfile(username).setVisible(true);
+        new UserProfile(user_id).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

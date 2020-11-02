@@ -253,6 +253,7 @@ public class SignUpPage extends javax.swing.JFrame {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         
         UUID TempID = UUID.randomUUID();
+        String UserID = TempID.toString();
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = getUserType();
         String Tempfirst = firstnametxt.getText();
@@ -263,7 +264,7 @@ public class SignUpPage extends javax.swing.JFrame {
         String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
         
         //Assign User detail from the text field
-        Users u = new Users(TempID, Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
+        Users u = new Users(UserID, Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
         
         if(u.checkEmpty()) { //if the text field is empty
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -416,8 +417,8 @@ public class SignUpPage extends javax.swing.JFrame {
         confirmpasstxt.setText("");
         //set the cursor back to the ID textfield
         usernametxt.requestFocus();
- }
-      
+    }
+        
     /**
      * @param args the command line arguments
      */
