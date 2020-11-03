@@ -196,9 +196,10 @@ public class UserProfilePassword extends javax.swing.JFrame {
              confirmpasstxt.setEchoChar((char)0);
         }
         else{
-            passwordtxt.setEchoChar('\u25cf');
-            newpasstxt.setEchoChar('\u25cf');
-            confirmpasstxt.setEchoChar('\u25cf');
+           //mask the password
+            passwordtxt.setEchoChar('*');
+            newpasstxt.setEchoChar('*');
+            confirmpasstxt.setEchoChar('*');
         }
     }//GEN-LAST:event_showpasschkActionPerformed
 
@@ -238,7 +239,7 @@ public class UserProfilePassword extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else{
-                        if(Tempoldpass.equals(tempArr[6])){
+                        if(Tempoldpass.equals(tempArr[7])){
                             if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
                                 //show the Message
                                 JOptionPane.showMessageDialog(rootPane, "You have changed your password. Please login again! ", "Change Password ", JOptionPane.INFORMATION_MESSAGE);
@@ -248,14 +249,14 @@ public class UserProfilePassword extends javax.swing.JFrame {
                                 u.UpdateUser();
                                 new Login().setVisible(true);
                                 this.dispose();
-
+                                System.out.println(Temppass);
                                 //Password Validation
                             }else {
                                 JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }else {
                             JOptionPane.showMessageDialog(rootPane, "You enter the incorrect current password. Please try again!", " Current Password", JOptionPane.INFORMATION_MESSAGE);
-                        }
+                        System.out.println(Temppass);}
                     }
                 }
             }

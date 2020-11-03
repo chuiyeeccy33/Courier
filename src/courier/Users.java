@@ -137,7 +137,7 @@ public class Users {
     
     //remove user detail
     public void RemoveUser(){
-        String removeTerm = username; 
+        String removeTerm = userid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
         try{
