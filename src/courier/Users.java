@@ -41,35 +41,35 @@ public class Users {
     
     
     //get
-    public String getUserid() {
+    private String getUserid() {
         return userid;
     }
     
-    public String getUsername() {
+    private String getUsername() {
         return username;
     }
     
-    public String getSelectedUserType() {
+    private String getSelectedUserType() {
         return selectedusertype;
     }
     
-    public String getFirstname() {
+    private String getFirstname() {
         return firstname;
     }
     
-    public String getLastname() {
+    private String getLastname() {
         return lastname;
     }
     
-    public String getEmail() {
+    private String getEmail() {
         return email;
     }
     
-    public String getPhone() {
+    private String getPhone() {
         return phone;
     }
     
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
     
