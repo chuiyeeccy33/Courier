@@ -1,4 +1,3 @@
-117f6b1e-ab1b-4039-866e-67415b4bd8c1,customer,Customer,customer,new,customer@gmail.com,01251231231,Password1
 fd49d291-502f-4c67-9825-815777dbe476,managingstaff,Managing Staff,Managing,Staff,managingstaff@gmail.com,023213123,Password1
 77bac644-3327-4cbf-89fc-ce02d1f89868,deliverystaff,Delivery Staff,Delivery,Staff,deliverystaff@gmail.com,0123112312,Password1
-117f6b1e-ab1b-4039-866e-67415b4bd8c1,customer,Customer,customer,new,customer@gmail.com,01251231231,Password1
+117f6b1e-ab1b-4039-866e-67415b4bd8c1,customer,Customer,chong,yee,customer@gmail.com,123,11
