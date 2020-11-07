@@ -15,10 +15,11 @@ public class Users {
     private String email;
     private String phone;
     private String password;
+    private String status;
      
     //constructor
     public Users(){}
-    public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+    public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password, String Status){
         userid = Userid;
         username = Username;
         selectedusertype = SelectedUserType;
@@ -27,6 +28,7 @@ public class Users {
         email = Email;
         phone = Phone;
         password = Password;
+        status = Status;
     }
     
     public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
@@ -71,6 +73,10 @@ public class Users {
     
     private String getPassword() {
         return password;
+    } 
+    
+    private String getStatus() {
+        return status;
     }
     
     public void setUserid(String Userid) {
@@ -105,6 +111,10 @@ public class Users {
     public void setPassword(String Password) {
         password = Password;
     }
+    
+    public void setStatus(String Status) {
+        status = Status;
+    }
 
     public String toString() {
         return userid;
@@ -118,7 +128,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);

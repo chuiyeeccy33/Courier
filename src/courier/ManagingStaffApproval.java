@@ -14,8 +14,9 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     /**
      * Creates new form ManagingStaffApproval
      */
-    public ManagingStaffApproval() {
+    public ManagingStaffApproval(String userid) {
         initComponents();
+        String user_id = userid;
     }
 
     /**
@@ -155,7 +156,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffApproval().setVisible(true);
+                //new ManagingStaffApproval().setVisible(true);
             }
         });
     }
