@@ -130,7 +130,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
         
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String[] columnName = {"Rating", "Description"};
+            String[] columnName = {"Username", "Rating", "Description"};
             model.setColumnIdentifiers(columnName);
             model.setRowCount(0);
             jTable1.revalidate();
