@@ -28,7 +28,34 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     public ManagingStaffFeedbackManagement(String ID) {
         initComponents();
         user_id = ID;
+        String filepath = "Feedback.txt";
+        String feedbackid;
+        String rating;
+        String description;
+        String output;
+        File file =  new File(filepath);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String[] columnName = {"Feedback ID", "Rating", "Description"};
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            jTable1.revalidate();
+            
+            Object[] feedbacks = br.lines().toArray();
+            for (Object feedback : feedbacks) {
+                String line = feedback.toString().trim();
+                String[] row = line.split(",");
+                
+                feedbackid = row[0];
+                rating = row[1];
+                description = row[2];
+                model.addRow(new Object[]{feedbackid,rating, description});
+            }           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -120,51 +147,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
-        //String line = null;
-        String filepath = "Feedback.txt";
-        String rating;
-        String description;
-        String output;
-        File file =  new File(filepath);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String[] columnName = {"Username", "Rating", "Description"};
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0);
-            jTable1.revalidate();
-            
-            Object[] feedbacks = br.lines().toArray();
-            for (Object feedback : feedbacks) {
-                String line = feedback.toString().trim();
-                String[] row = line.split(",");
-                
-                rating = row[1];
-                description = row[2];
-                model.addRow(new Object[]{rating, description});
-            }
-                     
-            /* While loop for making table
-            while((line = br.readLine()) != null) {
-                Vector data = new Vector(); //this is important
-                StringTokenizer st1 = new StringTokenizer(line, ",");
-                               
-                while (st1.hasMoreTokens()) {
-                    String nextToken = st1.nextToken();
-                    data.add(nextToken);
-                    System.out.println(nextToken);
-                }
-                              
-                System.out.println(data.get(1));
-                rating = (String) data.get(1);
-                model.addRow(data);
-            }
-            */
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }//GEN-LAST:event_viewbtnActionPerformed
 
     /**
