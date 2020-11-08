@@ -1,23 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package courier;
 
-/**
- *
- * @author daniellim0510
- */
+import java.io.*;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.ButtonGroup;
+
 public class FeedbackForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FeedbackForm
-     */
-    public FeedbackForm() {
-        initComponents();
+    String userid = "";
+    
+    //Feedback rating group button
+    private void groupButton() {
+        ButtonGroup bg1 = new ButtonGroup();
+        
+        bg1.add(excellentbtn);
+        bg1.add(goodbtn);
+        bg1.add(normalbtn);
+        bg1.add(badbtn);
+        bg1.add(worstbtn);
     }
-
+    
+    //Creates new form FeedbackForm
+    public FeedbackForm(String UserID) {
+        initComponents();
+        userid = UserID;
+        System.out.println(userid);
+        groupButton();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,15 +39,16 @@ public class FeedbackForm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        normalbtn = new javax.swing.JRadioButton();
+        goodbtn = new javax.swing.JRadioButton();
+        excellentbtn = new javax.swing.JRadioButton();
+        badbtn = new javax.swing.JRadioButton();
+        worstbtn = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        submitbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,23 +58,35 @@ public class FeedbackForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Feel free to give us Feeback ^_^");
 
-        jButton3.setText("Back");
+        backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Rating: ");
 
-        jRadioButton3.setText("Normal");
+        normalbtn.setText("Normal");
 
-        jRadioButton2.setText("Good");
+        goodbtn.setText("Good");
 
-        jRadioButton1.setText("Excellent");
+        excellentbtn.setText("Excellent");
 
-        jRadioButton4.setText("Bad");
+        badbtn.setText("Bad");
 
-        jRadioButton5.setText("Worst");
+        worstbtn.setText("Worst");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        submitbtn.setText("Submit");
+        submitbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,26 +94,28 @@ public class FeedbackForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton3))
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(26, 26, 26)
-                            .addComponent(jRadioButton1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton2)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton3)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton4)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton5))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(submitbtn)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(backbtn))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(26, 26, 26)
+                                .addComponent(excellentbtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(goodbtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(normalbtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(badbtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(worstbtn)))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,29 +124,79 @@ public class FeedbackForm extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jButton3))
+                    .addComponent(backbtn))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton4)
-                        .addComponent(jRadioButton5)))
+                        .addComponent(excellentbtn)
+                        .addComponent(goodbtn)
+                        .addComponent(normalbtn)
+                        .addComponent(badbtn)
+                        .addComponent(worstbtn)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(submitbtn)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        new CustomerDashboard(userid).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backbtnActionPerformed
+
+    private void submitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitbtnActionPerformed
+        //rating from the radio button
+        String ratingButton = "";
+        
+        if (excellentbtn.isSelected()) {
+            ratingButton = "Excellent";
+            System.out.println("Excellent is Selected");
+        } else if (goodbtn.isSelected()) {
+            ratingButton = "Good";
+            System.out.println("Good is Selected");
+        } else if (normalbtn.isSelected()) {
+            ratingButton = "Normal";
+            System.out.println("Normal is Selected");
+        } else if (badbtn.isSelected()) {
+            ratingButton = "Bad";
+            System.out.println("Bad is Selected");
+        } else {
+            ratingButton = "Worst";
+            System.out.println("Worst is selected");
+        }
+        
+        UUID FeedbackNo = UUID.randomUUID();
+        String FeedbackID = FeedbackNo.toString();
+        String CustomerRating = ratingButton;
+        String CustomerDescription = jTextArea1.getText();
+        String CustomerUsername = userid;
+        
+        Feedback f = new Feedback(FeedbackID,CustomerRating,CustomerDescription,CustomerUsername);
+        
+        //Store data
+        //check empty Feedback
+        if(f.EmptyFeedback()) { //check empty Feedback
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the feedback form before submit", "Empty Feedback", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (f.UserNotFound()) {
+            JOptionPane.showMessageDialog(rootPane, "There is an Error Submitting Form", "Error 404", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
+            f.SaveFeedback();
+            this.setVisible(false);
+            new CustomerDashboard(userid).setVisible(true);
+        }
+    }//GEN-LAST:event_submitbtnActionPerformed
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -149,22 +224,24 @@ public class FeedbackForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FeedbackForm().setVisible(true);
+                //new FeedbackForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton backbtn;
+    private javax.swing.JRadioButton badbtn;
+    private javax.swing.JRadioButton excellentbtn;
+    private javax.swing.JRadioButton goodbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JRadioButton normalbtn;
+    private javax.swing.JButton submitbtn;
+    private javax.swing.JRadioButton worstbtn;
     // End of variables declaration//GEN-END:variables
 }
+

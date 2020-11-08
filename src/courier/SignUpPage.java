@@ -14,7 +14,6 @@ public class SignUpPage extends javax.swing.JFrame {
     public SignUpPage() {
         initComponents();
         groupButton();
-      
     }
     
     @SuppressWarnings("unchecked")
@@ -37,7 +36,6 @@ public class SignUpPage extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         signupbtn = new javax.swing.JButton();
-        loginbtn = new javax.swing.JButton();
         confirmpasstxt = new javax.swing.JPasswordField();
         passwordtxt = new javax.swing.JPasswordField();
         customerRbtn = new javax.swing.JRadioButton();
@@ -45,6 +43,7 @@ public class SignUpPage extends javax.swing.JFrame {
         deliveryRbtn = new javax.swing.JRadioButton();
         usertypelbl = new javax.swing.JLabel();
         validationlbl = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,14 +98,6 @@ public class SignUpPage extends javax.swing.JFrame {
             }
         });
 
-        loginbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        loginbtn.setText("Login here");
-        loginbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginbtnActionPerformed(evt);
-            }
-        });
-
         confirmpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -126,6 +117,15 @@ public class SignUpPage extends javax.swing.JFrame {
         validationlbl.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         validationlbl.setForeground(new java.awt.Color(204, 13, 13));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 128));
+        jLabel10.setText("Login Here");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,36 +137,47 @@ public class SignUpPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(229, 229, 229))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(firstnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lastnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel5)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(customerRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(managingRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(deliveryRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(usertypelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(149, 149, 149)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(229, 229, 229))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(firstnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lastnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(customerRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(managingRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(deliveryRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(usertypelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(149, 149, 149)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,23 +188,8 @@ public class SignUpPage extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(validationlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(signupbtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(loginbtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGap(259, 259, 259))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(24, 24, 24))))
+                                        .addComponent(validationlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(24, 24, 24))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,20 +231,18 @@ public class SignUpPage extends javax.swing.JFrame {
                             .addComponent(validationlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(phonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(42, 42, 42)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(signupbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(loginbtn)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -256,73 +250,126 @@ public class SignUpPage extends javax.swing.JFrame {
 
     private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
         ArrayList <Users> UList = new ArrayList<Users>();        
-         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        
+        UUID TempID = UUID.randomUUID();
+        String UserID = TempID.toString();
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = getUserType();
         String Tempfirst = firstnametxt.getText();
         String Templast = lastnametxt.getText();
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
-        String Temppass= new String(passwordtxt.getPassword());
-        String Tempconfirmpass = new String(confirmpasstxt.getPassword());
+        String Temppass= new String(passwordtxt.getPassword()); //Password
+        String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
         
-       Users u = new Users(Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempconfirmpass);
-        if(u.checkEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{        
+        //Assign User detail from the text field
+        Users u = new Users(UserID, Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
+        
+        if(u.checkEmpty()) { //if the text field is empty
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        else{ //else the field is not empty
             try{
-        File file = new File("UserDetails.txt");
-        Scanner sc = new Scanner(file);
-                    //read data from the file
-       String temp;
-       boolean found = false;
-       
-       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-            tempArr = temp.split (",");
-             
-           if (Tempuser.equals(tempArr[0]) || Temppass.equals(tempArr[5]) && Tempconfirmpass.equals(tempArr[6])) { 
-               JOptionPane.showMessageDialog(rootPane, "Username and password is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+                File file = new File("UserDetails.txt");
+                // execute when file is exist 
+                if(file.exists()){
+                    //read the data from the file
+                    Scanner sc = new Scanner(file);
+            
+                    String temp;
+                    boolean found = false;
 
-               found = true;
-           }
-       }
-       if(!found){
-           
-           
-         if (Tempselectedradio.equals("Empty")){
-                  JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-         } 
-             else if(Tempemail.matches(regex)){
-              if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
-                JOptionPane.showMessageDialog(rootPane, "You are signup! ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-                u.UserSaveFile();
-                clearFields();
-            if(Tempselectedradio.equals("Customer")){
-              this.dispose();
-              new Login().setVisible(true);
-         }else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")){
-              JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
-         }
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
-       }
-      }
-          else
-              { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-              }
-       } 
-          } catch(FileNotFoundException ex)
-                      {ex.toString();}  
-        }      
+                    //while loop the login file
+                    while(sc.hasNext() &&  !found) { //the system will stop running until it found the correct username and password
+                        temp = sc.nextLine(); //read line of text from login.txt
+                        String[] tempArr;
+                        tempArr = temp.split (",");
+                        //if username and password
+                        //if the usernama is found, cannnot continue to signup
+                        if(Tempuser.equals(tempArr[0]) || Tempemail.equals(tempArr[3])) { 
+                            JOptionPane.showMessageDialog(rootPane, "Username or Email is used by someone.", "Repeated", JOptionPane.INFORMATION_MESSAGE);
+                            found = true;
+                        }
+                    }
+                    //if the user didnt select any role
+                    if(!found){
+                        if (Tempselectedradio.equals("Empty")){
+                            JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                        }else {
+                            if(Tempemail.matches(regex)){
+                                //if Password and Confirm Password is match
+                                if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                                    //show the Message
+                                    JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                                    //save file
+                                    u.UserSaveFile();
+                                    //clear all the field
+                                    clearFields();
+
+                                    //role selection
+                                    //customer sign up
+                                    if(Tempselectedradio.equals("Customer")){
+                                        this.dispose();
+                                        new Login().setVisible(true);
+                                        //Staff sign up
+                                    } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")) {
+                                        JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+                                        new Login().setVisible(true);
+                                    }
+                                 //Password Validation
+                                } else{
+                                    JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+                                }          
+                            } //the email is not in format
+                            else {
+                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }      
+                    }
+                }else {
+                // execute when file not exist   
+                    if (Tempselectedradio.equals("Empty")) {
+                        JOptionPane.showMessageDialog(rootPane, "Please select the user type!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if(Tempemail.matches(regex)){
+                            //if Password and Confirm Password is match
+                            if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
+                                //show the Message
+                                JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
+                                //save file
+                                u.UserSaveFile();
+                                //clear all the field
+                                clearFields();
+
+                                //role selection
+                                //customer sign up
+                                if(Tempselectedradio.equals("Customer")) {
+                                    this.dispose();
+                                    new Login().setVisible(true);
+
+                                //Staff sign up
+                                } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")) {
+                                    JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
+                                    this.dispose();
+                                    new Login().setVisible(true);
+                                }
+                            //Password Validation
+                            } else{
+                                JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
+                            }           
+                        } //the email is not in format
+                        else { 
+                            JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }   
+                }
+            } catch(FileNotFoundException ex) {
+                ex.toString();
+            }
+        }
     }//GEN-LAST:event_signupbtnActionPerformed
-
-    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
-        this.dispose();
-        new Login().setVisible(true);
-    }//GEN-LAST:event_loginbtnActionPerformed
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped
         //function to allow digit to be typed
@@ -332,30 +379,34 @@ public class SignUpPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_phonetxtKeyTyped
 
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
     private void groupButton( ) {
         //group the radio button so, only one radio button can be selected at once
-    ButtonGroup group = new ButtonGroup();
-    group.add(customerRbtn);
-    group.add(managingRbtn);
-    group.add(deliveryRbtn);
+        ButtonGroup group = new ButtonGroup();
+        group.add(customerRbtn);
+        group.add(managingRbtn);
+        group.add(deliveryRbtn);
     }
     
-    private String getUserType()
-{
+    private String getUserType() {
     //to return the selected radio button value
-    if(customerRbtn.isSelected()){
-        return "Customer";
-    }  else if(managingRbtn.isSelected()){
-        return "Managing Staff";
-    }  else if(deliveryRbtn.isSelected()){
-        return "Delivery Staff";
-    }else{
-        return "Empty";
-    }
+        if(customerRbtn.isSelected()){
+            return "Customer";
+        }  else if(managingRbtn.isSelected()){
+            return "Managing Staff";
+        }  else if(deliveryRbtn.isSelected()){
+            return "Delivery Staff";
+        } else{
+            return "Empty";
+        }
 }
    
     private void clearFields(){ 
-//clears the textfields
+        //clears the textfields
         usernametxt.setText("");
         customerRbtn.setSelected(true);
         firstnametxt.setText("");
@@ -366,10 +417,8 @@ public class SignUpPage extends javax.swing.JFrame {
         confirmpasstxt.setText("");
         //set the cursor back to the ID textfield
         usernametxt.requestFocus();
-
- }
-      
-
+    }
+        
     /**
      * @param args the command line arguments
      */
@@ -413,6 +462,7 @@ public class SignUpPage extends javax.swing.JFrame {
     private javax.swing.JTextField emailtxt;
     private javax.swing.JTextField firstnametxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -422,7 +472,6 @@ public class SignUpPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField lastnametxt;
-    private javax.swing.JButton loginbtn;
     private javax.swing.JRadioButton managingRbtn;
     private javax.swing.JPasswordField passwordtxt;
     private javax.swing.JTextField phonetxt;

@@ -3,6 +3,7 @@ package courier;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -41,6 +42,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 128));
         jLabel3.setText("Don't Have an Account? Sign up Here");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
         usernamelbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         usernamelbl.setText("Username");
@@ -76,12 +82,11 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtpassword)
                                 .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(147, 147, 147))
+                                .addComponent(usernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +120,7 @@ public class Login extends javax.swing.JFrame {
     private void LoginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginbtnActionPerformed
         // TODO add your handling code here:
         //declaration
+        String userid;
         String user = txtusername.getText();
         String password = new String(txtpassword.getPassword());
         
@@ -138,24 +144,26 @@ public class Login extends javax.swing.JFrame {
                 tempArr = temp.split (",");
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
-                if (user.equals(tempArr[0]) && password.equals(tempArr[6])) {
+                if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
                     JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
                     
+                    System.out.println(tempArr[0]);
                     System.out.println(user);
                     System.out.println(password);
-                    user = tempArr[0];
+                    userid = tempArr[0];
+                    user = tempArr[1];
                     found = true;
                     this.setVisible(false);
                     
                     //if the user is customer then bring user to customer dashboard
-                    if(customer_role.equals(tempArr[1])) {
-                        new CustomerDashboard().setVisible(true);
+                    if(customer_role.equals(tempArr[2])) {
+                        new CustomerDashboard(userid).setVisible(true);
                     } // the user is delivery staff then bring user to delivery staff
-                    else if (delivery_staff_role.equals(tempArr[1])) {
-                        new DeliveryStaffDashboardPage(user).setVisible(true);
+                    else if (delivery_staff_role.equals(tempArr[2])) {
+                        new DeliveryStaffDashboardPage(userid).setVisible(true);
                     } //the user is managing staff then bring user to managing staff dashboard
                     else {
-                        new ManagingStaffDasboard().setVisible(true);
+                        new ManagingStaffDasboard(userid).setVisible(true);
                     }
                 }
             }
@@ -168,6 +176,11 @@ public class Login extends javax.swing.JFrame {
             ex.toString();
         }  
     }//GEN-LAST:event_LoginbtnActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        new SignUpPage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

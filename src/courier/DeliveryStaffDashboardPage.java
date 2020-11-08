@@ -5,6 +5,11 @@
  */
 package courier;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.UUID;
+
 /**
  *
  * @author jasmi
@@ -14,11 +19,11 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     /**
      * Creates new form DeliveryStaffDashboardPage
      */
-     String username = "";
-    public DeliveryStaffDashboardPage(String user) {
-        initComponents();
-        userwellbl.setText("Good Morning,");
-        username=user;
+     String user_id = "";
+    public DeliveryStaffDashboardPage(String userid) {
+        initComponents();       
+        userwellbl.setText("Good Morning,"+ " " + userid);
+        user_id = userid;
     }
 
     /**
@@ -37,7 +42,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
+        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         logoutbtn.setText("Logout");
@@ -74,9 +79,12 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                        .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(profilebtn)
@@ -100,12 +108,13 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deliveryorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryorderbtnActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new DeliveryStaffOrderPage(user_id).setVisible(true);
     }//GEN-LAST:event_deliveryorderbtnActionPerformed
 
     private void profilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilebtnActionPerformed
         this.dispose();
-        new UserProfile (username).setVisible(true);
+        new UserProfile (user_id).setVisible(true);
     }//GEN-LAST:event_profilebtnActionPerformed
 
     private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed

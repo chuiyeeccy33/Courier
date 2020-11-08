@@ -13,24 +13,22 @@ import javax.swing.*;
  * @author daniellim0510
  */
 public class UserProfile extends javax.swing.JFrame {
-
     /**
      * Creates new form UserProfile
      */
-     String username = "";
-    public UserProfile(String user) {
-        initComponents();
-       /* typelbl.setVisible(false);
+    String view_user = "";
+    
+    public UserProfile(String user_id) {
+       initComponents();
+        view_user= user_id;
+        typelbl.setVisible(false);
         typetxt.setVisible(false);
         passwordlbl.setVisible(false);
         passwordtxt.setVisible(false);
-        confirmpasslbl.setVisible(false);
-        confirmpasstxt.setVisible(false);*/
-         username = user;
         
-         try{
-        File file = new File("UserDetails.txt");
-        Scanner sc = new Scanner(file);
+        try{
+       File file = new File("UserDetails.txt");
+        Scanner sc = new Scanner(file); 
         //read data from the file
        
        String temp;
@@ -39,22 +37,23 @@ public class UserProfile extends javax.swing.JFrame {
        while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
-            tempArr = temp.split (",");
-           if (user.equals(tempArr[0])) { 
-               usernametxt.setText(tempArr[0]);
-               typetxt.setText(tempArr[1]);
-               firstnametxt.setText(tempArr[2]);
-               lastnametxt.setText(tempArr[3]);
-               emailtxt.setText(tempArr[4]);
-               phonetxt.setText(tempArr[5]);
-               passwordtxt.setText(tempArr[6]);
-               confirmpasstxt.setText(tempArr[7]);
+           tempArr = temp.split (",");
+           if (view_user.equals(tempArr[0])) { 
+               usernametxt.setText(tempArr[1]);
+               typetxt.setText(tempArr[2]);
+               firstnametxt.setText(tempArr[3]);
+               lastnametxt.setText(tempArr[4]);
+               emailtxt.setText(tempArr[5]);
+               phonetxt.setText(tempArr[6]);
+               passwordtxt.setText(tempArr[7]);
+               
+               usernametxt.setEditable(false);
            }
        }
-    }catch(FileNotFoundException ex) {
+       }catch(FileNotFoundException ex) {
                ex.toString();
                }
-       
+         
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,9 +79,7 @@ public class UserProfile extends javax.swing.JFrame {
         backbtn = new javax.swing.JButton();
         changepasslbl = new javax.swing.JLabel();
         passwordlbl = new javax.swing.JLabel();
-        confirmpasslbl = new javax.swing.JLabel();
         passwordtxt = new javax.swing.JPasswordField();
-        confirmpasstxt = new javax.swing.JPasswordField();
         typelbl = new javax.swing.JLabel();
         typetxt = new javax.swing.JTextField();
 
@@ -94,27 +91,18 @@ public class UserProfile extends javax.swing.JFrame {
         usernamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usernamelbl.setText("Username: ");
 
-        usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         firstnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         firstnamelbl.setText("First Name: ");
-
-        firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         lastnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lastnamelbl.setText("Last Name:");
 
-        lastnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         emaillbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         emaillbl.setText("Email: ");
-
-        emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonelbl.setText("Phone No:");
 
-        phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 phonetxtKeyTyped(evt);
@@ -131,6 +119,11 @@ public class UserProfile extends javax.swing.JFrame {
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         changepasslbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         changepasslbl.setForeground(new java.awt.Color(0, 0, 128));
@@ -144,24 +137,17 @@ public class UserProfile extends javax.swing.JFrame {
         passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         passwordlbl.setText("Password:");
 
-        confirmpasslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        confirmpasslbl.setText("Confirm Password:");
-
         passwordtxt.setFont(new java.awt.Font("DengXian", 0, 12)); // NOI18N
-
-        confirmpasstxt.setFont(new java.awt.Font("DengXian", 0, 12)); // NOI18N
 
         typelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         typelbl.setText("Type:");
-
-        typetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(changepasslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,10 +165,6 @@ public class UserProfile extends javax.swing.JFrame {
                                 .addComponent(typelbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(typetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(confirmpasslbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(passwordlbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -252,17 +234,13 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordlbl)
                     .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmpasslbl)
-                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(43, 43, 43)
                         .addComponent(changepasslbl)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(savebtn)
                         .addGap(19, 19, 19))))
         );
@@ -271,8 +249,9 @@ public class UserProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void changepasslblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepasslblMouseClicked
-         this.dispose();
-         new UserProfilePassword(username).setVisible(true);
+        String usertype=typetxt.getText();
+        this.dispose();
+         new UserProfilePassword(view_user,usertype).setVisible(true);
     }//GEN-LAST:event_changepasslblMouseClicked
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped
@@ -283,8 +262,9 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_phonetxtKeyTyped
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+       String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
+        String TempID = view_user;
         String Tempuser = usernametxt.getText();
         String Tempselectedradio = typetxt.getText();
         String Tempfirst = firstnametxt.getText();
@@ -292,23 +272,30 @@ public class UserProfile extends javax.swing.JFrame {
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
-        String Tempconfirmpass = new String(confirmpasstxt.getPassword());
     
-      Users u = new Users(Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass,Tempconfirmpass);
+      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
        
         if(u.checkEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
         }
         else{
             if(Tempemail.matches(regex)){
                 JOptionPane.showMessageDialog(rootPane, "Your changes are made! ", "Update ", JOptionPane.INFORMATION_MESSAGE);
-                u.UserSaveFile();
+                u.RemoveUser();
+                u.UpdateUser();
       }
           else
               { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
               }
         }
     }//GEN-LAST:event_savebtnActionPerformed
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        String usertype = typetxt.getText();
+        Users u = new Users();
+        u.Back(view_user,usertype);
+        this.dispose();
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,8 +335,6 @@ public class UserProfile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel changepasslbl;
-    private javax.swing.JLabel confirmpasslbl;
-    private javax.swing.JPasswordField confirmpasstxt;
     private javax.swing.JLabel emaillbl;
     private javax.swing.JTextField emailtxt;
     private javax.swing.JLabel firstnamelbl;
