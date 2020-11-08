@@ -285,11 +285,11 @@ public class Orders {
 
       //remove order detail
     public void RemoveOrder(){
-        String removeTerm = userid; 
+        String removeTerm = "c9680219-292b-4beb-a016-1e70acca4454"; 
         ArrayList <String> tempArray = new ArrayList <>();
 
         try{
-            File file = new File("UserDetails.txt");
+            File file = new File("Orders.txt");
             file.createNewFile();
             Scanner sc = new Scanner(file);
             String data;
@@ -305,7 +305,7 @@ public class Orders {
             ex.toString();
         }
         try{
-            try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+            try(PrintWriter pr = new PrintWriter("Orders.txt")){
                 for(String newFile : tempArray){
                     pr.println(newFile);
                 }
@@ -354,7 +354,7 @@ public class Orders {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("Order Added!");
+            System.out.println("Order Updated!");
         } catch (IOException ex) {
            
         }

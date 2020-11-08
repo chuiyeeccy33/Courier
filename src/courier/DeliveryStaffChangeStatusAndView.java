@@ -9,6 +9,7 @@ import java.io.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 import javax.swing.JOptionPane;
@@ -35,14 +36,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         fillcomboperson();
         Userid = UserID;
         
-        // Create a date object
-        LocalDate date = LocalDate.now(); 
-        //date format
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String show = date.format(format);
-        datelbl.setText(show);
-        System.out.println(date); // Display the current date
-         
    try{
         File file = new File("UserDetails.txt");
         File file1 = new File("Orders.txt");
@@ -58,60 +51,70 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
            temp = sc.nextLine(); //read a line of text from file
            String[] tempArr;
            tempArr = temp.split (",");
-           if (UserID.equals(tempArr[0])) { 
+           if (Userid.equals(tempArr[0])) { 
                String Temptype = tempArr[2];
+             
                if(Temptype.equals("Customer")){
                 updatebtn.setText("Add");
                 assignedpersonphonelbl1.setVisible(true);
                 assignedpersonphonetxt.setVisible(true);
                 assignedpersonphonetxt.setEditable(false);
-               //o.SaveOrderFile();
                }else if(Temptype.equals("Managing Staff")) {
                   assignedpersonlbl.setVisible(true);
                   assignedpersoncbox.setVisible(true);
                   deliverystatuslbl.setVisible(true);
                   deliverystatuscbox.setVisible(true);
+                             
+                        while(file1sc.hasNext() && !found) {
+                         temp1 = file1sc.nextLine();
+                         String [] temp1Arr;
+                         temp1Arr = temp1.split(",");
+                         
+                         if(temp1Arr[21].equals("117f6b1e-ab1b-4039-866e-67415b4bd8c1") && temp1Arr[0].equals("c9680219-292b-4beb-a016-1e70acca4454")) {
+                             System.out.println(tempArr[2]);
+                             sendernametxt.setText(temp1Arr[1]);
+                             senderaddresstxt.setText(temp1Arr[2]);
+                             senderphonetxt.setText(temp1Arr[3]);
+                             senderemailtxt.setText(temp1Arr[4]);
+                             receivernametxt.setText(temp1Arr[5]);
+                             receiveraddresstxt.setText(temp1Arr[6]);
+                             receiverphonetxt.setText(temp1Arr[7]);
+                             receiveremailtxt.setText(temp1Arr[8]);
+                             weighttxt.setText(temp1Arr[10]);
+                             widthtxt.setText(temp1Arr[11]);
+                             lengthtxt.setText(temp1Arr[12]);
+                             heighttxt.setText(temp1Arr[13]);
+                             orderdetailstxt.setText(temp1Arr[14]);
+                             shippingfeecbox.setSelectedItem(temp1Arr[15]);
+                             itempricetxt.setText(temp1Arr[16]);
+                             totaltxt.setText(temp1Arr[17]);
+                             deliverystatuscbox.setSelectedItem(temp1Arr[20]);
+                             assignedpersoncbox.setSelectedItem(temp1Arr[19]);
+                             if(temp1Arr[18].equals("None")) { 
+                                  assignedpersonphonetxt.setText("");
+                             }else{
+                                 assignedpersonphonetxt.setText(temp1Arr[18]);
+                             }
+                         }
+                       }
+                    
                }else{
                   deliverystatuslbl.setVisible(true);
                   deliverystatuscbox.setVisible(true);
                }
-          
-               while(sc.hasNext() && !found) {
-                   temp1 = file1sc.nextLine();
-                   String [] temp1Arr;
-                   temp1Arr = temp1.split(",");
-                   if(UserID.equals(temp1Arr[21])) {
-                       if(Temptype.equals("Managing Staff"))
-                       sendernametxt.setText(temp1Arr[1]);
-                       senderaddresstxt.setText(temp1Arr[2]);
-                       senderphonetxt.setText(temp1Arr[3]);
-                       senderemailtxt.setText(temp1Arr[4]);
-                       receivernametxt.setText(temp1Arr[5]);
-                       receiveraddresstxt.setText(temp1Arr[6]);
-                       receiverphonetxt.setText(temp1Arr[7]);
-                       receiveremailtxt.setText(temp1Arr[8]);
-                       weighttxt.setText(temp1Arr[10]);
-                       widthtxt.setText(temp1Arr[11]);
-                       lengthtxt.setText(temp1Arr[12]);
-                       heighttxt.setText(temp1Arr[13]);
-                       orderdetailstxt.setText(temp1Arr[14]);
-                       shippingfeecbox.setSelectedItem(temp1Arr[15]);
-                       itempricetxt.setText(temp1Arr[16]);
-                       totaltxt.setText(temp1Arr[17]);
-                       deliverystatuscbox.setSelectedItem(temp1Arr[18]);
-                       assignedpersoncbox.setSelectedItem(temp1Arr[19]);
-                       if(temp1Arr[19].equals("None")) { 
-                            assignedpersonphonetxt.setText("");
-                       }else{
-                           assignedpersonphonetxt.setText(temp1Arr[20]);
-                       }
-                   }
-                 }
                }
        }
    }catch(FileNotFoundException ex) {
                ex.toString();
    }
+   
+    // Create a date object
+        LocalDate date = LocalDate.now(); 
+        //date format
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String show = date.format(format);
+        datelbl.setText(show);
+        System.out.println(date); // Display the current date
 }
     
     /**
@@ -533,7 +536,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     .addComponent(senderphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(senderphonelbl))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(senderemaillbl))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -624,14 +627,30 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         String Tempitemprice =itempricetxt.getText();
         String Temptotal =totaltxt.getText();
         String Tempstaffphone = assignedpersonphonetxt.getText();
-        String Tempdeliverystaff = assignedpersoncbox.getSelectedItem().toString();       
+        String delivery =  assignedpersoncbox.getSelectedItem().toString();
         String Tempdeliverystatus = deliverystatuscbox.getSelectedItem().toString();
+          try{
+        File file = new File("UserDetails.txt");
+        Scanner sc = new Scanner(file); 
+        //read data from the file
+       
+       String temp;
+       boolean found = false;
+       
+       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+           temp = sc.nextLine(); //read a line of text from file
+           String[] tempArr;
+           tempArr = temp.split (",");
+           if (TempUserID.equals(tempArr[0])) { 
+               String Temptype = tempArr[2];
         
         //Assign Order detail from the text field
         Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,Tempdeliverystaff,Tempdeliverystatus,TempUserID);
-        String type = o.getType();
-        if(type.equals("Customer")) {
+                Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,delivery,Tempdeliverystatus,TempUserID);
+       //String type = new Users().getSelectedUserType();
+      
+    
+        if(Temptype.equals("Customer")) {
             if(o.checkEmptyOrderField()) { //if the text field is empty
                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
             } 
@@ -653,8 +672,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             else { 
                                 JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                            }        
-         }
-      }else if(type.equals("Managing Staff")) {
+       }
+      }else if(Temptype.equals("Managing Staff")) {
+           System.out.println(Temptype);
           if(o.checkEmptyOrderField()) { //if the text field is empty
                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
             } 
@@ -662,7 +682,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
-                                       if(!Tempdeliverystaff.equals("None")) {
+                                       if(!delivery.equals("None")) {
                                         o.RemoveOrder();
                                         o.UpdateOrder();
                                         clearFields();
@@ -682,7 +702,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                            }        
       }
-    }            
+    } 
+  }
+}
+}catch(FileNotFoundException ex) {
+               ex.toString();
+   }
     }//GEN-LAST:event_updatebtnActionPerformed
 
     private void receiverphonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_receiverphonetxtKeyTyped
