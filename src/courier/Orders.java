@@ -274,9 +274,9 @@ public class Orders {
     
     public boolean checkEmptyOrderField() {
         return sendername.equals("") ||  senderaddress.equals("")|| senderphone.equals("")|| senderemail.equals("")|| receivername.equals("")|| receiveraddress.equals("")|| receiverphone.equals("")
-                || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")|| shippingfee.equals("")
-                || itemprice.equals("");
-    }//|| deliverystatus.equals("")|| assignperson.equals("")
+                || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")
+                || shippingfee.equals("");
+    }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
      
     public void Back(String user){
         userid = user;

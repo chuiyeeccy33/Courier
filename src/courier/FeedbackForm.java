@@ -24,7 +24,6 @@ public class FeedbackForm extends javax.swing.JFrame {
     public FeedbackForm(String UserID) {
         initComponents();
         userid = UserID;
-        System.out.println(userid);
         groupButton();
     }
     
@@ -172,13 +171,16 @@ public class FeedbackForm extends javax.swing.JFrame {
             System.out.println("Worst is selected");
         }
         
+        //varable
         UUID FeedbackNo = UUID.randomUUID();
         String FeedbackID = FeedbackNo.toString();
         String CustomerRating = ratingButton;
         String CustomerDescription = jTextArea1.getText();
-        String CustomerUsername = userid;
+        Users CustomerID = new Users();
+                
+        Feedback f = new Feedback(FeedbackID,CustomerRating,CustomerDescription,CustomerID);
         
-        Feedback f = new Feedback(FeedbackID,CustomerRating,CustomerDescription,CustomerUsername);
+        CustomerID.setUserid(userid);
         
         //Store data
         //check empty Feedback

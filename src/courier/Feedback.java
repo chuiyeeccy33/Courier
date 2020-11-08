@@ -8,16 +8,18 @@ public class Feedback {
     private String feedbackID;
     private String rating;
     private String description;
-    private String feedbackUser;
+    //private String feedbackUser;
+    private Users feedbackUser;
     
     private boolean isFilled;
   
-    public Feedback(String FeedbackID, String Rating, String Description, String FeedbackUser) {
+    public Feedback(String FeedbackID, String Rating, String Description, Users FeedbackUser) {
         //bring the data attribute into the variable
         feedbackID = FeedbackID;
         rating = Rating;
         description = Description;   
-        feedbackUser = FeedbackUser;
+        //feedbackUser = FeedbackUser;
+        this.feedbackUser = FeedbackUser;
     }
     
     private String getFeedbackid() {
@@ -32,7 +34,7 @@ public class Feedback {
         return description;
     }
     
-    private String getFeedbackUser() {
+    public Users getFeedbackUser() {
         return feedbackUser;
     }
     
@@ -48,7 +50,7 @@ public class Feedback {
         description = Description;
     }
     
-    public void setFeedbackUser(String FeedbackUser) {
+    public void setFeedbackUser(Users FeedbackUser) {
         feedbackUser = FeedbackUser;
     }
     
