@@ -30,18 +30,7 @@ public class Users {
         password = Password;
         status = Status;
     }
-    
-    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
-        username = Username;
-        selectedusertype = SelectedUserType;
-        firstname = Firstname;
-        lastname = Lastname;
-        email = Email;
-        phone = Phone;
-        password = Password;
-    }
-    
-    
+
     //get
     private String getUserid() {
         return userid;
@@ -166,6 +155,7 @@ public class Users {
         } catch(Exception ex){
             ex.toString();
         }
+        
         try{
             try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
                 for(String newFile : tempArray){
@@ -185,7 +175,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + status;
               //remove blank line when update
             if (!Line.isEmpty()) {
                 //use pw to write data you want to write
