@@ -146,15 +146,13 @@ public class Login extends javax.swing.JFrame {
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
                 if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
+                     userid = tempArr[0];
+                     user = tempArr[1];
+                     found = true;
                     //to validate the user is active or not
                     if (status.equals(tempArr[8])) {
                         JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
-
-                        userid = tempArr[0];
-                        user = tempArr[1];
-                        found = true;
                         this.setVisible(false);
-
                         //if the user is customer then bring user to customer dashboard
                         if(customer_role.equals(tempArr[2])) {
                             new CustomerDashboard(userid).setVisible(true);
@@ -168,10 +166,8 @@ public class Login extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Your account is still pending for approval", "Pending Approval", JOptionPane.INFORMATION_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Not matching username and password.Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-                }
-            }
+              }
+           }
             //display error if not matching username or password
             if(!found){
                 JOptionPane.showMessageDialog(rootPane, "Not matching username and password.Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
