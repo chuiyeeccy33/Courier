@@ -30,7 +30,7 @@ public class Users {
         password = Password;
         status = Status;
     }
-
+    
     //get
     private String getUserid() {
         return userid;
@@ -175,7 +175,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + status;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
               //remove blank line when update
             if (!Line.isEmpty()) {
                 //use pw to write data you want to write

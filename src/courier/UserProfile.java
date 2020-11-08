@@ -272,8 +272,10 @@ public class UserProfile extends javax.swing.JFrame {
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
+        String TempStatus = "Active";
     
-      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
+      
        
         if(u.checkEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
