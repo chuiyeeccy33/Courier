@@ -49,7 +49,7 @@ public class Users {
         return username;
     }
     
-    private String getSelectedUserType() {
+    public String getSelectedUserType() {
         return selectedusertype;
     }
     

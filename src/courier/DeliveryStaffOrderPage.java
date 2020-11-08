@@ -5,17 +5,73 @@
  */
 package courier;
 
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author jasmi
  */
 public class DeliveryStaffOrderPage extends javax.swing.JFrame {
+     String UserID = "";
+     
+    class DeliveryStaff{
+           //to show the order details of the user
+        /*String filepath = "txt";
+        File file = new File(filepath);
+        
+        BufferedReader br;
+        String strLine;
+        try {
+            br = new BufferedReader (new FileReader(file));
 
+            String[] columnName = {"Course", "Time", "Date" , "Fee", "Venue", "Trainer"};
+
+            DefaultTableModel model = (DefaultTableModel)check_schedule.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0); //clear the model
+            check_schedule.revalidate(); //refresh the table
+                try {
+                    while((strLine=br.readLine())!=null){
+                        Object[] details = strLine.lines().toArray();
+                        for (Object detail : details) {
+                            String line = detail.toString().trim();
+                            String[] row = line.split(",");
+
+                            if (trainer.equals(row[5])) {
+                                model.addRow(row);
+                            }
+                        }
+                        
+                    }   } catch (IOException ex) {
+                    Logger.getLogger(check_schedule.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+        } catch (IOException ex) {
+            Logger.getLogger(check_schedule.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+    }
+    class ManagingStaff{}
+    class Customer{}
     /**
      * Creates new form DeliveryStaffOrderPage
      */
-    public DeliveryStaffOrderPage() {
+    public DeliveryStaffOrderPage(String user_id) {
         initComponents();
+         UserID = user_id;
+         
+        /*Orders o = new Orders();
+        System.out.println("fsd");
+       if(o.getType().equals("Delivery Staff")){
+        addbtn.setVisible(false);
+    }else{
+           System.out.println("no");
+       }*/
+
+       
     }
 
     /**
@@ -30,8 +86,9 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         deliveryOrderlbl = new javax.swing.JLabel();
         assigndeliveryorderlbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        DeliveryOrdertbl = new javax.swing.JTable();
+        Ordertbl = new javax.swing.JTable();
         logoutbtn = new javax.swing.JButton();
+        addbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,8 +98,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         assigndeliveryorderlbl.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         assigndeliveryorderlbl.setText("Assigned Order");
 
-        DeliveryOrdertbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        DeliveryOrdertbl.setModel(new javax.swing.table.DefaultTableModel(
+        Ordertbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Ordertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -50,10 +107,23 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(DeliveryOrdertbl);
+        jScrollPane1.setViewportView(Ordertbl);
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         logoutbtn.setText("Logout");
+        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutbtnActionPerformed(evt);
+            }
+        });
+
+        addbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addbtn.setText("Add");
+        addbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,12 +132,15 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(assigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(deliveryOrderlbl)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deliveryOrderlbl)
+                            .addComponent(assigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutbtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(logoutbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -77,6 +150,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(logoutbtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(addbtn)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(deliveryOrderlbl)
@@ -89,6 +164,16 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
+        this.dispose();
+        new DeliveryStaffChangeStatusAndView(UserID).setVisible(true);
+    }//GEN-LAST:event_addbtnActionPerformed
+
+    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_logoutbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,13 +205,14 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DeliveryStaffOrderPage().setVisible(true);
+                //new DeliveryStaffOrderPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable DeliveryOrdertbl;
+    private javax.swing.JTable Ordertbl;
+    private javax.swing.JButton addbtn;
     private javax.swing.JLabel assigndeliveryorderlbl;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JScrollPane jScrollPane1;
