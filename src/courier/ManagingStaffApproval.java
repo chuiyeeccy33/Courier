@@ -15,13 +15,13 @@ import javax.swing.table.DefaultTableModel;
  * @author daniellim0510
  */
 public class ManagingStaffApproval extends javax.swing.JFrame {
-
+    String userid = "";
     /**
      * Creates new form ManagingStaffApproval
      */
-    public ManagingStaffApproval(String userid) {
+    public ManagingStaffApproval(String user_id) {
         initComponents();
-        String user_id = userid;
+        userid = user_id;
         //variable for input
         String approval_status = "Pending";
         
@@ -165,7 +165,8 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-
+        this.dispose();
+        new ManagingStaffDasboard(userid).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void ApprovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovebtnActionPerformed
@@ -206,7 +207,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ManagingStaffApproval().setVisible(true);
+
             }
         });
     }
