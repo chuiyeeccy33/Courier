@@ -718,22 +718,22 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_receiverphonetxtKeyTyped
     private void clearFields(){
-      sendernametxt.setText("");
-      senderaddresstxt.setText("");
-      senderphonetxt.setText("");
-      senderemailtxt.setText("");
-      receivernametxt.setText("");
-      receiveraddresstxt.setText("");
-      receiverphonetxt.setText("");
-      receiveremailtxt.setText("");
-      weighttxt.setText("");
-      widthtxt.setText("");
-      lengthtxt.setText("");
-      heighttxt.setText("");
-      orderdetailstxt.setText("");
-      itempricetxt.setText("");
-      totaltxt.equals("");
-      assignedpersonphonetxt.setText("");
+        sendernametxt.setText("");
+        senderaddresstxt.setText("");
+        senderphonetxt.setText("");
+        senderemailtxt.setText("");
+        receivernametxt.setText("");
+        receiveraddresstxt.setText("");
+        receiverphonetxt.setText("");
+        receiveremailtxt.setText("");
+        weighttxt.setText("");
+        widthtxt.setText("");
+        lengthtxt.setText("");
+        heighttxt.setText("");
+        orderdetailstxt.setText("");
+        itempricetxt.setText("");
+        totaltxt.equals("");
+        assignedpersonphonetxt.setText("");
     }
     
      private void fillcomboperson() {

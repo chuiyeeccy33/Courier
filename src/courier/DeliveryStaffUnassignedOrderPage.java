@@ -7,6 +7,7 @@ package courier;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,6 +29,11 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
         initComponents();
         UserID = user_id;
         
+        String orderid;
+        String senderaddress;
+        String receiveraddress;
+        String deliveryperson;
+        String userid;
          try{
           //read data from the file  
          File file = new File("UserDetails.txt");
@@ -63,7 +69,13 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
                                   String[] row = line.split(",");
                                   String delivery = row[19];
                                      if (delivery.equals("None")) {
-                                        model.addRow(row);
+                                         orderid = row[0];
+                                        senderaddress = row[1];
+                                        receiveraddress = row[2];
+                                        deliveryperson =  row[19];
+                                        userid = row[21];
+                                        model.addRow(new Object[]{orderid,senderaddress, receiveraddress, deliveryperson, userid});
+                                       // model.addRow(row);
                                     }
                               }
                        }
@@ -88,7 +100,7 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
         unassigndeliveryorderlbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Ordertbl = new javax.swing.JTable();
-        logoutbtn = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,11 +121,11 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Ordertbl);
 
-        logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        logoutbtn.setText("Logout");
-        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
+        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutbtnActionPerformed(evt);
+                backbtnActionPerformed(evt);
             }
         });
 
@@ -130,7 +142,7 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
                             .addComponent(deliveryOrderlbl)
                             .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logoutbtn)))
+                        .addComponent(backbtn)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -139,7 +151,7 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(logoutbtn)
+                        .addComponent(backbtn)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(deliveryOrderlbl)
@@ -153,10 +165,36 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-        this.dispose();
-        new Login().setVisible(true);
-    }//GEN-LAST:event_logoutbtnActionPerformed
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        try{
+          //read data from the file  
+         File file = new File("UserDetails.txt");
+         Scanner sc = new Scanner(file); 
+         String temp;
+         boolean found = false;
+   
+           //check equals userid with database and retrieve user type 
+           while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+           temp = sc.nextLine(); //read a line of text from file
+           String[] tempArr;
+           tempArr = temp.split (",");
+
+              if (UserID.equals(tempArr[0])) { 
+                String usertype = tempArr[2];
+                    if (usertype.equals("Customer")) {
+                   new CustomerDashboard(UserID).setVisible(true);
+               } else if(usertype.equals("Managing Staff")) {
+                   new ManagingStaffDasboard(UserID).setVisible(true);
+               }else{
+                   new DeliveryStaffDashboardPage(UserID).setVisible(true);           
+               }       
+               this.dispose();
+              }
+           }
+         }catch(FileNotFoundException ex) {
+               ex.toString();
+               }
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,9 +233,9 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Ordertbl;
+    private javax.swing.JButton backbtn;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logoutbtn;
     private javax.swing.JLabel unassigndeliveryorderlbl;
     // End of variables declaration//GEN-END:variables
 }

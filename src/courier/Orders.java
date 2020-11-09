@@ -359,4 +359,16 @@ public class Orders {
            
         }
     }
+       
+       public void Back(String user, String type){
+        userid = user;
+        type = getType();
+        if (type.equals("Customer")) {
+            new CustomerDashboard(userid).setVisible(true);
+        } else if(type.equals("Managing Staff")) {
+            new ManagingStaffDasboard(userid).setVisible(true);
+        }else{
+            new DeliveryStaffDashboardPage(userid).setVisible(true);           
+        }       
+    }
 }
