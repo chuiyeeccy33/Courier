@@ -7,8 +7,12 @@ package courier;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -170,11 +174,36 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void ApprovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovebtnActionPerformed
-        // TODO add your handling code here:
+        
+        TableModel model = jTable1.getModel();
+        
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[7];
+        Users u = new Users();
+        for(int i =0; i < indexs.length; i++) {
+            String Username;
+            Username = (String) model.getValueAt(indexs[i], 0);
+            u.setUsername(Username);
+            u.ApproveUser();
+            JOptionPane.showMessageDialog(rootPane, "The User is approved. User now able to access Fast and Furious", "User Approved ", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_ApprovebtnActionPerformed
 
     private void rejectbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectbtnActionPerformed
         // TODO add your handling code here:
+        TableModel model = jTable1.getModel();
+        
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[7];
+        Users u = new Users();
+        for(int i =0; i < indexs.length; i++) {
+            String Username;
+            Username = (String) model.getValueAt(indexs[i], 0);
+            u.setUsername(Username);
+            u.RejectUser();
+            JOptionPane.showMessageDialog(rootPane, "The User is Declined. User unable to access Fast and Furious", "User Decline ", JOptionPane.INFORMATION_MESSAGE);
+            jTable1.revalidate();
+        }
     }//GEN-LAST:event_rejectbtnActionPerformed
 
     /**

@@ -262,7 +262,7 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_phonetxtKeyTyped
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-       String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
         String TempID = view_user;
         String Tempuser = usernametxt.getText();
