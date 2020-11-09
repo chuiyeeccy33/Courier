@@ -175,7 +175,8 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
 
     private void ApprovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovebtnActionPerformed
         
-        TableModel model = jTable1.getModel();
+        //TableModel model = jTable1.getModel();
+       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[7];
@@ -186,12 +187,15 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
             u.setUsername(Username);
             u.ApproveUser();
             JOptionPane.showMessageDialog(rootPane, "The User is approved. User now able to access Fast and Furious", "User Approved ", JOptionPane.INFORMATION_MESSAGE);
+            model.setRowCount(0);
+            jTable1.revalidate();
         }
     }//GEN-LAST:event_ApprovebtnActionPerformed
 
     private void rejectbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectbtnActionPerformed
         // TODO add your handling code here:
-        TableModel model = jTable1.getModel();
+        //TableModel model = jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[7];
@@ -202,6 +206,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
             u.setUsername(Username);
             u.RejectUser();
             JOptionPane.showMessageDialog(rootPane, "The User is Declined. User unable to access Fast and Furious", "User Decline ", JOptionPane.INFORMATION_MESSAGE);
+             model.setRowCount(0);
             jTable1.revalidate();
         }
     }//GEN-LAST:event_rejectbtnActionPerformed
