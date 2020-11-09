@@ -4,6 +4,8 @@ package courier;
 import java.awt.Component;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Users {
@@ -15,10 +17,11 @@ public class Users {
     private String email;
     private String phone;
     private String password;
+    private String status;
      
     //constructor
     public Users(){}
-    public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
+    public Users(String Userid, String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password, String Status){
         userid = Userid;
         username = Username;
         selectedusertype = SelectedUserType;
@@ -27,18 +30,8 @@ public class Users {
         email = Email;
         phone = Phone;
         password = Password;
+        status = Status;
     }
-    
-    public Users(String Username,String SelectedUserType, String Firstname, String Lastname, String Email, String Phone, String Password){
-        username = Username;
-        selectedusertype = SelectedUserType;
-        firstname = Firstname;
-        lastname = Lastname;
-        email = Email;
-        phone = Phone;
-        password = Password;
-    }
-    
     
     //get
     private String getUserid() {
@@ -71,6 +64,10 @@ public class Users {
     
     private String getPassword() {
         return password;
+    } 
+    
+    private String getStatus() {
+        return status;
     }
     
     public void setUserid(String Userid) {
@@ -105,6 +102,10 @@ public class Users {
     public void setPassword(String Password) {
         password = Password;
     }
+    
+    public void setStatus(String Status) {
+        status = Status;
+    }
 
     public String toString() {
         return userid;
@@ -118,7 +119,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -156,6 +157,7 @@ public class Users {
         } catch(Exception ex){
             ex.toString();
         }
+        
         try{
             try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
                 for(String newFile : tempArray){
@@ -175,7 +177,7 @@ public class Users {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password;
+            String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
               //remove blank line when update
             if (!Line.isEmpty()) {
                 //use pw to write data you want to write
@@ -200,5 +202,167 @@ public class Users {
         }else{
             new DeliveryStaffDashboardPage(userid).setVisible(true);           
         }       
+    }
+    
+    public void ApproveUser() {
+        //search the data in the textfile
+        String searchTerms = username;
+        Scanner scan;
+        try {
+            scan = new Scanner(new File("UserDetails.txt"));
+            while(scan.hasNext()) {
+                String line = scan.nextLine().toLowerCase().toString();
+                if(line.contains(searchTerms)) {
+                    String[] tempArr;
+                    tempArr = line.split(",");
+                    userid = tempArr[0];
+                    username = tempArr[1];
+                    selectedusertype = tempArr[2];
+                    firstname = tempArr[3];
+                    lastname = tempArr[4];
+                    email = tempArr[5];
+                    phone = tempArr[6];
+                    password = tempArr[7];
+                    status = "Active";
+                    
+                    //remove User
+                    String removeTerm = userid; 
+                    ArrayList <String> tempArray = new ArrayList <>();
+
+                    try{
+                        File file = new File("UserDetails.txt");
+                        file.createNewFile();
+                        Scanner sc = new Scanner(file);
+                        String data;
+
+                        while((data = sc.nextLine()) != null){
+                            String[] tempData = data.split(",");
+                            if(!removeTerm.equals(tempData[0])){
+                                tempArray.add(data);
+                            }
+                        }
+                    sc.close();
+                    } catch(Exception ex){
+                        ex.toString();
+                    }
+
+                    try{
+                        try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                            for(String newFile : tempArray){
+                                pr.println(newFile);
+                            }
+                            pr.close();
+                        }
+                    } catch(Exception ex){
+                        ex.toString();
+                    }
+                    //end of remove User
+                    
+                    //update status
+                    File Finput = new File("UserDetails.txt");
+                    try {
+                        FileWriter fw = new FileWriter(Finput,true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        PrintWriter pw = new PrintWriter(bw);
+                        String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
+                          //remove blank line when update
+                        if (!Line.isEmpty()) {
+                            //use pw to write data you want to write
+                            pw.write(Line);
+                            //escape the blank line
+                            pw.write("\n");
+                        }
+                        pw.close();
+                        System.out.println("User Approved");
+                    } catch (IOException ex) {
+
+                    }
+                    //end of update status
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    public void RejectUser() {
+        //search the data in the textfile
+        String searchTerms = username;
+        Scanner scan;
+        try {
+            scan = new Scanner(new File("UserDetails.txt"));
+            while(scan.hasNext()) {
+                String line = scan.nextLine().toLowerCase().toString();
+                if(line.contains(searchTerms)) {
+                    String[] tempArr;
+                    tempArr = line.split(",");
+                    userid = tempArr[0];
+                    username = tempArr[1];
+                    selectedusertype = tempArr[2];
+                    firstname = tempArr[3];
+                    lastname = tempArr[4];
+                    email = tempArr[5];
+                    phone = tempArr[6];
+                    password = tempArr[7];
+                    status = "Reject";
+                    
+                    //remove User
+                    String removeTerm = userid; 
+                    ArrayList <String> tempArray = new ArrayList <>();
+
+                    try{
+                        File file = new File("UserDetails.txt");
+                        file.createNewFile();
+                        Scanner sc = new Scanner(file);
+                        String data;
+
+                        while((data = sc.nextLine()) != null){
+                            String[] tempData = data.split(",");
+                            if(!removeTerm.equals(tempData[0])){
+                                tempArray.add(data);
+                            }
+                        }
+                    sc.close();
+                    } catch(Exception ex){
+                        ex.toString();
+                    }
+
+                    try{
+                        try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                            for(String newFile : tempArray){
+                                pr.println(newFile);
+                            }
+                            pr.close();
+                        }
+                    } catch(Exception ex){
+                        ex.toString();
+                    }
+                    //end of remove User
+                    
+                    //update status
+                    File Finput = new File("UserDetails.txt");
+                    try {
+                        FileWriter fw = new FileWriter(Finput,true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        PrintWriter pw = new PrintWriter(bw);
+                        String Line = userid + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
+                          //remove blank line when update
+                        if (!Line.isEmpty()) {
+                            //use pw to write data you want to write
+                            pw.write(Line);
+                            //escape the blank line
+                            pw.write("\n");
+                        }
+                        pw.close();
+                        System.out.println("User Decline");
+                    } catch (IOException ex) {
+
+                    }
+                    //end of update status
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 }

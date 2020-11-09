@@ -187,7 +187,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
     private void approvalbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approvalbtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new ManagingStaffApproval().setVisible(true);
+        new ManagingStaffApproval(user_id).setVisible(true);
     }//GEN-LAST:event_approvalbtnActionPerformed
 
     /**

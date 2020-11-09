@@ -233,8 +233,9 @@ public class UserProfilePassword extends javax.swing.JFrame {
                     String Tempoldpass=new String (passwordtxt.getPassword());
                     String Temppass= new String(newpasstxt.getPassword());
                     String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
+                    String TempStatus = "Active";
 
-                    Users u = new Users(UserID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+                    Users u = new Users(UserID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass,TempStatus);
                     if(u.checkEmpty()){
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                     }
