@@ -354,7 +354,7 @@ public class Users {
                             pw.write("\n");
                         }
                         pw.close();
-                        System.out.println("User Approved");
+                        System.out.println("User Decline");
                     } catch (IOException ex) {
 
                     }

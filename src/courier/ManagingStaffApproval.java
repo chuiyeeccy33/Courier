@@ -25,52 +25,9 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
      */
     public ManagingStaffApproval(String user_id) {
         initComponents();
-        userid = user_id;
+        userid = user_id;      
         //variable for input
-        String approval_status = "Pending";
-        
-        //variable for output
-        String Username;
-        String FirstName;
-        String LastName;
-        String Role;
-        String Email;
-        String Phone;
-        String Status;
-        //reader
-        String filepath = "UserDetails.txt";
-        File file = new File(filepath);
-        BufferedReader br;
-        
-        try {
-            FileReader rf = new FileReader(file);
-            br = new BufferedReader (rf);
-            String[] columnName = {"Username","First Name","Last Name","Role","Email","Phone","Status"};
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0);
-            jTable1.revalidate();
-            Object[] details = br.lines().toArray();
-            for (Object detail : details) {
-                String line = detail.toString().trim();
-                String[] row = line.split(",");
-                if (approval_status.equals(row[8])) {
-                    //create the object to added into the table
-                    Username = row[1];
-                    FirstName = row[3];
-                    LastName = row[4];
-                    Role = row[2];
-                    Email = row[5];
-                    Phone = row[6];
-                    Status = row[8];
-                    model.addRow(new Object[] {Username,FirstName,LastName,Role,Email,Phone,Status});
-                }
-            }
-            br.close();        
-            rf.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        data();
     }
 
     /**
@@ -187,9 +144,9 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
             u.setUsername(Username);
             u.ApproveUser();
             JOptionPane.showMessageDialog(rootPane, "The User is approved. User now able to access Fast and Furious", "User Approved ", JOptionPane.INFORMATION_MESSAGE);
-            model.setRowCount(0);
-            jTable1.revalidate();
         }
+        data();
+        
     }//GEN-LAST:event_ApprovebtnActionPerformed
 
     private void rejectbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectbtnActionPerformed
@@ -206,9 +163,8 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
             u.setUsername(Username);
             u.RejectUser();
             JOptionPane.showMessageDialog(rootPane, "The User is Declined. User unable to access Fast and Furious", "User Decline ", JOptionPane.INFORMATION_MESSAGE);
-             model.setRowCount(0);
-            jTable1.revalidate();
         }
+        data();
     }//GEN-LAST:event_rejectbtnActionPerformed
 
     /**
@@ -244,6 +200,53 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
 
             }
         });
+    }
+    
+    public void data() {
+        String approval_status = "Pending";
+        
+        //variable for output
+        String Username;
+        String FirstName;
+        String LastName;
+        String Role;
+        String Email;
+        String Phone;
+        String Status;
+        //reader
+        String filepath = "UserDetails.txt";
+        File file = new File(filepath);
+        BufferedReader br;
+        
+        try {
+            FileReader rf = new FileReader(file);
+            br = new BufferedReader (rf);
+            String[] columnName = {"Username","First Name","Last Name","Role","Email","Phone","Status"};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            jTable1.revalidate();
+            Object[] details = br.lines().toArray();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                if (approval_status.equals(row[8])) {
+                    //create the object to added into the table
+                    Username = row[1];
+                    FirstName = row[3];
+                    LastName = row[4];
+                    Role = row[2];
+                    Email = row[5];
+                    Phone = row[6];
+                    Status = row[8];
+                    model.addRow(new Object[] {Username,FirstName,LastName,Role,Email,Phone,Status});
+                }
+            }
+            br.close();        
+            rf.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
