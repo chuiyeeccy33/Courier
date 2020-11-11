@@ -36,86 +36,85 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         fillcomboperson();
         Userid = UserID;
         
-   try{
-        File file = new File("UserDetails.txt");
-        File file1 = new File("Orders.txt");
-        Scanner sc = new Scanner(file); 
-        Scanner file1sc = new Scanner(file1); 
-        //read data from the file
-       
-       String temp;
-       String temp1;
-       boolean found = false;
-       
-       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-           tempArr = temp.split (",");
-           if (Userid.equals(tempArr[0])) { 
-               String Temptype = tempArr[2];
-             
-               if(Temptype.equals("Customer")){
-                updatebtn.setText("Add");
-                assignedpersonphonelbl1.setVisible(true);
-                assignedpersonphonetxt.setVisible(true);
-                assignedpersonphonetxt.setEditable(false);
-               }else if(Temptype.equals("Managing Staff")) {
-                  assignedpersonlbl.setVisible(true);
-                  assignedpersoncbox.setVisible(true);
-                  deliverystatuslbl.setVisible(true);
-                  deliverystatuscbox.setVisible(true);
-                             
+        try{
+            File file = new File("UserDetails.txt");
+            File file1 = new File("Orders.txt");
+            Scanner sc = new Scanner(file); 
+            Scanner file1sc = new Scanner(file1); 
+            //read data from the file
+
+            String temp;
+            String temp1;
+            boolean found = false;
+
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+                if (Userid.equals(tempArr[0])) {
+                   String Temptype = tempArr[2];
+
+                    if(Temptype.equals("Customer")){
+                        updatebtn.setText("Add");
+                        assignedpersonphonelbl1.setVisible(true);
+                        assignedpersonphonetxt.setVisible(true);
+                        assignedpersonphonetxt.setEditable(false);
+                    } else if(Temptype.equals("Managing Staff")) {
+                        assignedpersonlbl.setVisible(true);
+                        assignedpersoncbox.setVisible(true);
+                        deliverystatuslbl.setVisible(true);
+                        deliverystatuscbox.setVisible(true);
+
                         while(file1sc.hasNext() && !found) {
-                         temp1 = file1sc.nextLine();
-                         String [] temp1Arr;
-                         temp1Arr = temp1.split(",");
-                         
-                         if(temp1Arr[21].equals("117f6b1e-ab1b-4039-866e-67415b4bd8c1") && temp1Arr[0].equals("c9680219-292b-4beb-a016-1e70acca4454")) {
-                             System.out.println(tempArr[2]);
-                             sendernametxt.setText(temp1Arr[1]);
-                             senderaddresstxt.setText(temp1Arr[2]);
-                             senderphonetxt.setText(temp1Arr[3]);
-                             senderemailtxt.setText(temp1Arr[4]);
-                             receivernametxt.setText(temp1Arr[5]);
-                             receiveraddresstxt.setText(temp1Arr[6]);
-                             receiverphonetxt.setText(temp1Arr[7]);
-                             receiveremailtxt.setText(temp1Arr[8]);
-                             weighttxt.setText(temp1Arr[10]);
-                             widthtxt.setText(temp1Arr[11]);
-                             lengthtxt.setText(temp1Arr[12]);
-                             heighttxt.setText(temp1Arr[13]);
-                             orderdetailstxt.setText(temp1Arr[14]);
-                             shippingfeecbox.setSelectedItem(temp1Arr[15]);
-                             itempricetxt.setText(temp1Arr[16]);
-                             totaltxt.setText(temp1Arr[17]);
-                             deliverystatuscbox.setSelectedItem(temp1Arr[20]);
-                             assignedpersoncbox.setSelectedItem(temp1Arr[19]);
-                             if(temp1Arr[18].equals("None")) { 
-                                  assignedpersonphonetxt.setText("");
-                             }else{
-                                 assignedpersonphonetxt.setText(temp1Arr[18]);
-                             }
-                         }
-                       }
-                    
-               }else{
-                  deliverystatuslbl.setVisible(true);
-                  deliverystatuscbox.setVisible(true);
-               }
-               }
-       }
-   }catch(FileNotFoundException ex) {
+                            temp1 = file1sc.nextLine();
+                            String [] temp1Arr;
+                            temp1Arr = temp1.split(",");
+
+                             if(temp1Arr[21].equals("117f6b1e-ab1b-4039-866e-67415b4bd8c1") && temp1Arr[0].equals("c9680219-292b-4beb-a016-1e70acca4454")) {
+                                System.out.println(tempArr[2]);
+                                sendernametxt.setText(temp1Arr[1]);
+                                senderaddresstxt.setText(temp1Arr[2]);
+                                senderphonetxt.setText(temp1Arr[3]);
+                                senderemailtxt.setText(temp1Arr[4]);
+                                receivernametxt.setText(temp1Arr[5]);
+                                receiveraddresstxt.setText(temp1Arr[6]);
+                                receiverphonetxt.setText(temp1Arr[7]);
+                                receiveremailtxt.setText(temp1Arr[8]);
+                                weighttxt.setText(temp1Arr[10]);
+                                widthtxt.setText(temp1Arr[11]);
+                                lengthtxt.setText(temp1Arr[12]);
+                                heighttxt.setText(temp1Arr[13]);
+                                orderdetailstxt.setText(temp1Arr[14]);
+                                shippingfeecbox.setSelectedItem(temp1Arr[15]);
+                                itempricetxt.setText(temp1Arr[16]);
+                                totaltxt.setText(temp1Arr[17]);
+                                deliverystatuscbox.setSelectedItem(temp1Arr[20]);
+                                assignedpersoncbox.setSelectedItem(temp1Arr[19]);
+                                if(temp1Arr[18].equals("None")) { 
+                                      assignedpersonphonetxt.setText("");
+                                }else{
+                                     assignedpersonphonetxt.setText(temp1Arr[18]);
+                                }
+                            }
+                        }
+                    }else {
+                        deliverystatuslbl.setVisible(true);
+                        deliverystatuscbox.setVisible(true);
+                   }
+                }
+            }
+        }catch(FileNotFoundException ex) {
                ex.toString();
-   }
+        }
    
-    // Create a date object
+        // Create a date object
         LocalDate date = LocalDate.now(); 
         //date format
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String show = date.format(format);
         datelbl.setText(show);
         System.out.println(date); // Display the current date
-}
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -604,7 +603,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
-       String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";       
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";       
         
         String TempUserID = Userid;
         UUID TempOrderID = UUID.randomUUID();
@@ -629,69 +628,68 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         String Tempstaffphone = assignedpersonphonetxt.getText();
         String delivery =  assignedpersoncbox.getSelectedItem().toString();
         String Tempdeliverystatus = deliverystatuscbox.getSelectedItem().toString();
-          try{
-        File file = new File("UserDetails.txt");
-        Scanner sc = new Scanner(file); 
-        //read data from the file
-       
-       String temp;
-       boolean found = false;
-       
-       while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-           tempArr = temp.split (",");
-           if (TempUserID.equals(tempArr[0])) { 
-               String Temptype = tempArr[2];
         
-        //Assign Order detail from the text field
-        Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,delivery,Tempdeliverystatus,TempUserID);
-       //String type = new Users().getSelectedUserType();
+        try{
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file); 
+            //read data from the file
+       
+            String temp;
+            boolean found = false;
+       
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+                if (TempUserID.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
+        
+                    //Assign Order detail from the text field
+                    Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,delivery,Tempdeliverystatus,TempUserID);
+                    //String type = new Users().getSelectedUserType();
       
     
-        if(Temptype.equals("Customer")) {
-            if(o.checkEmptyOrderField()) { //if the text field is empty
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-            } 
-            else{ //else the field is not empty  
-                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
+                    if(Temptype.equals("Customer")) {
+                        if(o.checkEmptyOrderField()) { //if the text field is empty
+                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                        } else { //else the field is not empty  
+                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {     
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
-                                     o.SaveOrderFile();
-                                     clearFields();
-                                    this.dispose();
-                                    new DeliveryStaffOrderPage(Userid).setVisible(true);
-                                    }else{
-                                       JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
-                                    }
-                                }else{
-                                      JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
-                                }
-                           } //the email is not in format
-                            else { 
-                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-                           }        
-       }
-      }else if(Temptype.equals("Managing Staff")) {
-           System.out.println(Temptype);
-          if(o.checkEmptyOrderField()) { //if the text field is empty
-                JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-            } 
-            else{ //else the field is not empty  
-                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
-                                if(!Tempitemprice.equals("")) {
-                                    if(!Temptotal.equals("")) {
-                                       if(!delivery.equals("None")) {
-                                        o.RemoveOrder();
-                                        o.UpdateOrder();
+                                        o.SaveOrderFile();
                                         clearFields();
-                                       this.dispose();
+                                        this.dispose();
                                         new DeliveryStaffOrderPage(Userid).setVisible(true);
-                                       }else{
-                                           JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
+                                    } else {
+                                        JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                } else{
+                                    JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            } //the email is not in format
+                            else { 
+                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                           }        
+                        }
+                    } else if(Temptype.equals("Managing Staff")) {
+                        System.out.println(Temptype);
+                        if(o.checkEmptyOrderField()) { //if the text field is empty
+                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                        } else { //else the field is not empty  
+                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
+                                if(!Tempitemprice.equals("")) {
+                                    if(!Temptotal.equals("")) {
+                                        if(!delivery.equals("None")) {
+                                            o.RemoveOrder();
+                                            o.UpdateOrder();
+                                            clearFields();
+                                            this.dispose();
+                                            new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                       } else {
+                                            JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
                                        }
-                                    }else{
+                                    } else{
                                        JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
                                     }
                                 }else{
@@ -701,13 +699,13 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             else { 
                                 JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                            }        
-      }
-    } 
-  }
-}
-}catch(FileNotFoundException ex) {
-               ex.toString();
-   }
+                        }
+                }
+                }
+            }
+        } catch(FileNotFoundException ex) {
+                     ex.toString();
+        }
     }//GEN-LAST:event_updatebtnActionPerformed
 
     private void receiverphonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_receiverphonetxtKeyTyped
@@ -717,7 +715,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_receiverphonetxtKeyTyped
-    private void clearFields(){
+    private void clearFields() {
         sendernametxt.setText("");
         senderaddresstxt.setText("");
         senderphonetxt.setText("");
@@ -745,19 +743,19 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 
             String temp;
             boolean found = false;
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
                 temp = sc.nextLine(); //read a line of text from file
                 String[] tempArr;
                 tempArr = temp.split (",");
 
-                        if (role.equals(tempArr[2])){
-                        //needed value in array
-                        String valueneeded = tempArr[3] + " " + tempArr[4];
-                        String [] column = valueneeded.split(",");
-                           for (String column1 : column) {
-                              assignedpersoncbox.addItem(column1);
-                          }
-                        }             
+                if (role.equals(tempArr[2])){
+                    //needed value in array
+                    String valueneeded = tempArr[3] + " " + tempArr[4];
+                    String [] column = valueneeded.split(",");
+                    for (String column1 : column) {
+                        assignedpersoncbox.addItem(column1);
+                    }
+                }             
             }
         } catch(FileNotFoundException ex) {
                      ex.toString();
@@ -766,7 +764,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private void senderphonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_senderphonetxtKeyTyped
        //function to allow digit to be typed
         char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
+        if(!(Character.isDigit(enter))) {
             evt.consume();
         }
     }//GEN-LAST:event_senderphonetxtKeyTyped
