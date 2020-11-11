@@ -5,17 +5,57 @@
  */
 package courier;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.StringTokenizer;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.Line;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author daniellim0510
  */
 public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
-
+    String user_id = "";
     /**
      * Creates new form ManagingStaffFeedbackManagement
      */
-    public ManagingStaffFeedbackManagement() {
+    public ManagingStaffFeedbackManagement(String ID) {
         initComponents();
+        user_id = ID;
+        String filepath = "Feedback.txt";
+        String feedbackid;
+        String rating;
+        String description;
+        String output;
+        File file =  new File(filepath);
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String[] columnName = {"Feedback ID", "Rating", "Description"};
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            jTable1.revalidate();
+            
+            Object[] feedbacks = br.lines().toArray();
+            for (Object feedback : feedbacks) {
+                String line = feedback.toString().trim();
+                String[] row = line.split(",");
+                
+                feedbackid = row[0];
+                rating = row[1];
+                description = row[2];
+                model.addRow(new Object[]{feedbackid,rating, description});
+            }           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -29,7 +69,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         backbtn = new javax.swing.JButton();
-        searchbtn = new javax.swing.JButton();
+        viewbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -46,22 +86,22 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
             }
         });
 
-        searchbtn.setText("Search");
-        searchbtn.addActionListener(new java.awt.event.ActionListener() {
+        viewbtn.setText("view");
+        viewbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchbtnActionPerformed(evt);
+                viewbtnActionPerformed(evt);
             }
         });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Feedback ID", "Rating", "Description"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -72,15 +112,13 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(searchbtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backbtn)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
@@ -93,23 +131,24 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(searchbtn))
+                        .addComponent(viewbtn))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-
+        this.dispose();
+        new ManagingStaffDasboard(user_id).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
-        
-    }//GEN-LAST:event_searchbtnActionPerformed
+    private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
+
+    }//GEN-LAST:event_viewbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,7 +180,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffFeedbackManagement().setVisible(true);
+                //new ManagingStaffFeedbackManagement().setVisible(true);
             }
         });
     }
@@ -151,6 +190,6 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton searchbtn;
+    private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
 }

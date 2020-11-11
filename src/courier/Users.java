@@ -107,7 +107,7 @@ public class Users {
     }
 
     public String toString() {
-        return username + password;
+        return userid;
     }
    
     //create an account for user

@@ -274,9 +274,9 @@ public class Orders {
     
     public boolean checkEmptyOrderField() {
         return sendername.equals("") ||  senderaddress.equals("")|| senderphone.equals("")|| senderemail.equals("")|| receivername.equals("")|| receiveraddress.equals("")|| receiverphone.equals("")
-                || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")|| shippingfee.equals("")
-                || itemprice.equals("");
-    }//|| deliverystatus.equals("")|| assignperson.equals("")
+                || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")
+                || shippingfee.equals("");
+    }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
      
     public void Back(String user){
         userid = user;
@@ -358,5 +358,17 @@ public class Orders {
         } catch (IOException ex) {
            
         }
+    }
+       
+       public void Back(String user, String type){
+        userid = user;
+        type = getType();
+        if (type.equals("Customer")) {
+            new CustomerDashboard(userid).setVisible(true);
+        } else if(type.equals("Managing Staff")) {
+            new ManagingStaffDasboard(userid).setVisible(true);
+        }else{
+            new DeliveryStaffDashboardPage(userid).setVisible(true);           
+        }       
     }
 }

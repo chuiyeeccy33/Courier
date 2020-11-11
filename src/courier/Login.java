@@ -147,9 +147,6 @@ public class Login extends javax.swing.JFrame {
                 if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
                     JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
                     
-                    System.out.println(tempArr[0]);
-                    System.out.println(user);
-                    System.out.println(password);
                     userid = tempArr[0];
                     user = tempArr[1];
                     found = true;

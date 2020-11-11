@@ -152,8 +152,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         assigndeliveryorderlbl = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Ordertbl = new javax.swing.JTable();
-        logoutbtn = new javax.swing.JButton();
         addbtn = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,19 +174,19 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Ordertbl);
 
-        logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        logoutbtn.setText("Logout");
-        logoutbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutbtnActionPerformed(evt);
-            }
-        });
-
         addbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addbtn.setText("Add");
         addbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addbtnActionPerformed(evt);
+            }
+        });
+
+        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
             }
         });
 
@@ -204,8 +204,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                             .addComponent(assigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(logoutbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(addbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -214,8 +214,9 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(logoutbtn)
-                        .addGap(18, 18, 18)
+                        .addGap(8, 8, 8)
+                        .addComponent(backbtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addbtn)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -235,10 +236,36 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         new DeliveryStaffChangeStatusAndView(UserID).setVisible(true);
     }//GEN-LAST:event_addbtnActionPerformed
 
-    private void logoutbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutbtnActionPerformed
-        this.dispose();
-        new Login().setVisible(true);
-    }//GEN-LAST:event_logoutbtnActionPerformed
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        try{
+            //read data from the file
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file);
+            String temp;
+            boolean found = false;
+
+            //check equals userid with database and retrieve user type
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+
+                if (UserID.equals(tempArr[0])) {
+                    String usertype = tempArr[2];
+                    if (usertype.equals("Customer")) {
+                        new CustomerDashboard(UserID).setVisible(true);
+                    } else if(usertype.equals("Managing Staff")) {
+                        new ManagingStaffDasboard(UserID).setVisible(true);
+                    }else{
+                        new DeliveryStaffDashboardPage(UserID).setVisible(true);
+                    }
+                    this.dispose();
+                }
+            }
+        }catch(FileNotFoundException ex) {
+            ex.toString();
+        }
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,8 +306,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     private javax.swing.JTable Ordertbl;
     private javax.swing.JButton addbtn;
     private javax.swing.JLabel assigndeliveryorderlbl;
+    private javax.swing.JButton backbtn;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logoutbtn;
     // End of variables declaration//GEN-END:variables
 }
