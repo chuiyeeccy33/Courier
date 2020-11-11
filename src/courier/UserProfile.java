@@ -262,7 +262,7 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_phonetxtKeyTyped
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
-       String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
         String TempID = view_user;
         String Tempuser = usernametxt.getText();
@@ -272,8 +272,10 @@ public class UserProfile extends javax.swing.JFrame {
         String Tempemail = emailtxt.getText();       
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword());
+        String TempStatus = "Active";
     
-      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass);
+      Users u = new Users(TempID,Tempuser,Tempselectedradio, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
+      
        
         if(u.checkEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);

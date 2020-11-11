@@ -123,6 +123,7 @@ public class Login extends javax.swing.JFrame {
         String userid;
         String user = txtusername.getText();
         String password = new String(txtpassword.getPassword());
+        String status = "Active";
         
         //declaration for user type
         String customer_role = "Customer";
@@ -145,30 +146,32 @@ public class Login extends javax.swing.JFrame {
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
                 if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
-                    JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
-                    
-                    userid = tempArr[0];
-                    user = tempArr[1];
-                    found = true;
-                    this.setVisible(false);
-                    
-                    //if the user is customer then bring user to customer dashboard
-                    if(customer_role.equals(tempArr[2])) {
-                        new CustomerDashboard(userid).setVisible(true);
-                    } // the user is delivery staff then bring user to delivery staff
-                    else if (delivery_staff_role.equals(tempArr[2])) {
-                        new DeliveryStaffDashboardPage(userid).setVisible(true);
-                    } //the user is managing staff then bring user to managing staff dashboard
-                    else {
-                        new ManagingStaffDasboard(userid).setVisible(true);
+                     userid = tempArr[0];
+                     user = tempArr[1];
+                     found = true;
+                    //to validate the user is active or not
+                    if (status.equals(tempArr[8])) {
+                        JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);
+                        this.setVisible(false);
+                        //if the user is customer then bring user to customer dashboard
+                        if(customer_role.equals(tempArr[2])) {
+                            new CustomerDashboard(userid).setVisible(true);
+                        } // the user is delivery staff then bring user to delivery staff
+                        else if (delivery_staff_role.equals(tempArr[2])) {
+                            new DeliveryStaffDashboardPage(userid).setVisible(true);
+                        } //the user is managing staff then bring user to managing staff dashboard
+                        else {
+                            new ManagingStaffDasboard(userid).setVisible(true);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Your account is still pending for approval", "Pending Approval", JOptionPane.INFORMATION_MESSAGE);
                     }
-                }
-            }
+              }
+           }
             //display error if not matching username or password
             if(!found){
                 JOptionPane.showMessageDialog(rootPane, "Not matching username and password.Please try again.", "Login Failed", JOptionPane.ERROR_MESSAGE);
-            }
-        
+            }        
         } catch(FileNotFoundException ex) {
             ex.toString();
         }  

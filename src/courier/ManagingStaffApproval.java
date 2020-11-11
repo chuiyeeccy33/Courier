@@ -5,17 +5,29 @@
  */
 package courier;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author daniellim0510
  */
 public class ManagingStaffApproval extends javax.swing.JFrame {
-
+    String userid = "";
     /**
      * Creates new form ManagingStaffApproval
      */
-    public ManagingStaffApproval() {
+    public ManagingStaffApproval(String user_id) {
         initComponents();
+        userid = user_id;      
+        //variable for input
+        data();
     }
 
     /**
@@ -85,22 +97,22 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Approvebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rejectbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -114,15 +126,45 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-
+        this.dispose();
+        new ManagingStaffDasboard(userid).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void ApprovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovebtnActionPerformed
-        // TODO add your handling code here:
+        
+        //TableModel model = jTable1.getModel();
+       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[7];
+        Users u = new Users();
+        for(int i =0; i < indexs.length; i++) {
+            String Username;
+            Username = (String) model.getValueAt(indexs[i], 0);
+            u.setUsername(Username);
+            u.ApproveUser();
+            JOptionPane.showMessageDialog(rootPane, "The User is approved. User now able to access Fast and Furious", "User Approved ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        data();
+        
     }//GEN-LAST:event_ApprovebtnActionPerformed
 
     private void rejectbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rejectbtnActionPerformed
         // TODO add your handling code here:
+        //TableModel model = jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[7];
+        Users u = new Users();
+        for(int i =0; i < indexs.length; i++) {
+            String Username;
+            Username = (String) model.getValueAt(indexs[i], 0);
+            u.setUsername(Username);
+            u.RejectUser();
+            JOptionPane.showMessageDialog(rootPane, "The User is Declined. User unable to access Fast and Furious", "User Decline ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        data();
     }//GEN-LAST:event_rejectbtnActionPerformed
 
     /**
@@ -155,9 +197,56 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffApproval().setVisible(true);
+
             }
         });
+    }
+    
+    public void data() {
+        String approval_status = "Pending";
+        
+        //variable for output
+        String Username;
+        String FirstName;
+        String LastName;
+        String Role;
+        String Email;
+        String Phone;
+        String Status;
+        //reader
+        String filepath = "UserDetails.txt";
+        File file = new File(filepath);
+        BufferedReader br;
+        
+        try {
+            FileReader rf = new FileReader(file);
+            br = new BufferedReader (rf);
+            String[] columnName = {"Username","First Name","Last Name","Role","Email","Phone","Status"};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            jTable1.revalidate();
+            Object[] details = br.lines().toArray();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                if (approval_status.equals(row[8])) {
+                    //create the object to added into the table
+                    Username = row[1];
+                    FirstName = row[3];
+                    LastName = row[4];
+                    Role = row[2];
+                    Email = row[5];
+                    Phone = row[6];
+                    Status = row[8];
+                    model.addRow(new Object[] {Username,FirstName,LastName,Role,Email,Phone,Status});
+                }
+            }
+            br.close();        
+            rf.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

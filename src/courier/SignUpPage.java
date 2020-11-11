@@ -262,9 +262,10 @@ public class SignUpPage extends javax.swing.JFrame {
         String Tempphone = phonetxt.getText();
         String Temppass= new String(passwordtxt.getPassword()); //Password
         String Tempconfirmpass = new String(confirmpasstxt.getPassword()); //Confirm Password
+        String Tempstatus = "";
         
         //Assign User detail from the text field
-        Users u = new Users(UserID, Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass);
+        Users u = new Users(UserID, Tempuser,Tempselectedradio,Tempfirst,Templast,Tempemail,Tempphone,Temppass,Tempstatus);
         
         if(u.checkEmpty()) { //if the text field is empty
             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -302,19 +303,21 @@ public class SignUpPage extends javax.swing.JFrame {
                                 if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
                                     //show the Message
                                     JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-                                    //save file
-                                    u.UserSaveFile();
                                     //clear all the field
                                     clearFields();
-
                                     //role selection
                                     //customer sign up
                                     if(Tempselectedradio.equals("Customer")){
                                         this.dispose();
+                                        //save file
+                                        u.setStatus("Active");
+                                        u.UserSaveFile();
                                         new Login().setVisible(true);
                                         //Staff sign up
                                     } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")) {
                                         JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
+                                        u.setStatus("Pending");
+                                        u.UserSaveFile();
                                         this.dispose();
                                         new Login().setVisible(true);
                                     }
@@ -338,14 +341,14 @@ public class SignUpPage extends javax.swing.JFrame {
                             if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
                                 //show the Message
                                 JOptionPane.showMessageDialog(rootPane, "Your Fast and Furios Account is created ", "SignUp ", JOptionPane.INFORMATION_MESSAGE);
-                                //save file
-                                u.UserSaveFile();
                                 //clear all the field
                                 clearFields();
 
                                 //role selection
                                 //customer sign up
                                 if(Tempselectedradio.equals("Customer")) {
+                                    //save file
+                                    u.UserSaveFile();
                                     this.dispose();
                                     new Login().setVisible(true);
 
