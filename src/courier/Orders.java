@@ -380,11 +380,41 @@ public class Orders {
                             deliverystatus = row[18];    
                             return orderid + "," + orderdate + "," + total + "," + deliverystatus;
                         }
+                    } else if(TempUserType.equals("Managing Staff")) {
+                        Object[] details = br2.lines().toArray();
+                        for (Object detail : details) {
+                            String line = detail.toString().trim();
+                            String[] row = line.split(",");
+                            assignperson = row[10];
+                            if(assignperson.equals("none")) {
+                                orderid = row[0];
+                                orderdate = row[9];
+                                total = row[17];
+                                deliverystatus = row[18];    
+                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
+                            } else {
+                                return "Currently there is no order need to be assigned";
+                            }
+                        }
+                    } else if(TempUserType.equals("Delivery Staff")) {
+                        Object[] details = br2.lines().toArray();
+                        for (Object detail : details) {
+                            String line = detail.toString().trim();
+                            String[] row = line.split(",");
+                            assignperson = row[19];
+                            if(assignperson.equals(userid)) {
+                                orderid = row[0];
+                                orderdate = row[9];
+                                total = row[17];
+                                deliverystatus = row[18];    
+                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
+                            } else {
+                                return "Currenlty there is no delivery need to be made";
+                            }
+                        }
                     }
                 }
             }
-            
-            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
