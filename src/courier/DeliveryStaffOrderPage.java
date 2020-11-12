@@ -16,47 +16,8 @@ import javax.swing.table.DefaultTableModel;
  * @author jasmi
  */
 public class DeliveryStaffOrderPage extends javax.swing.JFrame {
-     String UserID = "";
+    String UserID = "";
      
-    class DeliveryStaff{
-           //to show the order details of the user
-        /*String filepath = "txt";
-        File file = new File(filepath);
-        
-        BufferedReader br;
-        String strLine;
-        try {
-            br = new BufferedReader (new FileReader(file));
-
-            String[] columnName = {"Course", "Time", "Date" , "Fee", "Venue", "Trainer"};
-
-            DefaultTableModel model = (DefaultTableModel)check_schedule.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0); //clear the model
-            check_schedule.revalidate(); //refresh the table
-                try {
-                    while((strLine=br.readLine())!=null){
-                        Object[] details = strLine.lines().toArray();
-                        for (Object detail : details) {
-                            String line = detail.toString().trim();
-                            String[] row = line.split(",");
-
-                            if (trainer.equals(row[5])) {
-                                model.addRow(row);
-                            }
-                        }
-                        
-                    }   } catch (IOException ex) {
-                    Logger.getLogger(check_schedule.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-        } catch (IOException ex) {
-            Logger.getLogger(check_schedule.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-    }
-    class ManagingStaff{}
-    class Customer{}
     /**
      * Creates new form DeliveryStaffOrderPage
      */
@@ -64,81 +25,80 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         initComponents();
          UserID = user_id;
          
-       try{
-          //read data from the file  
-         File file = new File("UserDetails.txt");
-         Scanner sc = new Scanner(file); 
-         File file1 = new File("Orders.txt");
-         String temp;
-         boolean found = false;
-         String strLine;
-         BufferedReader br = new BufferedReader (new FileReader(file1));
+        try{
+            //read data from the file  
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file); 
+            File file1 = new File("Orders.txt");
+            String temp;
+            boolean found = false;
+            String strLine;
+            BufferedReader br = new BufferedReader (new FileReader(file1));
 
-          String[] columnName = {"OrderID", "Sender's Address", "Receiver's Address" , "Delivery Person", "UserID"};
+            String[] columnName = {"OrderID", "Sender's Address", "Receiver's Address" , "Delivery Person", "UserID"};
 
-           DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
-           model.setColumnIdentifiers(columnName);
-           model.setRowCount(0); //clear the model
-           Ordertbl.revalidate(); //refresh the table
-           
-            
-           //check equals userid with database and retrieve user type 
-           while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-           temp = sc.nextLine(); //read a line of text from file
-           String[] tempArr;
-           tempArr = temp.split (",");
+            DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0); //clear the model
+            Ordertbl.revalidate(); //refresh the table
 
-              if (UserID.equals(tempArr[0])) { 
-                String Temptype = tempArr[2];
-                  if(Temptype.equals("Managing Staff")){
-                    addbtn.setVisible(false);
-                       // table show details for managing staff                        
-                        while((strLine=br.readLine())!=null){
-                          Object[] details = strLine.lines().toArray();
-                              for (Object detail : details) {
-                                  String line = detail.toString().trim();
-                                  String[] row = line.split(",");
-                                  String delivery = row[19];
-                                     if (!delivery.equals("None")) {
+
+            //check equals userid with database and retrieve user type 
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+
+                if (UserID.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
+                    if(Temptype.equals("Managing Staff")) {
+                        addbtn.setVisible(false);
+                        // table show details for managing staff                        
+                        while((strLine=br.readLine())!=null) {
+                            Object[] details = strLine.lines().toArray();
+                            for (Object detail : details) {
+                                String line = detail.toString().trim();
+                                String[] row = line.split(",");
+                                String delivery = row[19];
+                                if (!delivery.equals("None")) {
                                         model.addRow(row);
-                                    }
-                              }
+                                }
+                            }
                        }
-                    }else if (Temptype.equals("Customer")){
-                     // table show details for customer
-                      while((strLine=br.readLine())!=null){
-                         Object[] details = strLine.lines().toArray();
-                           for (Object detail : details) {
-                              String line = detail.toString().trim();
-                              String[] row = line.split(",");
-                              String orderuserid = row[21];
-                                 if (UserID.equals(orderuserid)) {
-                                   model.addRow(row);
-                                  }
-                           }
-                     }                        
-
-                  }else {
+                    } else if (Temptype.equals("Customer")) {
+                        // table show details for customer
+                        while((strLine=br.readLine())!=null) {
+                            Object[] details = strLine.lines().toArray();
+                            for (Object detail : details) {
+                                String line = detail.toString().trim();
+                                String[] row = line.split(",");
+                                String orderuserid = row[21];
+                                if (UserID.equals(orderuserid)) {
+                                    model.addRow(row);
+                                }
+                            }
+                        }                        
+                    } else {
                         addbtn.setVisible(false);
                         // table show details for delivery staff
-                      while((strLine=br.readLine())!=null){
-                         Object[] details = strLine.lines().toArray();
-                           for (Object detail : details) {
-                              String line = detail.toString().trim();
-                              String[] row = line.split(",");
-                              String deliveryuserid = row[19];
-                                 if (UserID.equals(deliveryuserid)) {
-                                   model.addRow(row);
-                                  }
+                        while((strLine=br.readLine())!=null){
+                            Object[] details = strLine.lines().toArray();
+                            for (Object detail : details) {
+                                String line = detail.toString().trim();
+                                String[] row = line.split(",");
+                                String deliveryuserid = row[19];
+                                if (UserID.equals(deliveryuserid)) {
+                                    model.addRow(row);
+                                }
                            }
-                     }                        
+                        }                        
                     }
-                 }
-              }
-   }  catch (IOException ex) {
-         Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(Level.SEVERE, null, ex);
-   }      
- }
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(Level.SEVERE, null, ex);
+        }      
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,7 +222,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                     this.dispose();
                 }
             }
-        }catch(FileNotFoundException ex) {
+        } catch(FileNotFoundException ex) {
             ex.toString();
         }
     }//GEN-LAST:event_backbtnActionPerformed
@@ -297,7 +257,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new DeliveryStaffOrderPage().setVisible(true);
+                
             }
         });
     }

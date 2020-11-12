@@ -124,7 +124,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
-        new DeliveryStaffOrderPage(user_id).setVisible(true);
+        new CustomerOrderTable(user_id).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
