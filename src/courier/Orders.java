@@ -371,14 +371,16 @@ public class Orders {
                     String TempUserType = tempArr[2]; // Return the usertype to the variable
                     if(TempUserType.equals("Customer")) {
                         Object[] details = br2.lines().toArray();
-                        for (Object detail : details) {
+                        for (Object detail : details) { 
                             String line = detail.toString().trim();
                             String[] row = line.split(",");
-                            orderid = row[0];
-                            orderdate = row[9];
-                            total = row[17];
-                            deliverystatus = row[18];    
-                            return orderid + "," + orderdate + "," + total + "," + deliverystatus;
+                            if (userid.equals(row[21])) {
+                                orderid = row[0];
+                                orderdate = row[9];
+                                total = row[17];
+                                deliverystatus = row[18];    
+                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
+                            }
                         }
                     } else if(TempUserType.equals("Managing Staff")) {
                         Object[] details = br2.lines().toArray();
