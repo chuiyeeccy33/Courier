@@ -23,81 +23,20 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
      */
     public DeliveryStaffOrderPage(String user_id) {
         initComponents();
-         UserID = user_id;
-         
-        try{
-            //read data from the file  
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file); 
-            File file1 = new File("Orders.txt");
-            String temp;
-            boolean found = false;
-            String strLine;
-            BufferedReader br = new BufferedReader (new FileReader(file1));
-
-            String[] columnName = {"OrderID", "Sender's Address", "Receiver's Address" , "Delivery Person", "UserID"};
-
-            DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0); //clear the model
-            Ordertbl.revalidate(); //refresh the table
-
-
-            //check equals userid with database and retrieve user type 
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-
-                if (UserID.equals(tempArr[0])) {
-                    String Temptype = tempArr[2];
-                    if(Temptype.equals("Managing Staff")) {
-                        addbtn.setVisible(false);
-                        // table show details for managing staff                        
-                        while((strLine=br.readLine())!=null) {
-                            Object[] details = strLine.lines().toArray();
-                            for (Object detail : details) {
-                                String line = detail.toString().trim();
-                                String[] row = line.split(",");
-                                String delivery = row[19];
-                                if (!delivery.equals("None")) {
-                                        model.addRow(row);
-                                }
-                            }
-                       }
-                    } else if (Temptype.equals("Customer")) {
-                        // table show details for customer
-                        while((strLine=br.readLine())!=null) {
-                            Object[] details = strLine.lines().toArray();
-                            for (Object detail : details) {
-                                String line = detail.toString().trim();
-                                String[] row = line.split(",");
-                                String orderuserid = row[21];
-                                if (UserID.equals(orderuserid)) {
-                                    model.addRow(row);
-                                }
-                            }
-                        }                        
-                    } else {
-                        addbtn.setVisible(false);
-                        // table show details for delivery staff
-                        while((strLine=br.readLine())!=null){
-                            Object[] details = strLine.lines().toArray();
-                            for (Object detail : details) {
-                                String line = detail.toString().trim();
-                                String[] row = line.split(",");
-                                String deliveryuserid = row[19];
-                                if (UserID.equals(deliveryuserid)) {
-                                    model.addRow(row);
-                                }
-                           }
-                        }                        
-                    }
-                }
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        UserID = user_id;
+        String[] columnName = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
+        DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0); //clear the model
+        Ordertbl.revalidate(); //refresh the table
+        
+        Orders o = new Orders();
+        o.setUserid(UserID);
+        Object[] outputs = o.LoadOrder().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -197,34 +136,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        try{
-            //read data from the file
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-
-            //check equals userid with database and retrieve user type
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-
-                if (UserID.equals(tempArr[0])) {
-                    String usertype = tempArr[2];
-                    if (usertype.equals("Customer")) {
-                        new CustomerDashboard(UserID).setVisible(true);
-                    } else if(usertype.equals("Managing Staff")) {
-                        new ManagingStaffDasboard(UserID).setVisible(true);
-                    }else{
-                        new DeliveryStaffDashboardPage(UserID).setVisible(true);
-                    }
-                    this.dispose();
-                }
-            }
-        } catch(FileNotFoundException ex) {
-            ex.toString();
-        }
+        this.dispose();
+        new DeliveryStaffOrderPage(UserID).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
