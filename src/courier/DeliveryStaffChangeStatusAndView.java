@@ -67,6 +67,11 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 assignedpersonphonelbl1.setVisible(true);
                                 assignedpersonphonetxt.setVisible(true);
                                 assignedpersonphonetxt.setEditable(false);
+                                //set customer details in database
+                                sendernametxt.setText(tempArr[1]);
+                                senderphonetxt.setText(tempArr[6]);
+                                senderemailtxt.setText(tempArr[5]);
+                                
                                 // Create a date object
                                LocalDate date = LocalDate.now(); 
                                //date format
@@ -85,7 +90,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     String [] temp1Arr;
                                     temp1Arr = temp1.split(",");
                                         
-                                     if(temp1Arr[21].equals("86e71bc7-874c-4e31-a9d2-981efc741da1") && temp1Arr[0].equals("c12dfbb8-e86f-4458-a106-b340ee14eb22")) {
+                                     if(temp1Arr[0].equals("c12dfbb8-e86f-4458-a106-b340ee14eb22")) {
                                         sendernametxt.setText(temp1Arr[1]);
                                         senderaddresstxt.setText(temp1Arr[2]);
                                         senderphonetxt.setText(temp1Arr[3]);
@@ -572,9 +577,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deliveryreceiverlbl)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(receivernamelbl))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(receivernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(receiveraddresslbl)
@@ -627,11 +632,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(itemlbl2)
-                                    .addComponent(shippingfeelbl)
-                                    .addComponent(shippingfee1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(shippingfee1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(itemlbl2)
+                                        .addComponent(shippingfeelbl)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(itempricelbl)
