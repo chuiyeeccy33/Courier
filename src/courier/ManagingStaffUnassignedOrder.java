@@ -19,13 +19,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jasmi
  */
-public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
+public class ManagingStaffUnassignedOrder extends javax.swing.JFrame {
 
     /**
      * Creates new form DeliveryStaffUnassignedOrderPage
      */
     String UserID = "";
-    public DeliveryStaffUnassignedOrderPage(String user_id) {
+    public ManagingStaffUnassignedOrder(String user_id) {
         initComponents();
         UserID = user_id;
         
@@ -212,13 +212,13 @@ public class DeliveryStaffUnassignedOrderPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffUnassignedOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUnassignedOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffUnassignedOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUnassignedOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffUnassignedOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUnassignedOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffUnassignedOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUnassignedOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
