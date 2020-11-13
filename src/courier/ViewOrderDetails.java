@@ -37,7 +37,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
             String temp1;
             boolean found = false;
 
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct userid*/) {
                 temp = sc.nextLine(); //read a line of text from file
                 String[] tempArr;
                 tempArr = temp.split (","); 

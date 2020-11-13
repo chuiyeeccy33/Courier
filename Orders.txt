@@ -2,4 +2,4 @@ d2ac19d4-cfc0-4e96-92a6-4f61bc2f4261,a,c,3,e@gmail.com,b,d,3,e@gmail.com,06/11/2
 b0b11843-9171-4c1b-9202-f76f153a8d1d,d,d,234,23@gmail.com,wee,rte,342,232@gmail.com,06/11/2020,24,23,12,123,water,below 0.5kg RM 5,45,545,Pending,None,,86e71bc7-874c-4e31-a9d2-981efc741da1
 911c8d01-d997-4b2a-9c06-a32895b042e6,as,ada,34,2@gmail.com,ada,da,2332,2@gmail.com,08/11/2020,23,332,23,12,ok,below 0.5kg RM 5,32,RM37,Pending,None,,86e71bc7-874c-4e31-a9d2-981efc741da1
 5a5c6f4c-5e30-4ba0-97a1-886eadfa81be,wq,q,23,we@gmail.com,wq,wq,23,23@gmail.com,08/11/2020,232,232,32,32,d,2.1 - 5kg RM 12,55,60,Pending,None,,86e71bc7-874c-4e31-a9d2-981efc741da1
-20f285b4-f251-4d69-8542-606dbf00af7e,wq,q,23,we@gmail.com,wq,wq,23,23@gmail.com,08/11/2020,232,232,32,32,d,2.1 - 5kg RM 12,55,60,Pending,787de7bd-acb2-440f-879e-36d389c1b23e,0123121131,86e71bc7-874c-4e31-a9d2-981efc741da1
+20f285b4-f251-4d69-8542-606dbf00af7e,wq,q,23,we@gmail.com,wq,wq,23,23@gmail.com,08/11/2020,232,232,32,32,d,12.1 and above RM 30,55,60,Pending,787de7bd-acb2-440f-879e-36d389c1b23e,0123121131,86e71bc7-874c-4e31-a9d2-981efc741da1
