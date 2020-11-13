@@ -26,6 +26,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     String Userid="";
     public DeliveryStaffChangeStatusAndView(String UserID) {
         initComponents();
+        idorderlbl.setVisible(false);
+        orderidlbl.setVisible(false);
+        idcustlbl.setVisible(false);
+        custidlbl.setVisible(false);
+        iddeliverylbl.setVisible(false);
+       deliveryidlbl.setVisible(false);
         assignedpersonphonelbl1.setVisible(false);
         assignedpersonphonetxt.setVisible(false);
         assignedpersonlbl.setVisible(false);
@@ -50,70 +56,73 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
                 temp = sc.nextLine(); //read a line of text from file
                 String[] tempArr;
-                tempArr = temp.split (",");
-                if (Userid.equals(tempArr[0])) {
-                   String Temptype = tempArr[2];
+                tempArr = temp.split (","); 
+                        
+                        if (Userid.equals(tempArr[0])) {
+                           String Temptype = tempArr[2];
 
-                    if(Temptype.equals("Customer")){
-                        updatebtn.setText("Add");
-                        assignedpersonphonelbl1.setVisible(true);
-                        assignedpersonphonetxt.setVisible(true);
-                        assignedpersonphonetxt.setEditable(false);
-                    } else if(Temptype.equals("Managing Staff")) {
-                        assignedpersonlbl.setVisible(true);
-                        assignedpersoncbox.setVisible(true);
-                        deliverystatuslbl.setVisible(true);
-                        deliverystatuscbox.setVisible(true);
+                            if(Temptype.equals("Customer")){
+                                updatebtn.setText("Add");
+                                assignedpersonphonelbl1.setVisible(true);
+                                assignedpersonphonetxt.setVisible(true);
+                                assignedpersonphonetxt.setEditable(false);
+                                // Create a date object
+                               LocalDate date = LocalDate.now(); 
+                               //date format
+                               DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                               String show = date.format(format);
+                               datelbl.setText(show);
+                               System.out.println(date); // Display the current date
+                            }else if(Temptype.equals("Managing Staff")) {
+                                assignedpersonlbl.setVisible(true);
+                                assignedpersoncbox.setVisible(true);
 
-                        while(file1sc.hasNext() && !found) {
-                            temp1 = file1sc.nextLine();
-                            String [] temp1Arr;
-                            temp1Arr = temp1.split(",");
+                                while(file1sc.hasNext() && !found) {
+                                    temp1 = file1sc.nextLine();
+                                    String [] temp1Arr;
+                                    temp1Arr = temp1.split(",");
 
-                             if(temp1Arr[21].equals("117f6b1e-ab1b-4039-866e-67415b4bd8c1") && temp1Arr[0].equals("c9680219-292b-4beb-a016-1e70acca4454")) {
-                                System.out.println(tempArr[2]);
-                                sendernametxt.setText(temp1Arr[1]);
-                                senderaddresstxt.setText(temp1Arr[2]);
-                                senderphonetxt.setText(temp1Arr[3]);
-                                senderemailtxt.setText(temp1Arr[4]);
-                                receivernametxt.setText(temp1Arr[5]);
-                                receiveraddresstxt.setText(temp1Arr[6]);
-                                receiverphonetxt.setText(temp1Arr[7]);
-                                receiveremailtxt.setText(temp1Arr[8]);
-                                weighttxt.setText(temp1Arr[10]);
-                                widthtxt.setText(temp1Arr[11]);
-                                lengthtxt.setText(temp1Arr[12]);
-                                heighttxt.setText(temp1Arr[13]);
-                                orderdetailstxt.setText(temp1Arr[14]);
-                                shippingfeecbox.setSelectedItem(temp1Arr[15]);
-                                itempricetxt.setText(temp1Arr[16]);
-                                totaltxt.setText(temp1Arr[17]);
-                                deliverystatuscbox.setSelectedItem(temp1Arr[20]);
-                                assignedpersoncbox.setSelectedItem(temp1Arr[19]);
-                                if(temp1Arr[18].equals("None")) { 
-                                      assignedpersonphonetxt.setText("");
-                                }else{
-                                     assignedpersonphonetxt.setText(temp1Arr[18]);
+                                     if(temp1Arr[21].equals("86e71bc7-874c-4e31-a9d2-981efc741da1") && temp1Arr[0].equals("20f285b4-f251-4d69-8542-606dbf00af7e")) {
+                                        sendernametxt.setText(temp1Arr[1]);
+                                        senderaddresstxt.setText(temp1Arr[2]);
+                                        senderphonetxt.setText(temp1Arr[3]);
+                                        senderemailtxt.setText(temp1Arr[4]);
+                                        receivernametxt.setText(temp1Arr[5]);
+                                        receiveraddresstxt.setText(temp1Arr[6]);
+                                        receiverphonetxt.setText(temp1Arr[7]);
+                                        receiveremailtxt.setText(temp1Arr[8]);
+                                        orderidlbl.setText(temp1Arr[0]);
+                                        custidlbl.setText(temp1Arr[21]);
+                                        datelbl.setText(temp1Arr[9]);
+                                        weighttxt.setText(temp1Arr[10]);
+                                        widthtxt.setText(temp1Arr[11]);
+                                        lengthtxt.setText(temp1Arr[12]);
+                                        heighttxt.setText(temp1Arr[13]);
+                                        orderdetailstxt.setText(temp1Arr[14]);
+                                        shippingfeecbox.setSelectedItem(temp1Arr[15]);
+                                        itempricetxt.setText(temp1Arr[16]);
+                                        totaltxt.setText(temp1Arr[17]);
+                                        if(!temp1Arr[19].equals("")) {
+                                            deliveryidlbl.setText(temp1Arr[19]);
+                                            assignedpersoncbox.setSelectedItem(tempArr[3] + tempArr[4]);
+                                        }
+                                        if(assignedpersoncbox.equals("None")) { 
+                                              assignedpersonphonetxt.setText("");
+                                        }else{
+                                             assignedpersonphonetxt.setText(temp1Arr[20]);
+                                        }
+                                    }else {
+                                        deliverystatuslbl.setVisible(true);
+                                        deliverystatuscbox.setVisible(true);
+                                        //deliverystatuscbox.setSelectedItem(temp1Arr[20]);
+                                    }
                                 }
                             }
                         }
-                    }else {
-                        deliverystatuslbl.setVisible(true);
-                        deliverystatuscbox.setVisible(true);
-                   }
-                }
             }
         }catch(FileNotFoundException ex) {
-               ex.toString();
+                       ex.toString();
         }
-   
-        // Create a date object
-        LocalDate date = LocalDate.now(); 
-        //date format
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String show = date.format(format);
-        datelbl.setText(show);
-        System.out.println(date); // Display the current date
     }
     
     /**
@@ -134,7 +143,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         itempricelbl = new javax.swing.JLabel();
         totallbl = new javax.swing.JLabel();
         assignedpersonlbl = new javax.swing.JLabel();
-        datalbl = new javax.swing.JLabel();
+        Datelbl = new javax.swing.JLabel();
         weightlbl = new javax.swing.JLabel();
         lengthlbl = new javax.swing.JLabel();
         widthlbl = new javax.swing.JLabel();
@@ -180,6 +189,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         calculatebtn = new javax.swing.JButton();
         itemlbl = new javax.swing.JLabel();
         itemlbl1 = new javax.swing.JLabel();
+        idorderlbl = new javax.swing.JLabel();
+        orderidlbl = new javax.swing.JLabel();
+        idcustlbl = new javax.swing.JLabel();
+        custidlbl = new javax.swing.JLabel();
+        iddeliverylbl = new javax.swing.JLabel();
+        deliveryidlbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,8 +225,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         assignedpersonlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersonlbl.setText("Assigned Delivery Person: ");
 
-        datalbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        datalbl.setText("Date:");
+        Datelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        Datelbl.setText("Date:");
 
         weightlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weightlbl.setText("Weight:");
@@ -276,6 +291,11 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
 
         assignedpersoncbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersoncbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        assignedpersoncbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignedpersoncboxActionPerformed(evt);
+            }
+        });
 
         widthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -356,6 +376,15 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         itemlbl1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         itemlbl1.setText("RM");
 
+        idorderlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        idorderlbl.setText("Orderid:");
+
+        idcustlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        idcustlbl.setText("Custid:");
+
+        iddeliverylbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        iddeliverylbl.setText("Deliveryid:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -413,23 +442,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(widthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(99, 99, 99)
-                                .addComponent(Wcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lengthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lengthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Lcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(heightlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Hcmlbl))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addComponent(deliveryOrderlbl))
                             .addGroup(layout.createSequentialGroup()
@@ -465,12 +477,14 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                             .addComponent(assignedpersoncbox, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(datalbl)
-                                            .addComponent(weightlbl))
+                                            .addComponent(Datelbl)
+                                            .addComponent(weightlbl)
+                                            .addComponent(idorderlbl))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(weighttxt, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                                            .addComponent(datelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(datelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(orderidlbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(2, 2, 2)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(kglbl)
@@ -483,10 +497,38 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                                 .addGap(10, 10, 10)
                                                 .addComponent(calculatebtn)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(idcustlbl)
+                                                .addGap(173, 173, 173))
+                                            .addComponent(custidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(23, 23, 23)
+                                        .addComponent(iddeliverylbl)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(deliveryidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(widthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)
+                                .addComponent(Wcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lengthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lengthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Lcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(heightlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(heighttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Hcmlbl)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(updatebtn)))
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,11 +580,19 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(senderemaillbl))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(deliveryOrderlbl)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(orderidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idorderlbl)
+                    .addComponent(custidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idcustlbl)
+                    .addComponent(deliveryidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iddeliverylbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(datalbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Datelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(datelbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,10 +654,13 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
 
     private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";       
-        
+
         String TempUserID = Userid;
         UUID TempOrderID = UUID.randomUUID();
         String OrderID = TempOrderID.toString();
+        String ExistOrderID = orderidlbl.getText();
+        String Tempcustid = custidlbl.getText();
+        String deliveryid = deliveryidlbl.getText();
         String Tempsendname = sendernametxt.getText();
         String Tempsendaddress = senderaddresstxt.getText();
         String Tempsendphone = senderphonetxt.getText();
@@ -633,7 +686,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             File file = new File("UserDetails.txt");
             Scanner sc = new Scanner(file); 
             //read data from the file
-       
             String temp;
             boolean found = false;
        
@@ -643,69 +695,71 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 tempArr = temp.split (",");
                 if (TempUserID.equals(tempArr[0])) {
                     String Temptype = tempArr[2];
-        
-                    //Assign Order detail from the text field
-                    Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,delivery,Tempdeliverystatus,TempUserID);
-                    //String type = new Users().getSelectedUserType();
-      
-    
-                    if(Temptype.equals("Customer")) {
-                        if(o.checkEmptyOrderField()) { //if the text field is empty
-                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-                        } else { //else the field is not empty  
-                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {     
-                                if(!Tempitemprice.equals("")) {
-                                    if(!Temptotal.equals("")) {
-                                        o.SaveOrderFile();
-                                        clearFields();
-                                        this.dispose();
-                                        new DeliveryStaffOrderPage(Userid).setVisible(true);
-                                    } else {
-                                        JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
+                    Users u = new Users();
+                    u.setSelectedUserType(Temptype);
+                    
+                        Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,deliveryid,Tempdeliverystatus,Tempcustid);
+                    
+                        if(u.getSelectedUserType().equals("Customer")) {
+                                if(o.checkEmptyOrderField()) { //if the text field is empty
+                                    JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                                } else { //else the field is not empty  
+                                         if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {     
+                                            if(!Tempitemprice.equals("")) {
+                                                    if(!Temptotal.equals("")) {
+                                                            o.SaveOrderFile();
+                                                            clearFields();
+                                                            this.dispose();
+                                                            new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                                    } else {
+                                                            JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
+                                                        }
+                                            } else{
+                                                        JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
+                                                    }
+                                        } //the email is not in format
+                                                else { 
+                                                    JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                                               }        
                                     }
-                                } else{
-                                    JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
-                                }
-                            } //the email is not in format
-                            else { 
-                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-                           }        
+                        } else if(u.getSelectedUserType().equals("Managing Staff")) {                            
+                                            if(o.checkEmptyOrderField()) { //if the text field is empty
+                                                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                                             } else { //else the field is not empty  
+                                                         if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
+                                                             if(!Tempitemprice.equals("")) {
+                                                                 if(!Temptotal.equals("")) {
+                                                                     if(!delivery.equals("None")) {
+
+                                                                                  Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                                                   Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
+                                               
+                                                                                     o1.RemoveOrder();
+                                                                                     o1.UpdateOrder();
+                                                                                     clearFields();
+                                                                                     this.dispose();
+                                                                                     new DeliveryStaffOrderPage(Userid).setVisible(true);        
+                                                                    } else {
+                                                                         JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
+                                                                    }
+                                                                 } else{
+                                                                    JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
+                                                                 }
+                                                             }else{
+                                                                   JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
+                                                             }
+                                                        } //the email is not in format
+                                                         else { 
+                                                             JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                                                        }
+                                            }
                         }
-                    } else if(Temptype.equals("Managing Staff")) {
-                        System.out.println(Temptype);
-                        if(o.checkEmptyOrderField()) { //if the text field is empty
-                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-                        } else { //else the field is not empty  
-                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
-                                if(!Tempitemprice.equals("")) {
-                                    if(!Temptotal.equals("")) {
-                                        if(!delivery.equals("None")) {
-                                            o.RemoveOrder();
-                                            o.UpdateOrder();
-                                            clearFields();
-                                            this.dispose();
-                                            new DeliveryStaffOrderPage(Userid).setVisible(true);
-                                       } else {
-                                            JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
-                                       }
-                                    } else{
-                                       JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
-                                    }
-                                }else{
-                                      JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
-                                }
-                           } //the email is not in format
-                            else { 
-                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-                           }        
-                        }
-                }
-                }
-            }
-        } catch(FileNotFoundException ex) {
-                     ex.toString();
-        }
+                    }
+            }                    
+       } catch(FileNotFoundException ex) {
+                                                  ex.toString();
+       }
     }//GEN-LAST:event_updatebtnActionPerformed
 
     private void receiverphonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_receiverphonetxtKeyTyped
@@ -748,7 +802,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 String[] tempArr;
                 tempArr = temp.split (",");
 
-                if (role.equals(tempArr[2])){
+                if (role.equals(tempArr[2])  && !tempArr[8].equals("Pending")){
                     //needed value in array
                     String valueneeded = tempArr[3] + " " + tempArr[4];
                     String [] column = valueneeded.split(",");
@@ -834,6 +888,32 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
        
     }//GEN-LAST:event_calculatebtnActionPerformed
 
+    private void assignedpersoncboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignedpersoncboxActionPerformed
+       try{
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file); 
+            //read data from the file
+
+            String temp;
+            boolean found = false;
+
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (","); 
+                if(!assignedpersoncbox.equals("None")) {
+                    String deliveryID = tempArr[0];
+                    String deliveryphone = tempArr[6];
+                    deliveryidlbl.setText(deliveryID);
+                    assignedpersonphonetxt.setText(deliveryphone);
+                    
+                }
+            }
+       }catch(FileNotFoundException ex) {
+                     ex.toString();
+       }
+    }//GEN-LAST:event_assignedpersoncboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -870,6 +950,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Datelbl;
     private javax.swing.JLabel Hcmlbl;
     private javax.swing.JLabel Lcmlbl;
     private javax.swing.JLabel Wcmlbl;
@@ -879,15 +960,19 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JTextField assignedpersonphonetxt;
     private javax.swing.JButton backbtn;
     private javax.swing.JButton calculatebtn;
-    private javax.swing.JLabel datalbl;
+    private javax.swing.JLabel custidlbl;
     private javax.swing.JLabel datelbl;
     private javax.swing.JLabel deliveryOrderlbl;
+    private javax.swing.JLabel deliveryidlbl;
     private javax.swing.JLabel deliveryreceiverlbl;
     private javax.swing.JLabel deliverysenderlbl;
     private javax.swing.JComboBox<String> deliverystatuscbox;
     private javax.swing.JLabel deliverystatuslbl;
     private javax.swing.JLabel heightlbl;
     private javax.swing.JTextField heighttxt;
+    private javax.swing.JLabel idcustlbl;
+    private javax.swing.JLabel iddeliverylbl;
+    private javax.swing.JLabel idorderlbl;
     private javax.swing.JLabel itemlbl;
     private javax.swing.JLabel itemlbl1;
     private javax.swing.JLabel itempricelbl;
@@ -900,6 +985,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JTextField lengthtxt;
     private javax.swing.JLabel orderdetailslbl;
     private javax.swing.JTextArea orderdetailstxt;
+    private javax.swing.JLabel orderidlbl;
     private javax.swing.JLabel receiveraddresslbl;
     private javax.swing.JTextArea receiveraddresstxt;
     private javax.swing.JLabel receiveremaillbl;

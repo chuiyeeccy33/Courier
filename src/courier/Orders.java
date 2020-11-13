@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Orders {
     //composition 
-    private Users users;
+    private Users userstype = new Users();
     //general
     //person details
     private String orderid;
@@ -63,14 +63,12 @@ public class Orders {
         total = Total;
         deliverystatus = Deliverystatus;
         assignperson = Assignperson;
-        staffphone = Staffphone;
-        //users.java
-        this.users = new Users();
-    }
+        staffphone = Staffphone;    
+    } 
     
     //get
-    public String getType() {
-        return users.getSelectedUserType();
+    public Users getSelectedUserType() {
+        return userstype;
     }
       
     private String getOrderid() {
@@ -280,14 +278,9 @@ public class Orders {
                 || shippingfee.equals("");
     }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
      
-    public void Back(String user){
-        userid = user;
-        new DeliveryStaffOrderPage(userid).setVisible(true);              
-    }
-
       //remove order detail
     public void RemoveOrder(){
-        String removeTerm = "c9680219-292b-4beb-a016-1e70acca4454"; 
+        String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
         try{
@@ -364,7 +357,7 @@ public class Orders {
        
        public void Back(String user, String type){
         userid = user;
-        type = getType();
+        type = userstype.getSelectedUserType();
         if (type.equals("Customer")) {
             new CustomerDashboard(userid).setVisible(true);
         } else if(type.equals("Managing Staff")) {
@@ -372,5 +365,10 @@ public class Orders {
         }else{
             new DeliveryStaffDashboardPage(userid).setVisible(true);           
         }       
+    }
+       
+        public void Back(String user){
+        userid = user;
+        new DeliveryStaffOrderPage(userid).setVisible(true);              
     }
 }
