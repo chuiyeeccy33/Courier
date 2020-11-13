@@ -121,21 +121,28 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="widthtxt" min="-2" pref="77" max="-2" attributes="0"/>
-                                                          <Component id="shippingfeecbox" min="-2" pref="148" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="widthtxt" min="-2" pref="77" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="itemlbl" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="itemlbl1" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="totaltxt" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
-                                                          <Component id="itempricetxt" min="-2" pref="125" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="itemlbl2" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Component id="shippingfee1lbl" max="32767" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" attributes="0">
+                                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                                  <Component id="itemlbl" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="itemlbl1" min="-2" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="totaltxt" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                                                                  <Component id="itempricetxt" min="-2" pref="125" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
                                                       </Group>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
@@ -240,9 +247,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="deliveryreceiverlbl" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="receivernamelbl" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="receivernametxt" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="receivernametxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="receivernamelbl" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -268,7 +275,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               <Component id="deliveryOrderlbl" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -310,11 +317,13 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="itemlbl2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="shippingfeelbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="shippingfeecbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="shippingfee1lbl" alignment="0" pref="23" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="itempricelbl" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="itempricetxt" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -639,9 +648,6 @@
           <Font name="Dialog" size="12" style="0"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="itempricetxtKeyTyped"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="totaltxt">
       <Properties>
@@ -679,6 +685,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="weighttxtKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="weighttxtKeyTyped"/>
       </Events>
     </Component>
@@ -738,26 +745,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JComboBox" name="shippingfeecbox">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="12" style="0"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="below 0.5kg RM 5"/>
-            <StringItem index="1" value="0.5 - 2kg RM 7"/>
-            <StringItem index="2" value="2.1 - 5kg RM 12"/>
-            <StringItem index="3" value="5.1 - 7kg RM 18"/>
-            <StringItem index="4" value="7.1 - 12kg RM 25"/>
-            <StringItem index="5" value="12.1 and above RM 30"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JLabel" name="datelbl">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -820,6 +807,21 @@
     <Component class="javax.swing.JLabel" name="deliveryidlbl">
     </Component>
     <Component class="javax.swing.JLabel" name="deliverystatus1lbl">
+    </Component>
+    <Component class="javax.swing.JLabel" name="itemlbl2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="RM"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="shippingfee1lbl">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="12" style="0"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

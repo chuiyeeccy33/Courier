@@ -5,6 +5,7 @@
  */
 package courier;
 
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -84,7 +85,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     String [] temp1Arr;
                                     temp1Arr = temp1.split(",");
                                         
-                                     if(temp1Arr[21].equals("86e71bc7-874c-4e31-a9d2-981efc741da1") && temp1Arr[0].equals("20f285b4-f251-4d69-8542-606dbf00af7e")) {
+                                     if(temp1Arr[21].equals("86e71bc7-874c-4e31-a9d2-981efc741da1") && temp1Arr[0].equals("c12dfbb8-e86f-4458-a106-b340ee14eb22")) {
                                         sendernametxt.setText(temp1Arr[1]);
                                         senderaddresstxt.setText(temp1Arr[2]);
                                         senderphonetxt.setText(temp1Arr[3]);
@@ -101,7 +102,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                         lengthtxt.setText(temp1Arr[12]);
                                         heighttxt.setText(temp1Arr[13]);
                                         orderdetailstxt.setText(temp1Arr[14]);
-                                        shippingfeecbox.setSelectedItem(temp1Arr[15]);
+                                       shippingfee1lbl.setText(temp1Arr[15]);
                                         itempricetxt.setText(temp1Arr[16]);
                                         totaltxt.setText(temp1Arr[17]);
                                         deliverystatus1lbl.setText(temp1Arr[18]);
@@ -109,7 +110,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                             deliveryidlbl.setText(temp1Arr[19]);
                                             if(deliveryidlbl.equals(temp1Arr[19])) {
                                             assignedpersoncbox.setSelectedItem(tempArr[1]);
-                                            System.out.println(assignedpersoncbox.getSelectedItem());
                                             }
                                     }else {
                                         deliverystatuslbl.setVisible(true);
@@ -183,7 +183,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         assignedpersonphonetxt = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         senderaddresstxt = new javax.swing.JTextArea();
-        shippingfeecbox = new javax.swing.JComboBox<>();
         datelbl = new javax.swing.JLabel();
         calculatebtn = new javax.swing.JButton();
         itemlbl = new javax.swing.JLabel();
@@ -195,6 +194,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         iddeliverylbl = new javax.swing.JLabel();
         deliveryidlbl = new javax.swing.JLabel();
         deliverystatus1lbl = new javax.swing.JLabel();
+        itemlbl2 = new javax.swing.JLabel();
+        shippingfee1lbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -319,11 +320,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         });
 
         itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        itempricetxt.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                itempricetxtKeyTyped(evt);
-            }
-        });
 
         totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
@@ -345,6 +341,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
 
         weighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                weighttxtKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 weighttxtKeyTyped(evt);
             }
@@ -366,9 +365,6 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         senderaddresstxt.setColumns(20);
         senderaddresstxt.setRows(5);
         jScrollPane4.setViewportView(senderaddresstxt);
-
-        shippingfeecbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        shippingfeecbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "below 0.5kg RM 5", "0.5 - 2kg RM 7", "2.1 - 5kg RM 12", "5.1 - 7kg RM 18", "7.1 - 12kg RM 25", "12.1 and above RM 30" }));
 
         datelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
@@ -393,6 +389,11 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
 
         iddeliverylbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         iddeliverylbl.setText("Deliveryid:");
+
+        itemlbl2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        itemlbl2.setText("RM");
+
+        shippingfee1lbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,18 +480,23 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                         .addGap(3, 3, 3)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(widthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(shippingfeecbox, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(widthtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(71, 71, 71))
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                            .addComponent(itemlbl)
-                                                            .addComponent(itemlbl1))
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(itemlbl2)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(shippingfee1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                            .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                    .addComponent(itemlbl)
+                                                                    .addComponent(itemlbl1))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                    .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                    .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -566,9 +572,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(deliveryreceiverlbl)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(receivernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(receivernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(receivernamelbl))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(receiveraddresslbl)
@@ -585,7 +591,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(deliverystatuslbl)
                                     .addComponent(deliverystatus1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
                 .addComponent(deliveryOrderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -621,10 +627,12 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(itemlbl2)
                                     .addComponent(shippingfeelbl)
-                                    .addComponent(shippingfeecbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(14, 14, 14)
+                                    .addComponent(shippingfee1lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(itempricelbl)
                                     .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -677,7 +685,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         String Templength = lengthtxt.getText();
         String Tempheight = heighttxt.getText();       
         String Temporderdetails = orderdetailstxt.getText();
-        String Tempshippingfee= shippingfeecbox.getSelectedItem().toString(); 
+        String Tempshippingfee= shippingfee1lbl.getText(); 
         String Tempitemprice =itempricetxt.getText();
         String Temptotal =totaltxt.getText();
         String Tempstaffphone = assignedpersonphonetxt.getText();
@@ -701,7 +709,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
                     
                         Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,TempUserID);
                     
                         if(u.getSelectedUserType().equals("Customer")) {
                                 if(o.checkEmptyOrderField()) { //if the text field is empty
@@ -831,51 +839,11 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
-    private void weighttxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_weighttxtKeyTyped
-      //function to allow digit to be typed
-        char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
-            evt.consume();
-        }
-    }//GEN-LAST:event_weighttxtKeyTyped
-
-    private void widthtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_widthtxtKeyTyped
-        //function to allow digit to be typed
-        char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
-            evt.consume();
-        }
-    }//GEN-LAST:event_widthtxtKeyTyped
-
-    private void lengthtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lengthtxtKeyTyped
-        //function to allow digit to be typed
-        char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
-            evt.consume();
-        }
-    }//GEN-LAST:event_lengthtxtKeyTyped
-
-    private void heighttxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_heighttxtKeyTyped
-        //function to allow digit to be typed
-        char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
-            evt.consume();
-        }
-    }//GEN-LAST:event_heighttxtKeyTyped
-
-    private void itempricetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itempricetxtKeyTyped
-        //function to allow digit to be typed
-        char enter = evt.getKeyChar();
-        if(!(Character.isDigit(enter))){
-            evt.consume();
-        }
-    }//GEN-LAST:event_itempricetxtKeyTyped
-
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed
            //value format
         DecimalFormat df = new DecimalFormat("#,###");
         //get shippingfee from textbox
-        double shippingfee= 5;
+        double shippingfee = Double.parseDouble(shippingfee1lbl.getText());
         //get itemprice from textbox
         double price = Double.parseDouble(itempricetxt.getText());
         //calculate of the total
@@ -915,6 +883,86 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                      ex.toString();
        }
     }//GEN-LAST:event_assignedpersoncboxActionPerformed
+
+    private void weighttxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_weighttxtKeyReleased
+        Double weight = Double.parseDouble(weighttxt.getText());
+        
+        if(weighttxt.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            if(weight > 0 && weight < 0.5) {
+                System.out.println(5);
+                shippingfee1lbl.setText("5");
+            }else if(weight > 0.5 && weight < 2.0) {
+                System.out.println(7);
+                 shippingfee1lbl.setText("7");
+            }else if(weight > 2.0 && weight < 5.0 ) {
+                System.out.println(12);
+                shippingfee1lbl.setText("12");
+            }else if(weight > 5.0 && weight < 7.0 ) {
+                System.out.println(18);
+                shippingfee1lbl.setText("18");
+            }else if(weight > 7.0 && weight < 12.0) {
+                System.out.println(25);
+                shippingfee1lbl.setText("25");
+          }else{
+                System.out.println(30);
+                shippingfee1lbl.setText("30");
+            }    
+        }
+    }//GEN-LAST:event_weighttxtKeyReleased
+
+    private void weighttxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_weighttxtKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {      
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        else {
+             weighttxt.setEditable(true);
+             
+        }
+    }//GEN-LAST:event_weighttxtKeyTyped
+
+    private void widthtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_widthtxtKeyTyped
+         char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {         
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        else {
+             widthtxt.setEditable(true);
+             
+        }
+    }//GEN-LAST:event_widthtxtKeyTyped
+
+    private void lengthtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lengthtxtKeyTyped
+         char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {          
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        else {
+             lengthtxt.setEditable(true);
+             
+        }
+    }//GEN-LAST:event_lengthtxtKeyTyped
+
+    private void heighttxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_heighttxtKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {          
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
+        else {
+             heighttxt.setEditable(true);
+             
+        }
+    }//GEN-LAST:event_heighttxtKeyTyped
 
     /**
      * @param args the command line arguments
@@ -977,6 +1025,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JLabel idorderlbl;
     private javax.swing.JLabel itemlbl;
     private javax.swing.JLabel itemlbl1;
+    private javax.swing.JLabel itemlbl2;
     private javax.swing.JLabel itempricelbl;
     private javax.swing.JTextField itempricetxt;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1004,7 +1053,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     private javax.swing.JTextField sendernametxt;
     private javax.swing.JLabel senderphonelbl;
     private javax.swing.JTextField senderphonetxt;
-    private javax.swing.JComboBox<String> shippingfeecbox;
+    private javax.swing.JLabel shippingfee1lbl;
     private javax.swing.JLabel shippingfeelbl;
     private javax.swing.JLabel totallbl;
     private javax.swing.JTextField totaltxt;

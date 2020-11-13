@@ -22,7 +22,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
      String user_id = "";
     public DeliveryStaffDashboardPage(String userid) {
         initComponents();       
-        userwellbl.setText("Good Morning,"+ " " + userid);
+        userwellbl.setText("Good Morning");
         user_id = userid;
     }
 
