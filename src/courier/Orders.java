@@ -278,7 +278,7 @@ public class Orders {
                 || shippingfee.equals("");
     }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
      
-      //remove order detail
+   //remove order detail
     public void RemoveOrder(){
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
@@ -355,6 +355,39 @@ public class Orders {
         }
     }
        
+       //remove order detail
+    public void DeleteOrder(){
+        String removeTerm = orderid; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("Orders.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+        sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+        try{
+            try(PrintWriter pr = new PrintWriter("DeletedOrders.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+            }
+    }
+    
        public void Back(String user, String type){
         userid = user;
         type = userstype.getSelectedUserType();

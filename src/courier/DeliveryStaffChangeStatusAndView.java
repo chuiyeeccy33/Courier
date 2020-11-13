@@ -46,7 +46,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             File file = new File("UserDetails.txt");
             File file1 = new File("Orders.txt");
             Scanner sc = new Scanner(file); 
-            Scanner file1sc = new Scanner(file1); 
+            Scanner sc1 = new Scanner(file1); 
             //read data from the file
 
             String temp;
@@ -77,8 +77,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 assignedpersonlbl.setVisible(true);
                                 assignedpersoncbox.setVisible(true);
 
-                                while(file1sc.hasNext() && !found) {
-                                    temp1 = file1sc.nextLine();
+                                while(sc1.hasNext() && !found) {
+                                    temp1 = sc1.nextLine();
                                     String [] temp1Arr;
                                     temp1Arr = temp1.split(",");
 
@@ -114,7 +114,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     }else {
                                         deliverystatuslbl.setVisible(true);
                                         deliverystatuscbox.setVisible(true);
-                                        //deliverystatuscbox.setSelectedItem(temp1Arr[20]);
+                                        //deliverystatuscbox.setSelectedItem(temp1Arr[18]);
                                     }
                                 }
                             }
@@ -297,29 +297,35 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             }
         });
 
+        widthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         widthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 widthtxtKeyTyped(evt);
             }
         });
 
+        lengthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lengthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 lengthtxtKeyTyped(evt);
             }
         });
 
+        heighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         heighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 heighttxtKeyTyped(evt);
             }
         });
 
+        itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         itempricetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 itempricetxtKeyTyped(evt);
             }
         });
+
+        totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         deliverystatuscbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         deliverystatuscbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Processing", "Shipping", "Cancelled", "Delivered" }));
@@ -340,6 +346,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
             }
         });
 
+        weighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 weighttxtKeyTyped(evt);
@@ -350,11 +357,14 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         kglbl.setText("KG");
 
         orderdetailstxt.setColumns(20);
+        orderdetailstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         orderdetailstxt.setRows(5);
         jScrollPane3.setViewportView(orderdetailstxt);
 
         assignedpersonphonelbl1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersonphonelbl1.setText("Delivery Staff Contact No.: ");
+
+        assignedpersonphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         senderaddresstxt.setColumns(20);
         senderaddresstxt.setRows(5);
@@ -362,6 +372,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
 
         shippingfeecbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         shippingfeecbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "below 0.5kg RM 5", "0.5 - 2kg RM 7", "2.1 - 5kg RM 12", "5.1 - 7kg RM 18", "7.1 - 12kg RM 25", "12.1 and above RM 30" }));
+
+        datelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         calculatebtn.setText("Calculate");
         calculatebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -403,9 +415,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(47, 47, 47)
-                                    .addComponent(senderaddresslbl)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(senderaddresslbl)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -414,7 +424,8 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(senderphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -499,13 +510,10 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(idcustlbl)
-                                                .addGap(173, 173, 173))
+                                            .addComponent(idcustlbl)
                                             .addComponent(custidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(23, 23, 23)
+                                        .addGap(75, 75, 75)
                                         .addComponent(iddeliverylbl)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(deliveryidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -571,7 +579,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(senderaddresslbl)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(senderphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -580,7 +588,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(senderemaillbl))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(deliveryOrderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -699,7 +707,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
                     
                         Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,deliveryid,Tempdeliverystatus,Tempcustid);
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
                     
                         if(u.getSelectedUserType().equals("Customer")) {
                                 if(o.checkEmptyOrderField()) { //if the text field is empty
