@@ -1,0 +1,6 @@
+<<<<<<< Updated upstream
+=======
+09e90c5d-6279-4778-bc5e-bbdbfac320c3,Excellent,adasdaas,117f6b1e-ab1b-4039-866e-67415b4bd8c1
+3525e3ca-46cd-4f80-947b-33555ed6af48,Excellent,Very good,b59e2c5d-d2ec-485f-acee-6b0876ca8602
+a1207941-b75b-4294-9d8d-30f51d2d25f4,Bad,not good,117f6b1e-ab1b-4039-866e-67415b4bd8c1
+>>>>>>> Stashed changes
