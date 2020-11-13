@@ -153,7 +153,8 @@ public class CustomerOrderTable extends javax.swing.JFrame {
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void neworderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neworderbtnActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new DeliveryStaffChangeStatusAndView(userid).setVisible(true);
     }//GEN-LAST:event_neworderbtnActionPerformed
 
     /**

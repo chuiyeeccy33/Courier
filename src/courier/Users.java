@@ -34,7 +34,7 @@ public class Users {
     }
     
     //get
-    private String getUserid() {
+    public String getUserid() {
         return userid;
     }
     

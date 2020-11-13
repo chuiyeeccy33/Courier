@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Orders {
     //composition 
-    private Users users;
+    private Users users = new Users();
     //general
     //person details
     private String orderid;
@@ -43,33 +43,33 @@ public class Orders {
             String Itemprice, String Total, String Deliverystatus,String Assignperson, String Staffphone, String Userid) {
         
         orderid = Orderid; //Order ID 0
-        userid = Userid; //Customer ID 1
-        sendername = Sendername; //Customer Name 2
-        senderaddress = Senderaddress; //Customer address 3
-        senderphone = Senderphone; //Customer Phone Number 4
-        senderemail = Senderemail; //Customer Email 5
-        receivername = Receivername; //Receiver Name 6
-        receiveraddress = Receiveraddress; // Receiver Address 7
-        receiverphone = Receiverphone; // Receiver Phone Number 8
-        receiveremail = Receiveremail; // Receiver Email 9
-        orderdate = Orderdate; //Order Date 10
-        weight = Weight; //Weight of the Item 11
-        width = Width; //Width of the Item 12
-        length = Length; //length of the Item 13
-        height = Height; // Height of the Item 14
-        orderdetails = Orderdetails; //Order Description 15
-        shippingfee = Shippingfee; //Shipping Fees Selection 16
-        itemprice = Itemprice; // Shipping Fees Amount 17
-        total = Total; //Total Amount of the order 18
-        deliverystatus = Deliverystatus; // the status of the order 19
-        assignperson = Assignperson; //Delivery Staff to the order 20
-        staffphone = Staffphone; //Delivery staff Phone Number 21
+        userid = Userid; //Customer ID 21
+        sendername = Sendername; //Customer Name 1
+        senderaddress = Senderaddress; //Customer address 2
+        senderphone = Senderphone; //Customer Phone Number 3
+        senderemail = Senderemail; //Customer Email 4
+        receivername = Receivername; //Receiver Name 5
+        receiveraddress = Receiveraddress; // Receiver Address 6
+        receiverphone = Receiverphone; // Receiver Phone Number 7
+        receiveremail = Receiveremail; // Receiver Email 8
+        orderdate = Orderdate; //Order Date 9
+        weight = Weight; //Weight of the Item 10
+        width = Width; //Width of the Item 11
+        length = Length; //length of the Item 12
+        height = Height; // Height of the Item 13
+        orderdetails = Orderdetails; //Order Description 14
+        shippingfee = Shippingfee; //Shipping Fees Selection 15
+        itemprice = Itemprice; // Shipping Fees Amount 16
+        total = Total; //Total Amount of the order 17
+        deliverystatus = Deliverystatus; // the status of the order 18
+        assignperson = Assignperson; //Delivery Staff to the order 19
+        staffphone = Staffphone; //Delivery staff Phone Number 20
         this.users = new Users();
     }
     
     //get
-    public String getType() {
-        return users.getSelectedUserType();
+    public Users getSelectedUserType() {
+        return users;
     }
       
     private String getOrderid() {
@@ -269,7 +269,7 @@ public class Orders {
             pw.close();
             System.out.println("Order Added!");
         } catch (IOException ex) {
-           
+            ex.toString();
         }
     }
     
@@ -279,14 +279,9 @@ public class Orders {
                 || shippingfee.equals("");
     }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
      
-    public void Back(String user) {
-        userid = user;
-        new DeliveryStaffOrderPage(userid).setVisible(true);              
-    }
-
       //remove order detail
     public void RemoveOrder(){
-        String removeTerm = "c9680219-292b-4beb-a016-1e70acca4454"; 
+        String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
         try{
@@ -338,9 +333,42 @@ public class Orders {
         }
     }
        
+       //remove order detail
+    public void DeleteOrder(){
+        String removeTerm = orderid; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("Orders.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+        sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+        try{
+            try(PrintWriter pr = new PrintWriter("DeletedOrders.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+            }
+    }
+    
     public void Back(String user, String type){
         userid = user;
-        type = getType();
+        type = users.getSelectedUserType();
         if (type.equals("Customer")) {
             new CustomerDashboard(userid).setVisible(true);
         } else if(type.equals("Managing Staff")) {
@@ -349,7 +377,12 @@ public class Orders {
             new DeliveryStaffDashboardPage(userid).setVisible(true);           
         }       
     }
-    
+       
+     public void Back(String user){
+        userid = user;
+        new DeliveryStaffOrderPage(userid).setVisible(true);              
+    }
+
     public String LoadOrder() {
         try {
             File file1 = new File ("UserDetails.txt");
@@ -387,8 +420,8 @@ public class Orders {
                         for (Object detail : details) {
                             String line = detail.toString().trim();
                             String[] row = line.split(",");
-                            assignperson = row[10];
-                            if(assignperson.equals("none")) {
+                            assignperson = row[19];
+                            if(assignperson.equals("None")) {
                                 orderid = row[0];
                                 orderdate = row[9];
                                 total = row[17];
@@ -421,5 +454,6 @@ public class Orders {
             ex.printStackTrace();
         }
         return "error in loadorder";
+
     }
 }

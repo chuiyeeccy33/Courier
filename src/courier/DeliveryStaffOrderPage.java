@@ -24,6 +24,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     public DeliveryStaffOrderPage(String user_id) {
         initComponents();
         UserID = user_id;
+        addbtn.setVisible(false);
         String[] columnName = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
         DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
         model.setColumnIdentifiers(columnName);
@@ -137,7 +138,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         this.dispose();
-        new DeliveryStaffOrderPage(UserID).setVisible(true);
+        new DeliveryStaffDashboardPage(UserID).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
