@@ -25,7 +25,6 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     public DeliveryStaffOrderPage(String user_id) {
         initComponents();
         UserID = user_id;
-        viewbtn.setVisible(false);
         String[] columnName = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
         DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
         model.setColumnIdentifiers(columnName);
@@ -38,6 +37,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");
+            model.addRow(row);
         }
     }
     /**

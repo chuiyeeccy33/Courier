@@ -249,7 +249,7 @@ public class SignUpPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
-        ArrayList <Users> UList = new ArrayList<Users>();        
+    ArrayList <Users> UList = new ArrayList<Users>();        
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         
         UUID TempID = UUID.randomUUID();
