@@ -149,7 +149,8 @@ public class CustomerOrderTable extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
-        
+        this.dispose();
+        new ViewOrderDetails().setVisible(true);
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void neworderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neworderbtnActionPerformed

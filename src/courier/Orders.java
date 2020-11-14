@@ -277,9 +277,9 @@ public class Orders {
         return sendername.equals("") ||  senderaddress.equals("")|| senderphone.equals("")|| senderemail.equals("")|| receivername.equals("")|| receiveraddress.equals("")|| receiverphone.equals("")
                 || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")
                 || shippingfee.equals("");
-    }//|| itemprice.equals("")|| deliverystatus.equals("")|| assignperson.equals("")
+    }
      
-      //remove order detail
+    //remove order detail
     public void RemoveOrder(){
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
@@ -312,6 +312,7 @@ public class Orders {
             }
     }
     
+    //Update Order
     public void UpdateOrder() {
         File Finput = new File("Orders.txt");
       
@@ -333,7 +334,7 @@ public class Orders {
         }
     }
        
-       //remove order detail
+    //remove order detail
     public void DeleteOrder(){
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
@@ -354,6 +355,7 @@ public class Orders {
         } catch(Exception ex){
             ex.toString();
         }
+        
         try{
             try(PrintWriter pr = new PrintWriter("DeletedOrders.txt")){
                 for(String newFile : tempArray){
@@ -363,9 +365,10 @@ public class Orders {
             }
         } catch(Exception ex){
             ex.toString();
-            }
+        }
     }
     
+    //Back Button
     public void Back(String user, String type){
         userid = user;
         type = users.getSelectedUserType();
@@ -383,6 +386,7 @@ public class Orders {
         new DeliveryStaffOrderPage(userid).setVisible(true);              
     }
 
+    //Load data into Table
     public String LoadOrder() {
         try {
             File file1 = new File ("UserDetails.txt");
@@ -454,6 +458,10 @@ public class Orders {
             ex.printStackTrace();
         }
         return "error in loadorder";
-
+    }
+    
+    //Load Data Into Order Form
+    public void LoadOrderDetail(String orderid) {
+        
     }
 }

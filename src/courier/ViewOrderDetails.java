@@ -16,13 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class ViewOrderDetails extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewOrderDetails
-     */
     String Userid = "";
-    public ViewOrderDetails(String UserID) {
+    String OrderID = "";
+    
+    public ViewOrderDetails(String UserID, String orderid) {
         initComponents();
         Userid = UserID;
+        OrderID = orderid;
         deliverystatuscbox.setEditable(false);
         deletebtn.setVisible(false);
         
@@ -42,42 +42,42 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                 String[] tempArr;
                 tempArr = temp.split (","); 
                         
-                        if (Userid.equals(tempArr[0])) {
-                           String Temptype = tempArr[2];
+                if (Userid.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
 
-                            if(Temptype.equals("Customer")){
-                                deletebtn.setVisible(true);
-                            }
-                                while(sc1.hasNext() && !found) {
-                                    temp1 = sc1.nextLine();
-                                    String [] temp1Arr;
-                                    temp1Arr = temp1.split(",");
-                                        namesenderlbl.setText(temp1Arr[1]);
-                                        addressSenderlbl.setText(temp1Arr[2]);
-                                        phonesenderlbl.setText(temp1Arr[3]);
-                                        emailsenderlbl.setText(temp1Arr[4]);
-                                        namereceiverlbl.setText(temp1Arr[5]);
-                                        addressReceiverlbl.setText(temp1Arr[6]);
-                                       phonereceiverlbl.setText(temp1Arr[7]);
-                                        emailreceiverlbl.setText(temp1Arr[8]);
-                                        orderidlbl.setText(temp1Arr[0]);
-                                        custidlbl.setText(temp1Arr[21]);
-                                        deliveryidlbl.setText(temp1Arr[19]);
-                                        datelbl.setText(temp1Arr[9]);
-                                        weight1lbl.setText(temp1Arr[10]);
-                                        width1lbl.setText(temp1Arr[11]);
-                                        length1lbl.setText(temp1Arr[12]);
-                                        height1lbl.setText(temp1Arr[13]);
-                                        detailsOrderlbl.setText(temp1Arr[14]);
-                                        shippingfee1lbl.setText(temp1Arr[15]);
-                                        itemprice1lbl.setText(temp1Arr[16]);
-                                        total1lbl.setText(temp1Arr[17]);
-                                        phonestafflbl.setText(temp1Arr[20]);
-                                        deliverystatuscbox.setSelectedItem(temp1Arr[18]);
-                                }
-                        }
+                    if(Temptype.equals("Customer")){
+                        deletebtn.setVisible(true);
+                    }
+                    while(sc1.hasNext() && !found) {
+                        temp1 = sc1.nextLine();
+                        String [] temp1Arr;
+                        temp1Arr = temp1.split(",");
+                        namesenderlbl.setText(temp1Arr[1]);
+                        addressSenderlbl.setText(temp1Arr[2]);
+                        phonesenderlbl.setText(temp1Arr[3]);
+                        emailsenderlbl.setText(temp1Arr[4]);
+                        namereceiverlbl.setText(temp1Arr[5]);
+                        addressReceiverlbl.setText(temp1Arr[6]);
+                        phonereceiverlbl.setText(temp1Arr[7]);
+                        emailreceiverlbl.setText(temp1Arr[8]);
+                        orderidlbl.setText(temp1Arr[0]);
+                        custidlbl.setText(temp1Arr[21]);
+                        deliveryidlbl.setText(temp1Arr[19]);
+                        datelbl.setText(temp1Arr[9]);
+                        weight1lbl.setText(temp1Arr[10]);
+                        width1lbl.setText(temp1Arr[11]);
+                        length1lbl.setText(temp1Arr[12]);
+                        height1lbl.setText(temp1Arr[13]);
+                        detailsOrderlbl.setText(temp1Arr[14]);
+                        shippingfee1lbl.setText(temp1Arr[15]);
+                        itemprice1lbl.setText(temp1Arr[16]);
+                        total1lbl.setText(temp1Arr[17]);
+                        phonestafflbl.setText(temp1Arr[20]);
+                        deliverystatuscbox.setSelectedItem(temp1Arr[18]);
+                    }
+                }
             }
-        }catch(FileNotFoundException ex) {
+        } catch(FileNotFoundException ex) {
             ex.toString();
         }
                                 
@@ -441,7 +441,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                         .addComponent(Lcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(heightlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(deletebtn)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,10 +558,11 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                                 .addComponent(itemlbl))
                                             .addComponent(itemprice1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(totallbl)
-                                            .addComponent(itemlbl1)
-                                            .addComponent(total1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(total1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(totallbl)
+                                                .addComponent(itemlbl1)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(assignedpersonphonelbl1)

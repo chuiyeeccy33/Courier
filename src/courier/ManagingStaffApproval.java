@@ -133,7 +133,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     private void ApprovebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovebtnActionPerformed
         
         //TableModel model = jTable1.getModel();
-       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[7];
