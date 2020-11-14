@@ -90,7 +90,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                     String [] temp1Arr;
                                     temp1Arr = temp1.split(",");
                                         
-                                     if(temp1Arr[0].equals("c12dfbb8-e86f-4458-a106-b340ee14eb22")) {
+                                     if(temp1Arr[0].equals("0710d4b8-5625-4a21-8075-4e37c156cb09")) {
                                         sendernametxt.setText(temp1Arr[1]);
                                         senderaddresstxt.setText(temp1Arr[2]);
                                         senderphonetxt.setText(temp1Arr[3]);
@@ -818,7 +818,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 String[] tempArr;
                 tempArr = temp.split (",");
 
-                if (role.equals(tempArr[2])  && !tempArr[8].equals("Pending")){
+                if (role.equals(tempArr[2])  && tempArr[8].equals("Active")){
                     //needed value in array
                     String valueneeded = tempArr[1];
                     String [] column = valueneeded.split(",");
