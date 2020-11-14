@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     String UserID = "";
+    String OrderID = "";
      
     /**
      * Creates new form DeliveryStaffOrderPage
@@ -133,7 +134,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         this.dispose();
-        new DeliveryStaffChangeStatusAndView(UserID).setVisible(true);
+        new OrderDetails(UserID,OrderID).setVisible(true);
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed

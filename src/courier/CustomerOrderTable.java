@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CustomerOrderTable extends javax.swing.JFrame {
     String userid = "";
+    String orderid = "";
     
     /**
      * Creates new form CustomerOrderTable
@@ -164,7 +165,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
 
     private void neworderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neworderbtnActionPerformed
         this.dispose();
-        new DeliveryStaffChangeStatusAndView(userid).setVisible(true);
+        new OrderDetails(userid,orderid).setVisible(true);
     }//GEN-LAST:event_neworderbtnActionPerformed
 
     /**

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author jasmi
  */
-public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
+public class OrderDetails extends javax.swing.JFrame {
 
     /**
      * Creates new form DeliveryStaffChangeStatusAndView
@@ -27,7 +27,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
     String Userid="";
     String Orderid = "";
     
-    public DeliveryStaffChangeStatusAndView(String UserID, String OrderID) {
+    public OrderDetails(String UserID, String OrderID) {
         initComponents();
         idorderlbl.setVisible(false);
         orderidlbl.setVisible(false);
@@ -811,7 +811,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         File file = new File("UserDetails.txt");
        
         try {    
-            Scanner   sc = new Scanner(file);
+            Scanner sc = new Scanner(file);
                 
             String temp;
             boolean found = false;
@@ -989,13 +989,13 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffChangeStatusAndView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffChangeStatusAndView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffChangeStatusAndView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffChangeStatusAndView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OrderDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

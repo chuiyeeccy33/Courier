@@ -175,7 +175,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
         for(int i =0; i < indexs.length; i++) {
             String OrderID;
             OrderID = (String) model.getValueAt(indexs[i], 0);
-            new DeliveryStaffChangeStatusAndView(UserID,OrderID).setVisible(true);
+            new OrderDetails(UserID,OrderID).setVisible(true);
         }
         //Show the form
         this.dispose();
