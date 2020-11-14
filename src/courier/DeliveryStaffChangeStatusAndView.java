@@ -59,71 +59,71 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                 String[] tempArr;
                 tempArr = temp.split (","); 
                         
-                        if (Userid.equals(tempArr[0])) {
-                           String Temptype = tempArr[2];
+                if (Userid.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
 
-                            if(Temptype.equals("Customer")){
-                                updatebtn.setText("Add");
-                                assignedpersonphonelbl1.setVisible(true);
-                                assignedpersonphonetxt.setVisible(true);
-                                assignedpersonphonetxt.setEditable(false);
-                                //set customer details in database
-                                sendernametxt.setText(tempArr[1]);
-                                senderphonetxt.setText(tempArr[6]);
-                                senderemailtxt.setText(tempArr[5]);
+                    if(Temptype.equals("Customer")){
+                        updatebtn.setText("Add");
+                        assignedpersonphonelbl1.setVisible(true);
+                        assignedpersonphonetxt.setVisible(true);
+                        assignedpersonphonetxt.setEditable(false);
+                        //set customer details in database
+                        sendernametxt.setText(tempArr[1]);
+                        senderphonetxt.setText(tempArr[6]);
+                        senderemailtxt.setText(tempArr[5]);
                                 
-                                // Create a date object
-                               LocalDate date = LocalDate.now(); 
-                               //date format
-                               DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                               String show = date.format(format);
-                               datelbl.setText(show);
-                               System.out.println(date); // Display the current date
-                            }else if(Temptype.equals("Managing Staff")) {
-                                assignedpersonlbl.setVisible(true);
-                                assignedpersoncbox.setVisible(true);
+                        // Create a date object
+                        LocalDate date = LocalDate.now(); 
+                        //date format
+                        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        String show = date.format(format);
+                        datelbl.setText(show);
+                        System.out.println(date); // Display the current date
+                    } else if(Temptype.equals("Managing Staff")) {
+                        assignedpersonlbl.setVisible(true);
+                        assignedpersoncbox.setVisible(true);
+                        deliverystatuslbl.setVisible(true);
+                        deliverystatus1lbl.setVisible(true);
+                        
+                        while(sc1.hasNext() && !found) {
+                            temp1 = sc1.nextLine();
+                            String [] temp1Arr;
+                            temp1Arr = temp1.split(",");
+                                        
+                            if(temp1Arr[0].equals("0710d4b8-5625-4a21-8075-4e37c156cb09")) {
+                                sendernametxt.setText(temp1Arr[1]);
+                                senderaddresstxt.setText(temp1Arr[2]);
+                                senderphonetxt.setText(temp1Arr[3]);
+                                senderemailtxt.setText(temp1Arr[4]);
+                                receivernametxt.setText(temp1Arr[5]);
+                                receiveraddresstxt.setText(temp1Arr[6]);
+                                receiverphonetxt.setText(temp1Arr[7]);
+                                receiveremailtxt.setText(temp1Arr[8]);
+                                orderidlbl.setText(temp1Arr[0]);
+                                custidlbl.setText(temp1Arr[21]);
+                                datelbl.setText(temp1Arr[9]);
+                                weighttxt.setText(temp1Arr[10]);
+                                widthtxt.setText(temp1Arr[11]);
+                                lengthtxt.setText(temp1Arr[12]);
+                                heighttxt.setText(temp1Arr[13]);
+                                orderdetailstxt.setText(temp1Arr[14]);
+                                shippingfee1lbl.setText(temp1Arr[15]);
+                                itempricetxt.setText(temp1Arr[16]);
+                                totaltxt.setText(temp1Arr[17]);
+                                deliverystatus1lbl.setText(temp1Arr[18]);
+                                //if(!temp1Arr[19].equals("")) {
+                                deliveryidlbl.setText(temp1Arr[19]);
+                                if(deliveryidlbl.equals(temp1Arr[19])) {
+                                    assignedpersoncbox.setSelectedItem(tempArr[1]);
+                                }
+                            } else {
                                 deliverystatuslbl.setVisible(true);
                                 deliverystatus1lbl.setVisible(true);
-
-                                while(sc1.hasNext() && !found) {
-                                    temp1 = sc1.nextLine();
-                                    String [] temp1Arr;
-                                    temp1Arr = temp1.split(",");
-                                        
-                                     if(temp1Arr[0].equals("0710d4b8-5625-4a21-8075-4e37c156cb09")) {
-                                        sendernametxt.setText(temp1Arr[1]);
-                                        senderaddresstxt.setText(temp1Arr[2]);
-                                        senderphonetxt.setText(temp1Arr[3]);
-                                        senderemailtxt.setText(temp1Arr[4]);
-                                        receivernametxt.setText(temp1Arr[5]);
-                                        receiveraddresstxt.setText(temp1Arr[6]);
-                                        receiverphonetxt.setText(temp1Arr[7]);
-                                        receiveremailtxt.setText(temp1Arr[8]);
-                                        orderidlbl.setText(temp1Arr[0]);
-                                        custidlbl.setText(temp1Arr[21]);
-                                        datelbl.setText(temp1Arr[9]);
-                                        weighttxt.setText(temp1Arr[10]);
-                                        widthtxt.setText(temp1Arr[11]);
-                                        lengthtxt.setText(temp1Arr[12]);
-                                        heighttxt.setText(temp1Arr[13]);
-                                        orderdetailstxt.setText(temp1Arr[14]);
-                                       shippingfee1lbl.setText(temp1Arr[15]);
-                                        itempricetxt.setText(temp1Arr[16]);
-                                        totaltxt.setText(temp1Arr[17]);
-                                        deliverystatus1lbl.setText(temp1Arr[18]);
-                                        //if(!temp1Arr[19].equals("")) {
-                                            deliveryidlbl.setText(temp1Arr[19]);
-                                            if(deliveryidlbl.equals(temp1Arr[19])) {
-                                            assignedpersoncbox.setSelectedItem(tempArr[1]);
-                                            }
-                                    }else {
-                                        deliverystatuslbl.setVisible(true);
-                                        deliverystatus1lbl.setVisible(true);
-                                        //deliverystatuscbox.setSelectedItem(temp1Arr[18]);
-                                    }
-                                }
+                                //deliverystatuscbox.setSelectedItem(temp1Arr[18]);
                             }
                         }
+                    }
+                }
             }
         }catch(FileNotFoundException ex) {
                        ex.toString();
@@ -714,67 +714,66 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
                     
-                        Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                    Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                         Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,TempUserID);
                     
-                        if(u.getSelectedUserType().equals("Customer")) {
-                                if(o.checkEmptyOrderField()) { //if the text field is empty
-                                    JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-                                } else { //else the field is not empty  
-                                         if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {     
-                                            if(!Tempitemprice.equals("")) {
-                                                    if(!Temptotal.equals("")) {
-                                                            o.SaveOrderFile();
-                                                            clearFields();
-                                                            this.dispose();
-                                                            new DeliveryStaffOrderPage(Userid).setVisible(true);
-                                                    } else {
-                                                            JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
-                                                        }
-                                            } else{
-                                                        JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
-                                                    }
-                                        } //the email is not in format
-                                                else { 
-                                                    JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-                                               }        
+                    if(u.getSelectedUserType().equals("Customer")) {
+                        if(o.checkEmptyOrderField()) { //if the text field is empty
+                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                        } else { //else the field is not empty  
+                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {  
+                                if(!Tempitemprice.equals("")) {
+                                    if(!Temptotal.equals("")) {
+                                        o.SaveOrderFile();
+                                        clearFields();
+                                        this.dispose();
+                                        new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                    } else {
+                                        JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
                                     }
-                        } else if(u.getSelectedUserType().equals("Managing Staff")) {                            
-                                            if(o.checkEmptyOrderField()) { //if the text field is empty
-                                                 JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
-                                             } else { //else the field is not empty  
-                                                         if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {      
-                                                             if(!Tempitemprice.equals("")) {
-                                                                 if(!Temptotal.equals("")) {
-                                                                     if(!delivery.equals("None")) {
-
-                                                                                  Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                                                                                   Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
+                                } else{
+                                    JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            } //the email is not in format
+                            else { 
+                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                            }        
+                        }
+                    } else if(u.getSelectedUserType().equals("Managing Staff")) {                         
+                        if(o.checkEmptyOrderField()) { //if the text field is empty
+                            JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                        } else { //else the field is not empty  
+                            if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {
+                                if(!Tempitemprice.equals("")) {
+                                    if(!Temptotal.equals("")) {
+                                        if(!delivery.equals("None")) {
+                                            Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
                                                
-                                                                                     o1.RemoveOrder();
-                                                                                     o1.UpdateOrder();
-                                                                                     clearFields();
-                                                                                     this.dispose();
-                                                                                     new DeliveryStaffOrderPage(Userid).setVisible(true);        
-                                                                    } else {
-                                                                         JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
-                                                                    }
-                                                                 } else{
-                                                                    JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
-                                                                 }
-                                                             }else{
-                                                                   JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
-                                                             }
-                                                        } //the email is not in format
-                                                         else { 
-                                                             JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
-                                                        }
-                                            }
+                                            o1.RemoveOrder();
+                                            o1.UpdateOrder();
+                                            clearFields();
+                                            this.dispose();
+                                            new DeliveryStaffOrderPage(Userid).setVisible(true);        
+                                        } else {
+                                            JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
+                                        }
+                                    } else{
+                                        JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }else{
+                                    JOptionPane.showMessageDialog(rootPane, "Please enter your item price! ", "Item Price", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                            } //the email is not in format
+                            else { 
+                                JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         }
                     }
+                }
             }                    
        } catch(FileNotFoundException ex) {
-                                                  ex.toString();
+            ex.toString();
        }
     }//GEN-LAST:event_updatebtnActionPerformed
 
