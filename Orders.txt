@@ -1,1 +1,1 @@
-0710d4b8-5625-4a21-8075-4e37c156cb09,daniellim0510,kepong,0123123121,daniellim0510@gmail.com,chuiyee,cheras,111,0510@gmail.com,13/11/2020,1,10.5,50.8,80.55,what u want,7,150,157,Pending,,,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
+0b75347e-f17e-4ec4-a227-93afe5c3f917,daniellim0510,kepong,0123123121,daniellim0510@gmail.com,cy,cheras,01213453,cy@gmail.com,14/11/2020,1,12,12,12,details,7,10,17,Pending,None,None,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1

@@ -25,7 +25,9 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
      * Creates new form DeliveryStaffChangeStatusAndView
      */
     String Userid="";
-    public DeliveryStaffChangeStatusAndView(String UserID) {
+    String Orderid = "";
+    
+    public DeliveryStaffChangeStatusAndView(String UserID, String OrderID) {
         initComponents();
         idorderlbl.setVisible(false);
         orderidlbl.setVisible(false);
@@ -42,6 +44,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         totaltxt.setEditable(false);
         fillcomboperson();
         Userid = UserID;
+        Orderid = OrderID;
         
         try{
             File file = new File("UserDetails.txt");
@@ -90,7 +93,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                             String [] temp1Arr;
                             temp1Arr = temp1.split(",");
                                         
-                            if(temp1Arr[0].equals("0710d4b8-5625-4a21-8075-4e37c156cb09")) {
+                            if(temp1Arr[0].equals(Orderid)) {
                                 sendernametxt.setText(temp1Arr[1]);
                                 senderaddresstxt.setText(temp1Arr[2]);
                                 senderphonetxt.setText(temp1Arr[3]);
@@ -676,7 +679,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         String OrderID = TempOrderID.toString();
         String ExistOrderID = orderidlbl.getText();
         String Tempcustid = custidlbl.getText();
-        String deliveryid = deliveryidlbl.getText();
+        String deliveryid = "None";
         String Tempsendname = sendernametxt.getText();
         String Tempsendaddress = senderaddresstxt.getText();
         String Tempsendphone = senderphonetxt.getText();
@@ -694,7 +697,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
         String Tempshippingfee= shippingfee1lbl.getText(); 
         String Tempitemprice =itempricetxt.getText();
         String Temptotal =totaltxt.getText();
-        String Tempstaffphone = assignedpersonphonetxt.getText();
+        String Tempstaffphone = "None";
         String delivery =  assignedpersoncbox.getSelectedItem().toString();
         String Tempdeliverystatus = "Pending";
         
@@ -739,7 +742,7 @@ public class DeliveryStaffChangeStatusAndView extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                             }        
                         }
-                    } else if(u.getSelectedUserType().equals("Managing Staff")) {                         
+                    } else if(u.getSelectedUserType().equals("Managing Staff")) {                    
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                         } else { //else the field is not empty  

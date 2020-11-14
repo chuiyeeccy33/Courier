@@ -29,61 +29,20 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
         initComponents();
         UserID = user_id;
         
-        String orderid;
-        String senderaddress;
-        String receiveraddress;
-        String deliveryperson;
-        String userid;
-        try{
-            //read data from the file  
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file); 
-            File file1 = new File("Orders.txt");
-            String temp;
-            boolean found = false;
-            String strLine;
-            BufferedReader br = new BufferedReader (new FileReader(file1));
-
-            String[] columnName = {"OrderID", "Sender's Address", "Receiver's Address" , "Delivery Person", "UserID"};
-
-            DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0); //clear the model
-            Ordertbl.revalidate(); //refresh the table
-           
-            
-            //check equals userid with database and retrieve user type 
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/){
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-
-                if (UserID.equals(tempArr[0])) {
-                    String Temptype = tempArr[2];
-                    if(Temptype.equals("Managing Staff")){
-                        // table show details for managing staff                        
-                        while((strLine=br.readLine())!=null){
-                            Object[] details = strLine.lines().toArray();
-                            for (Object detail : details) {
-                                String line = detail.toString().trim();
-                                String[] row = line.split(",");
-                                String delivery = row[19];
-                                if (delivery.equals("None")) {
-                                    orderid = row[0];
-                                    senderaddress = row[1];
-                                    receiveraddress = row[2];
-                                    deliveryperson =  row[19];
-                                    userid = row[21];
-                                    model.addRow(new Object[]{orderid,senderaddress, receiveraddress, deliveryperson, userid});
-                                }
-                            }
-                        }
-                    }
-                }  
-            }
-        } catch (IOException ex) {
-         Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(Level.SEVERE, null, ex);
-        }      
+        String columnName[] = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
+        DefaultTableModel model = (DefaultTableModel) Ordertbl.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0);
+        Ordertbl.revalidate();
+        
+        Orders o = new Orders();
+        o.setUserid(UserID);
+        Object[] outputs = o.LoadOrder().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
+        }
     }
 
     /**
@@ -100,6 +59,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Ordertbl = new javax.swing.JTable();
         backbtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,22 +87,34 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Assign");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deliveryOrderlbl)
-                    .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backbtn)
-                .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deliveryOrderlbl)
+                            .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backbtn)))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +126,9 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
                         .addComponent(deliveryOrderlbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(unassigndeliveryorderlbl)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -192,6 +166,20 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
                ex.toString();
         }
     }//GEN-LAST:event_backbtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) Ordertbl.getModel();
+        int[] indexs = Ordertbl.getSelectedRows();
+        Object[] row = new Object[2];
+        for(int i =0; i < indexs.length; i++) {
+            String OrderID;
+            OrderID = (String) model.getValueAt(indexs[i], 0);
+            new DeliveryStaffChangeStatusAndView(UserID,OrderID).setVisible(true);
+        }
+        //Show the form
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +220,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
     private javax.swing.JTable Ordertbl;
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel deliveryOrderlbl;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel unassigndeliveryorderlbl;
     // End of variables declaration//GEN-END:variables
