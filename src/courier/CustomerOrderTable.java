@@ -149,8 +149,17 @@ public class CustomerOrderTable extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[2];
+        for(int i =0; i < indexs.length; i++) {
+            String OrderID;
+            OrderID = (String) model.getValueAt(indexs[i], 0);
+            new ViewOrderDetails(userid,OrderID).setVisible(true);
+        }
+        //Show the form
         this.dispose();
-        new ViewOrderDetails().setVisible(true);
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void neworderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_neworderbtnActionPerformed
