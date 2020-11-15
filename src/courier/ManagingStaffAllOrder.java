@@ -131,7 +131,16 @@ public class ManagingStaffAllOrder extends javax.swing.JFrame {
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
         // TODO add your handling code here:
-        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int[] indexs = jTable1.getSelectedRows();
+        Object[] row = new Object[2];
+        for(int i =0; i < indexs.length; i++) {
+            String OrderID;
+            OrderID = (String) model.getValueAt(indexs[i], 0);
+            new ViewOrderDetails(userid,OrderID).setVisible(true);
+        }
+        //Show the form
+        this.dispose();
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
