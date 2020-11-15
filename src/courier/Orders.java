@@ -395,9 +395,8 @@ public class Orders {
             Scanner sc2 = new Scanner(file2);
             String temp;
             boolean found = false;
-            String strLine;
-            BufferedReader br1 = new BufferedReader (new FileReader(file1));
             BufferedReader br2 = new BufferedReader (new FileReader(file2));
+            StringBuilder sb = new StringBuilder();
             
             while(sc1.hasNext() && !found) {
                 temp = sc1.nextLine();
@@ -415,10 +414,11 @@ public class Orders {
                                 orderid = row[0];
                                 orderdate = row[9];
                                 total = row[17];
-                                deliverystatus = row[18];    
-                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
+                                deliverystatus = row[18];
+                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");                             
                             }
                         }
+                    return sb.toString();
                     } else if(TempUserType.equals("Managing Staff")) {
                         Object[] details = br2.lines().toArray();
                         for (Object detail : details) {
@@ -430,11 +430,10 @@ public class Orders {
                                 orderdate = row[9];
                                 total = row[17];
                                 deliverystatus = row[18];    
-                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
-                            } else {
-                                return "Currently there is no order need to be assigned";
+                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");   
                             }
                         }
+                    return sb.toString();
                     } else if(TempUserType.equals("Delivery Staff")) {
                         Object[] details = br2.lines().toArray();
                         for (Object detail : details) {
@@ -446,11 +445,10 @@ public class Orders {
                                 orderdate = row[9];
                                 total = row[17];
                                 deliverystatus = row[18];    
-                                return orderid + "," + orderdate + "," + total + "," + deliverystatus;
-                            } else {
-                                return "Currenlty there is no delivery need to be made";
+                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");   
                             }
                         }
+                    return sb.toString();
                     }
                 }
             }
@@ -461,7 +459,41 @@ public class Orders {
     }
     
     //Load Data Into Order Form
-    public void LoadOrderDetail(String orderid) {
-        
+    public String LoadAllOrder() {
+        try {
+            File file = new File("Orders.txt");
+            Scanner sc = new Scanner(file);
+            String temp;
+            boolean found = false;
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder sb = new StringBuilder();
+            
+            while(sc.hasNext() && !found) {
+                temp = sc.nextLine();
+                String[] tempArr;
+                tempArr = temp.split(",");
+                
+                Object[] data = br.lines().toArray();
+                for (Object load : data) {
+                    String line = load.toString().trim();
+                    String[] row = line.split(",");
+                    assignperson = row[19];
+                    if(!assignperson.equals("None")) {
+                        orderid = row[0];
+                        orderdate = row[9];
+                        total = row[17];
+                        deliverystatus = row[18];    
+                        sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n"); 
+                    } else {
+                        sb.append("There is no Order");
+                    }
+                }
+            return sb.toString();
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "error in Order.java";
     }
 }
