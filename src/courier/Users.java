@@ -34,7 +34,7 @@ public class Users {
     }
     
     //get
-    private String getUserid() {
+    public String getUserid() {
         return userid;
     }
     
@@ -42,7 +42,7 @@ public class Users {
         return username;
     }
     
-    private String getSelectedUserType() {
+    public String getSelectedUserType() {
         return selectedusertype;
     }
     

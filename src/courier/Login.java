@@ -146,9 +146,9 @@ public class Login extends javax.swing.JFrame {
                 //if username and password exist in the login page then able to proceed
                 //else show the error message username is not exist
                 if (user.equals(tempArr[1]) && password.equals(tempArr[7])) {
-                     userid = tempArr[0];
-                     user = tempArr[1];
-                     found = true;
+                    userid = tempArr[0];
+                    user = tempArr[1];
+                    found = true;
                     //to validate the user is active or not
                     if (status.equals(tempArr[8])) {
                         JOptionPane.showMessageDialog(rootPane, "You are logged in", "Login Sucessfully", JOptionPane.INFORMATION_MESSAGE);

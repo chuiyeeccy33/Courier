@@ -5,6 +5,9 @@
  */
 package courier;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -18,8 +21,8 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
      */
      String user_id = "";
     public DeliveryStaffDashboardPage(String userid) {
-        initComponents();
-        userwellbl.setText("Good Morning,"+ " " + userid);
+        initComponents();       
+        userwellbl.setText("Good Morning");
         user_id = userid;
     }
 
@@ -105,7 +108,8 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void deliveryorderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryorderbtnActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new DeliveryStaffOrderPage(user_id).setVisible(true);
     }//GEN-LAST:event_deliveryorderbtnActionPerformed
 
     private void profilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profilebtnActionPerformed

@@ -5,41 +5,39 @@
  */
 package courier;
 
-import java.io.*;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jasmi
+ * @author daniellim0510
  */
-public class DeliveryStaffOrderPage extends javax.swing.JFrame {
-    String UserID = "";
-    String OrderID = "";
-     
+public class ManagingStaffAllOrder extends javax.swing.JFrame {
+    
+    String userid = "";
     /**
-     * Creates new form DeliveryStaffOrderPage
+     * Creates new form ManagingStaffAllOrder
      */
-    public DeliveryStaffOrderPage(String user_id) {
+    public ManagingStaffAllOrder(String user_id) {
         initComponents();
-        UserID = user_id;
-        String[] columnName = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
-        DefaultTableModel model = (DefaultTableModel)Ordertbl.getModel();
+        
+        userid = user_id;
+        
+        String columnName[] = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setColumnIdentifiers(columnName);
-        model.setRowCount(0); //clear the model
-        Ordertbl.revalidate(); //refresh the table
+        model.setRowCount(0);
+        jTable1.revalidate();
         
         Orders o = new Orders();
-        o.setUserid(UserID);
-        Object[] outputs = o.LoadOrder().lines().toArray();
+        o.setUserid(userid);
+        Object[] outputs = o.LoadAllOrder().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,22 +47,29 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        deliveryOrderlbl = new javax.swing.JLabel();
-        assigndeliveryorderlbl = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Ordertbl = new javax.swing.JTable();
         viewbtn = new javax.swing.JButton();
+        deliveryOrderlbl = new javax.swing.JLabel();
+        unassigndeliveryorderlbl = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         backbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        viewbtn.setText("View");
+        viewbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewbtnActionPerformed(evt);
+            }
+        });
+
         deliveryOrderlbl.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
-        deliveryOrderlbl.setText("Delivery");
+        deliveryOrderlbl.setText("All Order");
 
-        assigndeliveryorderlbl.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        assigndeliveryorderlbl.setText("Current need to be Delivered");
+        unassigndeliveryorderlbl.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        unassigndeliveryorderlbl.setText("View All Recent Transaction of Order");
 
-        Ordertbl.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -72,15 +77,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(Ordertbl);
-
-        viewbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        viewbtn.setText("view");
-        viewbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewbtnActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(jTable1);
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         backbtn.setText("Back");
@@ -95,59 +92,59 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 775, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deliveryOrderlbl)
-                            .addComponent(assigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(viewbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                            .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18))
+                    .addComponent(deliveryOrderlbl)
+                    .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backbtn)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(viewbtn)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(backbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(viewbtn)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(backbtn)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(deliveryOrderlbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(assigndeliveryorderlbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(unassigndeliveryorderlbl)
+                            .addComponent(viewbtn))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
-        
-        DefaultTableModel model = (DefaultTableModel) Ordertbl.getModel();
-        int[] indexs = Ordertbl.getSelectedRows();
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[2];
         for(int i =0; i < indexs.length; i++) {
             String OrderID;
             OrderID = (String) model.getValueAt(indexs[i], 0);
-            new ViewOrderDetails(UserID,OrderID).setVisible(true);
+            new ViewOrderDetails(userid,OrderID).setVisible(true);
         }
         //Show the form
         this.dispose();
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        this.dispose();
-        new DeliveryStaffDashboardPage(UserID).setVisible(true);
+        
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**
@@ -167,13 +164,13 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffAllOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffAllOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffAllOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryStaffOrderPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffAllOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -186,11 +183,11 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Ordertbl;
-    private javax.swing.JLabel assigndeliveryorderlbl;
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel deliveryOrderlbl;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel unassigndeliveryorderlbl;
     private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
 }

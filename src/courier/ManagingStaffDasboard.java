@@ -35,8 +35,8 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        assignbtn = new javax.swing.JButton();
+        AllOrderbtn = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         approvalbtn = new javax.swing.JButton();
 
@@ -72,11 +72,21 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jButton6.setText("Report");
 
-        jButton7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton7.setText("Assigned Order");
+        assignbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        assignbtn.setText("Assign Staff to Order");
+        assignbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignbtnActionPerformed(evt);
+            }
+        });
 
-        jButton8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton8.setText("Unassigned Order");
+        AllOrderbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        AllOrderbtn.setText("View All Order");
+        AllOrderbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllOrderbtnActionPerformed(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton9.setText("Profile");
@@ -116,7 +126,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                            .addComponent(assignbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +135,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AllOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(approvalbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
@@ -149,8 +159,8 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(assignbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AllOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
@@ -184,11 +194,22 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void assignbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignbtnActionPerformed
+        this.dispose();
+        new ManagingStaffAssignOrder(user_id).setVisible(true);
+    }//GEN-LAST:event_assignbtnActionPerformed
+
+    private void AllOrderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllOrderbtnActionPerformed
+        new ManagingStaffAllOrder(user_id).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_AllOrderbtnActionPerformed
+
     private void approvalbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_approvalbtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new ManagingStaffApproval(user_id).setVisible(true);
     }//GEN-LAST:event_approvalbtnActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -226,13 +247,13 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AllOrderbtn;
     private javax.swing.JButton approvalbtn;
+    private javax.swing.JButton assignbtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

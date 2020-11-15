@@ -52,6 +52,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
                 rating = row[1];
                 description = row[2];
                 model.addRow(new Object[]{feedbackid,rating, description});
+                System.out.println(new Object[]{feedbackid,rating, description});
             }           
         } catch (Exception e) {
             e.printStackTrace();
@@ -147,7 +148,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
-
+        
     }//GEN-LAST:event_viewbtnActionPerformed
 
     /**

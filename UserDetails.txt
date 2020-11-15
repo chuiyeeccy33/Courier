@@ -1,3 +1,3 @@
-86e71bc7-874c-4e31-a9d2-981efc741da1,customer,Customer,customer,asdsa,customer@gmail.com,0123143211,Password1,Active
-13f5e356-8940-4e4a-93b9-0658fe4ed7e7,managingstaff,Managing Staff,managing,staff,managingstaff@gmail.com,013123121,Password1,Active
-787de7bd-acb2-440f-879e-36d389c1b23e,deliverystaff,delivery staff,delivery,staff,deliverystaff@gmail.com,0123121131,password1,Pending
+2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1,daniellim0510,Customer,Daniel,Lim,daniellim0510@gmail.com,0123123121,Password1,Active
+3acb6292-2a01-4f97-afbf-8fdaea7c2b09,managingstaff,Managing Staff,Managing,Staff,managingstaff@gmail.com,012312312,Password1,Active
+c49023f8-163e-4f29-90df-65a1e4250603,deliverystaff,Delivery Staff,delivery,staff,deliverystaff@gmail.com,0123131232,Password1,Active
