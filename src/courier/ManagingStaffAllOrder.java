@@ -5,17 +5,37 @@
  */
 package courier;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author daniellim0510
  */
 public class ManagingStaffAllOrder extends javax.swing.JFrame {
-
+    
+    String userid = "";
     /**
      * Creates new form ManagingStaffAllOrder
      */
-    public ManagingStaffAllOrder() {
+    public ManagingStaffAllOrder(String user_id) {
         initComponents();
+        
+        userid = user_id;
+        
+        String columnName[] = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0);
+        jTable1.revalidate();
+        
+        Orders o = new Orders();
+        o.setUserid(userid);
+        Object[] outputs = o.LoadAllOrder().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
+        }
     }
 
     /**
@@ -148,7 +168,7 @@ public class ManagingStaffAllOrder extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffAllOrder().setVisible(true);
+                
             }
         });
     }

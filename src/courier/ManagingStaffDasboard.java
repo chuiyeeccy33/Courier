@@ -200,7 +200,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
     }//GEN-LAST:event_assignbtnActionPerformed
 
     private void AllOrderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllOrderbtnActionPerformed
-        new ManagingStaffAllOrder().setVisible(true);
+        new ManagingStaffAllOrder(user_id).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AllOrderbtnActionPerformed
 
