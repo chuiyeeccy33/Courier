@@ -22,7 +22,6 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
      String user_id = "";
     public DeliveryStaffDashboardPage(String userid) {
         initComponents();       
-        userwellbl.setText("Good Morning");
         user_id = userid;
     }
 
@@ -35,14 +34,12 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        userwellbl = new javax.swing.JLabel();
         logoutbtn = new javax.swing.JButton();
         deliveryorderbtn = new javax.swing.JButton();
         profilebtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        userwellbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         logoutbtn.setText("Logout");
@@ -68,6 +65,10 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 35)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Welcome Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,16 +79,16 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
                 .addGap(48, 48, 48))
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
+                .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addContainerGap(164, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(deliveryorderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                        .addContainerGap(164, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(profilebtn))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(profilebtn)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,8 +97,8 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(logoutbtn)
                 .addGap(18, 18, 18)
-                .addComponent(userwellbl, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(deliveryorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(profilebtn)
@@ -160,8 +161,8 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deliveryorderbtn;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logoutbtn;
     private javax.swing.JButton profilebtn;
-    private javax.swing.JLabel userwellbl;
     // End of variables declaration//GEN-END:variables
 }

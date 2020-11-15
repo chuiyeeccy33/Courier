@@ -28,8 +28,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         orderidlbl.setVisible(false);
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
-        iddeliverylbl.setVisible(false);
-        deliveryidlbl.setVisible(false);
         deletebtn.setVisible(false);
         
         try{
@@ -50,10 +48,8 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         
                 if (Userid.equals(tempArr[0])) {
                     String Temptype = tempArr[2];
-
-                    if(Temptype.equals("Customer")){
-                        deletebtn.setVisible(true);
-                    }
+                    deletebtn.setVisible(true);
+                   
                     while(sc1.hasNext() && !found) {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
@@ -78,8 +74,18 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         shippingfee1lbl.setText(temp1Arr[15]);
                         itemprice1lbl.setText(temp1Arr[16]);
                         total1lbl.setText(temp1Arr[17]);
-                        phonestafflbl.setText(temp1Arr[20]);
                         deliverystatuscbox.setSelectedItem(temp1Arr[18]);
+                         phonestafflbl.setText(temp1Arr[20]);
+                         
+                        if(Temptype.equals("Customer")) {
+                            deliverystatuscbox.setEnabled(false);
+                        }else if(Temptype.equals("Delivery Staff")) {
+                            deletebtn.setText("Update");
+                        }else{
+                            deletebtn.setVisible(false);
+                            deliverystatuscbox.setEnabled(false);
+                            assignedperson1lbl.setEnabled(false);
+                        }
                     }
                 }
             }
@@ -156,6 +162,8 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         addressSenderlbl = new javax.swing.JLabel();
         detailsOrderlbl = new javax.swing.JLabel();
         itemlbl2 = new javax.swing.JLabel();
+        assignedpersonlbl = new javax.swing.JLabel();
+        assignedperson1lbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,6 +322,11 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         itemlbl2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         itemlbl2.setText("RM");
 
+        assignedpersonlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        assignedpersonlbl.setText("Assigned Delivery Person: ");
+
+        assignedperson1lbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -373,7 +386,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 98, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(Datelbl)
                                     .addComponent(weightlbl)
@@ -389,7 +402,27 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                         .addGap(44, 44, 44)
                                         .addComponent(deliveryOrderlbl))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGap(150, 150, 150)
+                                        .addComponent(weight1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(kglbl))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(122, 122, 122)
+                                        .addComponent(widthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(width1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Wcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lengthlbl)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(length1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(assignedpersonlbl)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                     .addComponent(shippingfeelbl)
@@ -432,24 +465,8 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(height1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(Hcmlbl))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(150, 150, 150)
-                                        .addComponent(weight1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(kglbl))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(122, 122, 122)
-                                        .addComponent(widthlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(width1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(Wcmlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lengthlbl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(length1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)))
+                                                .addComponent(Hcmlbl)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(deletebtn)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,7 +535,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(senderemaillbl)
                                     .addComponent(emailsenderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(deliveryOrderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -580,7 +597,11 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                     .addComponent(orderdetailslbl)
                                     .addComponent(detailsOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(length1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 63, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(assignedpersonlbl)
+                            .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 38, Short.MAX_VALUE))
                     .addComponent(deletebtn))
                 .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,12 +667,22 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
 
                     Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempstaffphone,deliveryid,Tempdeliverystatus,Tempcustid);
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
 
                     if(u.getSelectedUserType().equals("Customer")) {
-                       o.DeleteOrder();
-                       this.dispose();
-                       new DeliveryStaffOrderPage(Userid).setVisible(true);
+                        if(Tempdeliverystatus.equals("Pending")) {
+                            o.RemoveOrder();
+                            o.DeletedOrder();
+                            this.dispose();
+                            new CustomerOrderTable(Userid).setVisible(true);
+                        }else{
+                             JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }else if(u.getSelectedUserType().equals("Delivery Staff")){
+                        o.RemoveOrder();
+                        o.UpdateOrder();
+                        this.dispose();
+                        new DeliveryStaffOrderPage(Userid).setVisible(true);
                     }                            
                 }
             }
@@ -702,6 +733,8 @@ public class ViewOrderDetails extends javax.swing.JFrame {
     private javax.swing.JLabel Wcmlbl;
     private javax.swing.JLabel addressReceiverlbl;
     private javax.swing.JLabel addressSenderlbl;
+    private javax.swing.JLabel assignedperson1lbl;
+    private javax.swing.JLabel assignedpersonlbl;
     private javax.swing.JLabel assignedpersonphonelbl1;
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel custidlbl;
