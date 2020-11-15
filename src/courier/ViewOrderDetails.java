@@ -28,8 +28,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         orderidlbl.setVisible(false);
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
-        //iddeliverylbl.setVisible(false);
-        //deliveryidlbl.setVisible(false);
         deletebtn.setVisible(false);
         
         try{
@@ -52,7 +50,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     String Temptype = tempArr[2];
                     deletebtn.setVisible(true);
                    
-                     while(sc1.hasNext() && !found) {
+                    while(sc1.hasNext() && !found) {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
                         temp1Arr = temp1.split(",");
@@ -79,19 +77,15 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         deliverystatuscbox.setSelectedItem(temp1Arr[18]);
                          phonestafflbl.setText(temp1Arr[20]);
                          
-                    if(Temptype.equals("Customer")) {
-                        deliverystatuscbox.setEnabled(false);
-                    }else if(Temptype.equals("Delivery Staff")) {
-                        deletebtn.setText("Update");
-                    }else{
-                         deletebtn.setVisible(false);
-                         deliverystatuscbox.setEnabled(false);
-                         assignedperson1lbl.setEnabled(false);
-                         
-                         //if(deliveryidlbl.equals(temp1Arr[19]) && deliveryidlbl.equals(tempArr[0])) {
-                             //assignedperson1lbl.setText(tempArr[1]);
-                         //}
-                    }
+                        if(Temptype.equals("Customer")) {
+                            deliverystatuscbox.setEnabled(false);
+                        }else if(Temptype.equals("Delivery Staff")) {
+                            deletebtn.setText("Update");
+                        }else{
+                            deletebtn.setVisible(false);
+                            deliverystatuscbox.setEnabled(false);
+                            assignedperson1lbl.setEnabled(false);
+                        }
                     }
                 }
             }
