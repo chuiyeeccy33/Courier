@@ -84,7 +84,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         });
 
         viewbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        viewbtn.setText("VIew");
+        viewbtn.setText("View");
         viewbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewbtnActionPerformed(evt);
