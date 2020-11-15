@@ -114,15 +114,10 @@ public class OrderDetails extends javax.swing.JFrame {
                                 itempricetxt.setText(temp1Arr[16]);
                                 totaltxt.setText(temp1Arr[17]);
                                 deliverystatus1lbl.setText(temp1Arr[18]);
-                                //if(!temp1Arr[19].equals("")) {
                                 deliveryidlbl.setText(temp1Arr[19]);
-                                if(deliveryidlbl.equals(temp1Arr[19])) {
-                                    assignedpersoncbox.setSelectedItem(tempArr[1]);
-                                }
                             } else {
                                 deliverystatuslbl.setVisible(true);
                                 deliverystatus1lbl.setVisible(true);
-                                //deliverystatuscbox.setSelectedItem(temp1Arr[18]);
                             }
                         }
                     }
@@ -679,7 +674,8 @@ public class OrderDetails extends javax.swing.JFrame {
         String OrderID = TempOrderID.toString();
         String ExistOrderID = orderidlbl.getText();
         String Tempcustid = custidlbl.getText();
-        String deliveryid = "None";
+        String defaultdeliveryid = "None";
+        String deliveryid = deliveryidlbl.getText();
         String Tempsendname = sendernametxt.getText();
         String Tempsendaddress = senderaddresstxt.getText();
         String Tempsendphone = senderphonetxt.getText();
@@ -697,7 +693,8 @@ public class OrderDetails extends javax.swing.JFrame {
         String Tempshippingfee= shippingfee1lbl.getText(); 
         String Tempitemprice =itempricetxt.getText();
         String Temptotal =totaltxt.getText();
-        String Tempstaffphone = "None";
+        String Tempdefaultstaffphone = "None";
+        String Tempstaffphone = assignedpersonphonetxt.getText();
         String delivery =  assignedpersoncbox.getSelectedItem().toString();
         String Tempdeliverystatus = "Pending";
         
@@ -718,7 +715,7 @@ public class OrderDetails extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
                     
                     Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,TempUserID);
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,defaultdeliveryid, Tempdefaultstaffphone,TempUserID);
                     
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(o.checkEmptyOrderField()) { //if the text field is empty

@@ -211,7 +211,7 @@ public class Users {
         try {
             scan = new Scanner(new File("UserDetails.txt"));
             while(scan.hasNext()) {
-                String line = scan.nextLine().toLowerCase().toString();
+                String line = scan.nextLine().toString();
                 if(line.contains(searchTerms)) {
                     String[] tempArr;
                     tempArr = line.split(",");
@@ -292,7 +292,7 @@ public class Users {
         try {
             scan = new Scanner(new File("UserDetails.txt"));
             while(scan.hasNext()) {
-                String line = scan.nextLine().toLowerCase().toString();
+                String line = scan.nextLine().toString();
                 if(line.contains(searchTerms)) {
                     String[] tempArr;
                     tempArr = line.split(",");
