@@ -28,6 +28,8 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         orderidlbl.setVisible(false);
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
+        iddeliverylbl.setVisible(false);
+        deliveryidlbl.setVisible(false);
         deletebtn.setVisible(false);
         
         try{
@@ -49,7 +51,9 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                 if (Userid.equals(tempArr[0])) {
                     String Temptype = tempArr[2];
                     deletebtn.setVisible(true);
-                   
+                    Users u = new Users();
+                    u.setSelectedUserType(Temptype);
+                    
                     while(sc1.hasNext() && !found) {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
@@ -620,9 +624,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        Orders o= new Orders();
-        o.Back(Userid);
-        this.dispose();
+     
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed

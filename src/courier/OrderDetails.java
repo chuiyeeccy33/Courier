@@ -839,9 +839,7 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_senderphonetxtKeyTyped
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        Orders o= new Orders();
-        o.Back(Userid);
-        this.dispose();
+       
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed

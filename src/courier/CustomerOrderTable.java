@@ -145,8 +145,8 @@ public class CustomerOrderTable extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+         new CustomerDashboard(userid).setVisible(true);
         this.dispose();
-        new CustomerDashboard(userid).setVisible(true);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
