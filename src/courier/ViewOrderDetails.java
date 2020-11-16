@@ -79,6 +79,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         itemprice1lbl.setText(temp1Arr[16]);
                         total1lbl.setText(temp1Arr[17]);
                         deliverystatuscbox.setSelectedItem(temp1Arr[18]);
+                        assignedperson1lbl.setText(temp1Arr[19]);
                         phonestafflbl.setText(temp1Arr[20]);
                          
                         if(Temptype.equals("Customer")) {
@@ -173,6 +174,11 @@ public class ViewOrderDetails extends javax.swing.JFrame {
 
         deliverystatuscbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         deliverystatuscbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Processing", "Shipping", "Cancelled", "Delivered" }));
+        deliverystatuscbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliverystatuscboxActionPerformed(evt);
+            }
+        });
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backbtn.setText("Back");
@@ -692,6 +698,10 @@ public class ViewOrderDetails extends javax.swing.JFrame {
             ex.toString();
         }
     }//GEN-LAST:event_deletebtnActionPerformed
+
+    private void deliverystatuscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverystatuscboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliverystatuscboxActionPerformed
 
     /**
      * @param args the command line arguments
