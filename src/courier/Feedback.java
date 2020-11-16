@@ -10,9 +10,10 @@ public class Feedback {
     private String description;
     //private String feedbackUser;
     private Users feedbackUser;
-    
-    private boolean isFilled;
+    private Users feedbackUsername;
   
+    public Feedback() {};
+    
     public Feedback(String FeedbackID, String Rating, String Description, Users FeedbackUser) {
         //bring the data attribute into the variable
         feedbackID = FeedbackID;
@@ -38,6 +39,10 @@ public class Feedback {
         return feedbackUser;
     }
     
+    public Users getFeedbackUsername() {
+        return feedbackUsername;
+    }
+    
     public void setFeedbackid(String Feedbackid) {
         feedbackID = Feedbackid;
     }
@@ -52,6 +57,10 @@ public class Feedback {
     
     public void setFeedbackUser(Users FeedbackUser) {
         feedbackUser = FeedbackUser;
+    }
+    
+    public void setFeedbackUsername(Users FeedbackUsername) {
+        this.feedbackUsername = FeedbackUsername;
     }
     
     //cannot submit empty feedback
@@ -82,5 +91,27 @@ public class Feedback {
         } catch (IOException ex) {
              ex.toString();
         }
+    }
+    
+    public String LoadFeedback() {
+        File file = new File("Feedback.txt");
+        StringBuilder sb = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            Object[] feedbacks = br.lines().toArray();
+            for (Object feedback : feedbacks) {
+                String line = feedback.toString().trim();
+                String[] row = line.split(",");
+                
+                feedbackID = row[0];
+                rating = row[1];
+                description = row[2];
+                sb.append(feedbackID + "," + rating + "," + description + "\n");
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "got error in backend";
     }
 }

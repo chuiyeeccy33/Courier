@@ -137,7 +137,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         
         int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[7];
-        Users u = new Users();
+        ManagingStaff u = new ManagingStaff();
         for(int i =0; i < indexs.length; i++) {
             String Username;
             Username = (String) model.getValueAt(indexs[i], 0);
@@ -156,7 +156,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         
         int[] indexs = jTable1.getSelectedRows();
         Object[] row = new Object[7];
-        Users u = new Users();
+        ManagingStaff u = new ManagingStaff();
         for(int i =0; i < indexs.length; i++) {
             String Username;
             Username = (String) model.getValueAt(indexs[i], 0);

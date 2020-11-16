@@ -28,34 +28,18 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     public ManagingStaffFeedbackManagement(String ID) {
         initComponents();
         user_id = ID;
-        String filepath = "Feedback.txt";
-        String feedbackid;
-        String rating;
-        String description;
-        String output;
-        File file =  new File(filepath);
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();            
+        String[] columnName = {"Feedback ID", "Rating", "Description"};
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0);
+        jTable1.revalidate();
         
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String[] columnName = {"Feedback ID", "Rating", "Description"};
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0);
-            jTable1.revalidate();
-            
-            Object[] feedbacks = br.lines().toArray();
-            for (Object feedback : feedbacks) {
-                String line = feedback.toString().trim();
-                String[] row = line.split(",");
-                
-                feedbackid = row[0];
-                rating = row[1];
-                description = row[2];
-                model.addRow(new Object[]{feedbackid,rating, description});
-                System.out.println(new Object[]{feedbackid,rating, description});
-            }           
-        } catch (Exception e) {
-            e.printStackTrace();
+        Feedback f = new Feedback();
+        Object[] outputs = f.LoadFeedback().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
         }
     }
 
