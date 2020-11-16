@@ -126,7 +126,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-         new ManagingStaffDasboard(userid).setVisible(true);
+        new ManagingStaffDasboard(userid).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
