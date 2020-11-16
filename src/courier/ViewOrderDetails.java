@@ -75,7 +75,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         itemprice1lbl.setText(temp1Arr[16]);
                         total1lbl.setText(temp1Arr[17]);
                         deliverystatuscbox.setSelectedItem(temp1Arr[18]);
-                         phonestafflbl.setText(temp1Arr[20]);
+                        phonestafflbl.setText(temp1Arr[20]);
                          
                         if(Temptype.equals("Customer")) {
                             deliverystatuscbox.setEnabled(false);
