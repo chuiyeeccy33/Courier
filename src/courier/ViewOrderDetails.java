@@ -702,6 +702,10 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deletebtnActionPerformed
 
+    private void deliverystatuscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverystatuscboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deliverystatuscboxActionPerformed
+
     /**
      * @param args the command line arguments
      */
