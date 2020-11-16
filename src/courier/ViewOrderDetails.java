@@ -23,6 +23,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         initComponents();
         Userid = UserID;
         OrderID = orderid;
+        fillstatuscombo();
         deliverystatuscbox.setEditable(false);
         idorderlbl.setVisible(false);
         orderidlbl.setVisible(false);
@@ -58,29 +59,31 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
                         temp1Arr = temp1.split(",");
-                        namesenderlbl.setText(temp1Arr[1]);
-                        addressSenderlbl.setText(temp1Arr[2]);
-                        phonesenderlbl.setText(temp1Arr[3]);
-                        emailsenderlbl.setText(temp1Arr[4]);
-                        namereceiverlbl.setText(temp1Arr[5]);
-                        addressReceiverlbl.setText(temp1Arr[6]);
-                        phonereceiverlbl.setText(temp1Arr[7]);
-                        emailreceiverlbl.setText(temp1Arr[8]);
-                        orderidlbl.setText(temp1Arr[0]);
-                        custidlbl.setText(temp1Arr[21]);
-                        deliveryidlbl.setText(temp1Arr[19]);
-                        datelbl.setText(temp1Arr[9]);
-                        weight1lbl.setText(temp1Arr[10]);
-                        width1lbl.setText(temp1Arr[11]);
-                        length1lbl.setText(temp1Arr[12]);
-                        height1lbl.setText(temp1Arr[13]);
-                        detailsOrderlbl.setText(temp1Arr[14]);
-                        shippingfee1lbl.setText(temp1Arr[15]);
-                        itemprice1lbl.setText(temp1Arr[16]);
-                        total1lbl.setText(temp1Arr[17]);
-                        deliverystatuscbox.setSelectedItem(temp1Arr[18]);
-                        assignedperson1lbl.setText(temp1Arr[19]);
-                        phonestafflbl.setText(temp1Arr[20]);
+                        
+                        if(temp1Arr[0].equals(OrderID)) {
+                            namesenderlbl.setText(temp1Arr[1]);
+                            addressSenderlbl.setText(temp1Arr[2]);
+                            phonesenderlbl.setText(temp1Arr[3]);
+                            emailsenderlbl.setText(temp1Arr[4]);
+                            namereceiverlbl.setText(temp1Arr[5]);
+                            addressReceiverlbl.setText(temp1Arr[6]);
+                            phonereceiverlbl.setText(temp1Arr[7]);
+                            emailreceiverlbl.setText(temp1Arr[8]);
+                            orderidlbl.setText(temp1Arr[0]);
+                            custidlbl.setText(temp1Arr[21]);
+                            deliveryidlbl.setText(temp1Arr[19]);
+                            datelbl.setText(temp1Arr[9]);
+                            weight1lbl.setText(temp1Arr[10]);
+                            width1lbl.setText(temp1Arr[11]);
+                            length1lbl.setText(temp1Arr[12]);
+                            height1lbl.setText(temp1Arr[13]);
+                            detailsOrderlbl.setText(temp1Arr[14]);
+                            shippingfee1lbl.setText(temp1Arr[15]);
+                            itemprice1lbl.setText(temp1Arr[16]);
+                            total1lbl.setText(temp1Arr[17]);
+                            deliverystatuscbox.setSelectedItem(temp1Arr[18]);
+                            assignedperson1lbl.setText(temp1Arr[19]);
+                            phonestafflbl.setText(temp1Arr[20]);
                          
                         if(Temptype.equals("Customer")) {
                             deliverystatuscbox.setEnabled(false);
@@ -91,10 +94,11 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                             deliverystatuscbox.setEnabled(false);
                             assignedperson1lbl.setEnabled(false);
                         }
+                        }
                     }
                 }
             }
-        } catch(FileNotFoundException ex) {
+        }catch(FileNotFoundException ex) {
             ex.toString();
         }
                                 
@@ -173,12 +177,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         deliverystatuscbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        deliverystatuscbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Processing", "Shipping", "Cancelled", "Delivered" }));
-        deliverystatuscbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deliverystatuscboxActionPerformed(evt);
-            }
-        });
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backbtn.setText("Back");
@@ -545,7 +543,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(senderemaillbl)
                                     .addComponent(emailsenderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(deliveryOrderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -611,7 +609,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(assignedpersonlbl)
                             .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 38, Short.MAX_VALUE))
+                        .addGap(0, 37, Short.MAX_VALUE))
                     .addComponent(deletebtn))
                 .addGap(28, 28, 28))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,7 +626,12 @@ public class ViewOrderDetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void fillstatuscombo(){
+        deliverystatuscbox.addItem("Pending");
+        deliverystatuscbox.addItem("Processing");
+        deliverystatuscbox.addItem("Shipping");
+        deliverystatuscbox.addItem("Delivered");
+    }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
      
     }//GEN-LAST:event_backbtnActionPerformed
@@ -698,10 +701,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
             ex.toString();
         }
     }//GEN-LAST:event_deletebtnActionPerformed
-
-    private void deliverystatuscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverystatuscboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deliverystatuscboxActionPerformed
 
     /**
      * @param args the command line arguments
