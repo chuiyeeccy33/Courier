@@ -34,7 +34,7 @@ public class OrderDetails extends javax.swing.JFrame {
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
         iddeliverylbl.setVisible(false);
-        deliveryidlbl.setVisible(false);
+        //deliveryidlbl.setVisible(false);
         assignedpersonphonelbl1.setVisible(false);
         assignedpersonphonetxt.setVisible(false);
         assignedpersonlbl.setVisible(false);
@@ -294,37 +294,29 @@ public class OrderDetails extends javax.swing.JFrame {
         senderemaillbl.setText("Email Address:");
 
         assignedpersoncbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        assignedpersoncbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
         assignedpersoncbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignedpersoncboxActionPerformed(evt);
             }
         });
 
-        widthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         widthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 widthtxtKeyTyped(evt);
             }
         });
 
-        lengthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lengthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 lengthtxtKeyTyped(evt);
             }
         });
 
-        heighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         heighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 heighttxtKeyTyped(evt);
             }
         });
-
-        itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         backbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backbtn.setText("Back");
@@ -342,7 +334,6 @@ public class OrderDetails extends javax.swing.JFrame {
             }
         });
 
-        weighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 weighttxtKeyReleased(evt);
@@ -356,14 +347,11 @@ public class OrderDetails extends javax.swing.JFrame {
         kglbl.setText("KG");
 
         orderdetailstxt.setColumns(20);
-        orderdetailstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         orderdetailstxt.setRows(5);
         jScrollPane3.setViewportView(orderdetailstxt);
 
         assignedpersonphonelbl1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersonphonelbl1.setText("Delivery Staff Contact No.: ");
-
-        assignedpersonphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         senderaddresstxt.setColumns(20);
         senderaddresstxt.setRows(5);
@@ -806,6 +794,7 @@ public class OrderDetails extends javax.swing.JFrame {
      private void fillcomboperson() {
         String role = "Delivery Staff";
         File file = new File("UserDetails.txt");
+        assignedpersoncbox.addItem("None");
        
         try {    
             Scanner sc = new Scanner(file);
@@ -839,9 +828,7 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_senderphonetxtKeyTyped
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        Orders o= new Orders();
-        o.Back(Userid);
-        this.dispose();
+       
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed
@@ -876,7 +863,7 @@ public class OrderDetails extends javax.swing.JFrame {
                 temp = sc.nextLine(); //read a line of text from file
                 String[] tempArr;
                 tempArr = temp.split (","); 
-                if(!assignedpersoncbox.equals("None")) {
+                if(assignedpersoncbox.getSelectedItem().equals(tempArr[1]) && !assignedpersoncbox.equals("None")) {
                     String deliveryID = tempArr[0];
                     String deliveryphone = tempArr[6];
                     deliveryidlbl.setText(deliveryID);

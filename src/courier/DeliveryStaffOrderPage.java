@@ -146,8 +146,8 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        this.dispose();
         new DeliveryStaffDashboardPage(UserID).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**

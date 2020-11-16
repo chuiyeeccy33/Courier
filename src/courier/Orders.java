@@ -369,9 +369,28 @@ public class Orders {
         }       
     }
        
-     public void Back(String user){
-        userid = user;
-        new DeliveryStaffOrderPage(userid).setVisible(true);              
+    // view order details to table    
+    public void ViewFormBackToTable(String user, String type){
+            userid = user;
+            type = users.getSelectedUserType();
+            if (type.equals("Customer")) {
+                new CustomerOrderTable(userid).setVisible(true);
+            }else if(type.equals("Managing Staff")) {
+                new ManagingStaffAllOrder(userid).setVisible(true);
+            }else {
+                new DeliveryStaffOrderPage(userid).setVisible(true);           
+            }
+}
+
+    //order details to table
+    public void FormBackToTable(String user, String type){
+            userid = user;
+            type = users.getSelectedUserType();
+            if (type.equals("Customer")) {
+                new CustomerOrderTable(userid).setVisible(true);
+            }else if(type.equals("Managing Staff")) {
+                new ManagingStaffAssignOrder(userid).setVisible(true);
+            }
     }
 
     //Load data into Table

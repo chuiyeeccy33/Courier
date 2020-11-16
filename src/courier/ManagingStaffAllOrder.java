@@ -141,7 +141,8 @@ public class ManagingStaffAllOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_viewbtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        
+       new ManagingStaffDasboard(userid).setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     /**

@@ -87,6 +87,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Assign");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,9 +109,9 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
                     .addComponent(deliveryOrderlbl)
                     .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backbtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -126,7 +127,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
                             .addComponent(unassigndeliveryorderlbl)
                             .addComponent(jButton1))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -134,34 +135,8 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        try{
-          //read data from the file  
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file); 
-            String temp;
-            boolean found = false;
-   
-            //check equals userid with database and retrieve user type 
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-
-                if (UserID.equals(tempArr[0])) {
-                    String usertype = tempArr[2];
-                    if (usertype.equals("Customer")) {
-                       new CustomerDashboard(UserID).setVisible(true);
-                    } else if(usertype.equals("Managing Staff")) {
-                       new ManagingStaffDasboard(UserID).setVisible(true);
-                    } else {
-                       new DeliveryStaffDashboardPage(UserID).setVisible(true);           
-                    }       
-                   this.dispose();
-                }
-            }
-        } catch(FileNotFoundException ex) {
-               ex.toString();
-        }
+        new ManagingStaffDasboard(UserID).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
