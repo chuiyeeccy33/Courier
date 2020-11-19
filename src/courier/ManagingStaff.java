@@ -1,8 +1,10 @@
 package courier;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -173,5 +175,152 @@ public class ManagingStaff extends Staff  {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         } 
+    }
+    
+    public String LoadAllUsers() {
+        try {
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file);
+            String temp;
+            boolean found = false;
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder sb = new StringBuilder();
+            
+            while(sc.hasNext() && !found) {
+                temp = sc.nextLine();
+                String[] tempArr;
+                tempArr = temp.split(",");
+                
+                Object[] data = br.lines().toArray();
+                for (Object load : data) {
+                    String line = load.toString().trim();
+                    String[] row = line.split(",");
+                    if(!row[0].equals("")) {
+                        userid = row[0];
+                        username = row[1];
+                        selectedusertype = row[2];
+                        firstname = row[3];
+                        lastname = row[4];
+                        email = row[5];    
+                        status = row[8];
+                        sb.append(userid + "," + username+ "," + selectedusertype + "," + firstname + "," + lastname + "," + email  + "," + status + "\n"); 
+                    }
+                }
+            return sb.toString();
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return "error in ManagingStaff.java";
+    }
+    
+    public void RemoveUser(){
+        String removeTerm = userid; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("UserDetails.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+        sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+        
+        try{
+            try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+            }
+    }
+    
+    public void DeleteUser(String rowIDuser){
+        String removeTerm = rowIDuser; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("UserDetails.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+        sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+        
+        try{
+            try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+            }
+    }
+    
+    //update new user detail
+    public void UpdateUser(String rowIDuser) {
+        File Finput = new File("UserDetails.txt");
+        try {
+            FileWriter fw = new FileWriter(Finput,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            String Line = rowIDuser + "," + username + "," + selectedusertype + "," + firstname + ","+ lastname + "," + email + "," + phone + "," + password + "," + status;
+              //remove blank line when update
+            if (!Line.isEmpty()) {
+                //use pw to write data you want to write
+                pw.write(Line);
+                //escape the blank line
+                pw.write("\n");
+            }
+            pw.close();
+            System.out.println("User Updated!");
+        } catch (IOException ex) {
+           
+        }
+   } 
+    
+    //deactivate user
+     public void DeactivateUser() {
+        File Finput = new File("UserDetails.txt");
+      
+        try {
+            FileWriter fw = new FileWriter(Finput,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            String Line = getUserid()+ "," + getUsername()+ "," + getSelectedUserType() + "," + getFirstname() + ","+ getLastname() + "," + getEmail()+ "," + getPhone() 
+                    + "," + getPassword()+ "," + getStatus();
+            //in the textfile, each data will have one row blank b4 next line
+            //use pw to write data you want to write
+            pw.write(Line);
+            bw.newLine();
+            pw.close();
+            System.out.println("User deactivated!");
+        } catch (IOException ex) {
+           
+        }
     }
 }

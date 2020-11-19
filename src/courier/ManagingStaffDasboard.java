@@ -178,7 +178,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         //direct user to managing staff user management
-        new ManagingStaffUserManagement().setVisible(true);
+        new ManagingStaffUserManagement(user_id).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 

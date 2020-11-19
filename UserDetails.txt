@@ -1,4 +1,4 @@
-2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1,daniellim0510,Customer,Daniel,Lim,daniellim0510@gmail.com,0123123121,Password1,Active
 3acb6292-2a01-4f97-afbf-8fdaea7c2b09,managingstaff,Managing Staff,Managing,Staff,managingstaff@gmail.com,012312312,Password1,Active
+2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1,daniellim0510,Customer,Daniel,Lim,daniellim0510@gmail.com,0123123121,Password1,Active
 c49023f8-163e-4f29-90df-65a1e4250603,deliverystaff,Delivery Staff,delivery,staff,deliverystaff@gmail.com,0123131232,Password1,Active
 90b64db4-3e1a-4070-8763-44dc3b25f676,dada,Delivery Staff,hi,no,3@gmail.com,2,23,Active

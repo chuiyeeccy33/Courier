@@ -5,6 +5,8 @@
  */
 package courier;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author daniellim0510
@@ -14,8 +16,24 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     /**
      * Creates new form ManagingStaffUserManagement
      */
-    public ManagingStaffUserManagement() {
+    String UserID = "";
+    public ManagingStaffUserManagement(String user_id) {
         initComponents();
+        UserID = user_id;
+        String[] columnName = {"User ID", "Username", "User Type","First Name", "Last Name", "Email","Status"};
+        DefaultTableModel model = (DefaultTableModel)userstbl.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0); //clear the model
+        userstbl.revalidate(); //refresh the table
+        
+        ManagingStaff mg = new ManagingStaff();
+        mg.setUserid(UserID);
+        Object[] outputs = mg.LoadAllUsers().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
+        }
     }
 
     /**
@@ -30,7 +48,8 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         backbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        userstbl = new javax.swing.JTable();
+        viewbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +57,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("User Account");
 
+        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         backbtn.setText("Back");
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,7 +65,8 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        userstbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        userstbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -57,31 +78,47 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
                 "User ID", "Username", "First Name", "Last Name", "Email"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(userstbl);
+
+        viewbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        viewbtn.setText("View");
+        viewbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(backbtn)
-                .addGap(45, 45, 45))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backbtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(viewbtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(15, 15, 15))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backbtn)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(backbtn)
+                        .addGap(16, 16, 16)
+                        .addComponent(viewbtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -92,6 +129,21 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
 
     }//GEN-LAST:event_backbtnActionPerformed
+
+    private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
+        int[] indexs = userstbl.getSelectedRows();
+        Object[] row = new Object[2];
+        for(int i =0; i < indexs.length; i++) {
+            String RowuserID;
+            RowuserID = (String) model.getValueAt(indexs[i], 0);
+            System.out.println(RowuserID);
+            new ManagingStaffUserInformation(UserID,RowuserID).setVisible(true);
+        }
+        //Show the form
+        this.dispose();
+    }//GEN-LAST:event_viewbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +175,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffUserManagement().setVisible(true);
+                //new ManagingStaffUserManagement().setVisible(true);
             }
         });
     }
@@ -132,6 +184,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable userstbl;
+    private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
 }

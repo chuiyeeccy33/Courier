@@ -91,18 +91,27 @@ public class UserProfile extends javax.swing.JFrame {
         usernamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         usernamelbl.setText("Username: ");
 
+        usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
         firstnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         firstnamelbl.setText("First Name: ");
+
+        firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         lastnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lastnamelbl.setText("Last Name:");
 
+        lastnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
         emaillbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         emaillbl.setText("Email: ");
+
+        emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonelbl.setText("Phone No:");
 
+        phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 phonetxtKeyTyped(evt);
@@ -137,10 +146,12 @@ public class UserProfile extends javax.swing.JFrame {
         passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         passwordlbl.setText("Password:");
 
-        passwordtxt.setFont(new java.awt.Font("DengXian", 0, 12)); // NOI18N
+        passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         typelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         typelbl.setText("Type:");
+
+        typetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +162,7 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(changepasslbl, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(43, 43, 43)
                         .addComponent(savebtn)
                         .addGap(21, 21, 21))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -236,13 +247,13 @@ public class UserProfile extends javax.swing.JFrame {
                     .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(changepasslbl)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(savebtn)
-                        .addGap(19, 19, 19))))
+                        .addGap(19, 19, 19))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(changepasslbl)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
