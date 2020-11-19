@@ -877,27 +877,27 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_assignedpersoncboxActionPerformed
 
     private void weighttxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_weighttxtKeyReleased
-        Double weight = Double.parseDouble(weighttxt.getText());
+          Double weight = Double.parseDouble(weighttxt.getText());
         
         if(weighttxt.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            if(weight > 0 && weight < 0.5) {
-                System.out.println(5);
-                shippingfee1lbl.setText("5");
-            }else if(weight > 0.5 && weight < 2.0) {
-                System.out.println(7);
-                 shippingfee1lbl.setText("7");
-            }else if(weight > 2.0 && weight < 5.0 ) {
-                System.out.println(12);
-                shippingfee1lbl.setText("12");
-            }else if(weight > 5.0 && weight < 7.0 ) {
-                System.out.println(18);
-                shippingfee1lbl.setText("18");
-            }else if(weight > 7.0 && weight < 12.0) {
-                System.out.println(25);
-                shippingfee1lbl.setText("25");
-          }else{
+            if(weight > 0 && weight < 1) {
+                System.out.println(5.5);
+                shippingfee1lbl.setText("5.5");
+            }else if(weight > 1 && weight < 3) {
+                System.out.println(7.5);
+                 shippingfee1lbl.setText("7.5");
+            }else if(weight > 3 && weight < 6 ) {
+                System.out.println(15);
+                shippingfee1lbl.setText("15");
+            }else if(weight > 6 && weight < 8 ) {
+                System.out.println(20);
+                shippingfee1lbl.setText("20");
+            }else if(weight > 8 && weight < 12) {
+                System.out.println(27);
+                shippingfee1lbl.setText("27");
+          }else if(weight > 12){
                 System.out.println(30);
                 shippingfee1lbl.setText("30");
             }    
