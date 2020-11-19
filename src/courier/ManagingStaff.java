@@ -258,45 +258,6 @@ public class ManagingStaff extends Staff  {
         } 
     }
     
-    public String LoadAllUsers() {
-        try {
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            StringBuilder sb = new StringBuilder();
-            
-            while(sc.hasNext() && !found) {
-                temp = sc.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                
-                Object[] data = br.lines().toArray();
-                for (Object load : data) {
-                    String line = load.toString().trim();
-                    String[] row = line.split(",");
-                    if(!row[0].equals("")) {
-                        userid = row[0];
-                        username = row[1];
-                        selectedusertype = row[2];
-                        firstname = row[3];
-                        lastname = row[4];
-                        email = row[5];    
-                        phone = row[6];
-                        status = row[8];
-                        sb.append(userid + "," + username+ "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone  + "," + status + "\n"); 
-                    }
-                }
-            return sb.toString();
-            }
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "error in ManagingStaff.java";
-    }
-    
     //deactivate user
      public void DeactivateUser() {
         File Finput = new File("UserDetails.txt");

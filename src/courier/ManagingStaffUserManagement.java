@@ -28,20 +28,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     public ManagingStaffUserManagement(String user_id) {
         initComponents();
         UserID = user_id;
-        String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name","Phone", "Email","Status"};
-        DefaultTableModel model = (DefaultTableModel)userstbl.getModel();
-        model.setColumnIdentifiers(columnName);
-        model.setRowCount(0); //clear the model
-        userstbl.revalidate(); //refresh the table
-        
-        ManagingStaff mg = new ManagingStaff();
-        mg.setUserid(UserID);
-        Object[] outputs = mg.LoadAllUsers().lines().toArray();
-        for (Object output : outputs) {
-            String line = output.toString().trim();
-            String[] row = line.split(",");
-            model.addRow(row);
-        }
+       data();
     }
 
     /**
@@ -149,7 +136,8 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-
+        new ManagingStaffDasboard(UserID).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void viewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewbtnActionPerformed
@@ -202,7 +190,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         try {
             FileReader rf = new FileReader(file);
             br = new BufferedReader (rf);
-            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Phone", "Email","Status"};
+            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
             DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
             model.setColumnIdentifiers(columnName);
             model.setRowCount(0);
