@@ -163,8 +163,12 @@ public class Login extends javax.swing.JFrame {
                         else {
                             new ManagingStaffDasboard(userid).setVisible(true);
                         }
-                    } else {
+                    } else if(tempArr[8].equals("Pending")) {
                         JOptionPane.showMessageDialog(rootPane, "Your account is still pending for approval", "Pending Approval", JOptionPane.INFORMATION_MESSAGE);
+                    } else if(tempArr[8].equals("Reject")) {
+                         JOptionPane.showMessageDialog(rootPane, "Your account request has been rejected", "Rejected Request", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                         JOptionPane.showMessageDialog(rootPane, "Your account has been terminated due to some reasons", "Deactivated Account", JOptionPane.INFORMATION_MESSAGE);
                     }
               }
            }
