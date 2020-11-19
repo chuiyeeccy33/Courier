@@ -5,7 +5,12 @@
  */
 package courier;
 
-import javax.swing.table.DefaultTableModel;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.regex.PatternSyntaxException;
+import javax.swing.*;
+import javax.swing.table.*;
 
 /**
  *
@@ -68,14 +73,14 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         userstbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         userstbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "User ID", "Username", "First Name", "Last Name", "Email"
+
             }
         ));
         jScrollPane1.setViewportView(userstbl);
@@ -120,7 +125,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();

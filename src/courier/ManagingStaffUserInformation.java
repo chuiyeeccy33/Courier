@@ -5,15 +5,14 @@
  */
 package courier;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 /**
  *
- * @author daniellim0510
+ * @author jasmi
  */
-public class ManagingStaffUserInformation extends javax.swing.JPanel {
+public class ManagingStaffUserInformation extends javax.swing.JFrame {
 
     /**
      * Creates new form ManagingStaffUserInformation
@@ -24,7 +23,10 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
         initComponents();
         Userid = UserID;
         rowuserid = RowuserID;
-         try{
+        useridtxt.setEditable(false);
+        usernametxt.setEditable(false);
+        
+        try{
             File file = new File("UserDetails.txt");
             Scanner sc = new Scanner(file); 
             //read data from the file
@@ -37,7 +39,7 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
                 String[] tempArr;
                 tempArr = temp.split (","); 
                     if(tempArr[0].equals(rowuserid)) {
-                        useridtxt.setText(Userid);
+                        useridtxt.setText(rowuserid);
                         usernametxt.setText(tempArr[1]);
                         firstnametxt.setText(tempArr[3]);
                         lastnametxt.setText(tempArr[4]);
@@ -59,15 +61,13 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
-        backbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         useridtxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         usernametxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         firstnametxt = new javax.swing.JTextField();
+        phonelbl = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lastnametxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -75,30 +75,10 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         phonetxt = new javax.swing.JTextField();
-        phonelbl = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        backbtn = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        jLabel2.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 35)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("User Information");
-
-        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        backbtn.setText("Back");
-        backbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backbtnActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel1.setText("User ID:");
@@ -114,6 +94,9 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
         jLabel4.setText("First Name:");
 
         firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        phonelbl.setText("Phone No:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setText("Last Name:");
@@ -148,11 +131,20 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
             }
         });
 
-        phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        phonelbl.setText("Phone No:");
+        jLabel2.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 35)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("User Information");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -160,7 +152,7 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                         .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -239,13 +231,105 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addGap(18, 18, 18))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        // TODO add your handling code here:
-        new ManagingStaffUserManagement(Userid).setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_backbtnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String TempUserID = rowuserid;
+        String Tempuser = usernametxt.getText();
+        String Tempfirst = firstnametxt.getText();
+        String Templast = lastnametxt.getText();
+        String Tempemail = emailtxt.getText();
+        String Tempphone = phonetxt.getText();
+        String TempStatus = "Deactivated";
+        try{
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file);
+            //read data from the file
+            String temp;
+            boolean found = false;
+
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+                if (TempUserID.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
+                    String Temppass = tempArr[7];
+                    ManagingStaff mg = new ManagingStaff();
+                    mg.setSelectedUserType(Temptype);
+                    mg.setPassword(Temppass);
+                    mg.setEmail(Tempemail);
+                    mg.setFirstname(Tempfirst);
+                    mg.setLastname(Templast);
+                    mg.setPhone(Tempphone);
+                    mg.setStatus(TempStatus);
+                    mg.setUserid(TempUserID);
+                    mg.setUsername(Tempuser);
+
+                    Users u = new Users(TempUserID,Tempuser,Temptype, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
+                    if(u.checkEmpty()) {
+                        JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                    }else {
+                        u.RemoveUser();
+                        mg.DeactivateUser();
+                        JOptionPane.showMessageDialog(rootPane, "The user is deactivated. ", "Deactivate User", JOptionPane.INFORMATION_MESSAGE);
+                        new ManagingStaffUserManagement(Userid).setVisible(true);
+                        this.dispose();
+                    }
+                }
+            }
+        } catch(FileNotFoundException ex) {
+            ex.toString();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        String TempUserID = rowuserid;
+        String Tempuser = usernametxt.getText();
+        String Tempfirst = firstnametxt.getText();
+        String Templast = lastnametxt.getText();
+        String Tempemail = emailtxt.getText();
+        String Tempphone = phonetxt.getText();
+        String TempStatus = "Active";
+        try{
+            File file = new File("UserDetails.txt");
+            Scanner sc = new Scanner(file);
+            //read data from the file
+            String temp;
+            boolean found = false;
+
+            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
+                temp = sc.nextLine(); //read a line of text from file
+                String[] tempArr;
+                tempArr = temp.split (",");
+                if (TempUserID.equals(tempArr[0])) {
+                    String Temptype = tempArr[2];
+                    String Temppass = tempArr[7];
+                    ManagingStaff mg = new ManagingStaff();
+                    mg.setSelectedUserType(Temptype);
+                    mg.setPassword(Temppass);
+
+                    Users u = new Users(TempUserID,Tempuser,Temptype, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
+                    if(u.checkEmpty()) {
+                        JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
+                    }else {
+                        if(Tempemail.matches(regex)) {
+                            u.RemoveUser();
+                            u.UpdateUser();
+                            JOptionPane.showMessageDialog(rootPane, "The user details are updated. ", "Update User Details", JOptionPane.INFORMATION_MESSAGE);
+                            new ManagingStaffUserManagement(Userid).setVisible(true);
+                            this.dispose();
+                        }
+                    }
+                }
+            }
+        } catch(FileNotFoundException ex) {
+            ex.toString();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void phonetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phonetxtKeyTyped
         char enter = evt.getKeyChar();
@@ -254,89 +338,11 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_phonetxtKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String TempUserID = rowuserid;
-        String Tempuser = usernametxt.getText();
-        String Tempfirst = firstnametxt.getText();
-        String Templast = lastnametxt.getText();
-        String Tempemail = emailtxt.getText();       
-        String Tempphone = phonetxt.getText();
-        String TempStatus = "Deactivated";
-        try{
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file);
-            //read data from the file
-            String temp;
-            boolean found = false;
-
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-                if (TempUserID.equals(tempArr[0])) {
-                    String Temptype = tempArr[2];
-                    String Temppass = tempArr[7];
-                    ManagingStaff mg = new ManagingStaff();
-                    mg.setSelectedUserType(Temptype);
-                    mg.setPassword(Temppass);
-
-                    Users u = new Users(TempUserID,Tempuser,Temptype, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
-
-                            mg.DeleteUser(rowuserid);
-                            mg.DeactivateUser();
-                            u.checkEmpty();
-                            //this.dispose();
-                            //JOptionPane.showMessageDialog(rootPane, "The user is deactivated. ", "Deactivate User", JOptionPane.INFORMATION_MESSAGE);
-                            new ManagingStaffUserManagement(Userid).setVisible(true);
-                             
-                    }                            
-                }
-        } catch(FileNotFoundException ex) {
-            ex.toString();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String TempUserID = rowuserid;
-        String Tempuser = usernametxt.getText();
-        String Tempfirst = firstnametxt.getText();
-        String Templast = lastnametxt.getText();
-        String Tempemail = emailtxt.getText();       
-        String Tempphone = phonetxt.getText();
-        String TempStatus = "Deactivated";
-        try{
-            File file = new File("UserDetails.txt");
-            Scanner sc = new Scanner(file);
-            //read data from the file
-            String temp;
-            boolean found = false;
-
-            while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
-                temp = sc.nextLine(); //read a line of text from file
-                String[] tempArr;
-                tempArr = temp.split (",");
-                if (TempUserID.equals(tempArr[0])) {
-                    String Temptype = tempArr[2];
-                    String Temppass = tempArr[7];
-                    ManagingStaff mg = new ManagingStaff();
-                    mg.setSelectedUserType(Temptype);
-                    mg.setPassword(Temppass);
-
-                    Users u = new Users(TempUserID,Tempuser,Temptype, Tempfirst,Templast,Tempemail,Tempphone, Temppass, TempStatus);
-
-                            mg.DeleteUser(rowuserid);
-                            mg.UpdateUser(rowuserid);
-                            u.checkEmpty();
-                            //this.dispose();
-                            //JOptionPane.showMessageDialog(rootPane, "The user details are updated. ", "Update User Details", JOptionPane.INFORMATION_MESSAGE);
-                            new ManagingStaffUserManagement(Userid).setVisible(true);
-                             
-                    }                            
-                }
-        } catch(FileNotFoundException ex) {
-            ex.toString();
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        new ManagingStaffUserManagement(Userid).setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,20 +361,20 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManagingStaffUserManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUserInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManagingStaffUserManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUserInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManagingStaffUserManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUserInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManagingStaffUserManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagingStaffUserInformation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ManagingStaffUserManagement().setVisible(true);
+                //new ManagingStaffUserInformation().setVisible(true);
             }
         });
     }
@@ -379,7 +385,6 @@ public class ManagingStaffUserInformation extends javax.swing.JPanel {
     private javax.swing.JTextField firstnametxt;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
