@@ -8,6 +8,9 @@ package courier;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.*;
 import javax.swing.table.*;
@@ -25,7 +28,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     public ManagingStaffUserManagement(String user_id) {
         initComponents();
         UserID = user_id;
-        String[] columnName = {"User ID", "Username", "User Type","First Name", "Last Name", "Email","Status"};
+        String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name","Phone", "Email","Status"};
         DefaultTableModel model = (DefaultTableModel)userstbl.getModel();
         model.setColumnIdentifiers(columnName);
         model.setRowCount(0); //clear the model
@@ -55,6 +58,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         userstbl = new javax.swing.JTable();
         viewbtn = new javax.swing.JButton();
+        activatebtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +97,14 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
             }
         });
 
+        activatebtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        activatebtn.setText("Activate");
+        activatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activatebtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -103,10 +115,13 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(backbtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(viewbtn, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(backbtn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(activatebtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(viewbtn)))
                         .addGap(15, 15, 15))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
                 .addContainerGap())
@@ -119,7 +134,9 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
                         .addGap(13, 13, 13)
                         .addComponent(backbtn)
                         .addGap(16, 16, 16)
-                        .addComponent(viewbtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(viewbtn)
+                            .addComponent(activatebtn)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -150,6 +167,67 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_viewbtnActionPerformed
 
+    private void activatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activatebtnActionPerformed
+        DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
+        
+        int[] indexs = userstbl.getSelectedRows();
+        Object[] row = new Object[7];
+        ManagingStaff u = new ManagingStaff();
+        for(int i =0; i < indexs.length; i++) {
+            String Username;
+            Username = (String) model.getValueAt(indexs[i], 0);
+            u.setUsername(Username);
+            u.ActivateUser();
+            JOptionPane.showMessageDialog(rootPane, "The Account is Activated. User can access the Fast and Furious Account ", "Account Activated ", JOptionPane.INFORMATION_MESSAGE);
+        }
+        data();
+    }//GEN-LAST:event_activatebtnActionPerformed
+
+     public void data() {
+        //variable for output
+        String Userid;
+        String Username;
+        String Usertype;
+        String FirstName;
+        String LastName;
+        String Role;
+        String Email;
+        String Phone;
+        String Status;
+        //reader
+        String filepath = "UserDetails.txt";
+        File file = new File(filepath);
+        BufferedReader br;
+        
+        try {
+            FileReader rf = new FileReader(file);
+            br = new BufferedReader (rf);
+            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Phone", "Email","Status"};
+            DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            userstbl.revalidate();
+            Object[] details = br.lines().toArray();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                    //create the object to added into the table
+                    Userid = row[0];
+                    Username = row[1];
+                    Role = row[2];
+                    FirstName = row[3];
+                    LastName = row[4];
+                    Email = row[5];
+                    Phone = row[6];
+                    Status = row[8];
+                    model.addRow(new Object[] {Userid,Username,Role,FirstName,LastName,Email,Phone,Status});
+                }
+            br.close();        
+            rf.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -186,6 +264,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton activatebtn;
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
