@@ -236,6 +236,7 @@ public class ManagingStaffUserInformation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         String TempUserID = rowuserid;
         String Tempuser = usernametxt.getText();
         String Tempfirst = firstnametxt.getText();
