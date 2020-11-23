@@ -1,5 +1,6 @@
 package courier;
 
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,8 +13,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ManagingStaff extends Staff  {
+    public String filterRole;
+    
+    public String getFilterRole() {
+        return filterRole;
+    }
+    
+    public void setFilterRole(String Rolefilter) {
+        filterRole = Rolefilter;
+    }
     
     public void ApproveUser() {
         //search the data in the textfile
@@ -288,7 +299,6 @@ public class ManagingStaff extends Staff  {
             for (Object detail : details) {
                 String line = detail.toString().trim();
                 String[] row = line.split(",");
-                if (selectedusertype.equals(row[2])) {
                     userid = row[0];
                     username = row[1];
                     selectedusertype = row[2];
@@ -297,23 +307,50 @@ public class ManagingStaff extends Staff  {
                     email = row[5];
                     phone = row[6];
                     status = row[8];
-                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status);
-                } else {
-                    userid = row[0];
-                    username = row[1];
-                    selectedusertype = row[2];
-                    firstname = row[3];
-                    lastname = row[4];
-                    email = row[5];
-                    phone = row[6];
-                    status = row[8];
-                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status);
-                }
+                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status + "\n");
             }
             return sb.toString();          
         } catch(FileNotFoundException ex) {
                        ex.toString();
         }
         return "error in load user";
+    }
+    
+    public String FilterUser() {
+        try {
+            FileReader rf = new FileReader("UserDetails.txt");
+            BufferedReader br = new BufferedReader(rf);
+            Object[] details = br.lines().toArray();
+            StringBuilder sb = new StringBuilder();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                if (filterRole.equals(row[2])) {
+                    userid = row[0];
+                    username = row[1];
+                    selectedusertype = row[2];
+                    firstname = row[3];
+                    lastname = row[4];
+                    email = row[5];
+                    phone = row[6];
+                    status = row[8];
+                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status + "\n");
+                } else if (filterRole.equals("All Users")) {
+                    userid = row[0];
+                    username = row[1];
+                    selectedusertype = row[2];
+                    firstname = row[3];
+                    lastname = row[4];
+                    email = row[5];
+                    phone = row[6];
+                    status = row[8];
+                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status + "\n");
+                } 
+            }
+            return sb.toString();          
+        } catch(FileNotFoundException ex) {
+                       ex.toString();
+        }
+        return "error in filter user";
     }
 }

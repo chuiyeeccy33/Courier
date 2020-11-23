@@ -30,10 +30,25 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         initComponents();
         UserID = user_id;
         fillcomboRole();
-       data();
+       
+         String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
+        DefaultTableModel model = (DefaultTableModel)userstbl.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0); //clear the model
+        userstbl.revalidate(); //refresh the table
+        
+        ManagingStaff mg = new ManagingStaff();
+        //mg.setUserid(UserID);
+        Object[] outputs = mg.LoadUser().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
+        }
     }
 
-   private void fillcomboRole() {      
+   private void fillcomboRole() { 
+       rolecbox.addItem("All Users");
       rolecbox.addItem("Managing Staff");
       rolecbox.addItem("Customer");
       rolecbox.addItem("Delivery Staff");
@@ -183,98 +198,42 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
             u.ActivateUser();
             JOptionPane.showMessageDialog(rootPane, "The Account is Activated. User can access the Fast and Furious Account ", "Account Activated ", JOptionPane.INFORMATION_MESSAGE);
         }
-        data();
+        
+        String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
+        DefaultTableModel model1 = (DefaultTableModel)userstbl.getModel();
+        model1.setColumnIdentifiers(columnName);
+        model1.setRowCount(0); //clear the model
+        userstbl.revalidate(); //refresh the table
+        
+        Object[] outputs = u.LoadUser().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row1 = line.split(",");
+            model.addRow(row1);
+        }
     }//GEN-LAST:event_activatebtnActionPerformed
 
     private void rolecboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolecboxActionPerformed
         String role = rolecbox.getSelectedItem().toString();
-        //variable for output
-        String Userid;
-        String Username;
-        String Role;
-        String FirstName;
-        String LastName;
-        String Email;
-        String Phone;
-        String Status;
-        //reader
-        BufferedReader br;
-        try {
-            FileReader rf = new FileReader("UserDetails.txt");
-            br = new BufferedReader (rf);
-            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
-            DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0);
-            userstbl.revalidate();
-            Object[] details = br.lines().toArray();
-            for (Object detail : details) {
-                String line = detail.toString().trim();
-                String[] row = line.split(",");
-                //if role selected equal to row[2] in database
-                if (role.equals(row[2])) {
-                    //create the object to added into the table
-                    Userid = row[0];
-                    Username = row[1];
-                    Role = row[2];
-                    FirstName = row[3];
-                    LastName = row[4];
-                    Email = row[5];
-                    Phone = row[6];
-                    Status = row[8];
-                    model.addRow(new Object[] {Userid,Username,Role,FirstName,LastName,Email,Phone,Status});
-                }
-            }
-        }catch(FileNotFoundException ex) {
-                       ex.toString();
+       
+        String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
+        DefaultTableModel model = (DefaultTableModel)userstbl.getModel();
+        model.setColumnIdentifiers(columnName);
+        model.setRowCount(0); //clear the model
+        userstbl.revalidate(); //refresh the table
+        
+         ManagingStaff   mg = new ManagingStaff();
+        mg.setFilterRole(role);
+        Object[] outputs = mg.FilterUser().lines().toArray();
+        for (Object output : outputs) {
+            String line = output.toString().trim();
+            String[] row = line.split(",");
+            model.addRow(row);
         }
+       
                
     }//GEN-LAST:event_rolecboxActionPerformed
 
-     public void data() {
-        //variable for output
-        String Userid;
-        String Username;
-        String Role;
-        String FirstName;
-        String LastName;
-        String Email;
-        String Phone;
-        String Status;
-        //reader
-        String filepath = "UserDetails.txt";
-        File file = new File(filepath);
-        BufferedReader br;
-        
-        try {
-            FileReader rf = new FileReader(file);
-            br = new BufferedReader (rf);
-            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
-            DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
-            model.setColumnIdentifiers(columnName);
-            model.setRowCount(0);
-            userstbl.revalidate();
-            Object[] details = br.lines().toArray();
-            for (Object detail : details) {
-                String line = detail.toString().trim();
-                String[] row = line.split(",");
-                    //create the object to added into the table
-                    Userid = row[0];
-                    Username = row[1];
-                    Role = row[2];
-                    FirstName = row[3];
-                    LastName = row[4];
-                    Email = row[5];
-                    Phone = row[6];
-                    Status = row[8];
-                    model.addRow(new Object[] {Userid,Username,Role,FirstName,LastName,Email,Phone,Status});
-                }
-            br.close();        
-            rf.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     /**
      * @param args the command line arguments
      */
