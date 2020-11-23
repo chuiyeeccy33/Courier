@@ -278,4 +278,42 @@ public class ManagingStaff extends Staff  {
            
         }
     }
+     
+    public String LoadUser() {
+        try {
+            FileReader rf = new FileReader("UserDetails.txt");
+            BufferedReader br = new BufferedReader(rf);
+            Object[] details = br.lines().toArray();
+            StringBuilder sb = new StringBuilder();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                if (selectedusertype.equals(row[2])) {
+                    userid = row[0];
+                    username = row[1];
+                    selectedusertype = row[2];
+                    firstname = row[3];
+                    lastname = row[4];
+                    email = row[5];
+                    phone = row[6];
+                    status = row[8];
+                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status);
+                } else {
+                    userid = row[0];
+                    username = row[1];
+                    selectedusertype = row[2];
+                    firstname = row[3];
+                    lastname = row[4];
+                    email = row[5];
+                    phone = row[6];
+                    status = row[8];
+                    sb.append(userid + "," + username + "," + selectedusertype + "," + firstname + "," + lastname + "," + email + "," + phone + "," + status);
+                }
+            }
+            return sb.toString();          
+        } catch(FileNotFoundException ex) {
+                       ex.toString();
+        }
+        return "error in load user";
+    }
 }

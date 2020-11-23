@@ -5,13 +5,14 @@
  */
 package courier;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.regex.PatternSyntaxException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -28,9 +29,15 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     public ManagingStaffUserManagement(String user_id) {
         initComponents();
         UserID = user_id;
+        fillcomboRole();
        data();
     }
 
+   private void fillcomboRole() {      
+      rolecbox.addItem("Managing Staff");
+      rolecbox.addItem("Customer");
+      rolecbox.addItem("Delivery Staff");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +53,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         userstbl = new javax.swing.JTable();
         viewbtn = new javax.swing.JButton();
         activatebtn = new javax.swing.JButton();
+        rolecbox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,44 +100,51 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
             }
         });
 
+        rolecbox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rolecbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rolecboxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(backbtn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(activatebtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(viewbtn)))
-                        .addGap(15, 15, 15))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGap(73, 73, 73)
+                        .addComponent(backbtn)
+                        .addGap(23, 23, 23))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(activatebtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rolecbox, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(backbtn)
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(viewbtn)
-                            .addComponent(activatebtn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(backbtn)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rolecbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewbtn)
+                    .addComponent(activatebtn))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,14 +186,58 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         data();
     }//GEN-LAST:event_activatebtnActionPerformed
 
+    private void rolecboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolecboxActionPerformed
+        String role = rolecbox.getSelectedItem().toString();
+        //variable for output
+        String Userid;
+        String Username;
+        String Role;
+        String FirstName;
+        String LastName;
+        String Email;
+        String Phone;
+        String Status;
+        //reader
+        BufferedReader br;
+        try {
+            FileReader rf = new FileReader("UserDetails.txt");
+            br = new BufferedReader (rf);
+            String[] columnName = {"User ID", "Username", "Role","First Name", "Last Name", "Email", "Phone","Status"};
+            DefaultTableModel model = (DefaultTableModel) userstbl.getModel();
+            model.setColumnIdentifiers(columnName);
+            model.setRowCount(0);
+            userstbl.revalidate();
+            Object[] details = br.lines().toArray();
+            for (Object detail : details) {
+                String line = detail.toString().trim();
+                String[] row = line.split(",");
+                //if role selected equal to row[2] in database
+                if (role.equals(row[2])) {
+                    //create the object to added into the table
+                    Userid = row[0];
+                    Username = row[1];
+                    Role = row[2];
+                    FirstName = row[3];
+                    LastName = row[4];
+                    Email = row[5];
+                    Phone = row[6];
+                    Status = row[8];
+                    model.addRow(new Object[] {Userid,Username,Role,FirstName,LastName,Email,Phone,Status});
+                }
+            }
+        }catch(FileNotFoundException ex) {
+                       ex.toString();
+        }
+               
+    }//GEN-LAST:event_rolecboxActionPerformed
+
      public void data() {
         //variable for output
         String Userid;
         String Username;
-        String Usertype;
+        String Role;
         String FirstName;
         String LastName;
-        String Role;
         String Email;
         String Phone;
         String Status;
@@ -256,6 +315,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     private javax.swing.JButton backbtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> rolecbox;
     private javax.swing.JTable userstbl;
     private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
