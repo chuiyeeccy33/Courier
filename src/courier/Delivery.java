@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -62,6 +63,40 @@ public class Delivery extends Orders {
     
     //Update Order
     public void UpdateDelivery() {
+        
+        //remove the old data
+        String removeTerm = orderid; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("Orders.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])){
+                    tempArray.add(data);
+                }
+            }
+            sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+
+        try{
+            try(PrintWriter pr = new PrintWriter("Orders.txt")) {
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+        }
+        
+        //change the status of the delivery
         File Finput = new File("Orders.txt");
       
         try {

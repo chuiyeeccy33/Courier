@@ -221,16 +221,15 @@ public class Orders {
     }
         
     //add new orders from user
-    public void SaveOrderFile() {
+    public void AddOrder() {
         File Finput = new File("Orders.txt");
-      
         try {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "" + "," + "" + ","+ "" + "," + getUserid();
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "" + "," + "None" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -247,9 +246,10 @@ public class Orders {
                 || receiveremail.equals("")|| orderdate.equals("") || weight.equals("")|| width.equals("") || length.equals("")|| height.equals("") || orderdetails.equals("")
                 || shippingfee.equals("");
     }
-     
-    //remove order detail
-    public void RemoveOrder(){
+       
+    //delete order detail
+     public void DeletedOrder() {
+        //remove the old data 
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
@@ -265,7 +265,8 @@ public class Orders {
                     tempArray.add(data);
                 }
             }
-        sc.close();
+            sc.close();
+        
         } catch(Exception ex){
             ex.toString();
         }
@@ -278,11 +279,9 @@ public class Orders {
             }
         } catch(Exception ex){
             ex.toString();
-            }
-    }
-       
-    //delete order detail
-     public void DeletedOrder() {
+        }
+        
+        //delete order
         File Finput = new File("DeletedOrders.txt");
       
         try {

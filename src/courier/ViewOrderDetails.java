@@ -682,7 +682,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
 
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(Tempdeliverystatus.equals("Pending")) {
-                            o.RemoveOrder();
                             o.DeletedOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
@@ -690,7 +689,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                              JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
-                        o.RemoveOrder();
                         o.UpdateDelivery();
                         this.dispose();
                         new DeliveryStaffOrderPage(Userid).setVisible(true);

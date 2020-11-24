@@ -701,9 +701,10 @@ public class OrderDetails extends javax.swing.JFrame {
                     String Temptype = tempArr[2];
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);                  
-                    Delivery o = new Delivery(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,defaultdeliveryid, Tempdefaultstaffphone,TempUserID);
+                    Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,TempUserID);
                     
+                    //customer role will add order
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -711,10 +712,10 @@ public class OrderDetails extends javax.swing.JFrame {
                             if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {  
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
-                                        o.SaveOrderFile();
+                                        o.AddOrder();
                                         clearFields();
                                         this.dispose();
-                                        new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                        new CustomerOrderTable(Userid).setVisible(true);
                                     } else {
                                         JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
                                     }
@@ -726,6 +727,7 @@ public class OrderDetails extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
                             }        
                         }
+                        
                     } else if(u.getSelectedUserType().equals("Managing Staff")) {                    
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -735,13 +737,12 @@ public class OrderDetails extends javax.swing.JFrame {
                                     if(!Temptotal.equals("")) {
                                         if(!delivery.equals("None")) {
                                             u.setUserid(Tempcustid);
-                                            Delivery o1 = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
+                                            Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
                                                             Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                                                             Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
                                                             deliveryid, Tempstaffphone,Tempcustid);
                                                
-                                            o1.RemoveOrder();
-                                            o1.UpdateDelivery();
+                                            d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
                                             new DeliveryStaffOrderPage(Userid).setVisible(true);        
