@@ -60,10 +60,10 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(698, 515));
 
         label1.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
-        label1.setText("Order");
+        label1.setText("Order & Delivery");
 
         label2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        label2.setText("Your Order");
+        label2.setText("Customer Recent Order and Delivery");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,9 +109,9 @@ public class CustomerOrderTable extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label1))
-                        .addGap(398, 398, 398)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82)
                         .addComponent(neworderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)

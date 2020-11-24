@@ -20,7 +20,6 @@ import java.util.Scanner;
  */
 public class Delivery extends Orders {
     
-    private String deliveryid;
     private String deliverystatus;
     private String assignperson;
     private String staffphone;

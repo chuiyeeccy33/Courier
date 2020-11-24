@@ -34,7 +34,7 @@ public class Orders {
     
     public Orders(String Orderid, String Sendername, String Senderaddress, String Senderphone, String Senderemail, String Receivername, String Receiveraddress, 
             String Receiverphone,String Receiveremail,String Orderdate, String Weight, String Width, String Length,String Height, String Orderdetails, String Shippingfee, 
-            String Itemprice, String Total, String Deliverystatus,String Assignperson, String Staffphone, String Userid) {
+            String Itemprice, String Total,String Userid) {
         
         orderid = Orderid; //Order ID 0
         userid = Userid; //Customer ID 21
