@@ -122,8 +122,6 @@ public class Delivery extends Orders {
     //Managing staff can assign a delivery staff into delivery
     //Delivery staff can view their current delivery
     public String LoadDelivery() {
-        
-        System.out.println(userid);
         try {
             File file1 = new File ("UserDetails.txt");
             File file2 = new File("Orders.txt");
