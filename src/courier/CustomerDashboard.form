@@ -38,7 +38,6 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="feedbackbtn" alignment="1" min="-2" pref="405" max="-2" attributes="0"/>
                                       <Component id="deliverybtn" min="-2" pref="405" max="-2" attributes="0"/>
-                                      <Component id="orderbtn" alignment="1" min="-2" pref="405" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -64,12 +63,10 @@
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="deliverybtn" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="orderbtn" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="feedbackbtn" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="profilebtn" min="-2" pref="42" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,7 +94,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Delivery"/>
+        <Property name="text" type="java.lang.String" value="Delivery &amp; Order"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deliverybtnActionPerformed"/>
@@ -120,17 +117,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profilebtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="orderbtn">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Order"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="orderbtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

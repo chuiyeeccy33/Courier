@@ -25,7 +25,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
         deliverybtn = new javax.swing.JButton();
         feedbackbtn = new javax.swing.JButton();
         profilebtn = new javax.swing.JButton();
-        orderbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,7 +40,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         jLabel2.setText("Welcome Back");
 
         deliverybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        deliverybtn.setText("Delivery");
+        deliverybtn.setText("Delivery & Order");
         deliverybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deliverybtnActionPerformed(evt);
@@ -63,14 +62,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
             }
         });
 
-        orderbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        orderbtn.setText("Order");
-        orderbtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderbtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,8 +79,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                     .addComponent(profilebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(feedbackbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 33, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -106,12 +96,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 .addGap(58, 58, 58)
                 .addComponent(deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(orderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(feedbackbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(profilebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,12 +126,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
         this.dispose();
         new CustomerOrderTable(user_id).setVisible(true);
     }//GEN-LAST:event_deliverybtnActionPerformed
-
-    private void orderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderbtnActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_orderbtnActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -175,7 +157,6 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JButton feedbackbtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logoutbtn;
-    private javax.swing.JButton orderbtn;
     private javax.swing.JButton profilebtn;
     // End of variables declaration//GEN-END:variables
 }
