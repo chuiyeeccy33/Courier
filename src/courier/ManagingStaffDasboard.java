@@ -71,6 +71,11 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jButton6.setText("Report");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         assignbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         assignbtn.setText("Assign Staff to Order");
@@ -209,6 +214,11 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         this.dispose();
         new ManagingStaffApproval(user_id).setVisible(true);
     }//GEN-LAST:event_approvalbtnActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new ManagingStaffReportManagement(user_id).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     /**
