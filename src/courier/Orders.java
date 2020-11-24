@@ -229,7 +229,7 @@ public class Orders {
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "" + "," + "None" + ","+ "" + "," + getUserid();
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + "," + "None" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -247,9 +247,8 @@ public class Orders {
                 || shippingfee.equals("");
     }
        
-    //delete order detail
-     public void DeletedOrder() {
-        //remove the old data 
+    //remove order detail
+    public void DeletedOrder(){
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
@@ -266,8 +265,7 @@ public class Orders {
                 }
             }
             sc.close();
-        
-        } catch(Exception ex){
+        } catch(Exception ex) {
             ex.toString();
         }
         try{
@@ -280,8 +278,7 @@ public class Orders {
         } catch(Exception ex){
             ex.toString();
         }
-        
-        //delete order
+
         File Finput = new File("DeletedOrders.txt");
       
         try {
@@ -289,8 +286,8 @@ public class Orders {
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
-                    + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal() + "," + getUserid();
+                        + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
+                        + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal() + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -298,8 +295,8 @@ public class Orders {
             pw.close();
             System.out.println("Order Deleted!");
         } catch (IOException ex) {
-           
-        }
+               
+        }    
     }
     
     //Back Button
@@ -310,7 +307,7 @@ public class Orders {
             new CustomerDashboard(userid).setVisible(true);
         } else if(type.equals("Managing Staff")) {
             new ManagingStaffDasboard(userid).setVisible(true);
-        } else{
+        } else {
             new DeliveryStaffDashboardPage(userid).setVisible(true);           
         }       
     }
