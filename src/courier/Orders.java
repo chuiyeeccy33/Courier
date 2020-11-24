@@ -314,16 +314,16 @@ public class Orders {
        
     // view order details to table    
     public void ViewFormBackToTable(String user, String type){
-            userid = user;
-            type = users.getSelectedUserType();
-            if (type.equals("Customer")) {
-                new CustomerOrderTable(userid).setVisible(true);
-            }else if(type.equals("Managing Staff")) {
-                new ManagingStaffAllOrder(userid).setVisible(true);
-            }else {
-                new DeliveryStaffOrderPage(userid).setVisible(true);           
-            }
-}
+        userid = user;
+        type = users.getSelectedUserType();
+        if (type.equals("Customer")) {
+            new CustomerOrderTable(userid).setVisible(true);
+        }else if(type.equals("Managing Staff")) {
+            new ManagingStaffAllOrder(userid).setVisible(true);
+        }else {
+            new DeliveryStaffOrderPage(userid).setVisible(true);           
+        }
+    }
 
     //order details to table
     public void FormBackToTable(String user, String type){
