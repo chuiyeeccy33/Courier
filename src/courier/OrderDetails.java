@@ -700,9 +700,8 @@ public class OrderDetails extends javax.swing.JFrame {
                 if (TempUserID.equals(tempArr[0])) {
                     String Temptype = tempArr[2];
                     Users u = new Users();
-                    u.setSelectedUserType(Temptype);
-                    
-                    Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                    u.setSelectedUserType(Temptype);                  
+                    Delivery o = new Delivery(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                         Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,defaultdeliveryid, Tempdefaultstaffphone,TempUserID);
                     
                     if(u.getSelectedUserType().equals("Customer")) {
@@ -735,11 +734,14 @@ public class OrderDetails extends javax.swing.JFrame {
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
                                         if(!delivery.equals("None")) {
-                                            Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                                                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
+                                            u.setUserid(Tempcustid);
+                                            Delivery o1 = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
+                                                            Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
+                                                            deliveryid, Tempstaffphone,Tempcustid);
                                                
                                             o1.RemoveOrder();
-                                            o1.UpdateOrder();
+                                            o1.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
                                             new DeliveryStaffOrderPage(Userid).setVisible(true);        

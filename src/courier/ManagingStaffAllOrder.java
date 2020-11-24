@@ -28,9 +28,9 @@ public class ManagingStaffAllOrder extends javax.swing.JFrame {
         model.setRowCount(0);
         jTable1.revalidate();
         
-        Orders o = new Orders();
+        Delivery o = new Delivery();
         o.setUserid(userid);
-        Object[] outputs = o.LoadAllOrder().lines().toArray();
+        Object[] outputs = o.LoadAllDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");

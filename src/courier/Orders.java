@@ -6,35 +6,29 @@ import java.util.*;
 
 public class Orders {
     //composition 
-    private Users users = new Users();
+    public Users users = new Users();
     //general
     //person details
-    private String orderid;
-    private String userid;
-    private String sendername;
-    private String senderaddress;
-    private String senderphone;
-    private String senderemail;
-    private String receivername;
-    private String receiveraddress;
-    private String receiverphone;
+    public String orderid;
+    public String orderdate;
+    public String userid;
+    public String sendername;
+    public String senderaddress;
+    public String senderphone;
+    public String senderemail;
+    public String receivername;
+    public String receiveraddress;
+    public String receiverphone;
     private String receiveremail;
     //order details
-    private String orderdate;
-    private String weight;
-    private String width;
-    private String length;
-    private String height;
-    private String orderdetails;
-    private String shippingfee;
-    private String itemprice;
-    private String total;
-    //delivery side
-    private String deliverystatus;
-    //admin
-    private String assignperson;
-    //customer
-    private String staffphone;
+    public String weight;
+    public String width;
+    public String length;
+    public String height;
+    public String orderdetails;
+    public String itemprice;
+    public String shippingfee;
+    public String total;
     
     public Orders(){}
     
@@ -61,9 +55,6 @@ public class Orders {
         shippingfee = Shippingfee; //Shipping Fees Selection 15
         itemprice = Itemprice; // Shipping Fees Amount 16
         total = Total; //Total Amount of the order 17
-        deliverystatus = Deliverystatus; // the status of the order 18
-        assignperson = Assignperson; //Delivery Staff to the order 19
-        staffphone = Staffphone; //Delivery staff Phone Number 20
         this.users = new Users();
     }
     
@@ -72,91 +63,80 @@ public class Orders {
         return users;
     }
       
-    private String getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
     
-    private String getUserid() {
+    public String getUserid() {
         return userid;
     }
     
-    private String getSendername(){
+    public String getSendername(){
         return sendername;
     }
     
-    private String getSenderaddress() {
+    public String getSenderaddress() {
         return senderaddress;
     }
     
-    private String getSenderphone() {
+    public String getSenderphone() {
         return senderphone;
     }
     
-    private String getSenderemail() {
+    public String getSenderemail() {
         return senderemail;
     }
     
-    private String getReceivername() {
+    public String getReceivername() {
         return receivername;
     }
     
-    private String getReceiveraddress() {
+    public String getReceiveraddress() {
         return receiveraddress;
     }
     
-    private String getReceiverphone() {
+    public String getReceiverphone() {
         return receiverphone;
     }
     
-    private String getReceiveremail() {
+    public String getReceiveremail() {
         return receiveremail;
     }
     
-    private String getOrderdate() {
+    public String getOrderdate() {
         return orderdate;
     }
     
-    private String getWeight() {
+    public String getWeight() {
         return weight;
     }
     
-    private String getWidth() {
+    public String getWidth() {
         return width;
     }
     
-    private String getLength() {
+    public String getLength() {
         return length;
     }
     
-    private String getHeight() {
+    public String getHeight() {
         return height;
     }
     
-    private String getOrderdetails() {
+    public String getOrderdetails() {
         return orderdetails;
     }
     
-    private String getShippingfee() {
+    public String getShippingfee() {
         return shippingfee;
     }
     
-    private String getItemprice() {
+    public String getItemprice() {
         return itemprice;
     }
     
-    private String getTotal() {
+    public String getTotal() {
         return total;
-    }
-    private String getDeliverystatus() {
-        return deliverystatus;
-    }
-    
-    private String getAssignperson() {
-        return assignperson;
-    }
-    
-    private String getStaffphone() {
-        return staffphone;
     }
     
     //set
@@ -235,17 +215,6 @@ public class Orders {
     public void setTotal(String Total) {
         total = Total;
     }
-    public void setDeliverystatus(String Deliverystatus) {
-        deliverystatus = Deliverystatus;
-    }
-    
-    public void setAssginperson(String Assignperson) {
-        assignperson = Assignperson;
-    }
-    
-    public void setStaffphone(String Staffphone) {
-        staffphone = Staffphone ;
-    }
     
     public String toString() {
         return orderid + userid;
@@ -261,7 +230,7 @@ public class Orders {
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "" + "," + "" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -311,28 +280,6 @@ public class Orders {
             ex.toString();
             }
     }
-    
-    //Update Order
-    public void UpdateOrder() {
-        File Finput = new File("Orders.txt");
-      
-        try {
-            FileWriter fw = new FileWriter(Finput,true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
-                    + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();
-            //in the textfile, each data will have one row blank b4 next line
-            //use pw to write data you want to write
-            pw.write(Line);
-            bw.newLine();
-            pw.close();
-            System.out.println("Order Updated!");
-        } catch (IOException ex) {
-           
-        }
-    }
        
     //delete order detail
      public void DeletedOrder() {
@@ -344,7 +291,7 @@ public class Orders {
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal() + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -391,116 +338,5 @@ public class Orders {
             }else if(type.equals("Managing Staff")) {
                 new ManagingStaffAssignOrder(userid).setVisible(true);
             }
-    }
-
-    //Load data into Table
-    public String LoadOrder() {
-        try {
-            File file1 = new File ("UserDetails.txt");
-            File file2 = new File("Orders.txt");
-            Scanner sc1 = new Scanner(file1);
-            Scanner sc2 = new Scanner(file2);
-            String temp;
-            boolean found = false;
-            BufferedReader br2 = new BufferedReader (new FileReader(file2));
-            StringBuilder sb = new StringBuilder();
-            
-            while(sc1.hasNext() && !found) {
-                temp = sc1.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                
-                if(userid.equals(tempArr[0])) {
-                    String TempUserType = tempArr[2]; // Return the usertype to the variable
-                    if(TempUserType.equals("Customer")) {
-                        Object[] details = br2.lines().toArray();
-                        for (Object detail : details) { 
-                            String line = detail.toString().trim();
-                            String[] row = line.split(",");
-                            if (userid.equals(row[21])) {
-                                orderid = row[0];
-                                orderdate = row[9];
-                                total = row[17];
-                                deliverystatus = row[18];
-                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");                             
-                            }
-                        }
-                    return sb.toString();
-                    } else if(TempUserType.equals("Managing Staff")) {
-                        Object[] details = br2.lines().toArray();
-                        for (Object detail : details) {
-                            String line = detail.toString().trim();
-                            String[] row = line.split(",");
-                            assignperson = row[19];
-                            if(assignperson.equals("None")) {
-                                orderid = row[0];
-                                orderdate = row[9];
-                                total = row[17];
-                                deliverystatus = row[18];    
-                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");   
-                            }
-                        }
-                    return sb.toString();
-                    } else if(TempUserType.equals("Delivery Staff")) {
-                        Object[] details = br2.lines().toArray();
-                        for (Object detail : details) {
-                            String line = detail.toString().trim();
-                            String[] row = line.split(",");
-                            assignperson = row[19];
-                            if(assignperson.equals(userid)) {
-                                orderid = row[0];
-                                orderdate = row[9];
-                                total = row[17];
-                                deliverystatus = row[18];    
-                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");   
-                            }
-                        }
-                    return sb.toString();
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "error in loadorder";
-    }
-    
-    //Load Data Into Order Form
-    public String LoadAllOrder() {
-        try {
-            File file = new File("Orders.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            StringBuilder sb = new StringBuilder();
-            
-            while(sc.hasNext() && !found) {
-                temp = sc.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                
-                Object[] data = br.lines().toArray();
-                for (Object load : data) {
-                    String line = load.toString().trim();
-                    String[] row = line.split(",");
-                    assignperson = row[19];
-                    if(!assignperson.equals("None")) {
-                        orderid = row[0];
-                        orderdate = row[9];
-                        total = row[17];
-                        deliverystatus = row[18];    
-                        sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n"); 
-                    } else {
-                        sb.append("There is no Order");
-                    }
-                }
-            return sb.toString();
-            }
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "error in Order.java";
     }
 }

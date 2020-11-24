@@ -677,7 +677,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
 
-                    Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                    Delivery o = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                         Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
 
                     if(u.getSelectedUserType().equals("Customer")) {
@@ -691,7 +691,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
                         o.RemoveOrder();
-                        o.UpdateOrder();
+                        o.UpdateDelivery();
                         this.dispose();
                         new DeliveryStaffOrderPage(Userid).setVisible(true);
                     }                            

@@ -28,9 +28,9 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         model.setRowCount(0);
         jTable1.revalidate();
         
-        Orders o = new Orders();
-        o.setUserid(userid);
-        Object[] outputs = o.LoadOrder().lines().toArray();
+        Delivery d = new Delivery();
+        d.setUserid(userid);
+        Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");

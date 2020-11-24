@@ -31,9 +31,9 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
         model.setRowCount(0); //clear the model
         Ordertbl.revalidate(); //refresh the table
         
-        Orders o = new Orders();
-        o.setUserid(UserID);
-        Object[] outputs = o.LoadOrder().lines().toArray();
+        Delivery d = new Delivery();
+        d.setUserid(UserID);
+        Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");
