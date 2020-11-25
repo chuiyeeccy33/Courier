@@ -9,8 +9,8 @@ public class Orders {
     private Users users = new Users();
     //general
     //person details
-    private String orderid;
-    private String userid;
+    public String orderid;
+    public String userid;
     private String sendername;
     private String senderaddress;
     private String senderphone;
@@ -20,15 +20,15 @@ public class Orders {
     private String receiverphone;
     private String receiveremail;
     //order details
-    private String orderdate;
-    private String weight;
-    private String width;
-    private String length;
-    private String height;
-    private String orderdetails;
-    private String shippingfee;
-    private String itemprice;
-    private String total;
+    public String orderdate;
+    public String weight;
+    public String width;
+    public String length;
+    public String height;
+    public String orderdetails;
+    public String shippingfee;
+    public String itemprice;
+    public String total;
     //delivery side
     private String deliverystatus;
     //admin
