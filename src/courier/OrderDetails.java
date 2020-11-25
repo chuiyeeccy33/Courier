@@ -855,7 +855,7 @@ public class OrderDetails extends javax.swing.JFrame {
                                             d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
-                                            new DeliveryStaffOrderPage(Userid).setVisible(true);        
+                                            new ManagingStaffAssignOrder(Userid).setVisible(true);        
                                         } else {
                                             JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
                                         }
