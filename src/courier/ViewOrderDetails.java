@@ -729,7 +729,36 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         deliverystatuscbox.addItem("Delivered");
     }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-     
+           try {
+                File file = new File("UserDetails.txt");
+                Scanner sc = new Scanner(file);
+                String temp;
+                boolean found = false;
+            
+                while(sc.hasNext() && !found) {
+                    temp = sc.nextLine();
+                    String[] tempArr;
+                    tempArr = temp.split(",");
+
+                    if(Userid.equals(tempArr[0])) {
+                        String TempUserType = tempArr[2]; // Return the usertype to the variable
+                        Users u = new Users();
+                        u.setSelectedUserType(TempUserType);
+                        if (u.getSelectedUserType().equals("Customer")) {
+                            new CustomerOrderTable(Userid).setVisible(true);
+                            this.dispose();
+                        } else if (u.getSelectedUserType().equals("Managing Staff")) {
+                             new ManagingStaffAllOrder(Userid).setVisible(true);
+                             this.dispose();
+                        } else {
+                             new DeliveryStaffOrderPage(Userid).setVisible(true);           
+                             this.dispose();
+                        }
+                    }
+                }
+          } catch (Exception ex) {
+            ex.toString();
+          }     
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void deletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebtnActionPerformed

@@ -273,7 +273,7 @@ public class OrderDetails extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(deliverysenderlbl)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,32 +613,33 @@ public class OrderDetails extends javax.swing.JFrame {
                             .addComponent(Hcmlbl))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(shippingfeelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(itempricelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(totallbl)
-                                .addGap(14, 14, 14)
-                                .addComponent(assignedpersonphonelbl1))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl2)
-                                    .addComponent(shippingfee1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl)
-                                    .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl1)
-                                    .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addComponent(assignedpersonphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(orderdetailslbl)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(shippingfeelbl)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(itempricelbl)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(totallbl)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(assignedpersonphonelbl1))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl2)
+                                            .addComponent(shippingfee1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl)
+                                            .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(7, 7, 7)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl1)
+                                            .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(11, 11, 11)
+                                        .addComponent(assignedpersonphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(calculatebtn)))
@@ -711,7 +712,7 @@ public class OrderDetails extends javax.swing.JFrame {
                 .addComponent(backbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(receivernamelbl, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(receiverphonelbl, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -940,7 +941,36 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_senderphonetxtKeyTyped
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       
+            try {
+                File file = new File("UserDetails.txt");
+                Scanner sc = new Scanner(file);
+                String temp;
+                boolean found = false;
+            
+                while(sc.hasNext() && !found) {
+                    temp = sc.nextLine();
+                    String[] tempArr;
+                    tempArr = temp.split(",");
+
+                    if(Userid.equals(tempArr[0])) {
+                        String TempUserType = tempArr[2]; // Return the usertype to the variable
+                        Users u = new Users();
+                        u.setSelectedUserType(TempUserType);
+                        if (u.getSelectedUserType().equals("Customer")) {
+                            new CustomerOrderTable(Userid).setVisible(true);
+                            this.dispose();
+                        } else if (u.getSelectedUserType().equals("Managing Staff")) {
+                             new ManagingStaffAllOrder(Userid).setVisible(true);
+                             this.dispose();
+                        } else {
+                             new DeliveryStaffOrderPage(Userid).setVisible(true);           
+                             this.dispose();
+                        }
+                    }
+                }
+          } catch (Exception ex) {
+            ex.toString();
+          }
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed

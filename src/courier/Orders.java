@@ -160,6 +160,10 @@ public class Orders {
     }
     
     //set
+     public void setSelectedUserType(Users role) {
+        users = role;
+    }
+     
      public void setOrderid(String Orderid) {
         orderid = Orderid;
     }
@@ -370,16 +374,43 @@ public class Orders {
     }
        
     // view order details to table    
-    public void ViewFormBackToTable(String user, String type){
-            userid = user;
-            type = users.getSelectedUserType();
-            if (type.equals("Customer")) {
-                new CustomerOrderTable(userid).setVisible(true);
-            }else if(type.equals("Managing Staff")) {
-                new ManagingStaffAllOrder(userid).setVisible(true);
-            }else {
-                new DeliveryStaffOrderPage(userid).setVisible(true);           
+    public void ViewFormBackToTable(String user, Users type){
+            try {
+            File file = new File("Orders.txt");
+            Scanner sc = new Scanner(file);
+            String temp;
+            boolean found = false;
+            BufferedReader br = new BufferedReader (new FileReader(file));
+            StringBuilder sb = new StringBuilder();
+            
+            while(sc.hasNext() && !found) {
+                temp = sc.nextLine();
+                String[] tempArr;
+                tempArr = temp.split(",");
+                
+                if(userid.equals(tempArr[0])) {
+                    String TempUserType = tempArr[2]; // Return the usertype to the variable
+                    if(TempUserType.equals("Customer")) {
+                        Object[] details = br.lines().toArray();
+                        for (Object detail : details) { 
+                            String line = detail.toString().trim();
+                            String[] row = line.split(",");
+                            userid = user;
+                            type = users;
+                            if (type.equals("Customer")) {
+                                new CustomerOrderTable(userid).setVisible(true);
+                            }else if(type.equals("Managing Staff")) {
+                                new ManagingStaffAllOrder(userid).setVisible(true);
+                            }else {
+                                new DeliveryStaffOrderPage(userid).setVisible(true);           
+                            }
+                        }
+                    }
+                }
             }
+          } catch (Exception ex) {
+            ex.printStackTrace();
+         }
 }
 
     //order details to table
