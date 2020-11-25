@@ -689,6 +689,25 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
                         Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                         Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
+                        d.setSendername(Tempsendname);
+                        d.setSenderaddress(Tempsendaddress);
+                        d.setSenderphone(Tempsendphone);
+                        d.setSenderemail(Tempsendemail);
+                        d.setReceivername(Tempreceivename);
+                        d.setReceiveraddress(Tempreceiveaddress);
+                        d.setReceivephone(Tempreceivephone);
+                        d.setReceiveemail(Tempreceiveemail);
+                        d.setOrderid(ExistOrderID);
+                        d.setOrderdate(datelbl.getText());
+                        d.setWeight(Tempweight);
+                        d.setWidth(Tempwidth);
+                        d.setLength(Templength);
+                        d.setHeight(Tempheight);
+                        d.setOrderdetails(Temporderdetails);
+                        d.setShippingfee(Tempshippingfee);
+                        d.setItemprice(Tempitemprice);
+                        d.setTotal(Temptotal);
+                        d.setUserid(Tempcustid);
                         d.UpdateDelivery();
                         this.dispose();
                         new DeliveryStaffOrderPage(Userid).setVisible(true);
