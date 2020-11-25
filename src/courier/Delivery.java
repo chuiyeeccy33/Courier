@@ -142,10 +142,12 @@ public class Delivery extends Orders {
                             String[] row = line.split(",");
                             if (userid.equals(row[21])) {
                                 orderid = row[0];
-                                orderdate = row[9];
-                                total = row[17];
-                                deliverystatus = row[18];
-                                sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");                             
+                                if (!orderid.equals("")) {
+                                    orderdate = row[9];
+                                    total = row[17];
+                                    deliverystatus = row[18];
+                                    sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n");  
+                                } 
                             }
                         }
                     return sb.toString();
