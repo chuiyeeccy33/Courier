@@ -772,13 +772,10 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     String Temptype = tempArr[2];
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
-
-                    Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
-
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(Tempdeliverystatus.equals("Pending")) {
-                            o.RemoveOrder();
+                            Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempcustid);
                             o.DeletedOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
@@ -786,8 +783,28 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                              JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
-                        o.RemoveOrder();
-                        o.UpdateOrder();
+                        Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
+                        d.setSendername(Tempsendname);
+                        d.setSenderaddress(Tempsendaddress);
+                        d.setSenderphone(Tempsendphone);
+                        d.setSenderemail(Tempsendemail);
+                        d.setReceivername(Tempreceivename);
+                        d.setReceiveraddress(Tempreceiveaddress);
+                        d.setReceivephone(Tempreceivephone);
+                        d.setReceiveemail(Tempreceiveemail);
+                        d.setOrderid(ExistOrderID);
+                        d.setOrderdate(datelbl.getText());
+                        d.setWeight(Tempweight);
+                        d.setWidth(Tempwidth);
+                        d.setLength(Templength);
+                        d.setHeight(Tempheight);
+                        d.setOrderdetails(Temporderdetails);
+                        d.setShippingfee(Tempshippingfee);
+                        d.setItemprice(Tempitemprice);
+                        d.setTotal(Temptotal);
+                        d.setUserid(Tempcustid);
+                        d.UpdateDelivery();
                         this.dispose();
                         new DeliveryStaffOrderPage(Userid).setVisible(true);
                     }                            

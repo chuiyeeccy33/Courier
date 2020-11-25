@@ -847,11 +847,50 @@ public class OrderDetails extends javax.swing.JFrame {
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
                                         if(!delivery.equals("None")) {
-                                            Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                                                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
-                                               
-                                            o1.RemoveOrder();
-                                            o1.UpdateOrder();
+                                           //u.setUserid(Tempcustid);
+                                            d.setSendername(Tempsendname);
+                                            d.setSenderaddress(Tempsendaddress);
+                                            d.setSenderphone(Tempsendphone);
+                                            d.setSenderemail(Tempsendemail);
+                                            d.setReceivername(Tempreceivename);
+                                            d.setReceiveraddress(Tempreceiveaddress);
+                                            d.setReceivephone(Tempreceivephone);
+                                            d.setReceiveemail(Tempreceiveemail);
+                                            d.setOrderid(ExistOrderID);
+                                            d.setOrderdate(datelbl.getText());
+                                            d.setWeight(Tempweight);
+                                            d.setWidth(Tempwidth);
+                                            d.setLength(Templength);
+                                            d.setHeight(Tempheight);
+                                            d.setOrderdetails(Temporderdetails);
+                                            d.setShippingfee(Tempshippingfee);
+                                            d.setItemprice(Tempitemprice);
+                                            d.setTotal(Temptotal);
+                                            d.setUserid(Tempcustid);
+                                            //print for testing
+                                            System.out.println("Frontend: " + ExistOrderID);
+                                            System.out.println("Frontend: " + Tempsendname);
+                                            System.out.println("Frontend: " + Tempsendaddress);
+                                            System.out.println("Frontend: " + Tempsendphone);
+                                            System.out.println("Frontend: " + Tempsendemail);
+                                            System.out.println("Frontend: " + Tempreceivename);
+                                            System.out.println("Frontend: " + Tempreceiveaddress);
+                                            System.out.println("Frontend: " + Tempreceivephone);
+                                            System.out.println("Frontend: " + Tempreceiveemail);
+                                            System.out.println("Frontend: " + Tempdate);
+                                            System.out.println("Frontend: " + Tempweight);
+                                            System.out.println("Frontend: " + Tempwidth);
+                                            System.out.println("Frontend: " + Templength);
+                                            System.out.println("Frontend: " + Tempheight);
+                                            System.out.println("Frontend: " + Temporderdetails);
+                                            System.out.println("Frontend: " + Tempshippingfee);
+                                            System.out.println("Frontend: " + Tempitemprice);
+                                            System.out.println("Frontend: " + Temptotal);
+                                            System.out.println("Frontend: " + Tempdeliverystatus);
+                                            System.out.println("Frontend: " + deliveryid);
+                                            System.out.println("Frontend: " + Tempstaffphone);
+                                            System.out.println("Frontend: " + Tempcustid);
+                                            d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
                                             new DeliveryStaffOrderPage(Userid).setVisible(true);        
@@ -945,7 +984,8 @@ public class OrderDetails extends javax.swing.JFrame {
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed
            //value format
-        DecimalFormat df = new DecimalFormat("#,###");
+        DecimalFormat df = new DecimalFormat(".00");
+        df.setGroupingUsed(false);
         //get shippingfee from textbox
         double shippingfee = Double.parseDouble(shippingfee1lbl.getText());
         //get itemprice from textbox
@@ -958,7 +998,7 @@ public class OrderDetails extends javax.swing.JFrame {
         System.out.println (df.format(price));
         System.out.println (df.format(total));
         //display total in textbox
-        totaltxt.setText(df.format(total));
+        totaltxt.setText(df.format(total).toString().replace(",", ""))
        
     }//GEN-LAST:event_calculatebtnActionPerformed
 
@@ -995,11 +1035,11 @@ public class OrderDetails extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
         }else{
             if(weight > 0 && weight < 1) {
-                System.out.println(5.5);
-                shippingfee1lbl.setText("5.5");
+                System.out.println(5);
+                shippingfee1lbl.setText("5");
             }else if(weight > 1 && weight < 3) {
-                System.out.println(7.5);
-                 shippingfee1lbl.setText("7.5");
+                System.out.println(7);
+                shippingfee1lbl.setText("7");
             }else if(weight > 3 && weight < 6 ) {
                 System.out.println(15);
                 shippingfee1lbl.setText("15");
@@ -1102,6 +1142,18 @@ public class OrderDetails extends javax.swing.JFrame {
             }
         });
     }
+    private void itempricetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itempricetxtKeyTyped
+       char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {      
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        else {
+             itempricetxt.setEditable(true);
+
+        }
+    }//GEN-LAST:event_itempricetxtKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Datelbl;

@@ -38,9 +38,9 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
         model.setRowCount(0);
         Ordertbl.revalidate();
         
-        Orders o = new Orders();
-        o.setUserid(UserID);
-        Object[] outputs = o.LoadOrder().lines().toArray();
+        Delivery d = new Delivery();
+        d.setUserid(UserID);
+        Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");
