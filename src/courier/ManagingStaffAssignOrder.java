@@ -28,7 +28,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
     public ManagingStaffAssignOrder(String user_id) {
         initComponents();
         UserID = user_id;
-         setResizable(false);
+        setResizable(false);
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
         
