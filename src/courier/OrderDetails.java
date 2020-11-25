@@ -34,7 +34,7 @@ public class OrderDetails extends javax.swing.JFrame {
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
         iddeliverylbl.setVisible(false);
-        //deliveryidlbl.setVisible(false);
+        deliveryidlbl.setVisible(false);
         assignedpersonphonelbl1.setVisible(false);
         assignedpersonphonetxt.setVisible(false);
         assignedpersonlbl.setVisible(false);
@@ -212,11 +212,6 @@ public class OrderDetails extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(129, 182, 157));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        sendernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderemailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         senderphonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 senderphonetxtKeyTyped(evt);
@@ -239,7 +234,6 @@ public class OrderDetails extends javax.swing.JFrame {
         deliverysenderlbl.setText("Sender Details");
 
         senderaddresstxt.setColumns(20);
-        senderaddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         senderaddresstxt.setRows(5);
         jScrollPane4.setViewportView(senderaddresstxt);
 
@@ -250,13 +244,13 @@ public class OrderDetails extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(sendernamelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(senderphonelbl)
@@ -271,7 +265,7 @@ public class OrderDetails extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(41, 41, 41)
                         .addComponent(deliverysenderlbl)))
                 .addContainerGap(106, Short.MAX_VALUE))
         );
@@ -281,12 +275,10 @@ public class OrderDetails extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(deliverysenderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(sendernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(sendernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(senderaddresslbl)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,7 +290,7 @@ public class OrderDetails extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senderemaillbl))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 320));
@@ -369,32 +361,30 @@ public class OrderDetails extends javax.swing.JFrame {
             }
         });
 
-        widthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         widthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 widthtxtKeyTyped(evt);
             }
         });
 
-        lengthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lengthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 lengthtxtKeyTyped(evt);
             }
         });
 
-        heighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         heighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 heighttxtKeyTyped(evt);
             }
         });
 
-        itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        itempricetxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                itempricetxtKeyTyped(evt);
+            }
+        });
 
-        totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        weighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 weighttxtKeyReleased(evt);
@@ -409,15 +399,12 @@ public class OrderDetails extends javax.swing.JFrame {
         kglbl.setText("KG");
 
         orderdetailstxt.setColumns(20);
-        orderdetailstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         orderdetailstxt.setRows(5);
         jScrollPane3.setViewportView(orderdetailstxt);
 
         assignedpersonphonelbl1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersonphonelbl1.setForeground(new java.awt.Color(240, 240, 240));
         assignedpersonphonelbl1.setText("Delivery Staff Contact No.: ");
-
-        assignedpersonphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         datelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         datelbl.setForeground(new java.awt.Color(240, 240, 240));
@@ -613,32 +600,33 @@ public class OrderDetails extends javax.swing.JFrame {
                             .addComponent(Hcmlbl))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(shippingfeelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(itempricelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(totallbl)
-                                .addGap(14, 14, 14)
-                                .addComponent(assignedpersonphonelbl1))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl2)
-                                    .addComponent(shippingfee1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl)
-                                    .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(7, 7, 7)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(itemlbl1)
-                                    .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addComponent(assignedpersonphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(orderdetailslbl)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(shippingfeelbl)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(itempricelbl)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(totallbl)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(assignedpersonphonelbl1))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl2)
+                                            .addComponent(shippingfee1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl)
+                                            .addComponent(itempricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(7, 7, 7)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(itemlbl1)
+                                            .addComponent(totaltxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(11, 11, 11)
+                                        .addComponent(assignedpersonphonetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(calculatebtn)))
@@ -671,20 +659,14 @@ public class OrderDetails extends javax.swing.JFrame {
         receiveremaillbl.setText("Email Address:");
 
         receiveraddresstxt.setColumns(20);
-        receiveraddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         receiveraddresstxt.setRows(5);
         jScrollPane1.setViewportView(receiveraddresstxt);
 
-        receivernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        receiverphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         receiverphonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 receiverphonetxtKeyTyped(evt);
             }
         });
-
-        receiveremailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         deliverystatuslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         deliverystatuslbl.setText("Delivery Status:");
@@ -959,7 +941,36 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_senderphonetxtKeyTyped
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       
+         try {
+                File file = new File("UserDetails.txt");
+                Scanner sc = new Scanner(file);
+                String temp;
+                boolean found = false;
+            
+                while(sc.hasNext() && !found) {
+                    temp = sc.nextLine();
+                    String[] tempArr;
+                    tempArr = temp.split(",");
+
+                    if(Userid.equals(tempArr[0])) {
+                        String TempUserType = tempArr[2]; // Return the usertype to the variable
+                        Users u = new Users();
+                        u.setSelectedUserType(TempUserType);
+                        if (u.getSelectedUserType().equals("Customer")) {
+                            new CustomerOrderTable(Userid).setVisible(true);
+                            this.dispose();
+                        } else if (u.getSelectedUserType().equals("Managing Staff")) {
+                             new ManagingStaffAllOrder(Userid).setVisible(true);
+                             this.dispose();
+                        } else {
+                             new DeliveryStaffOrderPage(Userid).setVisible(true);           
+                             this.dispose();
+                        }
+                    }
+                }
+          } catch (Exception ex) {
+            ex.toString();
+          }     
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed
@@ -1014,19 +1025,19 @@ public class OrderDetails extends javax.swing.JFrame {
         if(weighttxt.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            if(weight > 0 && weight < 1) {
+            if(weight > 0 && weight <= 1) {
                 System.out.println(5);
                 shippingfee1lbl.setText("5");
-            }else if(weight > 1 && weight < 3) {
+            }else if(weight > 1 && weight <= 3) {
                 System.out.println(7);
                 shippingfee1lbl.setText("7");
-            }else if(weight > 3 && weight < 6 ) {
+            }else if(weight > 3 && weight <= 6 ) {
                 System.out.println(15);
                 shippingfee1lbl.setText("15");
-            }else if(weight > 6 && weight < 8 ) {
+            }else if(weight > 6 && weight <= 8 ) {
                 System.out.println(20);
                 shippingfee1lbl.setText("20");
-            }else if(weight > 8 && weight < 12) {
+            }else if(weight > 8 && weight <= 12) {
                 System.out.println(27);
                 shippingfee1lbl.setText("27");
           }else if(weight > 12){
