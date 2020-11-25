@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package courier;
 
-/**
- *
- * @author daniellim0510
- */
 public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
+    String user_id = "";
     /**
      * Creates new form ManagingStaffReportManagement
      */
-    public ManagingStaffReportManagement() {
+    public ManagingStaffReportManagement(String userid) {
         initComponents();
-         setResizable(false);
+        user_id = userid;
+        setResizable(false);
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
     }
@@ -36,7 +30,6 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         dailybtn = new javax.swing.JButton();
         monthlybtn = new javax.swing.JButton();
         userlistbtn = new javax.swing.JButton();
-        logoutbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,6 +39,11 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         backbtn.setBackground(new java.awt.Color(214, 245, 238));
         backbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         backbtn.setText("Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
 
         yearlybtn.setBackground(new java.awt.Color(129, 182, 157));
         yearlybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -67,10 +65,6 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         userlistbtn.setBackground(new java.awt.Color(129, 182, 157));
         userlistbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         userlistbtn.setText("User List");
-
-        logoutbtn.setBackground(new java.awt.Color(214, 245, 238));
-        logoutbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        logoutbtn.setText("Logout");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
@@ -99,20 +93,14 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(29, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(logoutbtn)))
+                        .addGap(95, 95, 95)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(logoutbtn))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -146,6 +134,12 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dailybtnActionPerformed
 
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new ManagingStaffDasboard(user_id).setVisible(true);
+    }//GEN-LAST:event_backbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,7 +170,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffReportManagement().setVisible(true);
+ 
             }
         });
     }
@@ -186,7 +180,6 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
     private javax.swing.JButton dailybtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton logoutbtn;
     private javax.swing.JButton monthlybtn;
     private javax.swing.JButton userlistbtn;
     private javax.swing.JButton yearlybtn;

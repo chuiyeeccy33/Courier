@@ -34,7 +34,7 @@ public class Report extends Orders {
         buttonClick = ButtonClick;
     }
     
-      public String Fill() {
+    public String Fill() {
         try {
             File file = new File("Orders.txt");
             Scanner sc = new Scanner(file);
@@ -78,7 +78,7 @@ public class Report extends Orders {
         return "error in filling combobox";
     }
       
-      public void GeneratePDF() {
+    public void GeneratePDF() {
       try {
             File file = new File("Orders.txt");
             Scanner sc = new Scanner(file);
