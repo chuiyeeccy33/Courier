@@ -27,7 +27,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
         fillstatuscombo();
-        deliverystatuscbox.setEditable(false);
+        assignedperson1lbl.setEnabled(false);
         idorderlbl.setVisible(false);
         orderidlbl.setVisible(false);
         idcustlbl.setVisible(false);
@@ -35,6 +35,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         iddeliverylbl.setVisible(false);
         deliveryidlbl.setVisible(false);
         deletebtn.setVisible(false);
+
         
         try{
             File file = new File("UserDetails.txt");
@@ -95,7 +96,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         }else{
                             deletebtn.setVisible(false);
                             deliverystatuscbox.setEnabled(false);
-                            assignedperson1lbl.setEnabled(false);
                         }
                         }
                     }
