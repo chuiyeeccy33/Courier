@@ -815,8 +815,11 @@ public class OrderDetails extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
                     
                     Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,defaultdeliveryid, Tempdefaultstaffphone,TempUserID);
-                    
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,TempUserID);
+                    Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
+                                                            Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
+                                                            deliveryid, Tempstaffphone,Tempcustid);  
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -824,10 +827,10 @@ public class OrderDetails extends javax.swing.JFrame {
                             if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {  
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
-                                        o.SaveOrderFile();
+                                        o.AddOrder();
                                         clearFields();
                                         this.dispose();
-                                        new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                        new CustomerOrderTable(Userid).setVisible(true);
                                     } else {
                                         JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
                                     }
@@ -998,7 +1001,7 @@ public class OrderDetails extends javax.swing.JFrame {
         System.out.println (df.format(price));
         System.out.println (df.format(total));
         //display total in textbox
-        totaltxt.setText(df.format(total).toString().replace(",", ""))
+        totaltxt.setText(df.format(total).toString().replace(",", ""));
        
     }//GEN-LAST:event_calculatebtnActionPerformed
 
