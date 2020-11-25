@@ -82,9 +82,9 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.setBackground(new java.awt.Color(129, 182, 157));
+        jPanel2.setBackground(new java.awt.Color(214, 245, 238));
 
-        Approvebtn.setBackground(new java.awt.Color(214, 245, 238));
+        Approvebtn.setBackground(new java.awt.Color(129, 182, 157));
         Approvebtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Approvebtn.setText("Approve");
         Approvebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +93,7 @@ public class ManagingStaffApproval extends javax.swing.JFrame {
             }
         });
 
-        rejectbtn.setBackground(new java.awt.Color(214, 245, 238));
+        rejectbtn.setBackground(new java.awt.Color(129, 182, 157));
         rejectbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         rejectbtn.setText("Reject");
         rejectbtn.addActionListener(new java.awt.event.ActionListener() {

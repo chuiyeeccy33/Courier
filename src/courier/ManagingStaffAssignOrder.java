@@ -69,7 +69,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(21, 71, 52));
 
-        jButton1.setBackground(new java.awt.Color(214, 245, 238));
+        jButton1.setBackground(new java.awt.Color(129, 182, 157));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton1.setText("Assign");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

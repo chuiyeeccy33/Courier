@@ -81,7 +81,7 @@ public class DeliveryStaffOrderPage extends javax.swing.JFrame {
             }
         });
 
-        viewbtn.setBackground(new java.awt.Color(214, 245, 238));
+        viewbtn.setBackground(new java.awt.Color(129, 182, 157));
         viewbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         viewbtn.setText("View");
         viewbtn.addActionListener(new java.awt.event.ActionListener() {

@@ -134,7 +134,7 @@
         <Component class="javax.swing.JButton" name="viewbtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ee" green="f5" red="d6" type="rgb"/>
+              <Color blue="9d" green="b6" red="81" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="12" style="0"/>
