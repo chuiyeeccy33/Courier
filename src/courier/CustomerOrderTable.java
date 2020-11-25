@@ -22,7 +22,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         initComponents();
         userid = user_id;
         this.setLocationRelativeTo(null);
-      setResizable(false);
+        setResizable(false);
         setTitle("Fast & Furious Express");
         
         String columnName[] = {"Order ID", "Order Date", "Order Total Amount", "Delivery Status"};
@@ -31,9 +31,9 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         model.setRowCount(0);
         jTable1.revalidate();
         
-        Orders o = new Orders();
-        o.setUserid(userid);
-        Object[] outputs = o.LoadOrder().lines().toArray();
+        Delivery d = new Delivery();
+        d.setUserid(userid);
+        Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
             String[] row = line.split(",");
@@ -85,7 +85,6 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         });
 
         jTable1.setAutoCreateRowSorter(true);
-        jTable1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -152,7 +151,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
                     .addComponent(viewbtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -284,11 +284,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         });
 
         deliverystatuscbox.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        deliverystatuscbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deliverystatuscboxActionPerformed(evt);
-            }
-        });
 
         phonereceiverlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
@@ -607,9 +602,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                                 .addComponent(orderdetailslbl)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(detailsOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(451, 451, 451))))
+                            .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(idorderlbl)
@@ -625,7 +618,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         .addComponent(iddeliverylbl)
                         .addGap(6, 6, 6)
                         .addComponent(deliveryidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(deletebtn)
@@ -655,34 +648,19 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     .addComponent(kglbl))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(widthlbl))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(lengthlbl))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(length1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(width1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(shippingfee1lbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(Wcmlbl))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(Lcmlbl))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(heightlbl))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(height1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(Hcmlbl)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(widthlbl)
+                            .addComponent(lengthlbl)
+                            .addComponent(length1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(width1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Wcmlbl)
+                            .addComponent(Lcmlbl)
+                            .addComponent(heightlbl)
+                            .addComponent(height1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Hcmlbl))))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -729,7 +707,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
         deliverystatuscbox.addItem("Delivered");
     }
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-           try {
+          try {
                 File file = new File("UserDetails.txt");
                 Scanner sc = new Scanner(file);
                 String temp;
@@ -801,13 +779,10 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     String Temptype = tempArr[2];
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
-
-                    Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
-
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(Tempdeliverystatus.equals("Pending")) {
-                            o.RemoveOrder();
+                            Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempcustid);
                             o.DeletedOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
@@ -815,8 +790,28 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                              JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
-                        o.RemoveOrder();
-                        o.UpdateOrder();
+                        Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,deliveryid, Tempstaffphone,Tempcustid);
+                        d.setSendername(Tempsendname);
+                        d.setSenderaddress(Tempsendaddress);
+                        d.setSenderphone(Tempsendphone);
+                        d.setSenderemail(Tempsendemail);
+                        d.setReceivername(Tempreceivename);
+                        d.setReceiveraddress(Tempreceiveaddress);
+                        d.setReceivephone(Tempreceivephone);
+                        d.setReceiveemail(Tempreceiveemail);
+                        d.setOrderid(ExistOrderID);
+                        d.setOrderdate(datelbl.getText());
+                        d.setWeight(Tempweight);
+                        d.setWidth(Tempwidth);
+                        d.setLength(Templength);
+                        d.setHeight(Tempheight);
+                        d.setOrderdetails(Temporderdetails);
+                        d.setShippingfee(Tempshippingfee);
+                        d.setItemprice(Tempitemprice);
+                        d.setTotal(Temptotal);
+                        d.setUserid(Tempcustid);
+                        d.UpdateDelivery();
                         this.dispose();
                         new DeliveryStaffOrderPage(Userid).setVisible(true);
                     }                            
@@ -826,10 +821,6 @@ public class ViewOrderDetails extends javax.swing.JFrame {
             ex.toString();
         }
     }//GEN-LAST:event_deletebtnActionPerformed
-
-    private void deliverystatuscboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverystatuscboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_deliverystatuscboxActionPerformed
 
     /**
      * @param args the command line arguments

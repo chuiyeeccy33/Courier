@@ -34,7 +34,7 @@ public class OrderDetails extends javax.swing.JFrame {
         idcustlbl.setVisible(false);
         custidlbl.setVisible(false);
         iddeliverylbl.setVisible(false);
-        //deliveryidlbl.setVisible(false);
+        deliveryidlbl.setVisible(false);
         assignedpersonphonelbl1.setVisible(false);
         assignedpersonphonetxt.setVisible(false);
         assignedpersonlbl.setVisible(false);
@@ -212,11 +212,6 @@ public class OrderDetails extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(129, 182, 157));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        sendernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderemailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        senderphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         senderphonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 senderphonetxtKeyTyped(evt);
@@ -239,7 +234,6 @@ public class OrderDetails extends javax.swing.JFrame {
         deliverysenderlbl.setText("Sender Details");
 
         senderaddresstxt.setColumns(20);
-        senderaddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         senderaddresstxt.setRows(5);
         jScrollPane4.setViewportView(senderaddresstxt);
 
@@ -250,13 +244,13 @@ public class OrderDetails extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(sendernamelbl)
-                                .addGap(10, 10, 10)
-                                .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(senderphonelbl)
@@ -271,7 +265,7 @@ public class OrderDetails extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(41, 41, 41)
                         .addComponent(deliverysenderlbl)))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
@@ -281,12 +275,10 @@ public class OrderDetails extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(deliverysenderlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(sendernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(sendernamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(senderaddresslbl)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,7 +290,7 @@ public class OrderDetails extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(senderemailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senderemaillbl))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 320));
@@ -369,32 +361,30 @@ public class OrderDetails extends javax.swing.JFrame {
             }
         });
 
-        widthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         widthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 widthtxtKeyTyped(evt);
             }
         });
 
-        lengthtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lengthtxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 lengthtxtKeyTyped(evt);
             }
         });
 
-        heighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         heighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 heighttxtKeyTyped(evt);
             }
         });
 
-        itempricetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        itempricetxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                itempricetxtKeyTyped(evt);
+            }
+        });
 
-        totaltxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        weighttxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         weighttxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 weighttxtKeyReleased(evt);
@@ -409,15 +399,12 @@ public class OrderDetails extends javax.swing.JFrame {
         kglbl.setText("KG");
 
         orderdetailstxt.setColumns(20);
-        orderdetailstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         orderdetailstxt.setRows(5);
         jScrollPane3.setViewportView(orderdetailstxt);
 
         assignedpersonphonelbl1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         assignedpersonphonelbl1.setForeground(new java.awt.Color(240, 240, 240));
         assignedpersonphonelbl1.setText("Delivery Staff Contact No.: ");
-
-        assignedpersonphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         datelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         datelbl.setForeground(new java.awt.Color(240, 240, 240));
@@ -672,20 +659,14 @@ public class OrderDetails extends javax.swing.JFrame {
         receiveremaillbl.setText("Email Address:");
 
         receiveraddresstxt.setColumns(20);
-        receiveraddresstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         receiveraddresstxt.setRows(5);
         jScrollPane1.setViewportView(receiveraddresstxt);
 
-        receivernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        receiverphonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         receiverphonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 receiverphonetxtKeyTyped(evt);
             }
         });
-
-        receiveremailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         deliverystatuslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         deliverystatuslbl.setText("Delivery Status:");
@@ -816,8 +797,11 @@ public class OrderDetails extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);
                     
                     Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,defaultdeliveryid, Tempdefaultstaffphone,TempUserID);
-                    
+                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,TempUserID);
+                    Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
+                                                            Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
+                                                            deliveryid, Tempstaffphone,Tempcustid);  
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
@@ -825,10 +809,10 @@ public class OrderDetails extends javax.swing.JFrame {
                             if(Tempsendemail.matches(regex) || Tempreceiveemail.matches(regex)) {  
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
-                                        o.SaveOrderFile();
+                                        o.AddOrder();
                                         clearFields();
                                         this.dispose();
-                                        new DeliveryStaffOrderPage(Userid).setVisible(true);
+                                        new CustomerOrderTable(Userid).setVisible(true);
                                     } else {
                                         JOptionPane.showMessageDialog(rootPane, "Please click 'calculate' to view your total amount. ", "Total Amount", JOptionPane.INFORMATION_MESSAGE);
                                     }
@@ -848,11 +832,27 @@ public class OrderDetails extends javax.swing.JFrame {
                                 if(!Tempitemprice.equals("")) {
                                     if(!Temptotal.equals("")) {
                                         if(!delivery.equals("None")) {
-                                            Orders o1 = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                                                        Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus, deliveryid, Tempstaffphone, Tempcustid);
-                                               
-                                            o1.RemoveOrder();
-                                            o1.UpdateOrder();
+                                           //u.setUserid(Tempcustid);
+                                            d.setSendername(Tempsendname);
+                                            d.setSenderaddress(Tempsendaddress);
+                                            d.setSenderphone(Tempsendphone);
+                                            d.setSenderemail(Tempsendemail);
+                                            d.setReceivername(Tempreceivename);
+                                            d.setReceiveraddress(Tempreceiveaddress);
+                                            d.setReceivephone(Tempreceivephone);
+                                            d.setReceiveemail(Tempreceiveemail);
+                                            d.setOrderid(ExistOrderID);
+                                            d.setOrderdate(datelbl.getText());
+                                            d.setWeight(Tempweight);
+                                            d.setWidth(Tempwidth);
+                                            d.setLength(Templength);
+                                            d.setHeight(Tempheight);
+                                            d.setOrderdetails(Temporderdetails);
+                                            d.setShippingfee(Tempshippingfee);
+                                            d.setItemprice(Tempitemprice);
+                                            d.setTotal(Temptotal);
+                                            d.setUserid(Tempcustid);
+                                            d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
                                             new DeliveryStaffOrderPage(Userid).setVisible(true);        
@@ -941,7 +941,7 @@ public class OrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_senderphonetxtKeyTyped
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-            try {
+         try {
                 File file = new File("UserDetails.txt");
                 Scanner sc = new Scanner(file);
                 String temp;
@@ -975,7 +975,8 @@ public class OrderDetails extends javax.swing.JFrame {
 
     private void calculatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculatebtnActionPerformed
            //value format
-        DecimalFormat df = new DecimalFormat("#,###");
+        DecimalFormat df = new DecimalFormat(".00");
+        df.setGroupingUsed(false);
         //get shippingfee from textbox
         double shippingfee = Double.parseDouble(shippingfee1lbl.getText());
         //get itemprice from textbox
@@ -988,7 +989,7 @@ public class OrderDetails extends javax.swing.JFrame {
         System.out.println (df.format(price));
         System.out.println (df.format(total));
         //display total in textbox
-        totaltxt.setText(df.format(total));
+        totaltxt.setText(df.format(total).toString().replace(",", ""));
        
     }//GEN-LAST:event_calculatebtnActionPerformed
 
@@ -1024,19 +1025,19 @@ public class OrderDetails extends javax.swing.JFrame {
         if(weighttxt.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            if(weight > 0 && weight < 1) {
-                System.out.println(5.5);
-                shippingfee1lbl.setText("5.5");
-            }else if(weight > 1 && weight < 3) {
-                System.out.println(7.5);
-                 shippingfee1lbl.setText("7.5");
-            }else if(weight > 3 && weight < 6 ) {
+            if(weight > 0 && weight <= 1) {
+                System.out.println(5);
+                shippingfee1lbl.setText("5");
+            }else if(weight > 1 && weight <= 3) {
+                System.out.println(7);
+                shippingfee1lbl.setText("7");
+            }else if(weight > 3 && weight <= 6 ) {
                 System.out.println(15);
                 shippingfee1lbl.setText("15");
-            }else if(weight > 6 && weight < 8 ) {
+            }else if(weight > 6 && weight <= 8 ) {
                 System.out.println(20);
                 shippingfee1lbl.setText("20");
-            }else if(weight > 8 && weight < 12) {
+            }else if(weight > 8 && weight <= 12) {
                 System.out.println(27);
                 shippingfee1lbl.setText("27");
           }else if(weight > 12){
@@ -1132,6 +1133,18 @@ public class OrderDetails extends javax.swing.JFrame {
             }
         });
     }
+    private void itempricetxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itempricetxtKeyTyped
+       char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {      
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Only number is allowed", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+        else {
+             itempricetxt.setEditable(true);
+
+        }
+    }//GEN-LAST:event_itempricetxtKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Datelbl;
