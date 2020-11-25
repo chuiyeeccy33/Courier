@@ -41,7 +41,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        logoutbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logoutbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         logoutbtn.setText("Logout");
         logoutbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,7 +49,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             }
         });
 
-        deliveryorderbtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        deliveryorderbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         deliveryorderbtn.setText("Delivery Order");
         deliveryorderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +57,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             }
         });
 
-        profilebtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        profilebtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         profilebtn.setText("Profile");
         profilebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +65,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Fira Sans Semi-Light", 1, 35)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Welcome Back");
 
@@ -100,7 +100,7 @@ public class DeliveryStaffDashboardPage extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
                 .addComponent(deliveryorderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                 .addComponent(profilebtn)
                 .addGap(26, 26, 26))
         );
