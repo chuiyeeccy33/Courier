@@ -703,7 +703,10 @@ public class OrderDetails extends javax.swing.JFrame {
                     u.setSelectedUserType(Temptype);                  
                     Orders o = new Orders(OrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                         Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,TempUserID);
-                    
+                    Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
+                                                            Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
+                                                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
+                                                            deliveryid, Tempstaffphone,Tempcustid);
                     //customer role will add order
                     if(u.getSelectedUserType().equals("Customer")) {
                         if(o.checkEmptyOrderField()) { //if the text field is empty
@@ -728,7 +731,7 @@ public class OrderDetails extends javax.swing.JFrame {
                             }        
                         }
                         
-                    } else if(u.getSelectedUserType().equals("Managing Staff")) {                    
+                    } else if(u.getSelectedUserType().equals("Managing Staff")) {             
                         if(o.checkEmptyOrderField()) { //if the text field is empty
                             JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                         } else { //else the field is not empty  
@@ -737,11 +740,29 @@ public class OrderDetails extends javax.swing.JFrame {
                                     if(!Temptotal.equals("")) {
                                         if(!delivery.equals("None")) {
                                             u.setUserid(Tempcustid);
-                                            Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,
-                                                            Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
-                                                            Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempdeliverystatus,
-                                                            deliveryid, Tempstaffphone,Tempcustid);
-                                               
+                                            //print for testing
+                                            System.out.println("Frontend: " + ExistOrderID);
+                                            System.out.println("Frontend: " + Tempsendname);
+                                            System.out.println("Frontend: " + Tempsendaddress);
+                                            System.out.println("Frontend: " + Tempsendphone);
+                                            System.out.println("Frontend: " + Tempsendemail);
+                                            System.out.println("Frontend: " + Tempreceivename);
+                                            System.out.println("Frontend: " + Tempreceiveaddress);
+                                            System.out.println("Frontend: " + Tempreceivephone);
+                                            System.out.println("Frontend: " + Tempreceiveemail);
+                                            System.out.println("Frontend: " + Tempdate);
+                                            System.out.println("Frontend: " + Tempweight);
+                                            System.out.println("Frontend: " + Tempwidth);
+                                            System.out.println("Frontend: " + Templength);
+                                            System.out.println("Frontend: " + Tempheight);
+                                            System.out.println("Frontend: " + Temporderdetails);
+                                            System.out.println("Frontend: " + Tempshippingfee);
+                                            System.out.println("Frontend: " + Tempitemprice);
+                                            System.out.println("Frontend: " + Temptotal);
+                                            System.out.println("Frontend: " + Tempdeliverystatus);
+                                            System.out.println("Frontend: " + deliveryid);
+                                            System.out.println("Frontend: " + Tempstaffphone);
+                                            System.out.println("Frontend: " + Tempcustid);
                                             d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();

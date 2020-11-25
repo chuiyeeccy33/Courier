@@ -19,7 +19,7 @@ public class Orders {
     public String receivername;
     public String receiveraddress;
     public String receiverphone;
-    private String receiveremail;
+    public String receiveremail;
     //order details
     public String weight;
     public String width;

@@ -63,8 +63,6 @@ public class Delivery extends Orders {
     
     //Update Order
     public void UpdateDelivery() {
-        
-        //remove the old data
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
@@ -81,12 +79,11 @@ public class Delivery extends Orders {
                 }
             }
             sc.close();
-        } catch(Exception ex){
+        } catch(Exception ex) {
             ex.toString();
         }
-
         try{
-            try(PrintWriter pr = new PrintWriter("Orders.txt")) {
+            try(PrintWriter pr = new PrintWriter("Orders.txt")){
                 for(String newFile : tempArray){
                     pr.println(newFile);
                 }
@@ -95,7 +92,6 @@ public class Delivery extends Orders {
         } catch(Exception ex){
             ex.toString();
         }
-        
         //change the status of the delivery
         File Finput = new File("Orders.txt");
       
@@ -105,9 +101,32 @@ public class Delivery extends Orders {
             PrintWriter pw = new PrintWriter(bw);
             String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();            
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
+            //testing backend
+            System.out.println("Backend: " + orderid);
+            System.out.println("Backend: " + sendername);
+            System.out.println("Backend: " + senderaddress);
+            System.out.println("Backend: " + senderphone);
+            System.out.println("Backend: " + senderemail);
+            System.out.println("Backend: " + receivername);
+            System.out.println("Backend: " + receiveraddress);
+            System.out.println("Backend: " + receiverphone);
+            System.out.println("Backend: " + receiveremail);
+            System.out.println("Backend: " + orderdate);
+            System.out.println("Backend: " + weight);
+            System.out.println("Backend: " + width);
+            System.out.println("Backend: " + length);
+            System.out.println("Backend: " + height);
+            System.out.println("Backend: " + orderdetails);
+            System.out.println("Backend: " + shippingfee);
+            System.out.println("Backend: " + itemprice);
+            System.out.println("Backend: " + total);
+            System.out.println("Backend: " + deliverystatus);
+            System.out.println("Backend: " + assignperson);
+            System.out.println("Backend: " + staffphone);
+            System.out.println("Backend: " + userid);
             pw.write(Line);
             bw.newLine();
             pw.close();
