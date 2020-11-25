@@ -24,6 +24,9 @@ public class UserProfilePassword extends javax.swing.JFrame {
         initComponents();
         userid=user;
         usertype=type;
+         setResizable(false);
+        this.setLocationRelativeTo(null);
+        setTitle("Fast & Furious Express");
          try{
        File file = new File("UserDetails.txt");
         Scanner sc = new Scanner(file); 
@@ -56,31 +59,62 @@ public class UserProfilePassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        confirmpasslbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        usernamelbl = new javax.swing.JLabel();
-        savebtn = new javax.swing.JButton();
-        usernametxt = new javax.swing.JTextField();
-        backbtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         passwordlbl = new javax.swing.JLabel();
         newpasslbl = new javax.swing.JLabel();
         passwordtxt = new javax.swing.JPasswordField();
         newpasstxt = new javax.swing.JPasswordField();
         confirmpasstxt = new javax.swing.JPasswordField();
+        confirmpasslbl = new javax.swing.JLabel();
         showpasschk = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        usernamelbl = new javax.swing.JLabel();
+        savebtn = new javax.swing.JButton();
+        usernametxt = new javax.swing.JTextField();
+        backbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(21, 71, 52));
+
+        passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        passwordlbl.setForeground(new java.awt.Color(240, 240, 240));
+        passwordlbl.setText("Old Password:");
+
+        newpasslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        newpasslbl.setForeground(new java.awt.Color(240, 240, 240));
+        newpasslbl.setText("New Password: ");
+
+        passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        newpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        confirmpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
         confirmpasslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        confirmpasslbl.setForeground(new java.awt.Color(240, 240, 240));
         confirmpasslbl.setText("Confirm Password: ");
 
+        showpasschk.setBackground(new java.awt.Color(129, 182, 157));
+        showpasschk.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        showpasschk.setForeground(new java.awt.Color(240, 240, 240));
+        showpasschk.setText("show");
+        showpasschk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showpasschkActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
-        jLabel1.setText("My Profile");
+        jLabel1.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel1.setText("Change Password");
 
         usernamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        usernamelbl.setForeground(new java.awt.Color(240, 240, 240));
         usernamelbl.setText("Username: ");
 
-        savebtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        savebtn.setBackground(new java.awt.Color(214, 245, 238));
+        savebtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         savebtn.setText("Save");
         savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +124,8 @@ public class UserProfilePassword extends javax.swing.JFrame {
 
         usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
-        backbtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        backbtn.setBackground(new java.awt.Color(214, 245, 238));
+        backbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         backbtn.setText("Back");
         backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,91 +133,82 @@ public class UserProfilePassword extends javax.swing.JFrame {
             }
         });
 
-        passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        passwordlbl.setText("Old Password:");
-
-        newpasslbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        newpasslbl.setText("New Password: ");
-
-        passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        newpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        confirmpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        showpasschk.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        showpasschk.setText("show");
-        showpasschk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showpasschkActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(usernamelbl)
+                            .addComponent(passwordlbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usernametxt)
+                            .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(newpasslbl)
+                            .addComponent(confirmpasslbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(showpasschk, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backbtn)
+                    .addComponent(savebtn))
+                .addGap(21, 21, 21))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(backbtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernamelbl)
+                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordlbl)
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newpasslbl)
+                    .addComponent(newpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(confirmpasslbl)
+                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showpasschk))
+                .addGap(39, 39, 39)
+                .addComponent(savebtn)
+                .addGap(26, 26, 26))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(usernamelbl)
-                            .addComponent(passwordlbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernametxt, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(passwordtxt)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(newpasslbl)
-                            .addComponent(confirmpasslbl))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showpasschk, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backbtn)
-                    .addComponent(savebtn))
-                .addGap(20, 20, 20))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(backbtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1)))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernamelbl)
-                    .addComponent(usernametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordlbl)
-                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newpasslbl)
-                    .addComponent(newpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmpasslbl)
-                    .addComponent(confirmpasstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(showpasschk))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                .addComponent(savebtn)
-                .addGap(58, 58, 58))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -306,6 +332,7 @@ public class UserProfilePassword extends javax.swing.JFrame {
     private javax.swing.JLabel confirmpasslbl;
     private javax.swing.JPasswordField confirmpasstxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel newpasslbl;
     private javax.swing.JPasswordField newpasstxt;
     private javax.swing.JLabel passwordlbl;
