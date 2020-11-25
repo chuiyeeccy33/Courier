@@ -29,7 +29,7 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
     public ManagingStaffUserManagement(String user_id) {
         initComponents();
         UserID = user_id;
-         setResizable(false);
+        setResizable(false);
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
         fillcomboRole();
