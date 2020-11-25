@@ -93,10 +93,9 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
 
         deliveryOrderlbl.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         deliveryOrderlbl.setForeground(new java.awt.Color(240, 240, 240));
-        deliveryOrderlbl.setText("Order");
+        deliveryOrderlbl.setText("Order & Delivery");
 
         Ordertbl.setAutoCreateRowSorter(true);
-        Ordertbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         Ordertbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,7 +115,7 @@ public class ManagingStaffAssignOrder extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(unassigndeliveryorderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
