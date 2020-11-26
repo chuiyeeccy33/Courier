@@ -790,7 +790,7 @@ public class OrderDetails extends javax.swing.JFrame {
             while(sc.hasNext() && !found /*the system will stop running while it found the correct username and password*/) {
                 temp = sc.nextLine(); //read a line of text from file
                 String[] tempArr;
-                tempArr = temp.split (",");
+                tempArr = temp.split (",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 if (TempUserID.equals(tempArr[0])) {
                     String Temptype = tempArr[2];
                     Users u = new Users();

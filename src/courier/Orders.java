@@ -231,9 +231,10 @@ public class Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
-                    + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
-                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + "," + "None" + ","+ "" + "," + getUserid();
+            String Line = getOrderid()+ "," + getSendername()+ "," + "\""+ getSenderaddress()+"\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," 
+                    +"\"" + getReceiveraddress() +"\"" + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," 
+                    + getLength()+ "," + getHeight() + "," + getOrderdetails() + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + ","
+                    + "None" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -317,7 +318,6 @@ public class Orders {
     }
        
     // view order details to table    
-<<<<<<< HEAD
     public void ViewFormBackToTable(String user, Users type){
             try {
             File file = new File("Orders.txt");
@@ -356,28 +356,4 @@ public class Orders {
             ex.printStackTrace();
          }
 }
-=======
-    public void ViewFormBackToTable(String user, String type){
-        userid = user;
-        type = users.getSelectedUserType();
-        if (type.equals("Customer")) {
-            new CustomerOrderTable(userid).setVisible(true);
-        }else if(type.equals("Managing Staff")) {
-            new ManagingStaffAllOrder(userid).setVisible(true);
-        }else {
-            new DeliveryStaffOrderPage(userid).setVisible(true);           
-        }
-    }
->>>>>>> 3b681c54f0f39aab16cac58d110562fea0764476
-
-    //order details to table
-    public void FormBackToTable(String user, String type){
-            userid = user;
-            type = users.getSelectedUserType();
-            if (type.equals("Customer")) {
-                new CustomerOrderTable(userid).setVisible(true);
-            }else if(type.equals("Managing Staff")) {
-                new ManagingStaffAssignOrder(userid).setVisible(true);
-            }
-    }
 }

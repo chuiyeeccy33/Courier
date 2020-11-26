@@ -62,15 +62,15 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     while(sc1.hasNext() && !found) {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
-                        temp1Arr = temp1.split(",");
+                        temp1Arr = temp1.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                         
                         if(temp1Arr[0].equals(OrderID)) {
                             namesenderlbl.setText(temp1Arr[1]);
-                            addressSenderlbl.setText(temp1Arr[2]);
+                            addressSenderlbl.setText(temp1Arr[2].replace("\"", ""));
                             phonesenderlbl.setText(temp1Arr[3]);
                             emailsenderlbl.setText(temp1Arr[4]);
                             namereceiverlbl.setText(temp1Arr[5]);
-                            addressReceiverlbl.setText(temp1Arr[6]);
+                            addressReceiverlbl.setText(temp1Arr[6].replace("\"", ""));
                             phonereceiverlbl.setText(temp1Arr[7]);
                             emailreceiverlbl.setText(temp1Arr[8]);
                             orderidlbl.setText(temp1Arr[0]);

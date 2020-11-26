@@ -139,7 +139,7 @@ public class Delivery extends Orders {
                         Object[] details = br2.lines().toArray();
                         for (Object detail : details) { 
                             String line = detail.toString().trim();
-                            String[] row = line.split(",");
+                            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                             if (userid.equals(row[21])) {
                                 orderid = row[0];
                                 if (!orderid.equals("")) {
