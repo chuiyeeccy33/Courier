@@ -112,7 +112,7 @@ public class Users {
     }
    
     //create an account for user
-    public void UserSaveFile() {
+    public void SignUp() {
         File Finput = new File("UserDetails.txt");
       
         try {
@@ -125,7 +125,6 @@ public class Users {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("User Added!");
         } catch (IOException ex) {
            
         }
@@ -136,8 +135,9 @@ public class Users {
         return username.equals("") ||  firstname.equals("")||lastname.equals("")||email.equals("")||phone.equals("")||password.equals("");
     }
     
-    //remove user detail
-    public void RemoveUser(){
+    //update new user detail
+    public void UpdateProfile() {
+        //delete user first
         String removeTerm = userid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
@@ -149,7 +149,7 @@ public class Users {
             
             while((data = sc.nextLine()) != null){
                 String[] tempData = data.split(",");
-                if(!removeTerm.equals(tempData[0])){
+                if(!removeTerm.equals(tempData[0])) {
                     tempArray.add(data);
                 }
             }
@@ -167,11 +167,9 @@ public class Users {
             }
         } catch(Exception ex){
             ex.toString();
-            }
-    }
-    
-    //update new user detail
-    public void UpdateUser() {
+        }
+        
+        //update user
         File Finput = new File("UserDetails.txt");
         try {
             FileWriter fw = new FileWriter(Finput,true);
@@ -186,7 +184,6 @@ public class Users {
                 pw.write("\n");
             }
             pw.close();
-            System.out.println("User Updated!");
         } catch (IOException ex) {
            
         }

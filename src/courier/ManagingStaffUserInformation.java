@@ -299,7 +299,6 @@ public class ManagingStaffUserInformation extends javax.swing.JFrame {
                     if(u.checkEmpty()) {
                         JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                     }else {
-                        u.RemoveUser();
                         mg.DeactivateUser();
                         JOptionPane.showMessageDialog(rootPane, "The user is deactivated. ", "Deactivate User", JOptionPane.INFORMATION_MESSAGE);
                         new ManagingStaffUserManagement(Userid).setVisible(true);
@@ -344,8 +343,7 @@ public class ManagingStaffUserInformation extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(rootPane, "Please fill up the empty fields! ", "Empty ", JOptionPane.INFORMATION_MESSAGE);
                     }else {
                         if(Tempemail.matches(regex)) {
-                            u.RemoveUser();
-                            u.UpdateUser();
+                            u.UpdateProfile();
                             JOptionPane.showMessageDialog(rootPane, "The user details are updated. ", "Update User Details", JOptionPane.INFORMATION_MESSAGE);
                             new ManagingStaffUserManagement(Userid).setVisible(true);
                             this.dispose();

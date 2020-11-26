@@ -2,3 +2,8 @@ be4ee399-7e43-4f9b-b7ff-2ea7d4cfe294,Excellent,Very good,2083a7d0-5c78-4c05-9e4d
 40a05088-95d0-4a63-beab-e83285462332,Good,can be improved,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
 08bafc15-0952-4e6f-9ae6-45e8521aa1d7,Worst,t,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
 dfc85a18-5f76-4b91-9ef2-5d876ae3f145,Bad,ok,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
+7cbeb322-10af-45ab-90e0-60ec52ddc0d9,Excellent,excellent by new customer,45515744-bcf3-4fb5-b637-dab3378cba07
+6c90c078-a1e3-4386-bbe6-a7ed8c2610cc,Good,good from new customer,45515744-bcf3-4fb5-b637-dab3378cba07
+309e34cc-21e0-4c07-84e1-a59608cf4ad9,Normal,normal for new customer,45515744-bcf3-4fb5-b637-dab3378cba07
+7456ac3c-1946-4594-b2c0-3adf69f46957,Bad,bad for new customer,45515744-bcf3-4fb5-b637-dab3378cba07
+01bee2d6-c0ff-4bd3-9edd-27fa5d69f979,Worst,worst for new customer,45515744-bcf3-4fb5-b637-dab3378cba07

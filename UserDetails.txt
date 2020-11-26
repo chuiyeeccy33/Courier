@@ -2,3 +2,5 @@
 c49023f8-163e-4f29-90df-65a1e4250603,deliverystaff,Delivery Staff,delivery,staff,deliverystaff@gmail.com,0123131232,Password1,Active
 2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1,daniellim0510,Customer,Daniel,Lim,daniellim0510@gmail.com,0123123121,1,Active
 90b64db4-3e1a-4070-8763-44dc3b25f676,dada,Delivery Staff,chong,no,3@gmail.com,012256478,23,Active
+45515744-bcf3-4fb5-b637-dab3378cba07,newcustomer,Customer,Daniel Lim,Zheng Yu,daniellim0510@gmaill.com,0184024139,Password2,Active
+ec3146f0-452b-4c26-b8f2-8231f1fc3fc5,newdeliverystaff,Delivery Staff,Delivery,Staff,newdeliverystaff@gmail.com,012312321,Password1,Active

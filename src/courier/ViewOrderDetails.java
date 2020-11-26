@@ -783,7 +783,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         if(Tempdeliverystatus.equals("Pending") && deliveryid.equals("None")) {
                             Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                             Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempcustid);
-                            o.DeletedOrder();
+                            o.CancelOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
                         }else{

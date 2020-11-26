@@ -235,7 +235,6 @@ public class Orders {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("Order Added!");
         } catch (IOException ex) {
             ex.toString();
         }
@@ -248,7 +247,7 @@ public class Orders {
     }
        
     //remove order detail
-    public void DeletedOrder(){
+    public void CancelOrder(){
         String removeTerm = orderid; 
         ArrayList <String> tempArray = new ArrayList <>();
 
@@ -293,7 +292,6 @@ public class Orders {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("Order Deleted!");
         } catch (IOException ex) {
                
         }    

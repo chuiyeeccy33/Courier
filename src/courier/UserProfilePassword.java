@@ -270,20 +270,17 @@ public class UserProfilePassword extends javax.swing.JFrame {
                             if(Tempconfirmpass.equals(Temppass) && !Tempconfirmpass.equals("") && !Temppass.equals("")){
                                 //show the Message
                                 JOptionPane.showMessageDialog(rootPane, "You have changed your password. Please login again! ", "Change Password ", JOptionPane.INFORMATION_MESSAGE);
-                                //remove user
-                                u.RemoveUser();
                                 //update user
-                                u.UpdateUser();
+                                u.UpdateProfile();
                                 new Login().setVisible(true);
                                 this.dispose();
-                                System.out.println(Temppass);
                                 //Password Validation
                             }else {
                                 JOptionPane.showMessageDialog(rootPane, "Please confirm your both password field is correct!", "Password", JOptionPane.INFORMATION_MESSAGE);
                             }
                         }else {
                             JOptionPane.showMessageDialog(rootPane, "You enter the incorrect current password. Please try again!", " Current Password", JOptionPane.INFORMATION_MESSAGE);
-                        System.out.println(Temppass);}
+                        }
                     }
                 }
             }

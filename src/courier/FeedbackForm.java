@@ -205,22 +205,16 @@ public class FeedbackForm extends javax.swing.JFrame {
         
         if (excellentbtn.isSelected()) {
             ratingButton = "Excellent";
-            System.out.println("Excellent is Selected");
         } else if (goodbtn.isSelected()) {
             ratingButton = "Good";
-            System.out.println("Good is Selected");
         } else if (normalbtn.isSelected()) {
             ratingButton = "Normal";
-            System.out.println("Normal is Selected");
         } else if (badbtn.isSelected()) {
             ratingButton = "Bad";
-            System.out.println("Bad is Selected");
         } else if (worstbtn.isSelected()) {
             ratingButton = "Worst";
-            System.out.println("Worst is selected");
         } else {
             ratingButton = "";
-            System.out.println("Rating is not selected");
         }
         
         //varable
@@ -244,7 +238,7 @@ public class FeedbackForm extends javax.swing.JFrame {
         }
         else {
             JOptionPane.showMessageDialog(rootPane, "Thanks for submit a feedback. We will improve our system based on the feedback you gave", "Feedback Submited", JOptionPane.INFORMATION_MESSAGE);
-            f.SaveFeedback();
+            f.AddFeedback();
             this.setVisible(false);
             new CustomerDashboard(userid).setVisible(true);
         }

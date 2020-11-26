@@ -107,7 +107,6 @@ public class Delivery extends Orders {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("Order Updated!");
         } catch (IOException ex) {
            ex.toString();
         }
