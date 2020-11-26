@@ -36,7 +36,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
-            String[] row = line.split(",");
+            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
             model.addRow(row);
         }
     }
