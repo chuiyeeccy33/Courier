@@ -1,6 +1,8 @@
 
 package courier;
 
+import javax.swing.JOptionPane;
+
 public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
     String user_id = "";
@@ -128,7 +130,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
         Report r = new Report();
         r.DeliveryReport();
-        System.out.println("Ur Delivery Report has been downloaded");
+        JOptionPane.showMessageDialog(rootPane, "Delivery Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_DeliverybtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
@@ -140,14 +142,14 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
     private void monthlybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlybtnActionPerformed
        Report r = new Report();
        r.FeedbackReport();
-       System.out.println("Ur feedback report has been downloaded");
+       JOptionPane.showMessageDialog(rootPane, "Feedback Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_monthlybtnActionPerformed
 
     private void userlistbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userlistbtnActionPerformed
         // TODO add your handling code here:
         Report r = new Report(); 
         r.UserReport();
-        System.out.println("Ur User report has been downloaded");
+        JOptionPane.showMessageDialog(rootPane, "Users Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_userlistbtnActionPerformed
 
     /**
