@@ -216,9 +216,12 @@ public class FeedbackForm extends javax.swing.JFrame {
         } else if (badbtn.isSelected()) {
             ratingButton = "Bad";
             System.out.println("Bad is Selected");
-        } else {
+        } else if (worstbtn.isSelected()) {
             ratingButton = "Worst";
             System.out.println("Worst is selected");
+        } else {
+            ratingButton = "";
+            System.out.println("Rating is not selected");
         }
         
         //varable
