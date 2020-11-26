@@ -94,15 +94,15 @@ public class OrderDetails extends javax.swing.JFrame {
                         while(sc1.hasNext() && !found) {
                             temp1 = sc1.nextLine();
                             String [] temp1Arr;
-                            temp1Arr = temp1.split(",");
+                            temp1Arr = temp1.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                                         
                             if(temp1Arr[0].equals(Orderid)) {
                                 sendernametxt.setText(temp1Arr[1]);
-                                senderaddresstxt.setText(temp1Arr[2]);
+                                senderaddresstxt.setText(temp1Arr[2].replace("\"", ""));
                                 senderphonetxt.setText(temp1Arr[3]);
                                 senderemailtxt.setText(temp1Arr[4]);
                                 receivernametxt.setText(temp1Arr[5]);
-                                receiveraddresstxt.setText(temp1Arr[6]);
+                                receiveraddresstxt.setText(temp1Arr[6].replace("\"", ""));
                                 receiverphonetxt.setText(temp1Arr[7]);
                                 receiveremailtxt.setText(temp1Arr[8]);
                                 orderidlbl.setText(temp1Arr[0]);
@@ -855,7 +855,7 @@ public class OrderDetails extends javax.swing.JFrame {
                                             d.UpdateDelivery();
                                             clearFields();
                                             this.dispose();
-                                            new DeliveryStaffOrderPage(Userid).setVisible(true);        
+                                            new ManagingStaffAssignOrder(Userid).setVisible(true);        
                                         } else {
                                             JOptionPane.showMessageDialog(rootPane, "Please assign a delivery staff for deliver orders. ", "Assign Delivery Staff", JOptionPane.INFORMATION_MESSAGE);
                                         }

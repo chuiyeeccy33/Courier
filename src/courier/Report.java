@@ -17,6 +17,8 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +42,10 @@ public class Report {
         try {
             PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("FeedbackReport.pdf"));
             document.open();
+            LocalDate date = LocalDate.now(); 
+            //date format
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String Date = date.format(format);
             
             //create title for feedback report
             document.add(new Paragraph("Feedback Report"));
@@ -47,7 +53,7 @@ public class Report {
             document.add(new Paragraph("___________________________________"));
             document.add(new Paragraph("Company name: Fast & Furious"));
             document.add(Chunk.NEWLINE);
-            document.add(new Paragraph("Report Date"));
+            document.add(new Paragraph("Report Date: " + Date));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Report Description: "));
             document.add(new Paragraph("View all current user list"));

@@ -23,6 +23,9 @@ public class ManagingStaffUserInformation extends javax.swing.JFrame {
         initComponents();
         Userid = UserID;
         rowuserid = RowuserID;
+        setResizable(false);
+        this.setLocationRelativeTo(null);
+        setTitle("Fast & Furious Express");
         useridtxt.setEditable(false);
         usernametxt.setEditable(false);
         

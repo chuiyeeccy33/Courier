@@ -227,7 +227,7 @@ public class Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
+            String Line = getOrderid()+ "," + getSendername()+ "," + "\"" + getSenderaddress() +"\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + "\""+  getReceiveraddress() + "\""
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
                     + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + "," + "None" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
@@ -259,7 +259,7 @@ public class Orders {
             String data;
             
             while((data = sc.nextLine()) != null){
-                String[] tempData = data.split(",");
+                String[] tempData = data.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 if(!removeTerm.equals(tempData[0])){
                     tempArray.add(data);
                 }
@@ -285,7 +285,7 @@ public class Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
+            String Line = getOrderid()+ "," + getSendername()+ "," +  "\"" +getSenderaddress() + "\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + "\"" + getReceiveraddress()+"\""
                         + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
                         + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal() + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
