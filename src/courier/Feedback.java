@@ -67,7 +67,7 @@ public class Feedback {
     }
     
     //save feedback into textfile
-    public void SaveFeedback() {
+    public void AddFeedback() {
         File Finput = new File("Feedback.txt");
         try{
             FileWriter fw = new FileWriter(Finput,true);
@@ -81,7 +81,6 @@ public class Feedback {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("Data Written.txt");
         } catch (IOException ex) {
              ex.toString();
         }

@@ -90,23 +90,14 @@ public class SignUpPage extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setText("Username");
 
-        usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setText("First name");
-
-        firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        lastnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setText("Last Name");
 
-        emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 phonetxtKeyTyped(evt);
@@ -137,10 +128,6 @@ public class SignUpPage extends javax.swing.JFrame {
                 signupbtnActionPerformed(evt);
             }
         });
-
-        confirmpasstxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         customerRbtn.setBackground(new java.awt.Color(129, 182, 157));
         customerRbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -356,13 +343,13 @@ public class SignUpPage extends javax.swing.JFrame {
                                         this.dispose();
                                         //save file
                                         u.setStatus("Active");
-                                        u.UserSaveFile();
+                                        u.SignUp();
                                         new Login().setVisible(true);
                                         //Staff sign up
                                     } else if(Tempselectedradio.equals("Managing Staff") || Tempselectedradio.equals("Delivery Staff")) {
                                         JOptionPane.showMessageDialog(rootPane, "Please wait for the admin to approve your request!", "Approve", JOptionPane.INFORMATION_MESSAGE);
                                         u.setStatus("Pending");
-                                        u.UserSaveFile();
+                                        u.SignUp();
                                         this.dispose();
                                         new Login().setVisible(true);
                                     }
@@ -393,7 +380,7 @@ public class SignUpPage extends javax.swing.JFrame {
                                 //customer sign up
                                 if(Tempselectedradio.equals("Customer")) {
                                     //save file
-                                    u.UserSaveFile();
+                                    u.SignUp();
                                     this.dispose();
                                     new Login().setVisible(true);
 

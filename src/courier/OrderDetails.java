@@ -84,7 +84,6 @@ public class OrderDetails extends javax.swing.JFrame {
                         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                         String show = date.format(format);
                         datelbl.setText(show);
-                        System.out.println(date); // Display the current date
                     } else if(Temptype.equals("Managing Staff")) {
                         assignedpersonlbl.setVisible(true);
                         assignedpersoncbox.setVisible(true);
@@ -983,11 +982,6 @@ public class OrderDetails extends javax.swing.JFrame {
         double price = Double.parseDouble(itempricetxt.getText());
         //calculate of the total
         double total = Math.abs(shippingfee + price);
-
-         //read the input
-        System.out.println (df.format(shippingfee));
-        System.out.println (df.format(price));
-        System.out.println (df.format(total));
         //display total in textbox
         totaltxt.setText(df.format(total).toString().replace(",", ""));
        
@@ -1026,22 +1020,16 @@ public class OrderDetails extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please enter your weight to get shipping fee!", "Weight", JOptionPane.INFORMATION_MESSAGE);
         }else{
             if(weight > 0 && weight <= 1) {
-                System.out.println(5);
                 shippingfee1lbl.setText("5");
             }else if(weight > 1 && weight <= 3) {
-                System.out.println(7);
                 shippingfee1lbl.setText("7");
             }else if(weight > 3 && weight <= 6 ) {
-                System.out.println(15);
                 shippingfee1lbl.setText("15");
             }else if(weight > 6 && weight <= 8 ) {
-                System.out.println(20);
                 shippingfee1lbl.setText("20");
             }else if(weight > 8 && weight <= 12) {
-                System.out.println(27);
                 shippingfee1lbl.setText("27");
           }else if(weight > 12){
-                System.out.println(30);
                 shippingfee1lbl.setText("30");
             }    
         }

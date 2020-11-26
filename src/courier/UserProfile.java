@@ -307,9 +307,8 @@ public class UserProfile extends javax.swing.JFrame {
         else{
             if(Tempemail.matches(regex)){
                 JOptionPane.showMessageDialog(rootPane, "Your changes are made! ", "Update ", JOptionPane.INFORMATION_MESSAGE);
-                u.RemoveUser();
-                u.UpdateUser();
-      }
+                u.UpdateProfile();
+            }
           else
               { JOptionPane.showMessageDialog(rootPane, "Please use the correct email format!", "Remind", JOptionPane.INFORMATION_MESSAGE);
               }

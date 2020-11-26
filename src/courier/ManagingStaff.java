@@ -93,7 +93,6 @@ public class ManagingStaff extends Staff  {
                             pw.write("\n");
                         }
                         pw.close();
-                        System.out.println("User Approved");
                     } catch (IOException ex) {
 
                     }
@@ -174,7 +173,6 @@ public class ManagingStaff extends Staff  {
                             pw.write("\n");
                         }
                         pw.close();
-                        System.out.println("User Decline");
                     } catch (IOException ex) {
 
                     }
@@ -255,7 +253,6 @@ public class ManagingStaff extends Staff  {
                             pw.write("\n");
                         }
                         pw.close();
-                        System.out.println("User Activated");
                     } catch (IOException ex) {
 
                     }
@@ -269,6 +266,39 @@ public class ManagingStaff extends Staff  {
     
     //deactivate user
      public void DeactivateUser() {
+         //delete user first
+         String removeTerm = userid; 
+        ArrayList <String> tempArray = new ArrayList <>();
+
+        try{
+            File file = new File("UserDetails.txt");
+            file.createNewFile();
+            Scanner sc = new Scanner(file);
+            String data;
+            
+            while((data = sc.nextLine()) != null){
+                String[] tempData = data.split(",");
+                if(!removeTerm.equals(tempData[0])) {
+                    tempArray.add(data);
+                }
+            }
+        sc.close();
+        } catch(Exception ex){
+            ex.toString();
+        }
+        
+        try{
+            try(PrintWriter pr = new PrintWriter("UserDetails.txt")){
+                for(String newFile : tempArray){
+                    pr.println(newFile);
+                }
+                pr.close();
+            }
+        } catch(Exception ex){
+            ex.toString();
+        }
+        
+        //update user 
         File Finput = new File("UserDetails.txt");
       
         try {
@@ -282,7 +312,6 @@ public class ManagingStaff extends Staff  {
             pw.write(Line);
             bw.newLine();
             pw.close();
-            System.out.println("User deactivated!");
         } catch (IOException ex) {
            
         }

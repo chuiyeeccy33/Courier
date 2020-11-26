@@ -199,7 +199,6 @@ public class ManagingStaffUserManagement extends javax.swing.JFrame {
         for(int i =0; i < indexs.length; i++) {
             String RowuserID;
             RowuserID = (String) model.getValueAt(indexs[i], 0);
-            System.out.println(RowuserID);
             new ManagingStaffUserInformation(UserID,RowuserID).setVisible(true);
         }
         //Show the form
