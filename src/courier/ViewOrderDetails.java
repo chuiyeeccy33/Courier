@@ -780,14 +780,14 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
                     if(u.getSelectedUserType().equals("Customer")) {
-                        if(Tempdeliverystatus.equals("Pending")) {
+                        if(Tempdeliverystatus.equals("Pending") && deliveryid.equals("None")) {
                             Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                             Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempcustid);
                             o.DeletedOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
                         }else{
-                             JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
+                             JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the order is assigned to delivery staff and not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
                         Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
