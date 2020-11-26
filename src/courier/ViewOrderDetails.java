@@ -62,15 +62,15 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     while(sc1.hasNext() && !found) {
                         temp1 = sc1.nextLine();
                         String [] temp1Arr;
-                        temp1Arr = temp1.split(",");
+                        temp1Arr = temp1.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                         
                         if(temp1Arr[0].equals(OrderID)) {
                             namesenderlbl.setText(temp1Arr[1]);
-                            addressSenderlbl.setText(temp1Arr[2]);
+                            addressSenderlbl.setText(temp1Arr[2].replace("\"", ""));
                             phonesenderlbl.setText(temp1Arr[3]);
                             emailsenderlbl.setText(temp1Arr[4]);
                             namereceiverlbl.setText(temp1Arr[5]);
-                            addressReceiverlbl.setText(temp1Arr[6]);
+                            addressReceiverlbl.setText(temp1Arr[6].replace("\"", ""));
                             phonereceiverlbl.setText(temp1Arr[7]);
                             emailreceiverlbl.setText(temp1Arr[8]);
                             orderidlbl.setText(temp1Arr[0]);
@@ -618,7 +618,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         .addComponent(iddeliverylbl)
                         .addGap(6, 6, 6)
                         .addComponent(deliveryidlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(deletebtn)
@@ -629,7 +629,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(deliveryOrderlbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(idorderlbl)
                     .addComponent(idcustlbl)
@@ -691,7 +691,7 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                         .addComponent(assignedperson1lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(orderdetailslbl)
                     .addComponent(detailsOrderlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(deletebtn)
                 .addGap(26, 26, 26))
         );
@@ -780,14 +780,14 @@ public class ViewOrderDetails extends javax.swing.JFrame {
                     Users u = new Users();
                     u.setSelectedUserType(Temptype);
                     if(u.getSelectedUserType().equals("Customer")) {
-                        if(Tempdeliverystatus.equals("Pending")) {
+                        if(Tempdeliverystatus.equals("Pending") && deliveryid.equals("None")) {
                             Orders o = new Orders(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
                             Templength,Tempheight,Temporderdetails,Tempshippingfee,Tempitemprice,Temptotal,Tempcustid);
                             o.DeletedOrder();
                             this.dispose();
                             new CustomerOrderTable(Userid).setVisible(true);
                         }else{
-                             JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the orders are not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
+                             JOptionPane.showMessageDialog(rootPane, "You are not allowed to delete the order since the order is assigned to delivery staff and not in the pending stage. ", "Delivery Status", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }else if(u.getSelectedUserType().equals("Delivery Staff")){
                         Delivery d = new Delivery(ExistOrderID, Tempsendname,Tempsendaddress,Tempsendphone,Tempsendemail,Tempreceivename,Tempreceiveaddress,Tempreceivephone,Tempreceiveemail,Tempdate,Tempweight,Tempwidth,
