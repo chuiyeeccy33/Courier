@@ -130,7 +130,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
     private void DeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliverybtnActionPerformed
         Report r = new Report();
         r.DeliveryReport();
-        JOptionPane.showMessageDialog(rootPane, "Delivery Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, "Delivery Report has been downloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_DeliverybtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
@@ -141,13 +141,13 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
     private void feedbackbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackbtnActionPerformed
        Report r = new Report();
        r.FeedbackReport();
-       JOptionPane.showMessageDialog(rootPane, "Feedback Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(rootPane, "Feedback Report has been downloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_feedbackbtnActionPerformed
 
     private void userlistbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userlistbtnActionPerformed
         Report r = new Report(); 
         r.UserReport();
-        JOptionPane.showMessageDialog(rootPane, "Users Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, "Users Report has been downloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_userlistbtnActionPerformed
 
     /**
