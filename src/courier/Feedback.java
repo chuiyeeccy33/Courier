@@ -1,6 +1,5 @@
 package courier;
 
-import java.util.*;
 import java.io.*;
 
 public class Feedback {
