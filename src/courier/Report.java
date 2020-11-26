@@ -3,16 +3,10 @@ package courier;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.time.Month;
-import java.util.Scanner;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
 import java.nio.file.Files;
@@ -53,7 +47,7 @@ public class Report {
             document.add(new Paragraph("Feedback Report"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("___________________________________"));
-            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(new Paragraph("Company name: Fast & Furious Express"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Report Date: " + Date));
             document.add(Chunk.NEWLINE);
@@ -126,7 +120,7 @@ public class Report {
             document.add(new Paragraph("Users Report"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("___________________________________"));
-            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(new Paragraph("Company name: Fast & Furious Express"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Report Date: " + Date));
             document.add(Chunk.NEWLINE);
@@ -200,7 +194,7 @@ public class Report {
             document.add(new Paragraph("Delivery Report"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("___________________________________"));
-            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(new Paragraph("Company name: Fast & Furious Express"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Report Date: " + Date));
             document.add(Chunk.NEWLINE);
