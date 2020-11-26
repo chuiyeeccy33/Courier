@@ -231,10 +231,9 @@ public class Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + "\""+ getSenderaddress()+"\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," 
-                    +"\"" + getReceiveraddress() +"\"" + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," 
-                    + getLength()+ "," + getHeight() + "," + getOrderdetails() + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + ","
-                    + "None" + ","+ "" + "," + getUserid();
+            String Line = getOrderid()+ "," + getSendername()+ "," + "\"" + getSenderaddress() +"\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + "\""+  getReceiveraddress() + "\""
+                    + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
+                    + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + "Pending" + "," + "None" + ","+ "" + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
             //use pw to write data you want to write
             pw.write(Line);
@@ -264,7 +263,7 @@ public class Orders {
             String data;
             
             while((data = sc.nextLine()) != null){
-                String[] tempData = data.split(",");
+                String[] tempData = data.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 if(!removeTerm.equals(tempData[0])){
                     tempArray.add(data);
                 }
@@ -290,7 +289,7 @@ public class Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
+            String Line = getOrderid()+ "," + getSendername()+ "," +  "\"" +getSenderaddress() + "\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + "\"" + getReceiveraddress()+"\""
                         + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
                         + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal() + "," + getUserid();
             //in the textfile, each data will have one row blank b4 next line
@@ -303,57 +302,4 @@ public class Orders {
                
         }    
     }
-    
-    //Back Button
-    public void Back(String user, String type){
-        userid = user;
-        type = users.getSelectedUserType();
-        if (type.equals("Customer")) {
-            new CustomerDashboard(userid).setVisible(true);
-        } else if(type.equals("Managing Staff")) {
-            new ManagingStaffDasboard(userid).setVisible(true);
-        } else {
-            new DeliveryStaffDashboardPage(userid).setVisible(true);           
-        }       
-    }
-       
-    // view order details to table    
-    public void ViewFormBackToTable(String user, Users type){
-            try {
-            File file = new File("Orders.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-            BufferedReader br = new BufferedReader (new FileReader(file));
-            StringBuilder sb = new StringBuilder();
-            
-            while(sc.hasNext() && !found) {
-                temp = sc.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                
-                if(userid.equals(tempArr[0])) {
-                    String TempUserType = tempArr[2]; // Return the usertype to the variable
-                    if(TempUserType.equals("Customer")) {
-                        Object[] details = br.lines().toArray();
-                        for (Object detail : details) { 
-                            String line = detail.toString().trim();
-                            String[] row = line.split(",");
-                            userid = user;
-                            type = users;
-                            if (type.equals("Customer")) {
-                                new CustomerOrderTable(userid).setVisible(true);
-                            }else if(type.equals("Managing Staff")) {
-                                new ManagingStaffAllOrder(userid).setVisible(true);
-                            }else {
-                                new DeliveryStaffOrderPage(userid).setVisible(true);           
-                            }
-                        }
-                    }
-                }
-            }
-          } catch (Exception ex) {
-            ex.printStackTrace();
-         }
-}
 }

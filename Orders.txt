@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 9f26af84-15e0-42f4-ba06-fd8cbeb5b306,daniellim0510,"hi, oo",0123123121,daniellim0510@gmail.com,res,"oo,ok",345,34@gmail.com,26/11/2020,3,2,4,5,6,7,2,9.00,Pending,None,,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
 11a2c3b6-4ab3-4457-bae9-50feddb608b9,daniellim0510,"no.30, jalan pandan indah",0123123121,daniellim0510@gmail.com,dfgdg,"dfgdgd",4534,345@gmail.com,25/11/2020,1,1,1,1,1,5,1,6.00,Pending,None,,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
 0b83499b-7019-453d-8fe3-dd80966d50b9,daniellim0510,"kepong, my heart",0123123121,daniellim0510@gmail.com,d,"cheras, your heart",3,3@gmail.com,26/11/2020,4,5,6,6,7,15,78,93.00,Pending,None,,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
+=======
+fe9d3c95-5d8f-4e2e-9831-48228e72d8b5,daniellim0510,"kepong , bibi",0123123121,daniellim0510@gmail.com,chuiyee,"cheras, bibi, hi",23,callmebibi@gmail.com,26/11/2020,2,3,4,5,6,7,7,14.00,Pending,c49023f8-163e-4f29-90df-65a1e4250603,0123131232,2083a7d0-5c78-4c05-9e4d-1b2037d6e9c1
+>>>>>>> 9364844d9eeead6148a974137b88e9fd12210012

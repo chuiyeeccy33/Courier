@@ -35,7 +35,7 @@ public class ManagingStaffAllOrder extends javax.swing.JFrame {
         Object[] outputs = o.LoadAllDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
-            String[] row = line.split(",");
+            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
             model.addRow(row);
         }
     }

@@ -73,7 +73,7 @@ public class Delivery extends Orders {
             String data;
 
             while((data = sc.nextLine()) != null){
-                String[] tempData = data.split(",");
+                String[] tempData = data.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 if(!removeTerm.equals(tempData[0])){
                     tempArray.add(data);
                 }
@@ -99,7 +99,7 @@ public class Delivery extends Orders {
             FileWriter fw = new FileWriter(Finput,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            String Line = getOrderid()+ "," + getSendername()+ "," + getSenderaddress() + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + getReceiveraddress() 
+            String Line = getOrderid()+ "," + getSendername()+ "," + "\""+getSenderaddress() + "\"" + "," + getSenderphone() + ","+ getSenderemail() + "," + getReceivername()+ "," + "\"" +getReceiveraddress() +"\"" 
                     + "," + getReceiverphone()+ "," + getReceiveremail()+ "," + getOrderdate() + "," + getWeight() + ","+ getWidth() + "," + getLength()+ "," + getHeight() + "," + getOrderdetails()
                     + "," + getShippingfee()  + "," + getItemprice()+ "," + getTotal()+ "," + getDeliverystatus() + "," + getAssignperson() + ","+ getStaffphone() + "," + getUserid();            
             //in the textfile, each data will have one row blank b4 next line
@@ -155,7 +155,7 @@ public class Delivery extends Orders {
                         Object[] details = br2.lines().toArray();
                         for (Object detail : details) {
                             String line = detail.toString().trim();
-                            String[] row = line.split(",");
+                            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                             assignperson = row[19];
                             if(assignperson.equals("None")) {
                                 orderid = row[0];
@@ -170,7 +170,7 @@ public class Delivery extends Orders {
                         Object[] details = br2.lines().toArray();
                         for (Object detail : details) {
                             String line = detail.toString().trim();
-                            String[] row = line.split(",");
+                            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                             assignperson = row[19];
                             if(assignperson.equals(userid)) {
                                 orderid = row[0];
@@ -211,7 +211,7 @@ public class Delivery extends Orders {
                 Object[] data = br.lines().toArray();
                 for (Object load : data) {
                     String line = load.toString().trim();
-                    String[] row = line.split(",");
+                    String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     assignperson = row[19];
                     if(!assignperson.equals("None")) {
                         orderid = row[0];

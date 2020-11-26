@@ -1,6 +1,5 @@
 package courier;
 
-import java.util.*;
 import java.io.*;
 
 public class Feedback {
@@ -10,7 +9,6 @@ public class Feedback {
     private String description;
     //private String feedbackUser;
     private Users feedbackUser;
-    private Users feedbackUsername;
   
     public Feedback() {};
     
@@ -23,24 +21,20 @@ public class Feedback {
         this.feedbackUser = FeedbackUser;
     }
     
-    private String getFeedbackid() {
+    public String getFeedbackid() {
         return feedbackID;
     }
     
-    private String getRating() {
+    public String getRating() {
         return rating;
     }
     
-    private String getDescription() {
+    public String getDescription() {
         return description;
     }
     
     public Users getFeedbackUser() {
         return feedbackUser;
-    }
-    
-    public Users getFeedbackUsername() {
-        return feedbackUsername;
     }
     
     public void setFeedbackid(String Feedbackid) {
@@ -59,8 +53,8 @@ public class Feedback {
         feedbackUser = FeedbackUser;
     }
     
-    public void setFeedbackUsername(Users FeedbackUsername) {
-        this.feedbackUsername = FeedbackUsername;
+    public String toString() {
+        return feedbackID + rating + description + feedbackUser;
     }
     
     //cannot submit empty feedback
