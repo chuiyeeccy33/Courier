@@ -21,6 +21,7 @@ public class Report {
 
     Feedback f;
     Users u;
+    Delivery d;
     
     public Report(Feedback f, Users u) {
         this.f = f;
