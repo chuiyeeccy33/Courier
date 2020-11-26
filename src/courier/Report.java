@@ -186,6 +186,76 @@ public class Report {
     }
     
     public void DeliveryReport() {
+        Document document = new Document ();
         
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("DeliveryReport.pdf"));
+            document.open();
+            LocalDate date = LocalDate.now(); 
+            //date format
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String Date = date.format(format);
+            
+            //create title for feedback report
+            document.add(new Paragraph("Delivery Report"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("___________________________________"));
+            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Date: " + Date));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Description: "));
+            document.add(new Paragraph("View all the delivery and order in Fast & Furious"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Delivery Transaction"));
+            document.add(Chunk.NEWLINE);
+            
+            //create table for the data for feedback
+            PdfPTable table = new PdfPTable(4);
+            
+            //create the header for the table
+            table.addCell("Order ID");
+            table.addCell("Order Date");
+            table.addCell("Delivery Staff");
+            table.addCell("Status");
+            
+            //load the data from Delivery
+            List<String> strings = Files.readAllLines(Paths.get("Orders.txt"));
+            List<Delivery> delivery = new ArrayList<>();
+            
+            for(String line : strings) {
+                String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                
+                String Orderid = split[0];
+                String OrderDate = split[9];
+                String DeliveryStaff = split[19];
+                String Status = split[18];
+                
+                Delivery d = new Delivery();
+                d.orderid = Orderid;
+                d.orderdate = OrderDate;
+                d.setAssginperson(DeliveryStaff);
+                d.setDeliverystatus(Status);
+                
+                table.addCell(d.orderid);
+                table.addCell(d.orderdate);
+                table.addCell(d.getAssignperson());
+                table.addCell(d.getDeliverystatus());
+            }
+            
+            //Add table into document
+            document.add(table);
+            
+            //close document
+            document.close();
+            
+            //close writer
+            writer.close();
+            
+        } catch (IOException ex) {
+            
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
     }
 }

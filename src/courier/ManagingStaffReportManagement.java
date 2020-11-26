@@ -26,7 +26,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         backbtn = new javax.swing.JButton();
-        dailybtn = new javax.swing.JButton();
+        Deliverybtn = new javax.swing.JButton();
         monthlybtn = new javax.swing.JButton();
         userlistbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -44,12 +44,12 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
             }
         });
 
-        dailybtn.setBackground(new java.awt.Color(129, 182, 157));
-        dailybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        dailybtn.setText("Order & Delivery Report");
-        dailybtn.addActionListener(new java.awt.event.ActionListener() {
+        Deliverybtn.setBackground(new java.awt.Color(129, 182, 157));
+        Deliverybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Deliverybtn.setText("Order & Delivery Report");
+        Deliverybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dailybtnActionPerformed(evt);
+                DeliverybtnActionPerformed(evt);
             }
         });
 
@@ -91,7 +91,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dailybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,7 +104,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dailybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(backbtn)
                 .addGap(73, 73, 73))
@@ -124,12 +124,12 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dailybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailybtnActionPerformed
+    private void DeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliverybtnActionPerformed
         // TODO add your handling code here:
         Report r = new Report();
         r.DeliveryReport();
-        System.out.pritnln("Ur Delivery Report has been downloaded");
-    }//GEN-LAST:event_dailybtnActionPerformed
+        System.out.println("Ur Delivery Report has been downloaded");
+    }//GEN-LAST:event_DeliverybtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         // TODO add your handling code here:
@@ -186,8 +186,8 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deliverybtn;
     private javax.swing.JButton backbtn;
-    private javax.swing.JButton dailybtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton monthlybtn;

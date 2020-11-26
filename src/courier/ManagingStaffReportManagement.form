@@ -55,7 +55,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="userlistbtn" min="-2" pref="405" max="-2" attributes="0"/>
                           <Component id="monthlybtn" min="-2" pref="405" max="-2" attributes="0"/>
-                          <Component id="dailybtn" min="-2" pref="405" max="-2" attributes="0"/>
+                          <Component id="Deliverybtn" min="-2" pref="405" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -72,7 +72,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="monthlybtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="dailybtn" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="Deliverybtn" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="backbtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backbtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="dailybtn">
+        <Component class="javax.swing.JButton" name="Deliverybtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="9d" green="b6" red="81" type="rgb"/>
@@ -106,7 +106,7 @@
             <Property name="text" type="java.lang.String" value="Order &amp; Delivery Report"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dailybtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeliverybtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="monthlybtn">
