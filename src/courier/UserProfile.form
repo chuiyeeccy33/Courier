@@ -198,18 +198,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="lastnametxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="typetxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="emaillbl">
           <Properties>
@@ -223,11 +213,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="emailtxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="phonelbl">
           <Properties>
@@ -241,11 +226,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="phonetxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="phonetxtKeyTyped"/>
           </Events>
@@ -287,11 +267,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="usernametxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="changepasslbl">
           <Properties>
@@ -330,18 +305,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="firstnametxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="passwordtxt">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lastnamelbl">
           <Properties>

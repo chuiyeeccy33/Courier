@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package courier;
 
-/**
- *
- * @author daniellim0510
- */
+import javax.swing.JOptionPane;
+
 public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
+    String user_id = "";
     /**
      * Creates new form ManagingStaffReportManagement
      */
-    public ManagingStaffReportManagement() {
+    public ManagingStaffReportManagement(String userid) {
         initComponents();
-         setResizable(false);
+        user_id = userid;
+        setResizable(false);
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
     }
@@ -32,8 +28,7 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         backbtn = new javax.swing.JButton();
-        yearlybtn = new javax.swing.JButton();
-        dailybtn = new javax.swing.JButton();
+        Deliverybtn = new javax.swing.JButton();
         monthlybtn = new javax.swing.JButton();
         userlistbtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -45,27 +40,38 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         backbtn.setBackground(new java.awt.Color(214, 245, 238));
         backbtn.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         backbtn.setText("Back");
-
-        yearlybtn.setBackground(new java.awt.Color(129, 182, 157));
-        yearlybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        yearlybtn.setText("Yearly Order Report");
-
-        dailybtn.setBackground(new java.awt.Color(129, 182, 157));
-        dailybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        dailybtn.setText("Daily Order Report");
-        dailybtn.addActionListener(new java.awt.event.ActionListener() {
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dailybtnActionPerformed(evt);
+                backbtnActionPerformed(evt);
+            }
+        });
+
+        Deliverybtn.setBackground(new java.awt.Color(129, 182, 157));
+        Deliverybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        Deliverybtn.setText("Order & Delivery Report");
+        Deliverybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeliverybtnActionPerformed(evt);
             }
         });
 
         monthlybtn.setBackground(new java.awt.Color(129, 182, 157));
         monthlybtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        monthlybtn.setText("Monthly Order Report");
+        monthlybtn.setText("Feedback Report");
+        monthlybtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthlybtnActionPerformed(evt);
+            }
+        });
 
         userlistbtn.setBackground(new java.awt.Color(129, 182, 157));
         userlistbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        userlistbtn.setText("User List");
+        userlistbtn.setText("User Report");
+        userlistbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userlistbtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
@@ -76,47 +82,41 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(yearlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dailybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(backbtn)
-                        .addGap(16, 16, 16)))
-                .addContainerGap())
+                    .addComponent(backbtn)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backbtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dailybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(yearlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Deliverybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(backbtn)
+                .addGap(73, 73, 73))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,9 +126,31 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dailybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailybtnActionPerformed
+    private void DeliverybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliverybtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dailybtnActionPerformed
+        Report r = new Report();
+        r.DeliveryReport();
+        JOptionPane.showMessageDialog(rootPane, "Delivery Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_DeliverybtnActionPerformed
+
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new ManagingStaffDasboard(user_id).setVisible(true);
+    }//GEN-LAST:event_backbtnActionPerformed
+
+    private void monthlybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlybtnActionPerformed
+       Report r = new Report();
+       r.FeedbackReport();
+       JOptionPane.showMessageDialog(rootPane, "Feedback Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_monthlybtnActionPerformed
+
+    private void userlistbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userlistbtnActionPerformed
+        // TODO add your handling code here:
+        Report r = new Report(); 
+        r.UserReport();
+        JOptionPane.showMessageDialog(rootPane, "Users Report has been donwloaded", "Report Downloaded", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_userlistbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,18 +182,17 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManagingStaffReportManagement().setVisible(true);
+ 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deliverybtn;
     private javax.swing.JButton backbtn;
-    private javax.swing.JButton dailybtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton monthlybtn;
     private javax.swing.JButton userlistbtn;
-    private javax.swing.JButton yearlybtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,7 @@ public class ManagingStaffFeedbackManagement extends javax.swing.JFrame {
     public ManagingStaffFeedbackManagement(String ID) {
         initComponents();
         user_id = ID;
-         setResizable(false);
+        setResizable(false);
         this.setLocationRelativeTo(null);
         setTitle("Fast & Furious Express");
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();            

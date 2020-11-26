@@ -104,21 +104,14 @@ public class UserProfile extends javax.swing.JFrame {
         typelbl.setForeground(new java.awt.Color(240, 240, 240));
         typelbl.setText("Type:");
 
-        lastnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        typetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         emaillbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         emaillbl.setForeground(new java.awt.Color(240, 240, 240));
         emaillbl.setText("Email: ");
-
-        emailtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         phonelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonelbl.setForeground(new java.awt.Color(240, 240, 240));
         phonelbl.setText("Phone No:");
 
-        phonetxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         phonetxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 phonetxtKeyTyped(evt);
@@ -142,8 +135,6 @@ public class UserProfile extends javax.swing.JFrame {
         usernamelbl.setForeground(new java.awt.Color(240, 240, 240));
         usernamelbl.setText("Username: ");
 
-        usernametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         changepasslbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         changepasslbl.setForeground(new java.awt.Color(240, 240, 240));
         changepasslbl.setText("Change Password? Click Here");
@@ -160,10 +151,6 @@ public class UserProfile extends javax.swing.JFrame {
         passwordlbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         passwordlbl.setForeground(new java.awt.Color(240, 240, 240));
         passwordlbl.setText("Password:");
-
-        firstnametxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        passwordtxt.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         lastnamelbl.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lastnamelbl.setForeground(new java.awt.Color(240, 240, 240));

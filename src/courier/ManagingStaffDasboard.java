@@ -40,7 +40,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        reportbtn = new javax.swing.JButton();
         assignbtn = new javax.swing.JButton();
         AllOrderbtn = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -83,13 +83,18 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(129, 182, 157));
-        jButton6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jButton6.setText("Report");
+        reportbtn.setBackground(new java.awt.Color(129, 182, 157));
+        reportbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        reportbtn.setText("Report");
+        reportbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportbtnActionPerformed(evt);
+            }
+        });
 
         assignbtn.setBackground(new java.awt.Color(129, 182, 157));
         assignbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        assignbtn.setText("Assign Staff to Order");
+        assignbtn.setText("Assign Staff to Delivery");
         assignbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignbtnActionPerformed(evt);
@@ -142,7 +147,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(approvalbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reportbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AllOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -168,7 +173,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reportbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(jButton9)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -220,6 +225,12 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
         new ManagingStaffApproval(user_id).setVisible(true);
     }//GEN-LAST:event_approvalbtnActionPerformed
 
+    private void reportbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportbtnActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new ManagingStaffReportManagement(user_id).setVisible(true);
+    }//GEN-LAST:event_reportbtnActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -263,9 +274,9 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton reportbtn;
     // End of variables declaration//GEN-END:variables
 }
