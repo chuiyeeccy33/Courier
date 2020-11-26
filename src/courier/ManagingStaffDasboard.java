@@ -94,7 +94,7 @@ public class ManagingStaffDasboard extends javax.swing.JFrame {
 
         assignbtn.setBackground(new java.awt.Color(129, 182, 157));
         assignbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        assignbtn.setText("Assign Staff to Order");
+        assignbtn.setText("Assign Staff to Delivery");
         assignbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignbtnActionPerformed(evt);

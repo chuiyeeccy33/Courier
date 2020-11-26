@@ -1,6 +1,7 @@
 
 package courier;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -12,158 +13,94 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.Month;
 import java.util.Scanner;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class Report extends Orders {
-    public String selection;
-    public String buttonClick;
-    
-    public String getselection() {
-        return selection;
-    }
-    
-    public String getbuttonClick() {
-        return buttonClick;
-    }
+public class Report {
 
-    public void setselection(String Selection) {
-        selection = Selection;
+    Feedback f;
+    
+    public Report(Feedback f) {
+        this.f = f;
     }
     
-    public void setbuttonClick(String ButtonClick) {
-        buttonClick = ButtonClick;
-    }
-    
-    public String Fill() {
-        try {
-            File file = new File("Orders.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            StringBuilder sb = new StringBuilder();
-            
-            while(sc.hasNext() && !found) {
-                temp = sc.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                
-                Object[] data = br.lines().toArray();
-                for (Object load : data) {
-                    String line = load.toString().trim();
-                    String[] row = line.split(",");
-                    orderdate = row[9];
-                    String [] separateDate = orderdate.split("/");
-                    String day = separateDate[0];
-                    String month = Month.of(Integer.parseInt(separateDate[1])).name();
-                    String year = separateDate[2];
-                    if(buttonClick.equals("MonthlyOrder")) {        
-                        sb.append(month +  "\n");
-                    } else if (buttonClick.equals("DailyOrder")) {
-                        sb.append(day + "\n");
-                    } else if (buttonClick.equals("YearlyOrder")) {
-                        sb.append(year + "\n");
-                    } else if (buttonClick.equals("UserList")) {
-                        sb.append("All" + "\n");
-                    } else {
-                        sb.append("There is no Order" + "\n");
-                    }
-                }
-            return sb.toString();
-            }
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return "error in filling combobox";
+    public Report() {
+        
     }
       
-    public void GeneratePDF() {
-      try {
-            File file = new File("Orders.txt");
-            Scanner sc = new Scanner(file);
-            String temp;
-            boolean found = false;
-            BufferedReader br = new BufferedReader(new FileReader(file));
+    public void FeedbackReport() {
+        
+        Document document = new Document ();
+        
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("FeedbackReport.pdf"));
+            document.open();
             
-            while(sc.hasNext() && !found) {
-                temp = sc.nextLine();
-                String[] tempArr;
-                tempArr = temp.split(",");
-                 Object[] data = br.lines().toArray();
-                for (Object load : data) {
-                    String line = load.toString().trim();
-                    String[] row = line.split(",");
-                    orderdate = row[9];
-                    String [] separateDate = orderdate.split("/");
-                    String day = separateDate[0];
-                    String month = Month.of(Integer.parseInt(separateDate[1])).name();
-                    String year = separateDate[2];
-                    Document document = new Document();
-                    try
-                    {
-                       if (buttonClick.equals("MonthlyOrder")) {
-                           if (selection.equals(separateDate[1])) {
-                            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Monthly Order Report(" + selection + ").pdf"));
-                            document.open();
-                            document.add(new Paragraph("            Monthly Order Report (" + selection + ")           "));
-                            document.add(new Paragraph("_________________________________________________________"));
-                            document.add(new Paragraph(orderid));
-                            document.add(new Paragraph("Order Date: " + orderdate));
-                            document.add(new Paragraph("Weight: " + weight));
-                            document.add(new Paragraph("Width: " + width + "     " + "Height: " + height + "       " + "Length: " + length + "       " ));
-                            document.add(new Paragraph("Order Details: " + orderdetails));
-                            document.add(new Paragraph("Shipping Fee: " + shippingfee));
-                            document.add(new Paragraph("Item Price: " + itemprice));
-                            document.add(new Paragraph("Total: " + total));
-                            writer.close();
-                            System.out.println("monthly Document Written Successfully");
-                           }
-                    } else if (buttonClick.equals("DailyOrder")) {
-                          if (selection.equals(separateDate[1])) {
-                            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Daily Order Report(" + selection + ").pdf"));
-                            document.open();
-                            document.add(new Paragraph("            Daily Order Report (" + selection + ")           "));
-                            document.add(new Paragraph("___________________________________________________________"));
-                            document.add(new Paragraph(orderid));
-                            document.add(new Paragraph("Order Date: " + orderdate));
-                            document.add(new Paragraph("Weight: " + weight));
-                            document.add(new Paragraph("Width: " + width + "     " + "Height: " + height + "       " + "Length: " + length + "       " ));
-                            document.add(new Paragraph("Order Details: " + orderdetails));
-                            document.add(new Paragraph("Shipping Fee: " + shippingfee));
-                            document.add(new Paragraph("Item Price: " + itemprice));
-                            document.add(new Paragraph("Total: " + total));
-                            writer.close();
-                            System.out.println("daily Document Written Successfully");
-                         }
-                    } else if (buttonClick.equals("YearlyOrder")) {
-                        if (selection.equals(separateDate[1])) {
-                            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Yearly Order Report(" + selection + ").pdf"));
-                            document.open();
-                            document.add(new Paragraph("               Yearly Order Report(" + selection + ")          "));
-                            document.add(new Paragraph("______________________________________________________________"));
-                            document.add(new Paragraph(orderid));
-                            document.add(new Paragraph("Order Date: " + orderdate));
-                            document.add(new Paragraph("Weight: " + weight));
-                            document.add(new Paragraph("Width: " + width + "     " + "Height: " + height + "       " + "Length: " + length + "       " ));
-                            document.add(new Paragraph("Order Details: " + orderdetails));
-                            document.add(new Paragraph("Shipping Fee: " + shippingfee));
-                            document.add(new Paragraph("Item Price: " + itemprice));
-                            document.add(new Paragraph("Total: " + total));
-                            writer.close();
-                            System.out.println("yearly Document Written Successfully");
-                         }
-                    }
-                    }catch (IOException Ex)
-                   {
-
-                   }catch (DocumentException e) {
-                         e.printStackTrace();
-                      }
-                }
+            //create title for feedback report
+            document.add(new Paragraph("Feedback Report"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("___________________________________"));
+            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Date"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Description: "));
+            document.add(new Paragraph("View all current user list"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Feedback List"));
+            document.add(Chunk.NEWLINE);
+            
+            //create table for the data for feedback
+            PdfPTable table = new PdfPTable(4);
+            
+            //create the header for the table
+            table.addCell("Feedback ID");
+            table.addCell("Rating");
+            table.addCell("Description");
+            table.addCell("User");
+            
+            //load the data from Delivery
+            List<String> strings = Files.readAllLines(Paths.get("Feedback.txt"));
+            List<Feedback> feedbacks = new ArrayList<>();
+            
+            for(String line : strings) {
+                String[] split = line.split(",");
+                
+                String feedbackid = split[0];
+                String rating = split[1];
+                String description = split[2];
+                String userid = split[3];
+                
+                Users CustomerID = new Users();
+                Feedback f = new Feedback(feedbackid,rating,description,CustomerID);
+                CustomerID.setUserid(userid);
+                
+                table.addCell(f.getFeedbackid());
+                table.addCell(f.getRating());
+                table.addCell(f.getDescription());
+                table.addCell(f.getFeedbackUser().toString());
+                
+                System.out.println(f.toString());
             }
-         } catch (Exception ex) {
-            ex.printStackTrace();
+            
+            //Add table into document
+            document.add(table);
+            
+            //close document
+            document.close();
+            
+            //close writer
+            writer.close();
+            
+        } catch (IOException ex) {
+            
+        } catch (DocumentException e) {
+            e.printStackTrace();
         }
     }
 }
