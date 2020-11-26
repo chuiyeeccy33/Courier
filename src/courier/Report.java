@@ -26,9 +26,11 @@ import java.util.List;
 public class Report {
 
     Feedback f;
+    Users u;
     
-    public Report(Feedback f) {
+    public Report(Feedback f, Users u) {
         this.f = f;
+        this.u = u;
     }
     
     public Report() {
@@ -56,7 +58,7 @@ public class Report {
             document.add(new Paragraph("Report Date: " + Date));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Report Description: "));
-            document.add(new Paragraph("View all current user list"));
+            document.add(new Paragraph("View all feedback given by the user to improve the current system"));
             document.add(Chunk.NEWLINE);
             document.add(new Paragraph("Feedback List"));
             document.add(Chunk.NEWLINE);
@@ -90,8 +92,6 @@ public class Report {
                 table.addCell(f.getRating());
                 table.addCell(f.getDescription());
                 table.addCell(f.getFeedbackUser().toString());
-                
-                System.out.println(f.toString());
             }
             
             //Add table into document
@@ -108,5 +108,84 @@ public class Report {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
+    }
+    
+    public void UserReport() {
+        
+        Document document = new Document ();
+        
+        try {
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("UserReport.pdf"));
+            document.open();
+            LocalDate date = LocalDate.now(); 
+            //date format
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String Date = date.format(format);
+            
+            //create title for feedback report
+            document.add(new Paragraph("Users Report"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("___________________________________"));
+            document.add(new Paragraph("Company name: Fast & Furious"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Date: " + Date));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Report Description: "));
+            document.add(new Paragraph("View all current user list"));
+            document.add(Chunk.NEWLINE);
+            document.add(new Paragraph("Feedback List"));
+            document.add(Chunk.NEWLINE);
+            
+            //create table for the data for feedback
+            PdfPTable table = new PdfPTable(4);
+            
+            //create the header for the table
+            table.addCell("User ID");
+            table.addCell("Username");
+            table.addCell("User Type");
+            table.addCell("Status");
+            
+            //load the data from Delivery
+            List<String> strings = Files.readAllLines(Paths.get("UserDetails.txt"));
+            List<Users> users = new ArrayList<>();
+            
+            for(String line : strings) {
+                String[] split = line.split(",");
+                
+                String Userid = split[0];
+                String Username = split[1];
+                String Usertype = split[2];
+                String Status = split[8];
+                
+                Users u = new Users();
+                u.userid = Userid;
+                u.username = Username;
+                u.selectedusertype = Usertype;
+                u.status = Status;
+                
+                table.addCell(u.userid);
+                table.addCell(u.username);
+                table.addCell(u.selectedusertype);
+                table.addCell(u.status);
+            }
+            
+            //Add table into document
+            document.add(table);
+            
+            //close document
+            document.close();
+            
+            //close writer
+            writer.close();
+            
+        } catch (IOException ex) {
+            
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void DeliveryReport() {
+        
     }
 }

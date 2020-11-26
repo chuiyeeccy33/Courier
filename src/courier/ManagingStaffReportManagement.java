@@ -65,6 +65,11 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
         userlistbtn.setBackground(new java.awt.Color(129, 182, 157));
         userlistbtn.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         userlistbtn.setText("User Report");
+        userlistbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userlistbtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 35)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
@@ -94,13 +99,13 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(userlistbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monthlybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dailybtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(42, 42, 42)
                 .addComponent(backbtn)
                 .addGap(73, 73, 73))
         );
@@ -121,6 +126,9 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
 
     private void dailybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailybtnActionPerformed
         // TODO add your handling code here:
+        Report r = new Report();
+        r.DeliveryReport();
+        System.out.pritnln("Ur Delivery Report has been downloaded");
     }//GEN-LAST:event_dailybtnActionPerformed
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
@@ -134,6 +142,13 @@ public class ManagingStaffReportManagement extends javax.swing.JFrame {
        r.FeedbackReport();
        System.out.println("Ur feedback report has been downloaded");
     }//GEN-LAST:event_monthlybtnActionPerformed
+
+    private void userlistbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userlistbtnActionPerformed
+        // TODO add your handling code here:
+        Report r = new Report(); 
+        r.UserReport();
+        System.out.println("Ur User report has been downloaded");
+    }//GEN-LAST:event_userlistbtnActionPerformed
 
     /**
      * @param args the command line arguments
