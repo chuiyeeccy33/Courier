@@ -36,7 +36,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
         Object[] outputs = d.LoadDelivery().lines().toArray();
         for (Object output : outputs) {
             String line = output.toString().trim();
-            String[] row = line.split(",");
+            String[] row = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
             model.addRow(row);
         }
     }
@@ -151,7 +151,7 @@ public class CustomerOrderTable extends javax.swing.JFrame {
                     .addComponent(viewbtn))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
