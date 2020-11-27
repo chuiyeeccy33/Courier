@@ -117,6 +117,23 @@ public class OrderDetails extends javax.swing.JFrame {
                                 totaltxt.setText(temp1Arr[17]);
                                 deliverystatus1lbl.setText(temp1Arr[18]);
                                 deliveryidlbl.setText(temp1Arr[19]);
+                                //cannot edit
+                                sendernametxt.setEditable(false);
+                                senderaddresstxt.setEditable(false);
+                                senderphonetxt.setEditable(false);
+                                senderemailtxt.setEditable(false);
+                                receivernametxt.setEditable(false);
+                                receiveraddresstxt.setEditable(false);
+                                receiverphonetxt.setEditable(false);
+                                receiveremailtxt.setEditable(false);
+                                weighttxt.setEditable(false);
+                                widthtxt.setEditable(false);
+                                lengthtxt.setEditable(false);
+                                heighttxt.setEditable(false);
+                                orderdetailstxt.setEditable(false);
+                                itempricetxt.setEditable(false);
+                                totaltxt.setEditable(false);
+                                
                             } else {
                                 deliverystatuslbl.setVisible(true);
                                 deliverystatus1lbl.setVisible(true);
