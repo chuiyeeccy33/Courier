@@ -1,11 +1,6 @@
-# Fast & Furious Express
+# OODJ Assignmnet
 Java Assignment
 
 # Submission Date
-27/11/2020
-
-# Style Guideline
-Title Tahoma, 35 plain
-Subtitle Tahoma, 25 bold    
-normal label dialog, 12 plain
-Small Button dialog 12 plain
+Courier Management Java Application
+This used the Object-Oriented Method
