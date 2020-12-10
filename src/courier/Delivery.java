@@ -218,8 +218,6 @@ public class Delivery extends Orders {
                         total = row[17];
                         deliverystatus = row[18];    
                         sb.append(orderid + "," + orderdate + "," + total + "," + deliverystatus + "\n"); 
-                    } else {
-                        sb.append("There is no Order");
                     }
                 }
             return sb.toString();
